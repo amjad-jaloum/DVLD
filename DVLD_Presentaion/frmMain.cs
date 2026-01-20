@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using _19___Project___DVLD.People;
+
+namespace _19___Project___DVLD
+{
+    public partial class frmMain : Form
+    {
+        public frmMain()
+        {
+            InitializeComponent();
+        }
+
+        private void peopleToolStripMenuItem_People_Click(object sender, EventArgs e)
+        {
+            frmManagePeople PeopleForm = new frmManagePeople();
+            PeopleForm.MdiParent = this;
+            PeopleForm.Show();
+            //PeopleForm.WindowState = FormWindowState.Maximized;
+        }
+    }
+}
