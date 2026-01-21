@@ -140,5 +140,11 @@
   <ItemGroup>
     <None Include="Resources\femaleWrong.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\driver_config.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\driver_config %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

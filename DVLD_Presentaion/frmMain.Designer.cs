@@ -34,11 +34,13 @@
             this.driversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showCurrentUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainNavBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // msMainNavBar
             // 
+            this.msMainNavBar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.msMainNavBar.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.msMainNavBar.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.msMainNavBar.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -50,49 +52,64 @@
             this.accountToolStripMenuItem});
             this.msMainNavBar.Location = new System.Drawing.Point(0, 0);
             this.msMainNavBar.Name = "msMainNavBar";
-            this.msMainNavBar.Size = new System.Drawing.Size(1278, 48);
+            this.msMainNavBar.Size = new System.Drawing.Size(1062, 48);
             this.msMainNavBar.TabIndex = 0;
             this.msMainNavBar.Text = "menuStrip1";
             // 
             // applicationsToolStripMenuItem
             // 
             this.applicationsToolStripMenuItem.Name = "applicationsToolStripMenuItem";
-            this.applicationsToolStripMenuItem.Size = new System.Drawing.Size(126, 29);
+            this.applicationsToolStripMenuItem.Size = new System.Drawing.Size(184, 42);
             this.applicationsToolStripMenuItem.Text = "Applications";
             // 
             // peopleToolStripMenuItem_People
             // 
             this.peopleToolStripMenuItem_People.Name = "peopleToolStripMenuItem_People";
-            this.peopleToolStripMenuItem_People.Size = new System.Drawing.Size(81, 29);
+            this.peopleToolStripMenuItem_People.Size = new System.Drawing.Size(117, 42);
             this.peopleToolStripMenuItem_People.Text = "People";
             this.peopleToolStripMenuItem_People.Click += new System.EventHandler(this.peopleToolStripMenuItem_People_Click);
             // 
             // driversToolStripMenuItem
             // 
             this.driversToolStripMenuItem.Name = "driversToolStripMenuItem";
-            this.driversToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
+            this.driversToolStripMenuItem.Size = new System.Drawing.Size(120, 42);
             this.driversToolStripMenuItem.Text = "Drivers";
             // 
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(71, 29);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(101, 42);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // accountToolStripMenuItem
             // 
+            this.accountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showCurrentUserToolStripMenuItem});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(168, 29);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(250, 42);
             this.accountToolStripMenuItem.Text = "Account Setttings";
+            // 
+            // showCurrentUserToolStripMenuItem
+            // 
+            this.showCurrentUserToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.showCurrentUserToolStripMenuItem.Name = "showCurrentUserToolStripMenuItem";
+            this.showCurrentUserToolStripMenuItem.Size = new System.Drawing.Size(295, 38);
+            this.showCurrentUserToolStripMenuItem.Text = "Show current user";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1278, 544);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackgroundImage = global::_19___Project___DVLD.Properties.Resources.driver_config__1_;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(1062, 620);
             this.Controls.Add(this.msMainNavBar);
+            this.DoubleBuffered = true;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.msMainNavBar;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Form";
@@ -112,6 +129,7 @@
         private System.Windows.Forms.ToolStripMenuItem driversToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showCurrentUserToolStripMenuItem;
     }
 }
 

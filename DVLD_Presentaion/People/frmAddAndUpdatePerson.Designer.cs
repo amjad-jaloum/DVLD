@@ -51,7 +51,6 @@
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.cbCountriesNames = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.pbUserImage = new System.Windows.Forms.PictureBox();
             this.btnSetImage = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tbLastName = new System.Windows.Forms.TextBox();
@@ -71,6 +70,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.epPersonForm = new System.Windows.Forms.ErrorProvider(this.components);
             this.fdSetImage = new System.Windows.Forms.OpenFileDialog();
+            this.pbUserImage = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -78,10 +78,10 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epPersonForm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -372,17 +372,6 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(310, 388);
             this.tableLayoutPanel5.TabIndex = 4;
             // 
-            // pbUserImage
-            // 
-            this.pbUserImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbUserImage.Image = global::_19___Project___DVLD.Properties.Resources.male;
-            this.pbUserImage.Location = new System.Drawing.Point(3, 3);
-            this.pbUserImage.Name = "pbUserImage";
-            this.pbUserImage.Size = new System.Drawing.Size(304, 302);
-            this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbUserImage.TabIndex = 0;
-            this.pbUserImage.TabStop = false;
-            // 
             // btnSetImage
             // 
             this.btnSetImage.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -604,6 +593,17 @@
             this.epPersonForm.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.epPersonForm.ContainerControl = this;
             // 
+            // pbUserImage
+            // 
+            this.pbUserImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbUserImage.Image = global::_19___Project___DVLD.Properties.Resources.male;
+            this.pbUserImage.Location = new System.Drawing.Point(3, 3);
+            this.pbUserImage.Name = "pbUserImage";
+            this.pbUserImage.Size = new System.Drawing.Size(304, 302);
+            this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbUserImage.TabIndex = 0;
+            this.pbUserImage.TabStop = false;
+            // 
             // frmAddAndUpdatePerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -626,11 +626,11 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.epPersonForm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.ResumeLayout(false);
 
         }
