@@ -124,17 +124,6 @@ namespace _19___Project___DVLD.People
         {
             pbUserImage.Image = GetDefaultImage();
         }
-        private void MakeTextBoxFieldRequired(TextBox sender)
-        {
-            if (sender.Text == string.Empty)
-            {
-                epPersonForm.SetError(sender, "This field is required");
-            }
-            else
-            {
-                epPersonForm.SetError(sender, "");
-            }
-        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -142,25 +131,25 @@ namespace _19___Project___DVLD.People
         }
         private void tbFirstName_Leave(object sender, EventArgs e)
         {
-            MakeTextBoxFieldRequired(tbFirstName);
+            clsCommonMethods.MakeTextBoxFieldRequired(tbFirstName, epPersonForm);
         }
         private void tbSecondName_Leave(object sender, EventArgs e)
         {
-            MakeTextBoxFieldRequired(tbSecondName);
+            clsCommonMethods.MakeTextBoxFieldRequired(tbSecondName, epPersonForm);
         }
         private void tbThirdName_Leave(object sender, EventArgs e)
         {
-            MakeTextBoxFieldRequired(tbThirdName);
+            clsCommonMethods.MakeTextBoxFieldRequired(tbThirdName, epPersonForm);
         }
         private void tbLastName_Leave(object sender, EventArgs e)
         {
-            MakeTextBoxFieldRequired(tbLastName);
+            clsCommonMethods.MakeTextBoxFieldRequired(tbLastName, epPersonForm);
         }
         private void tbNationalNo_Leave(object sender, EventArgs e)
         {
             if (tbNationalNo.Text == string.Empty)
             {
-                MakeTextBoxFieldRequired(tbNationalNo);
+                clsCommonMethods.MakeTextBoxFieldRequired(tbNationalNo, epPersonForm);
             }
             else
             {
@@ -177,11 +166,11 @@ namespace _19___Project___DVLD.People
         }
         private void tbPhone_Leave(object sender, EventArgs e)
         {
-            MakeTextBoxFieldRequired(tbPhone);
+            clsCommonMethods.MakeTextBoxFieldRequired(tbPhone, epPersonForm);
         }
         private void tbAddress_Leave(object sender, EventArgs e)
         {
-            MakeTextBoxFieldRequired(tbAddress);
+            clsCommonMethods.MakeTextBoxFieldRequired(tbAddress, epPersonForm);
         }
         private void btnSetImage_Click(object sender, EventArgs e)
         {
@@ -295,21 +284,17 @@ namespace _19___Project___DVLD.People
                 MessageBox.Show("The Person couldn't be successfully Updated!\nDatabase Error", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private bool HasErrors(string errorMessage)
-        {
-            return errorMessage != string.Empty;
-        }
         private bool AreFieldsValid()
         {
-            if (!HasErrors(epPersonForm.GetError(tbFirstName)) &&
-                !HasErrors(epPersonForm.GetError(tbSecondName)) &&
-                !HasErrors(epPersonForm.GetError(tbThirdName)) &&
-                !HasErrors(epPersonForm.GetError(tbLastName)) &&
-                !HasErrors(epPersonForm.GetError(tbNationalNo)) &&
-                !HasErrors(epPersonForm.GetError(tbPhone)) &&
-                !HasErrors(epPersonForm.GetError(tbEmail)) &&
-                !HasErrors(epPersonForm.GetError(tbAddress)) &&
-                !HasErrors(epPersonForm.GetError(cbCountriesNames)))
+            if (!clsCommonMethods.HasErrors(epPersonForm.GetError(tbFirstName)) &&
+                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbSecondName)) &&
+                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbThirdName)) &&
+                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbLastName)) &&
+                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbNationalNo)) &&
+                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbPhone)) &&
+                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbEmail)) &&
+                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbAddress)) &&
+                !clsCommonMethods.HasErrors(epPersonForm.GetError(cbCountriesNames)))
             {
                 return true;
             }
