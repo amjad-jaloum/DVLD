@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -83,6 +84,64 @@ namespace DVLD_DataAccess
             StreamWriter writer = new StreamWriter(FilePath);
             writer.Write(string.Empty);
             writer.Close();
+        }
+
+        public static DataTable GetAllUsers()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = "select * from Users";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dt;
+        }
+
+        public static List<string> GetUsersColumnNames()
+        {
+            List<string> list = new List<string>();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = "select INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Users'";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    //if ((string)reader["COLUMN_NAME"] == "ImagePath" || (string)reader["COLUMN_NAME"] == "DateOfBirth")
+                    //    continue;
+
+                    list.Add((string)reader["COLUMN_NAME"]);
+                }
+                reader.Close();
+            }
+            catch (Exception)
+            {
+            }
+            finally { connection.Close(); }
+
+            return list;
         }
 
     }

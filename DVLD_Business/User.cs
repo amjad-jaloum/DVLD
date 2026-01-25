@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +56,16 @@ namespace DVLD_Business
         public static void ResetUsernameAndPasswrodFile()
         {
             UsersData.ResetUsernameAndPasswrodFile();
+        }
+
+        public static DataTable GetAllUsers()
+        {
+            return UsersData.GetAllUsers();
+        }
+
+        public static List<string> GetUserColumnNames()
+        {
+            return UsersData.GetUsersColumnNames();
         }
     }
 }

@@ -17,7 +17,6 @@ namespace _19___Project___DVLD
         {
             InitializeComponent();
         }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (AreFormFieldsValid())
@@ -34,8 +33,8 @@ namespace _19___Project___DVLD
                     if (user.IsActive)
                     {
                         frmMain frmMain = new frmMain();
-                        frmMain.Show();
-                        Hide();
+                        frmMain.ShowDialog();
+                        Close();
                     }
                     else
                         MessageBox.Show("The user is not allowed to login, please try another user", "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
