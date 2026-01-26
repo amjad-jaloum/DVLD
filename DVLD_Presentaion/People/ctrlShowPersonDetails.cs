@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,13 +16,13 @@ namespace _19___Project___DVLD.People
 {
     public partial class ctrlShowPersonDetails : UserControl
     {
-        public Person person;
+        public Person person = null;
         public ctrlShowPersonDetails()
         {
             InitializeComponent();
         }
 
-        private void LoadPersonInfo()
+        public void LoadPersonInfo()
         {
             if (person != null)
             {
@@ -41,7 +42,6 @@ namespace _19___Project___DVLD.People
                 //MessageBox.Show("Person is null");
             }
         }
-
         private Image GetImagePath(string ImagePath)
         {
             if (ImagePath == string.Empty)
@@ -56,25 +56,20 @@ namespace _19___Project___DVLD.People
         {
             return Convert.ToBoolean(person.Gender) ? Resources.female : Resources.male;
         }
-
-
         private string GetCountryName()
         {
             return Person.GetCountryName(person.NationalityCountryID);
         }
-
         private string GetFullName()
         {
             return person.FirstName + " " + person.SecondName + " " + person.ThirdName + " " + person.LastName;
         }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             frmAddAndUpdatePerson frmAddAndUpdate = new frmAddAndUpdatePerson(person);
             frmAddAndUpdate.ShowDialog();
         }
-
-        private void ctrlShowPersonDetails_Load(object sender, EventArgs e)
+        public void ctrlShowPersonDetails_Load(object sender, EventArgs e)
         {
             LoadPersonInfo();
         }

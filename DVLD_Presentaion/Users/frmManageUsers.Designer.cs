@@ -32,36 +32,37 @@
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
+            this.cmsUsers = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tlpMainHeader = new System.Windows.Forms.TableLayoutPanel();
             this.MainHeaderPanel = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.mtxbSearch = new System.Windows.Forms.MaskedTextBox();
+            this.cbActiveStatus = new System.Windows.Forms.ComboBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAddNewUser = new System.Windows.Forms.Button();
             this.tplMainFooter = new System.Windows.Forms.TableLayoutPanel();
             this.btnClose = new System.Windows.Forms.Button();
             this.plMainfooterLable = new System.Windows.Forms.Panel();
             this.lblRowsCountValue = new System.Windows.Forms.Label();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAddNewUser = new System.Windows.Forms.Button();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.mtxbSearch = new System.Windows.Forms.MaskedTextBox();
-            this.cbActiveStatus = new System.Windows.Forms.ComboBox();
-            this.cmsUsers = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tlpForm.SuspendLayout();
             this.tlpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
+            this.cmsUsers.SuspendLayout();
             this.tlpMainHeader.SuspendLayout();
             this.MainHeaderPanel.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tplMainFooter.SuspendLayout();
             this.plMainfooterLable.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.cmsUsers.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpForm
@@ -114,6 +115,38 @@
             this.dgvUsers.Size = new System.Drawing.Size(967, 368);
             this.dgvUsers.TabIndex = 2;
             // 
+            // cmsUsers
+            // 
+            this.cmsUsers.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.cmsUsers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showDetailsToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem,
+            this.changePasswordToolStripMenuItem});
+            this.cmsUsers.Name = "cmsUsers";
+            this.cmsUsers.Size = new System.Drawing.Size(241, 165);
+            // 
+            // showDetailsToolStripMenuItem
+            // 
+            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.showDetailsToolStripMenuItem.Text = "Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // tlpMainHeader
             // 
             this.tlpMainHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -141,6 +174,35 @@
             this.MainHeaderPanel.Size = new System.Drawing.Size(658, 70);
             this.MainHeaderPanel.TabIndex = 1;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.mtxbSearch);
+            this.flowLayoutPanel1.Controls.Add(this.cbActiveStatus);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(295, 37);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(342, 33);
+            this.flowLayoutPanel1.TabIndex = 2;
+            // 
+            // mtxbSearch
+            // 
+            this.mtxbSearch.Location = new System.Drawing.Point(3, 3);
+            this.mtxbSearch.Name = "mtxbSearch";
+            this.mtxbSearch.Size = new System.Drawing.Size(172, 26);
+            this.mtxbSearch.TabIndex = 5;
+            this.mtxbSearch.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxbSearch_MaskInputRejected);
+            this.mtxbSearch.TextChanged += new System.EventHandler(this.mtxbSearch_TextChanged);
+            // 
+            // cbActiveStatus
+            // 
+            this.cbActiveStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbActiveStatus.FormattingEnabled = true;
+            this.cbActiveStatus.Location = new System.Drawing.Point(181, 3);
+            this.cbActiveStatus.Name = "cbActiveStatus";
+            this.cbActiveStatus.Size = new System.Drawing.Size(156, 28);
+            this.cbActiveStatus.TabIndex = 4;
+            this.cbActiveStatus.Visible = false;
+            this.cbActiveStatus.SelectedIndexChanged += new System.EventHandler(this.cbActiveStatus_SelectedIndexChanged);
+            // 
             // cbFilter
             // 
             this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -149,6 +211,7 @@
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(200, 28);
             this.cbFilter.TabIndex = 1;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -160,6 +223,26 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Filter by";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnAddNewUser);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(667, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(297, 70);
+            this.panel1.TabIndex = 2;
+            // 
+            // btnAddNewUser
+            // 
+            this.btnAddNewUser.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnAddNewUser.Location = new System.Drawing.Point(149, 0);
+            this.btnAddNewUser.Name = "btnAddNewUser";
+            this.btnAddNewUser.Size = new System.Drawing.Size(148, 70);
+            this.btnAddNewUser.TabIndex = 3;
+            this.btnAddNewUser.Text = "Add New User";
+            this.btnAddNewUser.UseVisualStyleBackColor = true;
+            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
             // 
             // tplMainFooter
             // 
@@ -220,25 +303,11 @@
             this.lblRecordsNumber.TabIndex = 2;
             this.lblRecordsNumber.Text = "# Records: ";
             // 
-            // panel1
+            // changePasswordToolStripMenuItem
             // 
-            this.panel1.Controls.Add(this.btnAddNewUser);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(667, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(297, 70);
-            this.panel1.TabIndex = 2;
-            // 
-            // btnAddNewUser
-            // 
-            this.btnAddNewUser.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnAddNewUser.Location = new System.Drawing.Point(149, 0);
-            this.btnAddNewUser.Name = "btnAddNewUser";
-            this.btnAddNewUser.Size = new System.Drawing.Size(148, 70);
-            this.btnAddNewUser.TabIndex = 3;
-            this.btnAddNewUser.Text = "Add New User";
-            this.btnAddNewUser.UseVisualStyleBackColor = true;
-            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
             // 
             // pictureBox1
             // 
@@ -252,61 +321,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.mtxbSearch);
-            this.flowLayoutPanel1.Controls.Add(this.cbActiveStatus);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(295, 37);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(342, 33);
-            this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // mtxbSearch
-            // 
-            this.mtxbSearch.BeepOnError = true;
-            this.mtxbSearch.Location = new System.Drawing.Point(3, 3);
-            this.mtxbSearch.Name = "mtxbSearch";
-            this.mtxbSearch.Size = new System.Drawing.Size(173, 26);
-            this.mtxbSearch.TabIndex = 3;
-            // 
-            // cbActiveStatus
-            // 
-            this.cbActiveStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbActiveStatus.FormattingEnabled = true;
-            this.cbActiveStatus.Location = new System.Drawing.Point(182, 3);
-            this.cbActiveStatus.Name = "cbActiveStatus";
-            this.cbActiveStatus.Size = new System.Drawing.Size(156, 28);
-            this.cbActiveStatus.TabIndex = 4;
-            this.cbActiveStatus.Visible = false;
-            // 
-            // cmsUsers
-            // 
-            this.cmsUsers.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.cmsUsers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showDetailsToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.cmsUsers.Name = "cmsUsers";
-            this.cmsUsers.Size = new System.Drawing.Size(187, 100);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(186, 32);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(186, 32);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            // 
-            // showDetailsToolStripMenuItem
-            // 
-            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(186, 32);
-            this.showDetailsToolStripMenuItem.Text = "Show Details";
             // 
             // frmManageUsers
             // 
@@ -323,16 +337,16 @@
             this.tlpForm.ResumeLayout(false);
             this.tlpMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
+            this.cmsUsers.ResumeLayout(false);
             this.tlpMainHeader.ResumeLayout(false);
             this.MainHeaderPanel.ResumeLayout(false);
             this.MainHeaderPanel.PerformLayout();
-            this.tplMainFooter.ResumeLayout(false);
-            this.plMainfooterLable.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            this.cmsUsers.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.tplMainFooter.ResumeLayout(false);
+            this.plMainfooterLable.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -355,11 +369,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAddNewUser;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.MaskedTextBox mtxbSearch;
         private System.Windows.Forms.ComboBox cbActiveStatus;
         private System.Windows.Forms.ContextMenuStrip cmsUsers;
         private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.MaskedTextBox mtxbSearch;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }

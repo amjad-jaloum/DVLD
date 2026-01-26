@@ -88,7 +88,6 @@ namespace _19___Project___DVLD.People
 
         private void HandleDelagetData(object obj)
         {
-            //MessageBox.Show("Test");
             LoadPersons();
         }
 
@@ -140,6 +139,11 @@ namespace _19___Project___DVLD.People
 
             frmShowDetails showDetails = new frmShowDetails(person);
             showDetails.ShowDialog();
+        }
+
+        private void mtxbSearch_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }

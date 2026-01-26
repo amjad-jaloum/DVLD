@@ -39,6 +39,9 @@ namespace _19___Project___DVLD.People
         public delegate void HandelDelegateData(object sender);
         public event HandelDelegateData Handeler;
 
+        public delegate void HandleDelegatePerson(object sender, int PersonID);
+        public event HandleDelegatePerson PersonHandler;
+
         private void rbFemale_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -199,7 +202,7 @@ namespace _19___Project___DVLD.People
                 RemoveImageWhenExists();
             }
 
-            string destinationPath = "E:\\Amjad\\Mohammed Abu-Hadhoud Courses\\19 - Full Real Project\\19 - Project - DVLD\\ProfileImages";
+            string destinationPath = @"E:\Amjad\Mohammed Abu-Hadhoud Courses\19 - Full Real Project\DVLD Project\DVLD_Presentaion\ProfileImages";
             string ImageNameWithGUID = RenameImageByGUID(ImagePath);
 
             if (!Directory.Exists(destinationPath))
@@ -267,6 +270,7 @@ namespace _19___Project___DVLD.People
             {
                 MessageBox.Show("New Person is successfully added!", "Data Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 lblInsertedID.Text = insertedID.ToString();
+                PersonHandler?.Invoke(this, insertedID);
             }
             else
             {

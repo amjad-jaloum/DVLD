@@ -23,6 +23,8 @@ namespace _19___Project___DVLD
             {
                 bool isUserFound = false;
                 User user = User.FindUser(tbUsername.Text, tbPassword.Text, ref isUserFound);
+                clsCommonMethods.LoggedUser = user;
+
                 if (isUserFound)
                 {
                     if (chxRememberMe.Checked)
@@ -52,7 +54,7 @@ namespace _19___Project___DVLD
 
         private bool AreFormFieldsValid()
         {
-            return (!clsCommonMethods.HasErrors(errorProvider1.GetError(tbUsername)) && 
+            return (!clsCommonMethods.HasErrors(errorProvider1.GetError(tbUsername)) &&
                 !clsCommonMethods.HasErrors(errorProvider1.GetError(tbPassword)));
         }
 
@@ -77,12 +79,12 @@ namespace _19___Project___DVLD
         private void frmLogin_Load(object sender, EventArgs e)
         {
             string username = "", password = "";
-            if(User.LoadSavedLoginData(ref username, ref password))
+            if (User.LoadSavedLoginData(ref username, ref password))
             {
                 tbUsername.Text = username;
                 tbPassword.Text = password;
             }
-           
+
         }
     }
 }

@@ -107,6 +107,33 @@ namespace DVLD_Business
             }
         }
 
+        public static Person GetPersonInfoWithQueryFilter(string col, string value)
+        {
+            int ID = -1;
+            string FirstName = "", SecondName = "", ThirdName = "", LastName = "";
+            DateTime DateOfBirth = DateTime.Now;
+            int Gender = -1;
+            string Address = "", Phone = "", Email = "", ImagePath = "";
+            int NationalityCountryID = 0;
+            string NationalNo = "";
+
+            bool Found = PeopleData.GetPersonInfoWithQuery(col, value, ref ID, ref NationalNo, ref FirstName,
+                ref SecondName, ref ThirdName, ref LastName, ref DateOfBirth,
+                ref Gender, ref Address, ref Phone, ref Email,
+                ref NationalityCountryID, ref ImagePath);
+
+            if (Found)
+            {
+                return new Person(ID, NationalNo, FirstName, SecondName, ThirdName,
+                    LastName, DateOfBirth, Gender,
+                    Address, Phone, Email, NationalityCountryID, ImagePath);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static List<string> GetPeopleColumnNames()
         {
             return PeopleData.GetPeopleColumnNames();

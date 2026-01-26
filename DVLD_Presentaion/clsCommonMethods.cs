@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD_Business;
 
 namespace _19___Project___DVLD
 {
     public class clsCommonMethods
     {
+        public static User LoggedUser { get; set; }
         public static bool HasErrors(string errorMessage)
         {
             return errorMessage != string.Empty;
@@ -26,10 +28,6 @@ namespace _19___Project___DVLD
             }
         }
 
-        //public static void MboxAlert(string msg, string caption)
-        //{
-        //    MessageBox.Show(msg , caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //}
 
     }
 

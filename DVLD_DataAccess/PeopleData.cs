@@ -294,6 +294,60 @@ namespace DVLD_DataAccess
             return false;
         }
 
+        public static bool GetPersonInfoWithQuery(
+            string ColumnName, string value,
+            ref int ID,
+            ref string NationalNo,
+            ref string FirstName,
+            ref string SecondName,
+            ref string ThirdName,
+            ref string LastName,
+            ref DateTime DateOfBirth,
+            ref int Gender,
+            ref string Address,
+            ref string Phone,
+            ref string Email,
+            ref int NationalityCountryID,
+            ref string ImagePath)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = $"select top 1 * from People where {ColumnName} like @value";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@value", '%' + value + '%');
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    ID = (int)reader["PersonID"];
+                    NationalNo = (string)reader["NationalNo"];
+                    FirstName = (string)reader["FirstName"];
+                    SecondName = (string)reader["SecondName"];
+                    ThirdName = reader["ThirdName"] == DBNull.Value ? string.Empty : (string)reader["ThirdName"]; // nullable
+                    LastName = (string)reader["LastName"];
+                    DateOfBirth = (DateTime)reader["DateOfBirth"];
+                    Gender = Convert.ToInt32(reader["Gendor"]);
+                    Address = (string)reader["Address"];
+                    Phone = (string)reader["Phone"];
+                    Email = reader["Email"] == DBNull.Value ? string.Empty : (string)reader["Email"]; // nullable
+                    NationalityCountryID = (int)reader["NationalityCountryID"];
+                    ImagePath = reader["ImagePath"] == DBNull.Value ? string.Empty : (string)reader["ImagePath"]; // nullable
+
+                    reader.Close();
+                    connection.Close();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally { connection.Close(); }
+            return false;
+        }
         public static List<string> GetPeopleColumnNames()
         {
             List<string> list = new List<string>();

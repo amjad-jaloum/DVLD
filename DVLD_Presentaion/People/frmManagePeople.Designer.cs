@@ -116,26 +116,26 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.cmsPersonMenu.Name = "cmsPersonMenu";
-            this.cmsPersonMenu.Size = new System.Drawing.Size(241, 133);
+            this.cmsPersonMenu.Size = new System.Drawing.Size(185, 100);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(184, 32);
             this.showDetailsToolStripMenuItem.Text = "Show details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(184, 32);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(184, 32);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -172,6 +172,7 @@
             this.mtxbSearch.Name = "mtxbSearch";
             this.mtxbSearch.Size = new System.Drawing.Size(291, 26);
             this.mtxbSearch.TabIndex = 2;
+            this.mtxbSearch.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxbSearch_MaskInputRejected);
             this.mtxbSearch.TextChanged += new System.EventHandler(this.mtxbSearch_TextChanged);
             // 
             // cbFilter
