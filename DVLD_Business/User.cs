@@ -84,14 +84,6 @@ namespace DVLD_Business
         {
             return UsersData.GetDataTableWithQuery(colName, value);
         }
-        public static Person GetPerson(int id)
-        {
-            return Person.GetPersonInfo(id);
-        }
-        public static Person GetPersonWithQueryFilter(string colName, string value)
-        {
-            return Person.GetPersonInfoWithQueryFilter(colName, value);
-        }
         public static int AddNewUser(User user)
         {
             return UsersData.AddNewUser(user.PersonID, user.UserName, user.Password, user.IsActive);
@@ -99,6 +91,10 @@ namespace DVLD_Business
         public static bool UpdateUser(User user)
         {
             return UsersData.UpdateUser(user.UserID, user.UserName, user.Password, user.IsActive);
+        }
+        public static bool UpdateUserPassword(int UserID, string newPassword)
+        {
+            return UsersData.UpdateUserPassword(UserID, newPassword);
         }
         public static bool DeleteUser(int UserID)
         {

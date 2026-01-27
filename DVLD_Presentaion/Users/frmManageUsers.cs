@@ -167,14 +167,29 @@ namespace _19___Project___DVLD.Users
         }
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Person person = Person.GetPersonInfo(GetPersonFromDGV());
-            User loggedUser = clsCommonMethods.LoggedUser;
+            Person person = null;
+            User user = null;
 
-            if (loggedUser != null && person != null)
-            {
-                frmShowDetails frm = new frmShowDetails(person, loggedUser);
-                frm.Show();
-            }
+            GetLoggedInUserWithPersonDetails(ref person,ref user);
+            frmShowDetails frm = new frmShowDetails(person, user);
+            frm.Show();
+        }
+        private bool GetLoggedInUserWithPersonDetails(ref Person person,ref User user)
+        {
+            person = Person.GetPersonInfo(GetPersonFromDGV());
+            user = User.FindUser(GetUserIdFromDataGridView());
+            
+            return user != null && person != null;
+        }
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Person person = null;
+            User loggedUser = null;
+
+            GetLoggedInUserWithPersonDetails(ref person, ref loggedUser);
+            frmChangeUserPassword frm = new frmChangeUserPassword(person, loggedUser);
+            frm.ShowDialog();
+            LoadUsers();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace _19___Project___DVLD.Users
     public partial class ctrlPersonWithLoggedUserDetails : UserControl
     {
         public Person person = null;
-        public User loggedUser = null;
+        public User user = null;
 
         public ctrlPersonWithLoggedUserDetails()
         {
@@ -25,11 +25,11 @@ namespace _19___Project___DVLD.Users
         {
             ctrlShowPersonDetails1.person = person;
             ctrlShowPersonDetails1.ctrlShowPersonDetails_Load(sender,e);
-            if (loggedUser != null)
+            if (user != null)
             {
-                lblUserID.Text = loggedUser.UserID.ToString();
-                lblUsername.Text = loggedUser.UserName;
-                lblIsActive.Text = loggedUser.IsActive ? "true" : "false";
+                lblUserID.Text = user.UserID.ToString();
+                lblUsername.Text = user.UserName;
+                lblIsActive.Text = user.IsActive ? "true" : "false";
             }
         }
     }

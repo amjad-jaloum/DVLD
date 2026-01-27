@@ -23,7 +23,7 @@ namespace _19___Project___DVLD
             {
                 bool isUserFound = false;
                 User user = User.FindUser(tbUsername.Text, tbPassword.Text, ref isUserFound);
-                clsCommonMethods.LoggedUser = user;
+                clsGloabalSettings.LogginUser = user;
 
                 if (isUserFound)
                 {

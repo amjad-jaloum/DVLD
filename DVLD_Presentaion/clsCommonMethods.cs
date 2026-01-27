@@ -10,7 +10,6 @@ namespace _19___Project___DVLD
 {
     public class clsCommonMethods
     {
-        public static User LoggedUser { get; set; }
         public static bool HasErrors(string errorMessage)
         {
             return errorMessage != string.Empty;

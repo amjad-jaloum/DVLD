@@ -293,6 +293,31 @@ namespace DVLD_DataAccess
             }
             return RowsEffected > 0;
         }
+        public static bool UpdateUserPassword(int UserID, string Password)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"UPDATE [dbo].[Users]
+                           SET [Password] = @Password
+                         WHERE UserID = @UserID;
+                        ";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@Password", Password);
+            command.Parameters.AddWithValue("@UserID", UserID);
+
+            int RowsEffected = 0;
+            try
+            {
+                connection.Open();
+                RowsEffected = command.ExecuteNonQuery();
+            }
+            catch (Exception) { }
+            finally
+            {
+                connection.Close();
+            }
+            return RowsEffected > 0;
+        }
         public static bool DeleteUser(int UserID)
         {
             SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);

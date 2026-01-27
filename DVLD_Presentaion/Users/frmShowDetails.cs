@@ -17,7 +17,7 @@ namespace _19___Project___DVLD.Users
         {
             InitializeComponent();
             ctrlPersonWithLoggedUserDetails1.person = person;
-            ctrlPersonWithLoggedUserDetails1.loggedUser = user;
+            ctrlPersonWithLoggedUserDetails1.user = user;
         }
     }
 }

@@ -70,7 +70,7 @@ namespace _19___Project___DVLD.Users
 
                 if (LoadAllUserInfo(_UserInfo))
                 {
-                    _Person = User.GetPersonWithQueryFilter("PersonID", _UserInfo.PersonID.ToString());
+                    _Person = Person.GetPersonInfoWithQueryFilter("PersonID", _UserInfo.PersonID.ToString());
                     LoadPersonDetailsToControl(_Person, e);
                 }
                 else
@@ -133,7 +133,7 @@ namespace _19___Project___DVLD.Users
         {
             if (!cbFilter.SelectedItem.ToString().Contains("None"))
             {
-                _Person = User.GetPersonWithQueryFilter(cbFilter.SelectedItem.ToString(), mtxbSearch.Text);
+                _Person = Person.GetPersonInfoWithQueryFilter(cbFilter.SelectedItem.ToString(), mtxbSearch.Text);
 
                 if (_Person != null)
                 {
@@ -299,7 +299,6 @@ namespace _19___Project___DVLD.Users
                 gbUserDetails.Enabled = _Person != null;
             }
         }
-
         private void frmAddAndUpdateUser_FormClosed(object sender, FormClosedEventArgs e)
         {
             Handeler?.Invoke(this);
