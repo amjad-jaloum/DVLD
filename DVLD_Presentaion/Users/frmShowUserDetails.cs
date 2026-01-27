@@ -11,13 +11,13 @@ using DVLD_Business;
 
 namespace _19___Project___DVLD.Users
 {
-    public partial class frmShowDetails : Form
+    public partial class frmShowUserDetails : Form
     {
-        public frmShowDetails(Person person, User user)
+        public frmShowUserDetails(int PersonID, int UserID)
         {
             InitializeComponent();
-            ctrlPersonWithLoggedUserDetails1.person = person;
-            ctrlPersonWithLoggedUserDetails1.user = user;
+            ctrlPersonWithLoggedUserDetails1.person = Person.FindPerson(PersonID);
+            ctrlPersonWithLoggedUserDetails1.user = User.FindUser(UserID);
         }
     }
 }

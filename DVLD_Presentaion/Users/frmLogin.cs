@@ -61,6 +61,7 @@ namespace _19___Project___DVLD
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+            Application.Exit();
         }
 
         private void tbUsername_Leave(object sender, EventArgs e)
@@ -84,7 +85,6 @@ namespace _19___Project___DVLD
                 tbUsername.Text = username;
                 tbPassword.Text = password;
             }
-
         }
     }
 }

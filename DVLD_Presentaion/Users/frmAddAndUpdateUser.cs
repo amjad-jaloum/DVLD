@@ -190,7 +190,7 @@ namespace _19___Project___DVLD.Users
         private void HandleDelegatePerson(object sender, int PersonID)
         {
             EventArgs e = new EventArgs();
-            _Person = Person.GetPersonInfo(PersonID);
+            _Person = Person.FindPerson(PersonID);
             if (_Person != null)
                 LoadPersonDetailsToControl(_Person, e);
             else

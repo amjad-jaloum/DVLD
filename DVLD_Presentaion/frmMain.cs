@@ -37,5 +37,23 @@ namespace _19___Project___DVLD
             frmManageUsers.MdiParent = this;
             frmManageUsers.Show();
         }
+
+        private void showCurrentUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowUserDetails frmShowDetails = new frmShowUserDetails(clsGloabalSettings.LogginUser.PersonID,clsGloabalSettings.LogginUser.UserID);
+            frmShowDetails.Show();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangeUserPassword frm = new frmChangeUserPassword(clsGloabalSettings.LogginUser.PersonID, clsGloabalSettings.LogginUser.UserID);
+            frm.Show();
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmLogin frmLogin = new frmLogin();
+            frmLogin.Show();
+        }
     }
 }

@@ -133,18 +133,18 @@ namespace _19___Project___DVLD.Users
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int UserID = GetUserIdFromDataGridView();
+            int UserID = GetUserIDFromDGV();
             User user = User.FindUser(UserID);
             frmAddAndUpdateUser frm = new frmAddAndUpdateUser(user);
             frm.Handeler += HandleDelagetData;
 
             frm.ShowDialog();
         }
-        private int GetUserIdFromDataGridView()
+        private int GetUserIDFromDGV()
         {
             return Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value);
         }
-        private int GetPersonFromDGV()
+        private int GetPersonIDFromDGV()
         {
             return Convert.ToInt32(dgvUsers.CurrentRow.Cells[1].Value);
         }
@@ -154,7 +154,7 @@ namespace _19___Project___DVLD.Users
         }
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int UserID = GetUserIdFromDataGridView();
+            int UserID = GetUserIDFromDGV();
             if (User.DeleteUser(UserID))
             {
                 MessageBox.Show("Deleted Successfully", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -167,27 +167,18 @@ namespace _19___Project___DVLD.Users
         }
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Person person = null;
-            User user = null;
+            int PersonID = GetPersonIDFromDGV();
+            int UserID = GetUserIDFromDGV();
 
-            GetLoggedInUserWithPersonDetails(ref person,ref user);
-            frmShowDetails frm = new frmShowDetails(person, user);
+            frmShowUserDetails frm = new frmShowUserDetails(PersonID, UserID);
             frm.Show();
-        }
-        private bool GetLoggedInUserWithPersonDetails(ref Person person,ref User user)
-        {
-            person = Person.GetPersonInfo(GetPersonFromDGV());
-            user = User.FindUser(GetUserIdFromDataGridView());
-            
-            return user != null && person != null;
         }
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Person person = null;
-            User loggedUser = null;
+            int PersonID = GetPersonIDFromDGV();
+            int UserID = GetUserIDFromDGV();
 
-            GetLoggedInUserWithPersonDetails(ref person, ref loggedUser);
-            frmChangeUserPassword frm = new frmChangeUserPassword(person, loggedUser);
+            frmChangeUserPassword frm = new frmChangeUserPassword(PersonID, UserID);
             frm.ShowDialog();
             LoadUsers();
         }

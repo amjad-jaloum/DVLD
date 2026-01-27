@@ -74,7 +74,7 @@ namespace _19___Project___DVLD.People
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int PersonID = GetIdFromDataGridView();
-            Person person = Person.GetPersonInfo(PersonID);
+            Person person = Person.FindPerson(PersonID);
             frmAddAndUpdatePerson frm = new frmAddAndUpdatePerson(person);
             frm.Handeler += HandleDelagetData;
 
@@ -135,9 +135,9 @@ namespace _19___Project___DVLD.People
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int PersonID = GetIdFromDataGridView();
-            Person person = Person.GetPersonInfo(PersonID);
+            Person person = Person.FindPerson(PersonID);
 
-            frmShowDetails showDetails = new frmShowDetails(person);
+            frmShowPersonDetails showDetails = new frmShowPersonDetails(person);
             showDetails.ShowDialog();
         }
 

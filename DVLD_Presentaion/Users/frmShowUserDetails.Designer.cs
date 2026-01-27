@@ -1,6 +1,6 @@
 ﻿namespace _19___Project___DVLD.Users
 {
-    partial class frmShowDetails
+    partial class frmShowUserDetails
     {
         /// <summary>
         /// Required designer variable.

@@ -14,12 +14,15 @@ namespace _19___Project___DVLD.Users
     public partial class frmChangeUserPassword : Form
     {
         User _UserInfo = null;
-        public frmChangeUserPassword(Person person, User user)
+        public frmChangeUserPassword(int PersonID, int UserID)
         {
             InitializeComponent();
-            _UserInfo = user;
-            ctrlPersonWithLoggedUserDetails1.person = person;
+
+            User user = User.FindUser(UserID);
             ctrlPersonWithLoggedUserDetails1.user = user;
+            ctrlPersonWithLoggedUserDetails1.person = Person.FindPerson(PersonID);
+
+            _UserInfo = user;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -44,7 +47,6 @@ namespace _19___Project___DVLD.Users
                 MessageBox.Show("The User is not Updated!", "No Data to save", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private bool AreFieldsValid()
         {
             if (
@@ -61,7 +63,6 @@ namespace _19___Project___DVLD.Users
                 return false;
             }
         }
-
         private void tbCurrentPassword_Leave(object sender, EventArgs e)
         {
             clsCommonMethods.MakeTextBoxFieldRequired(tbCurrentPassword, errorProvider1);
@@ -72,17 +73,14 @@ namespace _19___Project___DVLD.Users
                 errorProvider1.SetError(tbCurrentPassword, string.Empty);
 
         }
-
         private bool IsCurrentPasswordCorrect(string UserPassword, string CurrentPassword)
         {
             return UserPassword == CurrentPassword;
         }
-
         private void tbPassword_Leave(object sender, EventArgs e)
         {
             clsCommonMethods.MakeTextBoxFieldRequired(tbPassword, errorProvider1);
         }
-
         private void tbConfirmPassword_Leave(object sender, EventArgs e)
         {
             clsCommonMethods.MakeTextBoxFieldRequired(tbConfirmPassword, errorProvider1);

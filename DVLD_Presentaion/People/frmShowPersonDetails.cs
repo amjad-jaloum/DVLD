@@ -11,9 +11,9 @@ using DVLD_Business;
 
 namespace _19___Project___DVLD.People
 {
-    public partial class frmShowDetails : Form
+    public partial class frmShowPersonDetails : Form
     {
-        public frmShowDetails(Person person)
+        public frmShowPersonDetails(Person person)
         {
             InitializeComponent();
             ctrlShowPersonDetails1.person = person;

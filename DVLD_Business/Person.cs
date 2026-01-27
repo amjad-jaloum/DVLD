@@ -81,7 +81,7 @@ namespace DVLD_Business
                 person.Gender, person.Address, person.Phone, person.Email, person.NationalityCountryID, person.ImagePath);
         }
 
-        public static Person GetPersonInfo(int ID)
+        public static Person FindPerson(int ID)
         {
             string FirstName = "", SecondName = "", ThirdName = "", LastName = "";
             DateTime DateOfBirth = DateTime.Now;

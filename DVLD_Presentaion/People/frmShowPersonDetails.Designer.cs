@@ -3,7 +3,7 @@ using DVLD_Business;
 
 namespace _19___Project___DVLD.People
 {
-    partial class frmShowDetails
+    partial class frmShowPersonDetails
     {
         /// <summary>
         /// Required designer variable.
