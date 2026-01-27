@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application Types\frmManageApplicationTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application Types\frmManageApplicationTypes.Designer.cs">
+      <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application Types\frmUdateApplicationTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application Types\frmUdateApplicationTypes.Designer.cs">
+      <DependentUpon>frmUdateApplicationTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="clsCommonMethods.cs" />
     <Compile Include="clsGloabalSettings.cs" />
     <Compile Include="Users\ctrlPersonWithLoggedUserDetails.cs">
@@ -116,6 +128,12 @@
     <Compile Include="Users\frmShowUserDetails.Designer.cs">
       <DependentUpon>frmShowUserDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Application Types\frmManageApplicationTypes.resx">
+      <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Application Types\frmUdateApplicationTypes.resx">
+      <DependentUpon>frmUdateApplicationTypes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\ctrlPersonWithLoggedUserDetails.resx">
       <DependentUpon>ctrlPersonWithLoggedUserDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +220,8 @@
   <ItemGroup>
     <None Include="Resources\driver_config %281%29.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\document.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
