@@ -38,6 +38,7 @@
             this.showCurrentUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageTestTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainNavBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +63,8 @@
             // applicationsToolStripMenuItem
             // 
             this.applicationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manageApplicationTypesToolStripMenuItem});
+            this.manageApplicationTypesToolStripMenuItem,
+            this.manageTestTypesToolStripMenuItem});
             this.applicationsToolStripMenuItem.Name = "applicationsToolStripMenuItem";
             this.applicationsToolStripMenuItem.Size = new System.Drawing.Size(184, 42);
             this.applicationsToolStripMenuItem.Text = "Applications";
@@ -129,6 +131,14 @@
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
+            // manageTestTypesToolStripMenuItem
+            // 
+            this.manageTestTypesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.manageTestTypesToolStripMenuItem.Name = "manageTestTypesToolStripMenuItem";
+            this.manageTestTypesToolStripMenuItem.Size = new System.Drawing.Size(375, 38);
+            this.manageTestTypesToolStripMenuItem.Text = "Manage Test Types";
+            this.manageTestTypesToolStripMenuItem.Click += new System.EventHandler(this.manageTestTypesToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -166,6 +176,7 @@
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageApplicationTypesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageTestTypesToolStripMenuItem;
     }
 }
 

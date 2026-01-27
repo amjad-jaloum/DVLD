@@ -32,6 +32,17 @@ namespace _19___Project___DVLD.Application_Types
                     MessageBox.Show("Not Upated!");
             }
         }
+        private bool AreFieldsValied()
+        {
+            if (
+                !clsCommonMethods.HasErrors(errorProvider1.GetError(tbAppTitle)) &&
+                !clsCommonMethods.HasErrors(errorProvider1.GetError(tbAppFees))
+                )
+            {
+                return true;
+            }
+            return false;
+        }
 
         private bool UpdateAppType()
         {
@@ -47,18 +58,6 @@ namespace _19___Project___DVLD.Application_Types
         private void tbAppFees_Leave(object sender, EventArgs e)
         {
             clsCommonMethods.MakeTextBoxFieldRequired(tbAppFees, errorProvider1);
-        }
-
-        private bool AreFieldsValied()
-        {
-            if (
-                !clsCommonMethods.HasErrors(errorProvider1.GetError(tbAppTitle)) &&
-                !clsCommonMethods.HasErrors(errorProvider1.GetError(tbAppFees))
-                )
-            {
-                return true;
-            }
-            return false;
         }
 
         private void frmUdateApplicationTypes_Load(object sender, EventArgs e)

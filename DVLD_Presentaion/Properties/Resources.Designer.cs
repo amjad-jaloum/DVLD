@@ -133,6 +133,16 @@ namespace _19___Project___DVLD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap stakeholder_analysis {
+            get {
+                object obj = ResourceManager.GetObject("stakeholder_analysis", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap user_sttings {
             get {
                 object obj = ResourceManager.GetObject("user-sttings", resourceCulture);

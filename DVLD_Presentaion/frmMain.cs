@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using _19___Project___DVLD.Application_Types;
 using _19___Project___DVLD.People;
+using _19___Project___DVLD.Test_Types;
 using _19___Project___DVLD.Users;
 
 namespace _19___Project___DVLD
@@ -60,6 +61,12 @@ namespace _19___Project___DVLD
         private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManageApplicationTypes frm = new frmManageApplicationTypes();
+            frm.ShowDialog();
+        }
+
+        private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageTestTypes frm = new frmManageTestTypes();
             frm.ShowDialog();
         }
     }

@@ -60,6 +60,18 @@
     </Compile>
     <Compile Include="clsCommonMethods.cs" />
     <Compile Include="clsGloabalSettings.cs" />
+    <Compile Include="Test Types\frmManageTestTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test Types\frmManageTestTypes.Designer.cs">
+      <DependentUpon>frmManageTestTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test Types\frmUpdateTestType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test Types\frmUpdateTestType.Designer.cs">
+      <DependentUpon>frmUpdateTestType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\ctrlPersonWithLoggedUserDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,6 +145,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Application Types\frmUdateApplicationTypes.resx">
       <DependentUpon>frmUdateApplicationTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test Types\frmManageTestTypes.resx">
+      <DependentUpon>frmManageTestTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test Types\frmUpdateTestType.resx">
+      <DependentUpon>frmUpdateTestType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\ctrlPersonWithLoggedUserDetails.resx">
       <DependentUpon>ctrlPersonWithLoggedUserDetails.cs</DependentUpon>
@@ -222,6 +240,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stakeholder_analysis.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
