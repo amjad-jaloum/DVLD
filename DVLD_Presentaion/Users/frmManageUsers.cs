@@ -93,39 +93,43 @@ namespace _19___Project___DVLD.Users
         {
             UpdateDataTableWithFilter();
         }
-        private void cbActiveStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateDataTableWithFilter();
-        }
         private void UpdateDataTableWithFilter()
         {
             if (!cbFilter.SelectedItem.ToString().Contains("None"))
             {
-                string SearchValue;
-                if (cbFilter.SelectedItem.ToString() == "IsActive")
-                {
-                    if (cbActiveStatus.SelectedItem.ToString() == "Active")
-                    {
-                        SearchValue = "1";
-                    }
-                    else if (cbActiveStatus.SelectedItem.ToString() == "Not Active")
-                    {
-                        SearchValue = "0";
-                    }
-                    else
-                    {
-                        SearchValue = string.Empty;
-                    }
-                }
-                else
-                {
-                    SearchValue = mtxbSearch.Text;
-                }
-
+                string SearchValue = GetSearchValue();
                 dgvUsers.DataSource = User.GetDataTableWithQuery(cbFilter.SelectedItem.ToString(), SearchValue);
                 lblRowsCountValue.Text = dgvUsers.RowCount.ToString();
             }
+        }
+        private string GetSearchValue()
+        {
+            string SearchValue;
+            if (cbFilter.SelectedItem.ToString() == "IsActive")
+            {
+                if (cbActiveStatus.SelectedItem.ToString() == "Active")
+                {
+                    SearchValue = "1";
+                }
+                else if (cbActiveStatus.SelectedItem.ToString() == "Not Active")
+                {
+                    SearchValue = "0";
+                }
+                else
+                {
+                    SearchValue = string.Empty;
+                }
+            }
+            else
+            {
+                SearchValue = mtxbSearch.Text;
+            }
 
+            return SearchValue;
+        }
+        private void cbActiveStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateDataTableWithFilter();
         }
         private void mtxbSearch_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {

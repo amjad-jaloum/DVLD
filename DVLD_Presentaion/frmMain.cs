@@ -74,14 +74,15 @@ namespace _19___Project___DVLD
         private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmNewLocalDrivingLicenseApplications frm = new frmNewLocalDrivingLicenseApplications();
-            frm.ShowDialog();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void localDrivingApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManageLocalDrivingLicenseApplications frm = new frmManageLocalDrivingLicenseApplications();
-            frm.ShowDialog();
-             
+            frm.MdiParent = this;
+            frm.Show();
         }
     }
 }

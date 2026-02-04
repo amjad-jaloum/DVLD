@@ -32,10 +32,6 @@
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.dgvLocalLicenses = new System.Windows.Forms.DataGridView();
             this.tlpMainHeader = new System.Windows.Forms.TableLayoutPanel();
-            this.MainHeaderPanel = new System.Windows.Forms.Panel();
-            this.mtxbSearch = new System.Windows.Forms.MaskedTextBox();
-            this.cbFilter = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnNewLocalLicense = new System.Windows.Forms.Button();
             this.tplMainFooter = new System.Windows.Forms.TableLayoutPanel();
             this.btnClose = new System.Windows.Forms.Button();
@@ -43,14 +39,21 @@
             this.lblRowsCountValue = new System.Windows.Forms.Label();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.MainHeaderPanel = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.mtxbSearch = new System.Windows.Forms.MaskedTextBox();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.cbFilter = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tlpForm.SuspendLayout();
             this.tlpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicenses)).BeginInit();
             this.tlpMainHeader.SuspendLayout();
-            this.MainHeaderPanel.SuspendLayout();
             this.tplMainFooter.SuspendLayout();
             this.plMainfooterLable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.MainHeaderPanel.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpForm
@@ -90,6 +93,7 @@
             this.dgvLocalLicenses.AllowUserToAddRows = false;
             this.dgvLocalLicenses.AllowUserToDeleteRows = false;
             this.dgvLocalLicenses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvLocalLicenses.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvLocalLicenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLocalLicenses.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLocalLicenses.Location = new System.Drawing.Point(3, 85);
@@ -117,54 +121,17 @@
             this.tlpMainHeader.Size = new System.Drawing.Size(967, 76);
             this.tlpMainHeader.TabIndex = 1;
             // 
-            // MainHeaderPanel
-            // 
-            this.MainHeaderPanel.Controls.Add(this.mtxbSearch);
-            this.MainHeaderPanel.Controls.Add(this.cbFilter);
-            this.MainHeaderPanel.Controls.Add(this.label1);
-            this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainHeaderPanel.Location = new System.Drawing.Point(3, 3);
-            this.MainHeaderPanel.Name = "MainHeaderPanel";
-            this.MainHeaderPanel.Size = new System.Drawing.Size(658, 70);
-            this.MainHeaderPanel.TabIndex = 1;
-            // 
-            // mtxbSearch
-            // 
-            this.mtxbSearch.BeepOnError = true;
-            this.mtxbSearch.Location = new System.Drawing.Point(364, 39);
-            this.mtxbSearch.Name = "mtxbSearch";
-            this.mtxbSearch.Size = new System.Drawing.Size(291, 26);
-            this.mtxbSearch.TabIndex = 2;
-            // 
-            // cbFilter
-            // 
-            this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Location = new System.Drawing.Point(89, 37);
-            this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(269, 28);
-            this.cbFilter.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 41);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Filter by";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
             // btnNewLocalLicense
             // 
-            this.btnNewLocalLicense.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnNewLocalLicense.Location = new System.Drawing.Point(816, 3);
+            this.btnNewLocalLicense.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNewLocalLicense.AutoSize = true;
+            this.btnNewLocalLicense.Location = new System.Drawing.Point(784, 37);
             this.btnNewLocalLicense.Name = "btnNewLocalLicense";
-            this.btnNewLocalLicense.Size = new System.Drawing.Size(148, 70);
+            this.btnNewLocalLicense.Size = new System.Drawing.Size(180, 36);
             this.btnNewLocalLicense.TabIndex = 2;
             this.btnNewLocalLicense.Text = "New Local License ";
             this.btnNewLocalLicense.UseVisualStyleBackColor = true;
+            this.btnNewLocalLicense.Click += new System.EventHandler(this.btnNewLocalLicense_Click);
             // 
             // tplMainFooter
             // 
@@ -238,6 +205,67 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // MainHeaderPanel
+            // 
+            this.MainHeaderPanel.Controls.Add(this.flowLayoutPanel1);
+            this.MainHeaderPanel.Controls.Add(this.cbFilter);
+            this.MainHeaderPanel.Controls.Add(this.label1);
+            this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainHeaderPanel.Location = new System.Drawing.Point(3, 3);
+            this.MainHeaderPanel.Name = "MainHeaderPanel";
+            this.MainHeaderPanel.Size = new System.Drawing.Size(658, 70);
+            this.MainHeaderPanel.TabIndex = 3;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.mtxbSearch);
+            this.flowLayoutPanel1.Controls.Add(this.cbStatus);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(295, 34);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(342, 48);
+            this.flowLayoutPanel1.TabIndex = 2;
+            // 
+            // mtxbSearch
+            // 
+            this.mtxbSearch.Location = new System.Drawing.Point(3, 3);
+            this.mtxbSearch.Name = "mtxbSearch";
+            this.mtxbSearch.Size = new System.Drawing.Size(172, 26);
+            this.mtxbSearch.TabIndex = 5;
+            this.mtxbSearch.TextChanged += new System.EventHandler(this.mtxbSearch_TextChanged);
+            // 
+            // cbStatus
+            // 
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Location = new System.Drawing.Point(181, 3);
+            this.cbStatus.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(156, 28);
+            this.cbStatus.TabIndex = 4;
+            this.cbStatus.Visible = false;
+            this.cbStatus.SelectedIndexChanged += new System.EventHandler(this.cbStatus_SelectedIndexChanged);
+            // 
+            // cbFilter
+            // 
+            this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Location = new System.Drawing.Point(89, 37);
+            this.cbFilter.Name = "cbFilter";
+            this.cbFilter.Size = new System.Drawing.Size(200, 28);
+            this.cbFilter.TabIndex = 1;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 41);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Filter by";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
             // frmManageLocalDrivingLicenseApplications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -255,11 +283,14 @@
             this.tlpMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicenses)).EndInit();
             this.tlpMainHeader.ResumeLayout(false);
-            this.MainHeaderPanel.ResumeLayout(false);
-            this.MainHeaderPanel.PerformLayout();
+            this.tlpMainHeader.PerformLayout();
             this.tplMainFooter.ResumeLayout(false);
             this.plMainfooterLable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.MainHeaderPanel.ResumeLayout(false);
+            this.MainHeaderPanel.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -270,10 +301,6 @@
         private System.Windows.Forms.TableLayoutPanel tlpMain;
         private System.Windows.Forms.DataGridView dgvLocalLicenses;
         private System.Windows.Forms.TableLayoutPanel tlpMainHeader;
-        private System.Windows.Forms.Panel MainHeaderPanel;
-        private System.Windows.Forms.MaskedTextBox mtxbSearch;
-        private System.Windows.Forms.ComboBox cbFilter;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNewLocalLicense;
         private System.Windows.Forms.TableLayoutPanel tplMainFooter;
         private System.Windows.Forms.Button btnClose;
@@ -281,5 +308,11 @@
         private System.Windows.Forms.Label lblRowsCountValue;
         private System.Windows.Forms.Label lblRecordsNumber;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel MainHeaderPanel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.MaskedTextBox mtxbSearch;
+        private System.Windows.Forms.ComboBox cbStatus;
+        private System.Windows.Forms.ComboBox cbFilter;
+        private System.Windows.Forms.Label label1;
     }
 }

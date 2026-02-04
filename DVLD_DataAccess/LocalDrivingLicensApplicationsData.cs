@@ -10,7 +10,6 @@ namespace DVLD_DataAccess
 {
     public class LocalDrivingLicensApplicationsData
     {
-
         public static double GetAppServiceFee(int ServiceID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -148,7 +147,6 @@ namespace DVLD_DataAccess
             }
             return -1;
         }
-
         public static int LocalDrivingLicenseApplications(int ApplicationID, int LicenseClassID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -187,5 +185,94 @@ namespace DVLD_DataAccess
 
             return -1;
         }
+        public static bool IsClassNameAvialable(string nationalNo, string className)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"select top 1 Status
+                            from LocalDrivingLicenseApplications_View
+                            where NationalNo = @nationalNo and ClassName = @className
+                            order by ApplicationDate desc";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@nationalNo", nationalNo);
+            command.Parameters.AddWithValue("@className", className);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    if (reader["Status"].ToString().Contains("Cancelled"))
+                        return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally { connection.Close(); }
+            return false;
+        }
+
+        public static List<string> LocalDrivingColumns()
+        {
+            List<string> list = new List<string>();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = "select INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'LocalDrivingLicenseApplications_View'";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if ((string)reader["COLUMN_NAME"] == "ClassName" || (string)reader["COLUMN_NAME"] == "ApplicationDate" | (string)reader["COLUMN_NAME"] == "PassedTestCount")
+                        continue;
+
+                    list.Add((string)reader["COLUMN_NAME"]);
+                }
+                reader.Close();
+            }
+            catch (Exception)
+            {
+            }
+            finally { connection.Close(); }
+
+            return list;
+
+        }
+
+        public static DataTable GetDataTableWithQuery(string ColumnName, string value)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = $"select * from LocalDrivingLicenseApplications_View where {ColumnName} like @value";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@value", '%' + value + '%');
+
+            DataTable dt = new DataTable();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.HasRows)
+                {
+                    dt.Load(reader); // loads all rows at once - read() uses sinbgle row at a time
+                }
+                reader.Close();
+            }
+            catch (Exception) { }
+            finally { connection.Close(); }
+
+            return dt;
+        }
+
     }
 }

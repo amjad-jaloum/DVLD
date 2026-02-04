@@ -28,7 +28,7 @@ namespace DVLD_Business
             ReleaseDetainedDrivingLicsense = 5,
             NewInternationalLicense = 5,
         }
-        public LocalDrivingLicenseApplication(int applicantPersonID, DateTime applicationDate, int applicationTypeID, short applicationStatus , DateTime lastStatusDate, short paidFees, int createdByUserID)
+        public LocalDrivingLicenseApplication(int applicantPersonID, DateTime applicationDate, int applicationTypeID, short applicationStatus, DateTime lastStatusDate, short paidFees, int createdByUserID)
         {
             ApplicantPersonID = applicantPersonID;
             ApplicationDate = applicationDate;
@@ -54,13 +54,29 @@ namespace DVLD_Business
             return LocalDrivingLicensApplicationsData.GetAppServiceFee((int)enAppServiceFee.NewLocalDrivingLicenseService).ToString();
         }
 
-        public int AddNewLocalDrivingLicenseApplication(int ClassID)
+        public int AddNewApplication()
         {
-            int AppID = LocalDrivingLicensApplicationsData.AddNewApplication(ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
-            if (AppID > 0)
-                LocalDrivingLicensApplicationsData.LocalDrivingLicenseApplications(AppID, ClassID);
+            return LocalDrivingLicensApplicationsData.AddNewApplication(ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
+        }
 
-            return AppID;
+        public static int AddNewLocalDrivingLicenseApplication(int AppID, int ClassID)
+        {
+            return LocalDrivingLicensApplicationsData.LocalDrivingLicenseApplications(AppID, ClassID);
+        }
+
+        public static bool IsClassNameAvialable(string nationalNo, object selectedItem)
+        {
+            return LocalDrivingLicensApplicationsData.IsClassNameAvialable(nationalNo, selectedItem.ToString());
+        }
+
+        public static List<string> GetLocalDrivingLincesesColumns()
+        {
+            return LocalDrivingLicensApplicationsData.LocalDrivingColumns();
+        }
+
+        public static DataTable GetDataTableWithQuery(string ColName, string searchValue)
+        {
+            return LocalDrivingLicensApplicationsData.GetDataTableWithQuery(ColName, searchValue);
         }
     }
 }

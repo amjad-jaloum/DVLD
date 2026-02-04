@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ctrlPersonDetailWithFitler1 = new _19___Project___DVLD.People.ctrlPersonDetailWithFitler();
             this.btnNextTab = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.gbUserDetails = new System.Windows.Forms.GroupBox();
@@ -45,7 +46,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.ctrlPersonDetailWithFitler1 = new _19___Project___DVLD.People.ctrlPersonDetailWithFitler();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -62,6 +62,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1198, 720);
             this.tabControl1.TabIndex = 4;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -74,6 +75,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Person info";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // ctrlPersonDetailWithFitler1
+            // 
+            this.ctrlPersonDetailWithFitler1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ctrlPersonDetailWithFitler1.Location = new System.Drawing.Point(10, 10);
+            this.ctrlPersonDetailWithFitler1.Name = "ctrlPersonDetailWithFitler1";
+            this.ctrlPersonDetailWithFitler1.Padding = new System.Windows.Forms.Padding(10);
+            this.ctrlPersonDetailWithFitler1.Size = new System.Drawing.Size(1170, 603);
+            this.ctrlPersonDetailWithFitler1.TabIndex = 0;
+            this.ctrlPersonDetailWithFitler1.WhenUserFound += new System.Action<DVLD_Business.Person>(this.ctrlPersonDetailWithFitler1_WhenUserFound);
             // 
             // btnNextTab
             // 
@@ -244,16 +255,6 @@
             this.label2.Size = new System.Drawing.Size(144, 32);
             this.label2.TabIndex = 8;
             this.label2.Text = "D.L App ID:";
-            // 
-            // ctrlPersonDetailWithFitler1
-            // 
-            this.ctrlPersonDetailWithFitler1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlPersonDetailWithFitler1.Location = new System.Drawing.Point(10, 10);
-            this.ctrlPersonDetailWithFitler1.Name = "ctrlPersonDetailWithFitler1";
-            this.ctrlPersonDetailWithFitler1.Padding = new System.Windows.Forms.Padding(10);
-            this.ctrlPersonDetailWithFitler1.Size = new System.Drawing.Size(1170, 603);
-            this.ctrlPersonDetailWithFitler1.TabIndex = 9;
-            this.ctrlPersonDetailWithFitler1.WhenUserFound += new System.Action<DVLD_Business.Person>(this.ctrlPersonDetailWithFitler1_WhenUserFound);
             // 
             // frmNewLocalDrivingLicenseApplications
             // 
