@@ -32,6 +32,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnNextTab = new System.Windows.Forms.Button();
+            this.ctrlShowPersonDetails1 = new _19___Project___DVLD.People.ctrlShowPersonDetails();
             this.gbFilter = new System.Windows.Forms.GroupBox();
             this.btnFindPerson = new System.Windows.Forms.Button();
             this.btnAddPerson = new System.Windows.Forms.Button();
@@ -50,7 +51,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ctrlShowPersonDetails1 = new _19___Project___DVLD.People.ctrlShowPersonDetails();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbFilter.SuspendLayout();
@@ -95,6 +95,13 @@
             this.btnNextTab.Text = "Next";
             this.btnNextTab.UseVisualStyleBackColor = true;
             this.btnNextTab.Click += new System.EventHandler(this.btnNextTab_Click);
+            // 
+            // ctrlShowPersonDetails1
+            // 
+            this.ctrlShowPersonDetails1.Location = new System.Drawing.Point(51, 147);
+            this.ctrlShowPersonDetails1.Name = "ctrlShowPersonDetails1";
+            this.ctrlShowPersonDetails1.Size = new System.Drawing.Size(1003, 488);
+            this.ctrlShowPersonDetails1.TabIndex = 4;
             // 
             // gbFilter
             // 
@@ -291,13 +298,6 @@
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
             // 
-            // ctrlShowPersonDetails1
-            // 
-            this.ctrlShowPersonDetails1.Location = new System.Drawing.Point(51, 147);
-            this.ctrlShowPersonDetails1.Name = "ctrlShowPersonDetails1";
-            this.ctrlShowPersonDetails1.Size = new System.Drawing.Size(1003, 488);
-            this.ctrlShowPersonDetails1.TabIndex = 4;
-            // 
             // frmAddAndUpdateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -307,6 +307,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddAndUpdateUser";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add/Update User";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddAndUpdateUser_FormClosed);

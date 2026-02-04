@@ -23,7 +23,6 @@ namespace _19___Project___DVLD.Test_Types
         {
             Close();
         }
-
         private void frmManageTestTypes_Load(object sender, EventArgs e)
         {
             LoadTestTypes();
@@ -34,7 +33,6 @@ namespace _19___Project___DVLD.Test_Types
             dgvTestTypes.DataSource = TestsDataTable;
             lblRowsCountValue.Text = dgvTestTypes.RowCount.ToString();
         }
-
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TestType test = GetAppTypeFromDGV();

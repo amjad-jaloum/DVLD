@@ -1,6 +1,6 @@
-﻿namespace _19___Project___DVLD.Application_Types
+﻿namespace _19___Project___DVLD.Driving_License_Services
 {
-    partial class frmManageApplicationTypes
+    partial class frmManageLocalDrivingLicenseApplications
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvApplications = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvLocalLicenses = new System.Windows.Forms.DataGridView();
+            this.tlpMainHeader = new System.Windows.Forms.TableLayoutPanel();
+            this.MainHeaderPanel = new System.Windows.Forms.Panel();
+            this.mtxbSearch = new System.Windows.Forms.MaskedTextBox();
+            this.cbFilter = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnNewLocalLicense = new System.Windows.Forms.Button();
             this.tplMainFooter = new System.Windows.Forms.TableLayoutPanel();
             this.btnClose = new System.Windows.Forms.Button();
             this.plMainfooterLable = new System.Windows.Forms.Panel();
@@ -43,8 +45,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tlpForm.SuspendLayout();
             this.tlpMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvApplications)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicenses)).BeginInit();
+            this.tlpMainHeader.SuspendLayout();
+            this.MainHeaderPanel.SuspendLayout();
             this.tplMainFooter.SuspendLayout();
             this.plMainfooterLable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -69,59 +72,99 @@
             // 
             this.tlpMain.ColumnCount = 1;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMain.Controls.Add(this.dgvApplications, 0, 0);
-            this.tlpMain.Controls.Add(this.tplMainFooter, 0, 1);
+            this.tlpMain.Controls.Add(this.dgvLocalLicenses, 0, 1);
+            this.tlpMain.Controls.Add(this.tlpMainHeader, 0, 0);
+            this.tlpMain.Controls.Add(this.tplMainFooter, 0, 2);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(3, 3);
             this.tlpMain.Name = "tlpMain";
-            this.tlpMain.RowCount = 2;
+            this.tlpMain.RowCount = 3;
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 82F));
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpMain.Size = new System.Drawing.Size(973, 538);
             this.tlpMain.TabIndex = 1;
             // 
-            // dgvApplications
+            // dgvLocalLicenses
             // 
-            this.dgvApplications.AllowUserToAddRows = false;
-            this.dgvApplications.AllowUserToDeleteRows = false;
-            this.dgvApplications.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvApplications.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvApplications.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvApplications.ContextMenuStrip = this.contextMenuStrip1;
-            this.dgvApplications.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvApplications.Location = new System.Drawing.Point(3, 3);
-            this.dgvApplications.MultiSelect = false;
-            this.dgvApplications.Name = "dgvApplications";
-            this.dgvApplications.ReadOnly = true;
-            this.dgvApplications.RowHeadersWidth = 62;
-            this.dgvApplications.RowTemplate.Height = 28;
-            this.dgvApplications.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvApplications.Size = new System.Drawing.Size(967, 450);
-            this.dgvApplications.TabIndex = 2;
+            this.dgvLocalLicenses.AllowUserToAddRows = false;
+            this.dgvLocalLicenses.AllowUserToDeleteRows = false;
+            this.dgvLocalLicenses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvLocalLicenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLocalLicenses.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLocalLicenses.Location = new System.Drawing.Point(3, 85);
+            this.dgvLocalLicenses.MultiSelect = false;
+            this.dgvLocalLicenses.Name = "dgvLocalLicenses";
+            this.dgvLocalLicenses.ReadOnly = true;
+            this.dgvLocalLicenses.RowHeadersWidth = 62;
+            this.dgvLocalLicenses.RowTemplate.Height = 28;
+            this.dgvLocalLicenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLocalLicenses.Size = new System.Drawing.Size(967, 368);
+            this.dgvLocalLicenses.TabIndex = 2;
             // 
-            // contextMenuStrip1
+            // tlpMainHeader
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(115, 36);
+            this.tlpMainHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpMainHeader.ColumnCount = 2;
+            this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpMainHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 303F));
+            this.tlpMainHeader.Controls.Add(this.MainHeaderPanel, 0, 0);
+            this.tlpMainHeader.Controls.Add(this.btnNewLocalLicense, 1, 0);
+            this.tlpMainHeader.Location = new System.Drawing.Point(3, 3);
+            this.tlpMainHeader.Name = "tlpMainHeader";
+            this.tlpMainHeader.RowCount = 1;
+            this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpMainHeader.Size = new System.Drawing.Size(967, 76);
+            this.tlpMainHeader.TabIndex = 1;
             // 
-            // editToolStripMenuItem
+            // MainHeaderPanel
             // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(114, 32);
-            this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            this.MainHeaderPanel.Controls.Add(this.mtxbSearch);
+            this.MainHeaderPanel.Controls.Add(this.cbFilter);
+            this.MainHeaderPanel.Controls.Add(this.label1);
+            this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainHeaderPanel.Location = new System.Drawing.Point(3, 3);
+            this.MainHeaderPanel.Name = "MainHeaderPanel";
+            this.MainHeaderPanel.Size = new System.Drawing.Size(658, 70);
+            this.MainHeaderPanel.TabIndex = 1;
+            // 
+            // mtxbSearch
+            // 
+            this.mtxbSearch.BeepOnError = true;
+            this.mtxbSearch.Location = new System.Drawing.Point(364, 39);
+            this.mtxbSearch.Name = "mtxbSearch";
+            this.mtxbSearch.Size = new System.Drawing.Size(291, 26);
+            this.mtxbSearch.TabIndex = 2;
+            // 
+            // cbFilter
+            // 
+            this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Location = new System.Drawing.Point(89, 37);
+            this.cbFilter.Name = "cbFilter";
+            this.cbFilter.Size = new System.Drawing.Size(269, 28);
+            this.cbFilter.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 41);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Filter by";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // btnNewLocalLicense
+            // 
+            this.btnNewLocalLicense.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnNewLocalLicense.Location = new System.Drawing.Point(816, 3);
+            this.btnNewLocalLicense.Name = "btnNewLocalLicense";
+            this.btnNewLocalLicense.Size = new System.Drawing.Size(148, 70);
+            this.btnNewLocalLicense.TabIndex = 2;
+            this.btnNewLocalLicense.Text = "New Local License ";
+            this.btnNewLocalLicense.UseVisualStyleBackColor = true;
             // 
             // tplMainFooter
             // 
@@ -185,7 +228,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::_19___Project___DVLD.Properties.Resources.document;
+            this.pictureBox1.Image = global::_19___Project___DVLD.Properties.Resources.papers;
             this.pictureBox1.Location = new System.Drawing.Point(1009, 30);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(30);
             this.pictureBox1.Name = "pictureBox1";
@@ -195,7 +238,7 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // frmManageApplicationTypes
+            // frmManageLocalDrivingLicenseApplications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -203,15 +246,17 @@
             this.Controls.Add(this.tlpForm);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmManageApplicationTypes";
+            this.Name = "frmManageLocalDrivingLicenseApplications";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Manage Application Types";
-            this.Load += new System.EventHandler(this.frmManageApplicationTypes_Load);
+            this.Text = "Manage Local Driving License Applications";
+            this.Load += new System.EventHandler(this.frmManageLocalDrivingLicenseApplications_Load);
             this.tlpForm.ResumeLayout(false);
             this.tlpMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvApplications)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicenses)).EndInit();
+            this.tlpMainHeader.ResumeLayout(false);
+            this.MainHeaderPanel.ResumeLayout(false);
+            this.MainHeaderPanel.PerformLayout();
             this.tplMainFooter.ResumeLayout(false);
             this.plMainfooterLable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -223,14 +268,18 @@
 
         private System.Windows.Forms.TableLayoutPanel tlpForm;
         private System.Windows.Forms.TableLayoutPanel tlpMain;
-        private System.Windows.Forms.DataGridView dgvApplications;
+        private System.Windows.Forms.DataGridView dgvLocalLicenses;
+        private System.Windows.Forms.TableLayoutPanel tlpMainHeader;
+        private System.Windows.Forms.Panel MainHeaderPanel;
+        private System.Windows.Forms.MaskedTextBox mtxbSearch;
+        private System.Windows.Forms.ComboBox cbFilter;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnNewLocalLicense;
         private System.Windows.Forms.TableLayoutPanel tplMainFooter;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel plMainfooterLable;
         private System.Windows.Forms.Label lblRowsCountValue;
         private System.Windows.Forms.Label lblRecordsNumber;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
     }
 }
