@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLD_DataAccess
 {
@@ -93,7 +94,7 @@ namespace DVLD_DataAccess
 
             return list;
         }
-        public static int AddNewApplication(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, short ApplicationStatus, DateTime LastStatusDate, short PaidFees, int CreatedByUserID)
+        public static int AddNewApplication(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, short ApplicationStatus, DateTime LastStatusDate, int PaidFees, int CreatedByUserID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             string query = @"
@@ -219,7 +220,6 @@ namespace DVLD_DataAccess
             finally { connection.Close(); }
             return false;
         }
-
         public static List<string> LocalDrivingColumns()
         {
             List<string> list = new List<string>();
@@ -249,7 +249,6 @@ namespace DVLD_DataAccess
             return list;
 
         }
-
         public static DataTable GetDataTableWithQuery(string ColumnName, string value)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -273,6 +272,189 @@ namespace DVLD_DataAccess
 
             return dt;
         }
+        public static bool UpdateLocalDrivingLicenseAppStatus(int LocalDrivingLicenseApplicationID, int ApplicationStatus)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"update Applications set ApplicationStatus = @ApplicationStatus
+                            where ApplicationID = 
+	                            (
+		                            select ApplicationID 
+		                            from LocalDrivingLicenseApplications 
+		                            where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+	                            )
+                        ";
+            SqlCommand command = new SqlCommand(query, connection);
 
+            command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            int RowsEffected = 0;
+            try
+            {
+                connection.Open();
+                RowsEffected = command.ExecuteNonQuery();
+            }
+            catch (Exception) { }
+            finally
+            {
+                connection.Close();
+            }
+            return RowsEffected > 0;
+
+        }
+        public static string FindLicenceName(int LicenseClassID, string ClassName)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"SELECT [ClassName]   
+                              FROM [DVLD].[dbo].[LicenseClasses]
+                              where LicenseClassID = @LicenseClassID
+                        ";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                ClassName = result != null ? result.ToString() : string.Empty;
+            }
+            catch (Exception)
+            {
+                ClassName = string.Empty;
+            }
+            finally { connection.Close(); }
+            return ClassName;
+        }
+        public static bool FindLocalDrivingLicenseApplication(int ApplicationID, ref int ApplicantPersonID, ref DateTime ApplicationDate, ref int ApplicationTypeID, ref short ApplicationStatus, ref DateTime LastStatusDate, ref int PaidFees, ref int CreatedByUserID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"
+                            SELECT [ApplicationID]
+                              ,[ApplicantPersonID]
+                              ,[ApplicationDate]
+                              ,[ApplicationTypeID]
+                              ,[ApplicationStatus]
+                              ,[LastStatusDate]
+                              ,[PaidFees]
+                              ,[CreatedByUserID]
+                          FROM [DVLD].[dbo].[Applications]
+                          where ApplicationID = @ApplicationID
+                            ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            bool isFound = false;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    isFound = true;
+
+                    ApplicantPersonID = (int)reader["ApplicantPersonID"];
+                    ApplicationDate = (DateTime)reader["ApplicationDate"];
+                    ApplicationTypeID = (int)reader["ApplicationTypeID"];
+                    ApplicationStatus =  (byte)reader["ApplicationStatus"];
+                    LastStatusDate = (DateTime)reader["LastStatusDate"];
+                    PaidFees = (int) (decimal)reader["PaidFees"];
+                    CreatedByUserID = (int)reader["CreatedByUserID"];
+                }
+                reader.Close();
+            }
+            catch (Exception)
+            {
+                isFound = false;
+            }
+            finally { connection.Close(); }
+            return isFound;
+        }
+
+        public static int GetApplicationIDFromLocalDrivingLicenseApplications(int localDrivingLicenseAppID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"
+                            SELECT 
+                              [ApplicationID]
+                              FROM [DVLD].[dbo].[LocalDrivingLicenseApplications]
+                              where LocalDrivingLicenseApplicationID = @localDrivingLicenseAppID
+                            ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@localDrivingLicenseAppID", localDrivingLicenseAppID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    connection.Close();
+                    return insertedID;
+                }
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return -1;
+        }
+
+        public static string getAppTypeName(int ApplicationTypeID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"SELECT ApplicationTypeTitle
+                            FROM   ApplicationTypes
+                            WHERE ([ApplicationTypeID] = @ApplicationTypeID)
+                        ";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+            string AppTypeName = "";
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                AppTypeName = result != null ? result.ToString() : string.Empty;
+            }
+            catch (Exception)
+            {
+                AppTypeName = string.Empty;
+            }
+            finally { connection.Close(); }
+            return AppTypeName;
+        }
+
+        public static string getUsername(int UserID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"SELECT [UserName]
+                              FROM [DVLD].[dbo].[Users]
+                              where UserID = @UserID
+                        ";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@UserID", UserID);
+            string Username = "";
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                Username = result != null ? result.ToString() : string.Empty;
+            }
+            catch (Exception)
+            {
+                Username = string.Empty;
+            }
+            finally { connection.Close(); }
+            return Username;
+        }
     }
 }

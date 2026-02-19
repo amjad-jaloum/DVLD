@@ -38,7 +38,7 @@ namespace _19___Project___DVLD.People
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnClose.Location = new System.Drawing.Point(390, 536);
+            this.btnClose.Location = new System.Drawing.Point(389, 552);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(306, 53);
             this.btnClose.TabIndex = 1;
@@ -54,7 +54,7 @@ namespace _19___Project___DVLD.People
             this.ctrlShowPersonDetails1.Size = new System.Drawing.Size(1018, 507);
             this.ctrlShowPersonDetails1.TabIndex = 0;
             // 
-            // frmShowDetails
+            // frmShowPersonDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -63,7 +63,7 @@ namespace _19___Project___DVLD.People
             this.ControlBox = false;
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.ctrlShowPersonDetails1);
-            this.Name = "frmShowDetails";
+            this.Name = "frmShowPersonDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
             this.PerformLayout();

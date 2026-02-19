@@ -28,10 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tlpForm = new System.Windows.Forms.TableLayoutPanel();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.dgvLocalLicenses = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cancelApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showApplicationDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tlpMainHeader = new System.Windows.Forms.TableLayoutPanel();
+            this.MainHeaderPanel = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.mtxbSearch = new System.Windows.Forms.MaskedTextBox();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.cbFilter = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnNewLocalLicense = new System.Windows.Forms.Button();
             this.tplMainFooter = new System.Windows.Forms.TableLayoutPanel();
             this.btnClose = new System.Windows.Forms.Button();
@@ -39,21 +50,16 @@
             this.lblRowsCountValue = new System.Windows.Forms.Label();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.MainHeaderPanel = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.mtxbSearch = new System.Windows.Forms.MaskedTextBox();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
-            this.cbFilter = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tlpForm.SuspendLayout();
             this.tlpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicenses)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.tlpMainHeader.SuspendLayout();
+            this.MainHeaderPanel.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.tplMainFooter.SuspendLayout();
             this.plMainfooterLable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.MainHeaderPanel.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpForm
@@ -95,6 +101,7 @@
             this.dgvLocalLicenses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvLocalLicenses.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvLocalLicenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLocalLicenses.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvLocalLicenses.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLocalLicenses.Location = new System.Drawing.Point(3, 85);
             this.dgvLocalLicenses.MultiSelect = false;
@@ -105,6 +112,36 @@
             this.dgvLocalLicenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLocalLicenses.Size = new System.Drawing.Size(967, 368);
             this.dgvLocalLicenses.TabIndex = 2;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cancelApplicationToolStripMenuItem,
+            this.showApplicationDetailsToolStripMenuItem,
+            this.deleteApplicationToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(282, 133);
+            // 
+            // cancelApplicationToolStripMenuItem
+            // 
+            this.cancelApplicationToolStripMenuItem.Name = "cancelApplicationToolStripMenuItem";
+            this.cancelApplicationToolStripMenuItem.Size = new System.Drawing.Size(281, 32);
+            this.cancelApplicationToolStripMenuItem.Text = "Cancel Application";
+            this.cancelApplicationToolStripMenuItem.Click += new System.EventHandler(this.cancelApplicationToolStripMenuItem_Click);
+            // 
+            // showApplicationDetailsToolStripMenuItem
+            // 
+            this.showApplicationDetailsToolStripMenuItem.Name = "showApplicationDetailsToolStripMenuItem";
+            this.showApplicationDetailsToolStripMenuItem.Size = new System.Drawing.Size(281, 32);
+            this.showApplicationDetailsToolStripMenuItem.Text = "Show Application Details";
+            this.showApplicationDetailsToolStripMenuItem.Click += new System.EventHandler(this.showApplicationDetailsToolStripMenuItem_Click);
+            // 
+            // deleteApplicationToolStripMenuItem
+            // 
+            this.deleteApplicationToolStripMenuItem.Name = "deleteApplicationToolStripMenuItem";
+            this.deleteApplicationToolStripMenuItem.Size = new System.Drawing.Size(281, 32);
+            this.deleteApplicationToolStripMenuItem.Text = "Delete Application";
             // 
             // tlpMainHeader
             // 
@@ -120,6 +157,67 @@
             this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpMainHeader.Size = new System.Drawing.Size(967, 76);
             this.tlpMainHeader.TabIndex = 1;
+            // 
+            // MainHeaderPanel
+            // 
+            this.MainHeaderPanel.Controls.Add(this.flowLayoutPanel1);
+            this.MainHeaderPanel.Controls.Add(this.cbFilter);
+            this.MainHeaderPanel.Controls.Add(this.label1);
+            this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainHeaderPanel.Location = new System.Drawing.Point(3, 3);
+            this.MainHeaderPanel.Name = "MainHeaderPanel";
+            this.MainHeaderPanel.Size = new System.Drawing.Size(658, 70);
+            this.MainHeaderPanel.TabIndex = 3;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.mtxbSearch);
+            this.flowLayoutPanel1.Controls.Add(this.cbStatus);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(295, 34);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(342, 48);
+            this.flowLayoutPanel1.TabIndex = 2;
+            // 
+            // mtxbSearch
+            // 
+            this.mtxbSearch.Location = new System.Drawing.Point(3, 3);
+            this.mtxbSearch.Name = "mtxbSearch";
+            this.mtxbSearch.Size = new System.Drawing.Size(172, 26);
+            this.mtxbSearch.TabIndex = 5;
+            this.mtxbSearch.TextChanged += new System.EventHandler(this.mtxbSearch_TextChanged);
+            // 
+            // cbStatus
+            // 
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Location = new System.Drawing.Point(181, 3);
+            this.cbStatus.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(156, 28);
+            this.cbStatus.TabIndex = 4;
+            this.cbStatus.Visible = false;
+            this.cbStatus.SelectedIndexChanged += new System.EventHandler(this.cbStatus_SelectedIndexChanged);
+            // 
+            // cbFilter
+            // 
+            this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Location = new System.Drawing.Point(89, 37);
+            this.cbFilter.Name = "cbFilter";
+            this.cbFilter.Size = new System.Drawing.Size(200, 28);
+            this.cbFilter.TabIndex = 1;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 41);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Filter by";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // btnNewLocalLicense
             // 
@@ -205,67 +303,6 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // MainHeaderPanel
-            // 
-            this.MainHeaderPanel.Controls.Add(this.flowLayoutPanel1);
-            this.MainHeaderPanel.Controls.Add(this.cbFilter);
-            this.MainHeaderPanel.Controls.Add(this.label1);
-            this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainHeaderPanel.Location = new System.Drawing.Point(3, 3);
-            this.MainHeaderPanel.Name = "MainHeaderPanel";
-            this.MainHeaderPanel.Size = new System.Drawing.Size(658, 70);
-            this.MainHeaderPanel.TabIndex = 3;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.mtxbSearch);
-            this.flowLayoutPanel1.Controls.Add(this.cbStatus);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(295, 34);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(342, 48);
-            this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // mtxbSearch
-            // 
-            this.mtxbSearch.Location = new System.Drawing.Point(3, 3);
-            this.mtxbSearch.Name = "mtxbSearch";
-            this.mtxbSearch.Size = new System.Drawing.Size(172, 26);
-            this.mtxbSearch.TabIndex = 5;
-            this.mtxbSearch.TextChanged += new System.EventHandler(this.mtxbSearch_TextChanged);
-            // 
-            // cbStatus
-            // 
-            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(181, 3);
-            this.cbStatus.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(156, 28);
-            this.cbStatus.TabIndex = 4;
-            this.cbStatus.Visible = false;
-            this.cbStatus.SelectedIndexChanged += new System.EventHandler(this.cbStatus_SelectedIndexChanged);
-            // 
-            // cbFilter
-            // 
-            this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Location = new System.Drawing.Point(89, 37);
-            this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(200, 28);
-            this.cbFilter.TabIndex = 1;
-            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 41);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Filter by";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
             // frmManageLocalDrivingLicenseApplications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -282,15 +319,16 @@
             this.tlpForm.ResumeLayout(false);
             this.tlpMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicenses)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.tlpMainHeader.ResumeLayout(false);
             this.tlpMainHeader.PerformLayout();
-            this.tplMainFooter.ResumeLayout(false);
-            this.plMainfooterLable.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MainHeaderPanel.ResumeLayout(false);
             this.MainHeaderPanel.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.tplMainFooter.ResumeLayout(false);
+            this.plMainfooterLable.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -314,5 +352,9 @@
         private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.ComboBox cbFilter;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem cancelApplicationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showApplicationDetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteApplicationToolStripMenuItem;
     }
 }

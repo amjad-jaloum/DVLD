@@ -60,6 +60,12 @@
     </Compile>
     <Compile Include="clsCommonMethods.cs" />
     <Compile Include="clsGloabalSettings.cs" />
+    <Compile Include="Driving License Services\ctrlShowDrivingLicenseAppInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Driving License Services\ctrlShowDrivingLicenseAppInfo.Designer.cs">
+      <DependentUpon>ctrlShowDrivingLicenseAppInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Driving License Services\frmManageLocalDrivingLicenseApplications.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,12 @@
     </Compile>
     <Compile Include="Driving License Services\frmNewLocalDrivingLicenseApplications.Designer.cs">
       <DependentUpon>frmNewLocalDrivingLicenseApplications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Driving License Services\frmShowDrivingLicenseApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Driving License Services\frmShowDrivingLicenseApp.Designer.cs">
+      <DependentUpon>frmShowDrivingLicenseApp.cs</DependentUpon>
     </Compile>
     <Compile Include="People\ctrlPersonDetailWithFitler.cs">
       <SubType>UserControl</SubType>
@@ -164,11 +176,17 @@
     <EmbeddedResource Include="Application Types\frmUdateApplicationTypes.resx">
       <DependentUpon>frmUdateApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Driving License Services\ctrlShowDrivingLicenseAppInfo.resx">
+      <DependentUpon>ctrlShowDrivingLicenseAppInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Driving License Services\frmManageLocalDrivingLicenseApplications.resx">
       <DependentUpon>frmManageLocalDrivingLicenseApplications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Driving License Services\frmNewLocalDrivingLicenseApplications.resx">
       <DependentUpon>frmNewLocalDrivingLicenseApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Driving License Services\frmShowDrivingLicenseApp.resx">
+      <DependentUpon>frmShowDrivingLicenseApp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\ctrlPersonDetailWithFitler.resx">
       <DependentUpon>ctrlPersonDetailWithFitler.cs</DependentUpon>

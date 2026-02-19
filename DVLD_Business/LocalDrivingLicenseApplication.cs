@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Security;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using DVLD_DataAccess;
@@ -11,13 +12,13 @@ namespace DVLD_Business
 {
     public class LocalDrivingLicenseApplication
     {
-        private int ApplicantPersonID { get; set; }
-        private DateTime ApplicationDate { get; set; }
-        private int ApplicationTypeID { get; set; }
-        private short ApplicationStatus { get; set; }
-        private DateTime LastStatusDate { set; get; }
-        private short PaidFees { get; set; }
-        private int CreatedByUserID { get; set; }
+        public int ApplicantPersonID { get; set; }
+        public DateTime ApplicationDate { get; set; }
+        public int ApplicationTypeID { get; set; }
+        public short ApplicationStatus { get; set; }
+        public DateTime LastStatusDate { set; get; }
+        public int PaidFees { get; set; }
+        public int CreatedByUserID { get; set; }
 
         private enum enAppServiceFee
         {
@@ -28,7 +29,7 @@ namespace DVLD_Business
             ReleaseDetainedDrivingLicsense = 5,
             NewInternationalLicense = 5,
         }
-        public LocalDrivingLicenseApplication(int applicantPersonID, DateTime applicationDate, int applicationTypeID, short applicationStatus, DateTime lastStatusDate, short paidFees, int createdByUserID)
+        public LocalDrivingLicenseApplication(int applicantPersonID, DateTime applicationDate, int applicationTypeID, short applicationStatus, DateTime lastStatusDate, int paidFees, int createdByUserID)
         {
             ApplicantPersonID = applicantPersonID;
             ApplicationDate = applicationDate;
@@ -77,6 +78,49 @@ namespace DVLD_Business
         public static DataTable GetDataTableWithQuery(string ColName, string searchValue)
         {
             return LocalDrivingLicensApplicationsData.GetDataTableWithQuery(ColName, searchValue);
+        }
+
+        public static bool UpdateLocalDrivingLicenseAppStatus(int appID, int Status)
+        {
+            return LocalDrivingLicensApplicationsData.UpdateLocalDrivingLicenseAppStatus(appID, Status);
+        }
+        public static string FindLicenceName(int LicenseClassID, string ClassName)
+        {
+            return LocalDrivingLicensApplicationsData.FindLicenceName(LicenseClassID, ClassName);
+        }
+        public static LocalDrivingLicenseApplication FindLocalDrivingLicenseApplication(int ApplicationID)
+        {
+            int ApplicantPersonID = 0;
+            DateTime ApplicationDate = DateTime.MinValue;
+            int ApplicationTypeID = 0;
+            short ApplicationStatus = 0;
+            DateTime LastStatusDate = DateTime.MinValue;
+            int PaidFees = 0;
+            int CreatedByUserID = 0;
+
+            if (LocalDrivingLicensApplicationsData.FindLocalDrivingLicenseApplication(ApplicationID, ref ApplicantPersonID, ref ApplicationDate, ref ApplicationTypeID, ref ApplicationStatus, ref LastStatusDate, ref PaidFees, ref CreatedByUserID))
+            {
+                return new LocalDrivingLicenseApplication(ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static int GetApplicationIDFromLocalDrivingLicenseApplications(int localDrivingLicenseAppID)
+        {
+            return LocalDrivingLicensApplicationsData.GetApplicationIDFromLocalDrivingLicenseApplications(localDrivingLicenseAppID);
+        }
+
+        public static string getAppTypeName(int applicationTypeID)
+        {
+            return LocalDrivingLicensApplicationsData.getAppTypeName(applicationTypeID);
+        }
+
+        public static string getUsername(int createdByUserID)
+        {
+            return LocalDrivingLicensApplicationsData.getUsername(createdByUserID);
         }
     }
 }
