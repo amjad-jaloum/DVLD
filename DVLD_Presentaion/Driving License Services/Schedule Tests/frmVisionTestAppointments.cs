@@ -7,20 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using DVLD_Business;
 
-namespace _19___Project___DVLD.Driving_License_Services
+namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
 {
-    public partial class frmShowDrivingLicenseApp : Form
+    public partial class frmVisionTestAppointments : Form
     {
         private int _LocalDrivingLicenseAppID { get; set; }
-        string _licenseName{ get; set; }
-        string _applicantFullName{ get; set; }
+        string _licenseName { get; set; }
+        string _applicantFullName { get; set; }
         DateTime _appDate { get; set; }
-        short _passedTests{ get; set; }
+        short _passedTests { get; set; }
         string _appStatus { get; set; }
-        public frmShowDrivingLicenseApp(int LocalDrivingLicenseAppID, string licenseName, 
+
+        public frmVisionTestAppointments(int LocalDrivingLicenseAppID, string licenseName,
             string applicantFullName, DateTime appDate, short passedTests, string appStatus)
         {
             InitializeComponent();
@@ -32,7 +31,8 @@ namespace _19___Project___DVLD.Driving_License_Services
             _appStatus = appStatus;
         }
 
-        private void frmShowDrivingLicenseApp_Load(object sender, EventArgs e)
+
+        private void frmVisionTestAppointments_Load(object sender, EventArgs e)
         {
             if (_LocalDrivingLicenseAppID > 0)
             {
@@ -47,6 +47,16 @@ namespace _19___Project___DVLD.Driving_License_Services
             }
             else
                 MessageBox.Show("Invalid Application ID");
+        }
+
+        private void btnNewAppointment_Click(object sender, EventArgs e)
+        {
+            int DLAppID = ctrlShowDrivingLicenseAppInfo1.LocalDrivingLicenseAppID;
+            string ClassName = ctrlShowDrivingLicenseAppInfo1.licenseName;
+            string ApplicantName = ctrlShowDrivingLicenseAppInfo1.applicantFullName;
+
+            frmSheduleTest scheduleTestForm = new frmSheduleTest(DLAppID, ClassName, ApplicantName);
+            scheduleTestForm.ShowDialog();
         }
     }
 }

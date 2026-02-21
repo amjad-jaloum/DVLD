@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _19___Project___DVLD.Driving_License_Services.Schedule_Tests;
 using _19___Project___DVLD.Users;
 using DVLD_Business;
 
@@ -143,11 +144,14 @@ namespace _19___Project___DVLD.Driving_License_Services
         }
         private void cancelApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int AppID = GetAppIDFromDGV();
-            if (LocalDrivingLicenseApplication.UpdateLocalDrivingLicenseAppStatus(AppID, (int)enAppStatus.Cancelled))
+            if (MessageBox.Show("Are you sure you want to cancel this person Application?","Confirm",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                MessageBox.Show("Appliction status is cancelled!", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadLocalDrivingLicensesToDGV();
+                int AppID = GetAppIDFromDGV();
+                if (LocalDrivingLicenseApplication.UpdateLocalDrivingLicenseAppStatus(AppID, (int)enAppStatus.Cancelled))
+                {
+                    MessageBox.Show("Appliction status is cancelled!", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadLocalDrivingLicensesToDGV();
+                }
             }
         }
         private int GetAppIDFromDGV()
@@ -176,15 +180,46 @@ namespace _19___Project___DVLD.Driving_License_Services
         }
         private void showApplicationDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int AppID = GetAppIDFromDGV();
-            string LicenseName = GetLecenseNameFromDGV();
-            string ApplicantFullName = GetApplicantFullNameFromDGV();
-            DateTime AppDate = GetAppDateFromDGV();
-            short passedTests = GetPassedTestsCountFromDGV();
-            string AppStatus = GetStatusFromDGV();
+            int AppID = 0;
+            string LicenseName = "";
+            string ApplicantFullName = "";
+            DateTime AppDate = DateTime.MinValue;
+            short PassedTests = 0;
+            string AppStatus = "";
 
-            frmShowDrivingLicenseApp frm = new frmShowDrivingLicenseApp(AppID,LicenseName,ApplicantFullName,AppDate,passedTests,AppStatus);
+            GetAppDataFromDGV(ref AppID, ref LicenseName, ref ApplicantFullName, ref AppDate, ref PassedTests, 
+                ref AppStatus);
+
+            frmShowDrivingLicenseApp frm = new frmShowDrivingLicenseApp(
+                AppID,LicenseName,ApplicantFullName,AppDate, PassedTests, AppStatus);
+
             frm.ShowDialog();
+        }
+        private void GetAppDataFromDGV(ref int AppID, ref string LicenseName, 
+            ref string ApplicantFullName, ref DateTime AppDate, ref short PassedTests, ref string AppStatus)
+        {
+            AppID = GetAppIDFromDGV();
+            LicenseName = GetLecenseNameFromDGV();
+            ApplicantFullName = GetApplicantFullNameFromDGV();
+            AppDate = GetAppDateFromDGV();
+            PassedTests = GetPassedTestsCountFromDGV();
+            AppStatus = GetStatusFromDGV();
+        }
+        private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int AppID = 0;
+            string LicenseName = "";
+            string ApplicantFullName = "";
+            DateTime AppDate = DateTime.MinValue;
+            short PassedTests = 0;
+            string AppStatus = "";
+
+            GetAppDataFromDGV(ref AppID, ref LicenseName, ref ApplicantFullName, ref AppDate, ref PassedTests,
+                ref AppStatus);
+
+            frmVisionTestAppointments form = new frmVisionTestAppointments(
+                AppID, LicenseName, ApplicantFullName, AppDate, PassedTests, AppStatus);
+            form.ShowDialog();
         }
     }
 }

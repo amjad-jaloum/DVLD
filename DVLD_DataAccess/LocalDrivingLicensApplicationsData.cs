@@ -371,7 +371,6 @@ namespace DVLD_DataAccess
             finally { connection.Close(); }
             return isFound;
         }
-
         public static int GetApplicationIDFromLocalDrivingLicenseApplications(int localDrivingLicenseAppID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -406,7 +405,6 @@ namespace DVLD_DataAccess
 
             return -1;
         }
-
         public static string getAppTypeName(int ApplicationTypeID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -431,7 +429,6 @@ namespace DVLD_DataAccess
             finally { connection.Close(); }
             return AppTypeName;
         }
-
         public static string getUsername(int UserID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -455,6 +452,39 @@ namespace DVLD_DataAccess
             }
             finally { connection.Close(); }
             return Username;
+        }
+        public static int GetTestFees(string TestTypeTitle)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"
+                            SELECT 
+                                  [TestTypeFees]
+                              FROM [DVLD].[dbo].[TestTypes]
+                              where TestTypeTitle = @TestTypeTitle
+                            ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@TestTypeTitle", TestTypeTitle);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && double.TryParse(result.ToString(), out double value))
+                {
+                    connection.Close();
+                    return (int)value;
+                }
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return -1;
         }
     }
 }

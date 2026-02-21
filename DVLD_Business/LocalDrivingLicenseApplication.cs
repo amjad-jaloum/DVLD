@@ -122,5 +122,10 @@ namespace DVLD_Business
         {
             return LocalDrivingLicensApplicationsData.getUsername(createdByUserID);
         }
+
+        public static int getTestFee(string TestTypeTitle)
+        {
+            return LocalDrivingLicensApplicationsData.GetTestFees(TestTypeTitle);
+        }
     }
 }

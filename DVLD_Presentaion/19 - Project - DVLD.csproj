@@ -84,6 +84,18 @@
     <Compile Include="Driving License Services\frmShowDrivingLicenseApp.Designer.cs">
       <DependentUpon>frmShowDrivingLicenseApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Driving License Services\Schedule Tests\frmSheduleTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Driving License Services\Schedule Tests\frmSheduleTest.Designer.cs">
+      <DependentUpon>frmSheduleTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Driving License Services\Schedule Tests\frmVisionTestAppointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Driving License Services\Schedule Tests\frmVisionTestAppointments.Designer.cs">
+      <DependentUpon>frmVisionTestAppointments.cs</DependentUpon>
+    </Compile>
     <Compile Include="People\ctrlPersonDetailWithFitler.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -187,6 +199,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Driving License Services\frmShowDrivingLicenseApp.resx">
       <DependentUpon>frmShowDrivingLicenseApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Driving License Services\Schedule Tests\frmSheduleTest.resx">
+      <DependentUpon>frmSheduleTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Driving License Services\Schedule Tests\frmVisionTestAppointments.resx">
+      <DependentUpon>frmVisionTestAppointments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\ctrlPersonDetailWithFitler.resx">
       <DependentUpon>ctrlPersonDetailWithFitler.cs</DependentUpon>
