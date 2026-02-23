@@ -58,11 +58,28 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
 
         private void btnNewAppointment_Click(object sender, EventArgs e)
         {
-            frmSheduleTest scheduleTestForm = new frmSheduleTest(_LocalDrivingLicenseAppID, _licenseName, _applicantFullName);
-            scheduleTestForm.RefreshDataGridView += RefreshDataGridViewHandler;
-            scheduleTestForm.ShowDialog();
+            if (!hasAppointments() || IsAppointmentLocked(_LocalDrivingLicenseAppID))
+            {
+                frmSheduleTest scheduleTestForm = new frmSheduleTest(_LocalDrivingLicenseAppID, _licenseName, _applicantFullName);
+                scheduleTestForm.RefreshDataGridView += RefreshDataGridViewHandler;
+                scheduleTestForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("This Person already has an active appointment. A new appointment can not be created untill the previous appointment become locked!", "Active Appointment Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
-        
+
+        private bool hasAppointments()
+        {
+            return Convert.ToInt32(lblRecordsCount.Text) > 0;
+        }
+
+        private bool IsAppointmentLocked(int localDrivingLicenseAppID)
+        {
+            return LocalDrivingLicenseApplication.hasLockedAppointment(localDrivingLicenseAppID);
+        }
+
         private void RefreshDataGridViewHandler(object sender)
         {
             LoadTestAppointmentsToDGV();

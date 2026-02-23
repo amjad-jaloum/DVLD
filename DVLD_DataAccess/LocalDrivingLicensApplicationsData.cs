@@ -624,5 +624,36 @@ namespace DVLD_DataAccess
             }
             return DateTime.MinValue;
         }
+
+        public static bool hasLockedAppointment(int localDrivingLicenseAppID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string qeruy = @"SELECT 
+                                  [IsLocked]
+                              FROM [DVLD].[dbo].[TestAppointments]
+                              where LocalDrivingLicenseApplicationID = @localDrivingLicenseAppID
+                              order by AppointmentDate desc
+                                ";
+            SqlCommand command = new SqlCommand(qeruy, connection);
+            command.Parameters.AddWithValue("@localDrivingLicenseAppID", localDrivingLicenseAppID);
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && Boolean.TryParse(result.ToString(), out Boolean value))
+                {
+                    connection.Close();
+                    return value;
+                }
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
     }
 }

@@ -151,5 +151,11 @@ namespace DVLD_Business
         {
             return LocalDrivingLicensApplicationsData.GetTestAppDate(LocalDrivingLicenseApplicationID);
         }
+
+        public static bool hasLockedAppointment(int localDrivingLicenseAppID)
+        {
+            return LocalDrivingLicensApplicationsData.hasLockedAppointment(localDrivingLicenseAppID);
+        }
+
     }
 }
