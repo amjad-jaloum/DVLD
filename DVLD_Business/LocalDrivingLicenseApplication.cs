@@ -98,7 +98,9 @@ namespace DVLD_Business
             int PaidFees = 0;
             int CreatedByUserID = 0;
 
-            if (LocalDrivingLicensApplicationsData.FindLocalDrivingLicenseApplication(ApplicationID, ref ApplicantPersonID, ref ApplicationDate, ref ApplicationTypeID, ref ApplicationStatus, ref LastStatusDate, ref PaidFees, ref CreatedByUserID))
+            if (LocalDrivingLicensApplicationsData.FindLocalDrivingLicenseApplication(ApplicationID, ref ApplicantPersonID, 
+                ref ApplicationDate, ref ApplicationTypeID, ref ApplicationStatus, 
+                ref LastStatusDate, ref PaidFees, ref CreatedByUserID))
             {
                 return new LocalDrivingLicenseApplication(ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
             }
@@ -126,6 +128,28 @@ namespace DVLD_Business
         public static int getTestFee(string TestTypeTitle)
         {
             return LocalDrivingLicensApplicationsData.GetTestFees(TestTypeTitle);
+        }
+
+        public static bool AddNewTestAppointment(int TestTypeID, int LocalDrivingLicenseApplicationID,
+            DateTime AppointmentDate, decimal PaidFees, int CreatedByUserID, bool IsLocked)
+        {
+            return LocalDrivingLicensApplicationsData.AddNewTestAppointment
+                (TestTypeID,LocalDrivingLicenseApplicationID,AppointmentDate,PaidFees,CreatedByUserID,IsLocked);
+        }
+
+        public static DataTable LoadTestAppointments(int LocalDrivingLicenseApplicationID)
+        {
+            return LocalDrivingLicensApplicationsData.LoadTestAppointments(LocalDrivingLicenseApplicationID);
+        }
+
+        public static bool UpdateTestAppointmentDate(int LocalDrivingLicenseApplicationID, DateTime AppointmentDate)
+        {
+            return LocalDrivingLicensApplicationsData.UpdateTestAppointmentDate(LocalDrivingLicenseApplicationID, AppointmentDate);
+        }
+
+        public static DateTime GetTestAppointmentDate(int LocalDrivingLicenseApplicationID)
+        {
+            return LocalDrivingLicensApplicationsData.GetTestAppDate(LocalDrivingLicenseApplicationID);
         }
     }
 }

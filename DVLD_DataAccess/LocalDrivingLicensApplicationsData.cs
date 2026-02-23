@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
@@ -357,9 +358,9 @@ namespace DVLD_DataAccess
                     ApplicantPersonID = (int)reader["ApplicantPersonID"];
                     ApplicationDate = (DateTime)reader["ApplicationDate"];
                     ApplicationTypeID = (int)reader["ApplicationTypeID"];
-                    ApplicationStatus =  (byte)reader["ApplicationStatus"];
+                    ApplicationStatus = (byte)reader["ApplicationStatus"];
                     LastStatusDate = (DateTime)reader["LastStatusDate"];
-                    PaidFees = (int) (decimal)reader["PaidFees"];
+                    PaidFees = (int)(decimal)reader["PaidFees"];
                     CreatedByUserID = (int)reader["CreatedByUserID"];
                 }
                 reader.Close();
@@ -485,6 +486,143 @@ namespace DVLD_DataAccess
                 connection.Close();
             }
             return -1;
+        }
+        public static bool AddNewTestAppointment(int TestTypeID, int LocalDrivingLicenseApplicationID,
+            DateTime AppointmentDate, decimal PaidFees, int CreatedByUserID, bool IsLocked)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string qeruy = @"USE [DVLD]
+                                INSERT INTO [dbo].[TestAppointments]
+                                           ([TestTypeID]
+                                           ,[LocalDrivingLicenseApplicationID]
+                                           ,[AppointmentDate]
+                                           ,[PaidFees]
+                                           ,[CreatedByUserID]
+                                           ,[IsLocked])
+                                     VALUES
+                                           (@TestTypeID
+                                           ,@LocalDrivingLicenseApplicationID
+                                           ,@AppointmentDate
+                                           ,@PaidFees
+                                           ,@CreatedByUserID
+                                           ,@IsLocked)
+                                ";
+            SqlCommand command = new SqlCommand(qeruy, connection);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@AppointmentDate", AppointmentDate);
+            command.Parameters.AddWithValue("@PaidFees", PaidFees);
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+            command.Parameters.AddWithValue("@IsLocked", IsLocked);
+
+            bool isAdded = false;
+            try
+            {
+                connection.Open();
+                int rowsEffected = command.ExecuteNonQuery();
+                if (rowsEffected > 0)
+                    return true;
+            }
+            catch (Exception)
+            {
+                isAdded = false;
+            }
+            finally { connection.Close(); }
+            return isAdded;
+        }
+        public static DataTable LoadTestAppointments(int LocalDrivingLicenseApplicationID)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string qeruy = @"SELECT [TestAppointmentID] as 'Appointment ID'
+                          ,[AppointmentDate] as 'Appointment Date'
+                          ,[PaidFees] as 'Paid Fees'
+                          ,[IsLocked] as 'Is Locked'
+                          FROM [DVLD].[dbo].[TestAppointments]
+                          where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+                                ";
+            SqlCommand command = new SqlCommand(qeruy, connection);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dt;
+        }
+        public static bool UpdateTestAppointmentDate(int LocalDrivingLicenseApplicationID, DateTime AppointmentDate)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string qeruy = @"
+                            UPDATE [dbo].[TestAppointments]
+                               SET [AppointmentDate] = @AppointmentDate
+      
+                             WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+                                ";
+            SqlCommand command = new SqlCommand(qeruy, connection);
+            command.Parameters.AddWithValue("@AppointmentDate", AppointmentDate);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            bool isUpdated = false;
+            try
+            {
+                connection.Open();
+                int rowsEffected = command.ExecuteNonQuery();
+                if (rowsEffected > 0)
+                    return true;
+            }
+            catch (Exception)
+            {
+                isUpdated = false;
+            }
+            finally { connection.Close(); }
+            return isUpdated;
+
+        }
+        public static DateTime GetTestAppDate(int LocalDrivingLicenseApplicationID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string qeruy = @"SELECT top 1
+                                  [AppointmentDate]
+    
+                              FROM [DVLD].[dbo].[TestAppointments]
+                              where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+                              order by AppointmentDate desc
+                                ";
+            SqlCommand command = new SqlCommand(qeruy, connection);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && DateTime.TryParse(result.ToString(), out DateTime value))
+                {
+                    connection.Close();
+                    return value;
+                }
+            }
+            catch (Exception)
+            {
+                return DateTime.MinValue;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return DateTime.MinValue;
         }
     }
 }

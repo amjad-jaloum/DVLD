@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.gbRetakeTest = new System.Windows.Forms.GroupBox();
-            this.lblLicenseName = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblLocalDrivingAppID = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dtpTestAppointment = new System.Windows.Forms.DateTimePicker();
+            this.lblTrial = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.lblApplicant = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.lblAppFees = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.lblTrial = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dtpTestAppointment = new System.Windows.Forms.DateTimePicker();
-            this.lblRAppFees = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblRTestAppID = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblLicenseName = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblLocalDrivingAppID = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.gbRetakeTest = new System.Windows.Forms.GroupBox();
             this.lblTotalFees = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.lblRTestAppID = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblRAppFees = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.gbRetakeTest.SuspendLayout();
@@ -79,62 +79,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vision Test";
             // 
-            // gbRetakeTest
+            // dtpTestAppointment
             // 
-            this.gbRetakeTest.Controls.Add(this.lblTotalFees);
-            this.gbRetakeTest.Controls.Add(this.label9);
-            this.gbRetakeTest.Controls.Add(this.lblRTestAppID);
-            this.gbRetakeTest.Controls.Add(this.label7);
-            this.gbRetakeTest.Controls.Add(this.lblRAppFees);
-            this.gbRetakeTest.Controls.Add(this.label5);
-            this.gbRetakeTest.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gbRetakeTest.Enabled = false;
-            this.gbRetakeTest.Location = new System.Drawing.Point(30, 366);
-            this.gbRetakeTest.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
-            this.gbRetakeTest.Name = "gbRetakeTest";
-            this.gbRetakeTest.Padding = new System.Windows.Forms.Padding(30);
-            this.gbRetakeTest.Size = new System.Drawing.Size(633, 208);
-            this.gbRetakeTest.TabIndex = 1;
-            this.gbRetakeTest.TabStop = false;
-            this.gbRetakeTest.Text = "Retake Test Info";
+            this.dtpTestAppointment.CalendarFont = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpTestAppointment.Location = new System.Drawing.Point(213, 221);
+            this.dtpTestAppointment.Name = "dtpTestAppointment";
+            this.dtpTestAppointment.Size = new System.Drawing.Size(262, 39);
+            this.dtpTestAppointment.TabIndex = 20;
             // 
-            // lblLicenseName
+            // lblTrial
             // 
-            this.lblLicenseName.AutoSize = true;
-            this.lblLicenseName.Location = new System.Drawing.Point(207, 103);
-            this.lblLicenseName.Name = "lblLicenseName";
-            this.lblLicenseName.Size = new System.Drawing.Size(163, 32);
-            this.lblLicenseName.TabIndex = 7;
-            this.lblLicenseName.Text = "License Name";
+            this.lblTrial.AutoSize = true;
+            this.lblTrial.Location = new System.Drawing.Point(207, 185);
+            this.lblTrial.Name = "lblTrial";
+            this.lblTrial.Size = new System.Drawing.Size(58, 32);
+            this.lblTrial.TabIndex = 19;
+            this.lblTrial.Text = "Null";
             // 
-            // label3
+            // label4
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(73, 103);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 32);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "License:";
-            // 
-            // lblLocalDrivingAppID
-            // 
-            this.lblLocalDrivingAppID.AutoSize = true;
-            this.lblLocalDrivingAppID.Location = new System.Drawing.Point(207, 62);
-            this.lblLocalDrivingAppID.Name = "lblLocalDrivingAppID";
-            this.lblLocalDrivingAppID.Size = new System.Drawing.Size(87, 32);
-            this.lblLocalDrivingAppID.TabIndex = 5;
-            this.lblLocalDrivingAppID.Text = "App ID";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 32);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "D.L App ID:";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(107, 185);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 32);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Trail:";
             // 
             // label22
             // 
@@ -184,70 +154,62 @@
             this.label10.TabIndex = 12;
             this.label10.Text = "Fees:";
             // 
-            // lblTrial
+            // lblLicenseName
             // 
-            this.lblTrial.AutoSize = true;
-            this.lblTrial.Location = new System.Drawing.Point(207, 185);
-            this.lblTrial.Name = "lblTrial";
-            this.lblTrial.Size = new System.Drawing.Size(58, 32);
-            this.lblTrial.TabIndex = 19;
-            this.lblTrial.Text = "Null";
+            this.lblLicenseName.AutoSize = true;
+            this.lblLicenseName.Location = new System.Drawing.Point(207, 103);
+            this.lblLicenseName.Name = "lblLicenseName";
+            this.lblLicenseName.Size = new System.Drawing.Size(163, 32);
+            this.lblLicenseName.TabIndex = 7;
+            this.lblLicenseName.Text = "License Name";
             // 
-            // label4
+            // label3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(107, 185);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 32);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Trail:";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(73, 103);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 32);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "License:";
             // 
-            // dtpTestAppointment
+            // lblLocalDrivingAppID
             // 
-            this.dtpTestAppointment.CalendarFont = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpTestAppointment.Location = new System.Drawing.Point(213, 221);
-            this.dtpTestAppointment.Name = "dtpTestAppointment";
-            this.dtpTestAppointment.Size = new System.Drawing.Size(262, 39);
-            this.dtpTestAppointment.TabIndex = 20;
+            this.lblLocalDrivingAppID.AutoSize = true;
+            this.lblLocalDrivingAppID.Location = new System.Drawing.Point(207, 62);
+            this.lblLocalDrivingAppID.Name = "lblLocalDrivingAppID";
+            this.lblLocalDrivingAppID.Size = new System.Drawing.Size(87, 32);
+            this.lblLocalDrivingAppID.TabIndex = 5;
+            this.lblLocalDrivingAppID.Text = "App ID";
             // 
-            // lblRAppFees
+            // label1
             // 
-            this.lblRAppFees.AutoSize = true;
-            this.lblRAppFees.Location = new System.Drawing.Point(186, 62);
-            this.lblRAppFees.Name = "lblRAppFees";
-            this.lblRAppFees.Size = new System.Drawing.Size(53, 32);
-            this.lblRAppFees.TabIndex = 15;
-            this.lblRAppFees.Text = "000";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(33, 62);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 32);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "D.L App ID:";
             // 
-            // label5
+            // gbRetakeTest
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(33, 62);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(147, 32);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "R App Fees:";
-            // 
-            // lblRTestAppID
-            // 
-            this.lblRTestAppID.AutoSize = true;
-            this.lblRTestAppID.Location = new System.Drawing.Point(215, 116);
-            this.lblRTestAppID.Name = "lblRTestAppID";
-            this.lblRTestAppID.Size = new System.Drawing.Size(56, 32);
-            this.lblRTestAppID.TabIndex = 17;
-            this.lblRTestAppID.Text = "N/A";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(33, 116);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(176, 32);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "R Test App ID:";
+            this.gbRetakeTest.Controls.Add(this.lblTotalFees);
+            this.gbRetakeTest.Controls.Add(this.label9);
+            this.gbRetakeTest.Controls.Add(this.lblRTestAppID);
+            this.gbRetakeTest.Controls.Add(this.label7);
+            this.gbRetakeTest.Controls.Add(this.lblRAppFees);
+            this.gbRetakeTest.Controls.Add(this.label5);
+            this.gbRetakeTest.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gbRetakeTest.Enabled = false;
+            this.gbRetakeTest.Location = new System.Drawing.Point(30, 366);
+            this.gbRetakeTest.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
+            this.gbRetakeTest.Name = "gbRetakeTest";
+            this.gbRetakeTest.Padding = new System.Windows.Forms.Padding(30);
+            this.gbRetakeTest.Size = new System.Drawing.Size(633, 208);
+            this.gbRetakeTest.TabIndex = 1;
+            this.gbRetakeTest.TabStop = false;
+            this.gbRetakeTest.Text = "Retake Test Info";
             // 
             // lblTotalFees
             // 
@@ -268,6 +230,44 @@
             this.label9.TabIndex = 18;
             this.label9.Text = "Total Fees:";
             // 
+            // lblRTestAppID
+            // 
+            this.lblRTestAppID.AutoSize = true;
+            this.lblRTestAppID.Location = new System.Drawing.Point(215, 116);
+            this.lblRTestAppID.Name = "lblRTestAppID";
+            this.lblRTestAppID.Size = new System.Drawing.Size(56, 32);
+            this.lblRTestAppID.TabIndex = 17;
+            this.lblRTestAppID.Text = "N/A";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(33, 116);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(176, 32);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "R Test App ID:";
+            // 
+            // lblRAppFees
+            // 
+            this.lblRAppFees.AutoSize = true;
+            this.lblRAppFees.Location = new System.Drawing.Point(186, 62);
+            this.lblRAppFees.Name = "lblRAppFees";
+            this.lblRAppFees.Size = new System.Drawing.Size(53, 32);
+            this.lblRAppFees.TabIndex = 15;
+            this.lblRAppFees.Text = "000";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(33, 62);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(147, 32);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "R App Fees:";
+            // 
             // btnSave
             // 
             this.btnSave.AutoSize = true;
@@ -279,6 +279,7 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmSheduleTest
             // 
