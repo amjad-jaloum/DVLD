@@ -625,29 +625,123 @@ namespace DVLD_DataAccess
             return DateTime.MinValue;
         }
 
-        public static bool hasLockedAppointment(int localDrivingLicenseAppID)
+        public static bool hasUnlockedAppointment(int LocalDrivingLicenseApplicationID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string qeruy = @"SELECT 
-                                  [IsLocked]
-                              FROM [DVLD].[dbo].[TestAppointments]
-                              where LocalDrivingLicenseApplicationID = @localDrivingLicenseAppID
-                              order by AppointmentDate desc
+            string qeruy = @"select IsLocked from TestAppointments
+                            where exists ( 
+                                    select top 1 R = 1 where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID and IsLocked = 0 
+                                         )
                                 ";
             SqlCommand command = new SqlCommand(qeruy, connection);
-            command.Parameters.AddWithValue("@localDrivingLicenseAppID", localDrivingLicenseAppID);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
             try
             {
                 connection.Open();
                 object result = command.ExecuteScalar();
-                if (result != null && Boolean.TryParse(result.ToString(), out Boolean value))
+                if (result != null)
                 {
                     connection.Close();
-                    return value;
+                    return true;
                 }
             }
             catch (Exception)
             {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        public static bool AddNewTestResult(int TestAppointmentID, bool TestResult, string Notes, int CreatedByUserID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string qeruy = @"USE [DVLD]
+                            INSERT INTO [dbo].[Tests]
+                                       ([TestAppointmentID]
+                                       ,[TestResult]
+                                       ,[Notes]
+                                       ,[CreatedByUserID])
+                                 VALUES
+                                       (@TestAppointmentID
+                                       ,@TestResult
+                                       ,@Notes
+                                       ,@CreatedByUserID)
+                                ";
+            SqlCommand command = new SqlCommand(qeruy, connection);
+            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+            command.Parameters.AddWithValue("@TestResult", TestResult);
+            if (Notes != string.Empty)
+                command.Parameters.AddWithValue("@Notes", Notes);
+            else
+                command.Parameters.AddWithValue("@Notes", DBNull.Value);
+
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+            bool isAdded = false;
+            try
+            {
+                connection.Open();
+                int rowsEffected = command.ExecuteNonQuery();
+                if (rowsEffected > 0)
+                    return true;
+            }
+            catch (Exception)
+            {
+                isAdded = false;
+            }
+            finally { connection.Close(); }
+            return isAdded;
+        }
+
+        public static bool LockTestAppointment(int TestAppointmentID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string qeruy = @"
+                              update [TestAppointments] set IsLocked = 1
+                                where TestAppointmentID = @TestAppointmentID
+                                ";
+            SqlCommand command = new SqlCommand(qeruy, connection);
+            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+
+            bool isUpdated = false;
+            try
+            {
+                connection.Open();
+                int rowsEffected = command.ExecuteNonQuery();
+                if (rowsEffected > 0)
+                    return true;
+            }
+            catch (Exception)
+            {
+                isUpdated = false;
+            }
+            finally { connection.Close(); }
+            return isUpdated;
+        }
+        public static bool isAppointmentLocked(int TestAppointmentID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string qeruy = @"SELECT        IsLocked
+                                FROM            TestAppointments
+                                WHERE        (TestAppointmentID = @TestAppointmentID) and IsLocked = 1
+                                ";
+            SqlCommand command = new SqlCommand(qeruy, connection);
+            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
             }
             finally
             {

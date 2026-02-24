@@ -152,10 +152,24 @@ namespace DVLD_Business
             return LocalDrivingLicensApplicationsData.GetTestAppDate(LocalDrivingLicenseApplicationID);
         }
 
-        public static bool hasLockedAppointment(int localDrivingLicenseAppID)
+        public static bool hasUnlockedAppointment(int localDrivingLicenseAppID)
         {
-            return LocalDrivingLicensApplicationsData.hasLockedAppointment(localDrivingLicenseAppID);
+            return LocalDrivingLicensApplicationsData.hasUnlockedAppointment(localDrivingLicenseAppID);
         }
 
+        public static bool AddNewTestResult(int testAppointmentID, bool result, string notes, int userID)
+        {
+            return LocalDrivingLicensApplicationsData.AddNewTestResult(testAppointmentID, result, notes, userID);
+        }
+
+        public static bool LockTestAppointment(int testAppointmentID)
+        {
+            return LocalDrivingLicensApplicationsData.LockTestAppointment(testAppointmentID);
+        }
+
+        public static bool IsTestAppointmentLocked(int testAppointmentID)
+        {
+            return LocalDrivingLicensApplicationsData.isAppointmentLocked(testAppointmentID);
+        }
     }
 }

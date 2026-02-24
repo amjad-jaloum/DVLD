@@ -90,6 +90,12 @@
     <Compile Include="Driving License Services\Schedule Tests\frmSheduleTest.Designer.cs">
       <DependentUpon>frmSheduleTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Driving License Services\Schedule Tests\frmTakeTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Driving License Services\Schedule Tests\frmTakeTest.Designer.cs">
+      <DependentUpon>frmTakeTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Driving License Services\Schedule Tests\frmVisionTestAppointments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Driving License Services\Schedule Tests\frmSheduleTest.resx">
       <DependentUpon>frmSheduleTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Driving License Services\Schedule Tests\frmTakeTest.resx">
+      <DependentUpon>frmTakeTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Driving License Services\Schedule Tests\frmVisionTestAppointments.resx">
       <DependentUpon>frmVisionTestAppointments.cs</DependentUpon>
