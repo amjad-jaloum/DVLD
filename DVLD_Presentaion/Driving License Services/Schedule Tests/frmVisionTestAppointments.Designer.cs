@@ -132,6 +132,8 @@
             // 
             this.dgvVisionTestAppointments.AllowUserToAddRows = false;
             this.dgvVisionTestAppointments.AllowUserToDeleteRows = false;
+            this.dgvVisionTestAppointments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVisionTestAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvVisionTestAppointments.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvVisionTestAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -157,7 +159,7 @@
             this.ctrlShowDrivingLicenseAppInfo1.licenseName = null;
             this.ctrlShowDrivingLicenseAppInfo1.LocalDrivingLicenseAppID = 0;
             this.ctrlShowDrivingLicenseAppInfo1.Location = new System.Drawing.Point(0, 0);
-            this.ctrlShowDrivingLicenseAppInfo1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.ctrlShowDrivingLicenseAppInfo1.Margin = new System.Windows.Forms.Padding(1);
             this.ctrlShowDrivingLicenseAppInfo1.Name = "ctrlShowDrivingLicenseAppInfo1";
             this.ctrlShowDrivingLicenseAppInfo1.Padding = new System.Windows.Forms.Padding(13, 13, 13, 13);
             this.ctrlShowDrivingLicenseAppInfo1.passedTests = ((short)(0));

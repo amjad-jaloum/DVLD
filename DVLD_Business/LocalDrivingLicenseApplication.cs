@@ -142,9 +142,9 @@ namespace DVLD_Business
             return LocalDrivingLicensApplicationsData.LoadTestAppointments(LocalDrivingLicenseApplicationID);
         }
 
-        public static bool UpdateTestAppointmentDate(int LocalDrivingLicenseApplicationID, DateTime AppointmentDate)
+        public static bool UpdateTestAppointmentDate(int LocalDrivingLicenseApplicationID, int TestAppointmentID, DateTime AppointmentDate)
         {
-            return LocalDrivingLicensApplicationsData.UpdateTestAppointmentDate(LocalDrivingLicenseApplicationID, AppointmentDate);
+            return LocalDrivingLicensApplicationsData.UpdateTestAppointmentDate(LocalDrivingLicenseApplicationID, TestAppointmentID, AppointmentDate);
         }
 
         public static DateTime GetTestAppointmentDate(int LocalDrivingLicenseApplicationID)

@@ -563,7 +563,7 @@ namespace DVLD_DataAccess
             }
             return dt;
         }
-        public static bool UpdateTestAppointmentDate(int LocalDrivingLicenseApplicationID, DateTime AppointmentDate)
+        public static bool UpdateTestAppointmentDate(int LocalDrivingLicenseApplicationID, int TestAppointmentID, DateTime AppointmentDate)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             string qeruy = @"
@@ -571,9 +571,11 @@ namespace DVLD_DataAccess
                                SET [AppointmentDate] = @AppointmentDate
       
                              WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+                                and TestAppointmentID = @TestAppointmentID
                                 ";
             SqlCommand command = new SqlCommand(qeruy, connection);
             command.Parameters.AddWithValue("@AppointmentDate", AppointmentDate);
+            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
 
             bool isUpdated = false;
