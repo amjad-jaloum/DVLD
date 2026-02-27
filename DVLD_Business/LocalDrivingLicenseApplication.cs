@@ -130,7 +130,7 @@ namespace DVLD_Business
             return LocalDrivingLicensApplicationsData.GetTestFees(TestTypeTitle);
         }
 
-        public static bool AddNewTestAppointment(int TestTypeID, int LocalDrivingLicenseApplicationID,
+        public static int AddNewTestAppointment(int TestTypeID, int LocalDrivingLicenseApplicationID,
             DateTime AppointmentDate, decimal PaidFees, int CreatedByUserID, bool IsLocked)
         {
             return LocalDrivingLicensApplicationsData.AddNewTestAppointment
@@ -170,6 +170,11 @@ namespace DVLD_Business
         public static bool IsTestAppointmentLocked(int testAppointmentID)
         {
             return LocalDrivingLicensApplicationsData.isAppointmentLocked(testAppointmentID);
+        }
+
+        public static bool hasFailedInLastVisionTest(int testAppointmentID)
+        {
+            return LocalDrivingLicensApplicationsData.hasFailedInLastVisionTest(testAppointmentID);
         }
     }
 }

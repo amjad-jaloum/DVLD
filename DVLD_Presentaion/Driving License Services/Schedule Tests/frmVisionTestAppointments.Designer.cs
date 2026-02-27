@@ -51,19 +51,19 @@
             this.editToolStripMenuItem,
             this.takeTestToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // takeTestToolStripMenuItem
             // 
             this.takeTestToolStripMenuItem.Name = "takeTestToolStripMenuItem";
-            this.takeTestToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.takeTestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.takeTestToolStripMenuItem.Text = "Take Test";
             this.takeTestToolStripMenuItem.Click += new System.EventHandler(this.takeTestToolStripMenuItem_Click);
             // 
@@ -76,7 +76,7 @@
             this.panel1.Controls.Add(this.dgvVisionTestAppointments);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 379);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(712, 239);
             this.panel1.TabIndex = 10;
@@ -87,7 +87,7 @@
             this.btnNewAppointment.AutoSize = true;
             this.btnNewAppointment.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnNewAppointment.Location = new System.Drawing.Point(498, 198);
-            this.btnNewAppointment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNewAppointment.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewAppointment.Name = "btnNewAppointment";
             this.btnNewAppointment.Size = new System.Drawing.Size(200, 30);
             this.btnNewAppointment.TabIndex = 11;
@@ -139,7 +139,7 @@
             this.dgvVisionTestAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVisionTestAppointments.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvVisionTestAppointments.Location = new System.Drawing.Point(14, 42);
-            this.dgvVisionTestAppointments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvVisionTestAppointments.Margin = new System.Windows.Forms.Padding(2);
             this.dgvVisionTestAppointments.MultiSelect = false;
             this.dgvVisionTestAppointments.Name = "dgvVisionTestAppointments";
             this.dgvVisionTestAppointments.ReadOnly = true;
@@ -171,10 +171,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(712, 629);
+            this.ClientSize = new System.Drawing.Size(712, 700);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ctrlShowDrivingLicenseAppInfo1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmVisionTestAppointments";

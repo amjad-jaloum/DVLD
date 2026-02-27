@@ -487,7 +487,7 @@ namespace DVLD_DataAccess
             }
             return -1;
         }
-        public static bool AddNewTestAppointment(int TestTypeID, int LocalDrivingLicenseApplicationID,
+        public static int AddNewTestAppointment(int TestTypeID, int LocalDrivingLicenseApplicationID,
             DateTime AppointmentDate, decimal PaidFees, int CreatedByUserID, bool IsLocked)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -505,7 +505,9 @@ namespace DVLD_DataAccess
                                            ,@AppointmentDate
                                            ,@PaidFees
                                            ,@CreatedByUserID
-                                           ,@IsLocked)
+                                           ,@IsLocked);
+
+                                SELECT SCOPE_IDENTITY();
                                 ";
             SqlCommand command = new SqlCommand(qeruy, connection);
             command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
@@ -515,20 +517,26 @@ namespace DVLD_DataAccess
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
             command.Parameters.AddWithValue("@IsLocked", IsLocked);
 
-            bool isAdded = false;
             try
             {
                 connection.Open();
-                int rowsEffected = command.ExecuteNonQuery();
-                if (rowsEffected > 0)
-                    return true;
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    connection.Close();
+                    return insertedID;
+                }
             }
             catch (Exception)
             {
-                isAdded = false;
+                return -1;
             }
-            finally { connection.Close(); }
-            return isAdded;
+            finally
+            {
+                connection.Close();
+            }
+            return -1;
+
         }
         public static DataTable LoadTestAppointments(int LocalDrivingLicenseApplicationID)
         {
@@ -626,7 +634,6 @@ namespace DVLD_DataAccess
             }
             return DateTime.MinValue;
         }
-
         public static bool hasUnlockedAppointment(int LocalDrivingLicenseApplicationID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -656,7 +663,6 @@ namespace DVLD_DataAccess
             }
             return false;
         }
-
         public static bool AddNewTestResult(int TestAppointmentID, bool TestResult, string Notes, int CreatedByUserID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -697,7 +703,6 @@ namespace DVLD_DataAccess
             finally { connection.Close(); }
             return isAdded;
         }
-
         public static bool LockTestAppointment(int TestAppointmentID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -739,6 +744,35 @@ namespace DVLD_DataAccess
                 if (reader.HasRows)
                 {
                     return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+        public static bool hasFailedInLastVisionTest(int TestAppointmentID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string qeruy = @"select top 1 TestResult from Tests
+                                  where TestAppointmentID = @TestAppointmentID
+                                  order by TestID desc
+                                ";
+            SqlCommand command = new SqlCommand(qeruy, connection);
+            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && Boolean.TryParse(result.ToString(), out bool value))
+                {
+                    connection.Close();
+                    return value;
                 }
             }
             catch (Exception)

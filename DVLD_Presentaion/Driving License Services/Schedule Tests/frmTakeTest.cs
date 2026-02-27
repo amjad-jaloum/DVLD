@@ -24,14 +24,14 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
         public delegate void RefreshDataGridViewHandler(object sender);
         public event RefreshDataGridViewHandler RefreshDataGridView;
         public frmTakeTest(int TestAppointmentID, int AppID, string LicenseName,
-            string ApplicantName, DateTime AppointmentDate, string fees)
+            string ApplicantName, DateTime AppointmentDate, string fees, string Trail)
         {
             InitializeComponent();
             _TestAppointmentID = TestAppointmentID;
             _AppID = AppID;
             _LicenseName = LicenseName;
             _ApplicantName = ApplicantName;
-            _Trail = "1";
+            _Trail = Trail;
             _AppointmentDate = AppointmentDate;
             _fees = fees;
         }

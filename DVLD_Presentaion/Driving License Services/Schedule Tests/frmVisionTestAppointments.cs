@@ -61,21 +61,42 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
             if (dgvVisionTestAppointments.Rows.Count == 0)
             {
                 // new test
-                frmSheduleTest scheduleTestForm = new frmSheduleTest(_LocalDrivingLicenseAppID, _licenseName, _applicantFullName);
+                frmSheduleTest scheduleTestForm = new frmSheduleTest(_LocalDrivingLicenseAppID,
+                    _licenseName, _applicantFullName, GetTrailState());
+
                 scheduleTestForm.RefreshDataGridView += RefreshDataGridViewHandler;
                 scheduleTestForm.ShowDialog();
             }
             if (!hasAciveAppointment())
             {
-                // retake test
-                frmSheduleTest scheduleTestForm = new frmSheduleTest(_LocalDrivingLicenseAppID, _licenseName, _applicantFullName);
-                scheduleTestForm.RefreshDataGridView += RefreshDataGridViewHandler;
-                scheduleTestForm.ShowDialog();
+                if (hasFailedInLastVisionTest(GetTestAppointmentIDFromDGV()))
+                {
+                    MessageBox.Show("The person has already passed this test.\n" +
+                        "The last Vision Test has to be failed to add new appointment!",
+                        "Last Vision Test is Passed!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    // retake test
+                    frmSheduleTest scheduleTestForm = new frmSheduleTest(_LocalDrivingLicenseAppID,
+                        _licenseName, _applicantFullName, GetTrailState());
+
+                    scheduleTestForm.Mode = enTestMode.Retake;
+                    scheduleTestForm.Text = "Retake Vision Test";
+                    scheduleTestForm.RefreshDataGridView += RefreshDataGridViewHandler;
+                    scheduleTestForm.ShowDialog();
+                }
             }
             else
             {
-                MessageBox.Show("This Person already has an active appointment!", "Active Appointment Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("This Person already has an active appointment!",
+                    "Active Appointment Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private bool hasFailedInLastVisionTest(int TestAppointmentID)
+        {
+            return LocalDrivingLicenseApplication.hasFailedInLastVisionTest(TestAppointmentID);
         }
 
         private bool hasAciveAppointment()
@@ -92,12 +113,16 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
         {
             dgvVisionTestAppointments.DataSource = LocalDrivingLicenseApplication.LoadTestAppointments(_LocalDrivingLicenseAppID);
             lblRecordsCount.Text = dgvVisionTestAppointments.Rows.Count.ToString();
-            dgvVisionTestAppointments.Sort(dgvVisionTestAppointments.Columns["Appointment Date"], ListSortDirection.Descending);
+
+            if (dgvVisionTestAppointments.Rows.Count > 0)
+                dgvVisionTestAppointments.Sort(dgvVisionTestAppointments.Columns["Appointment Date"], ListSortDirection.Descending);
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmSheduleTest scheduleTestForm = new frmSheduleTest(_LocalDrivingLicenseAppID, GetTestAppointmentIDFromDGV(), _licenseName, _applicantFullName);
+            frmSheduleTest scheduleTestForm = new frmSheduleTest(_LocalDrivingLicenseAppID, GetTestAppointmentIDFromDGV(), _licenseName,
+                _applicantFullName, GetTrailState());
+
             scheduleTestForm.RefreshDataGridView += RefreshDataGridViewHandler;
             scheduleTestForm.ShowDialog();
         }
@@ -106,16 +131,21 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
         {
             if (CheckTestAppointmentStatus())
             {
-                MessageBox.Show("This Test is already taken! you can take a new Test.", "Already Taken",
+                MessageBox.Show("This Test is already taken! you can take a new Test.", "Test Already Taken",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 frmTakeTest form = new frmTakeTest(GetTestAppointmentIDFromDGV(), _LocalDrivingLicenseAppID, _licenseName,
-                    _applicantFullName, _appDate, GetFeesFromDGV());
+                    _applicantFullName, _appDate, GetFeesFromDGV(), GetTrailState());
                 form.RefreshDataGridView += RefreshDataGridViewHandler;
                 form.ShowDialog();
             }
+        }
+
+        private string GetTrailState()
+        {
+            return dgvVisionTestAppointments.Rows.Count > 1 ? "1" : "0";
         }
 
         private bool CheckTestAppointmentStatus()
