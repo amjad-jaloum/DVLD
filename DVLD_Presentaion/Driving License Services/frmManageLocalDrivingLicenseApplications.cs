@@ -144,7 +144,7 @@ namespace _19___Project___DVLD.Driving_License_Services
         }
         private void cancelApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to cancel this person Application?","Confirm",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to cancel this person Application?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int AppID = GetAppIDFromDGV();
                 if (LocalDrivingLicenseApplication.UpdateLocalDrivingLicenseAppStatus(AppID, (int)enAppStatus.Cancelled))
@@ -187,15 +187,15 @@ namespace _19___Project___DVLD.Driving_License_Services
             short PassedTests = 0;
             string AppStatus = "";
 
-            GetAppDataFromDGV(ref AppID, ref LicenseName, ref ApplicantFullName, ref AppDate, ref PassedTests, 
+            GetAppDataFromDGV(ref AppID, ref LicenseName, ref ApplicantFullName, ref AppDate, ref PassedTests,
                 ref AppStatus);
 
             frmShowDrivingLicenseApp frm = new frmShowDrivingLicenseApp(
-                AppID,LicenseName,ApplicantFullName,AppDate, PassedTests, AppStatus);
+                AppID, LicenseName, ApplicantFullName, AppDate, PassedTests, AppStatus);
 
             frm.ShowDialog();
         }
-        private void GetAppDataFromDGV(ref int AppID, ref string LicenseName, 
+        private void GetAppDataFromDGV(ref int AppID, ref string LicenseName,
             ref string ApplicantFullName, ref DateTime AppDate, ref short PassedTests, ref string AppStatus)
         {
             AppID = GetAppIDFromDGV();
@@ -220,6 +220,34 @@ namespace _19___Project___DVLD.Driving_License_Services
             frmVisionTestAppointments form = new frmVisionTestAppointments(
                 AppID, LicenseName, ApplicantFullName, AppDate, PassedTests, AppStatus);
             form.ShowDialog();
+        }
+
+        private void schedulTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            short PassedTests = GetPassedTestsCountFromDGV();
+            if (PassedTests == 0)
+            {
+                visionTestToolStripMenuItem.Enabled = true;
+                writtenTestToolStripMenuItem.Enabled = false;
+                streetTestToolStripMenuItem.Enabled = false;
+            }
+            else if (PassedTests == 1)
+            {
+                visionTestToolStripMenuItem.Enabled = false;
+                writtenTestToolStripMenuItem.Enabled = true;
+            }
+            else if (PassedTests == 2)
+            {
+                visionTestToolStripMenuItem.Enabled = false;
+                writtenTestToolStripMenuItem.Enabled = false;
+                streetTestToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                visionTestToolStripMenuItem.Enabled = false;
+                writtenTestToolStripMenuItem.Enabled = false;
+                streetTestToolStripMenuItem.Enabled = false;
+            }
         }
     }
 }
