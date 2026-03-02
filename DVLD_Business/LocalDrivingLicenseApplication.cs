@@ -172,7 +172,7 @@ namespace DVLD_Business
             return LocalDrivingLicensApplicationsData.isAppointmentLocked(testAppointmentID);
         }
 
-        public static bool hasPassedInLastVisionTest(int testAppointmentID)
+        public static bool hasPassedTheTest(int testAppointmentID)
         {
             return LocalDrivingLicensApplicationsData.GetLastTestResult(testAppointmentID); // 0 fail // 1 pass
         }

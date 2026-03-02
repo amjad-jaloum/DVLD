@@ -20,15 +20,9 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
         private DateTime _appDate { get; set; }
         private short _passedTests { get; set; }
         private string _appStatus { get; set; }
-        public enum enTestType
-        {
-            Vision = 1, Written = 2, Streat = 3
-        }
+        public enum enTestType { Vision = 1, Written = 2, Streat = 3 }
         public static enTestType TestType { get; set; }
-        public enum enTestMode
-        {
-            New, Edit, Retake
-        }
+        public enum enTestMode { New, Edit, Retake }
         enTestMode Mode = enTestMode.New;
 
         public delegate void RefreshManageLocalDrivingLicenseApplicationsDGVHandler(object sender);
@@ -88,7 +82,7 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
             }
             else if (!hasAciveAppointment())
             {
-                if (LocalDrivingLicenseApplication.hasPassedInLastVisionTest(GetTestAppointmentIDFromDGV()))
+                if (LocalDrivingLicenseApplication.hasPassedTheTest(GetTestAppointmentIDFromDGV()))
                 {
                     MessageBox.Show("The person has already passed this test.\n" +
                         "The last Test has to be failed to add new appointment!",
@@ -188,7 +182,8 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
 
         private void frmVisionTestAppointments_FormClosed(object sender, FormClosedEventArgs e)
         {
-            RefreshManageLocalDrivingLicenseApplicationsDGV?.Invoke(this);
+            if (LocalDrivingLicenseApplication.hasPassedTheTest(GetTestAppointmentIDFromDGV()))
+                RefreshManageLocalDrivingLicenseApplicationsDGV?.Invoke(this);
         }
     }
 }

@@ -16,10 +16,7 @@ namespace _19___Project___DVLD.Driving_License_Services
 {
     public partial class frmManageLocalDrivingLicenseApplications : Form
     {
-        private enum enAppStatus
-        {
-            New = 1, Cancelled = 2, Completed = 3
-        }
+        private enum enAppStatus { New = 1, Cancelled = 2, Completed = 3 }
 
         public frmManageLocalDrivingLicenseApplications()
         {
