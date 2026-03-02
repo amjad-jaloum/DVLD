@@ -125,9 +125,9 @@ namespace DVLD_Business
             return LocalDrivingLicensApplicationsData.getUsername(createdByUserID);
         }
 
-        public static int getTestFee(string TestTypeTitle)
+        public static int getTestFee(int TestTypeID)
         {
-            return LocalDrivingLicensApplicationsData.GetTestFees(TestTypeTitle);
+            return LocalDrivingLicensApplicationsData.GetTestFees(TestTypeID);
         }
 
         public static int AddNewTestAppointment(int TestTypeID, int LocalDrivingLicenseApplicationID,
@@ -137,9 +137,9 @@ namespace DVLD_Business
                 (TestTypeID,LocalDrivingLicenseApplicationID,AppointmentDate,PaidFees,CreatedByUserID,IsLocked);
         }
 
-        public static DataTable LoadTestAppointments(int LocalDrivingLicenseApplicationID)
+        public static DataTable LoadTestAppointments(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
-            return LocalDrivingLicensApplicationsData.LoadTestAppointments(LocalDrivingLicenseApplicationID);
+            return LocalDrivingLicensApplicationsData.LoadTestAppointments(LocalDrivingLicenseApplicationID, TestTypeID);
         }
 
         public static bool UpdateTestAppointmentDate(int LocalDrivingLicenseApplicationID, int TestAppointmentID, DateTime AppointmentDate)
@@ -172,9 +172,9 @@ namespace DVLD_Business
             return LocalDrivingLicensApplicationsData.isAppointmentLocked(testAppointmentID);
         }
 
-        public static bool hasFailedInLastVisionTest(int testAppointmentID)
+        public static bool hasPassedInLastVisionTest(int testAppointmentID)
         {
-            return LocalDrivingLicensApplicationsData.hasFailedInLastVisionTest(testAppointmentID);
+            return LocalDrivingLicensApplicationsData.GetLastTestResult(testAppointmentID); // 0 fail // 1 pass
         }
     }
 }

@@ -454,18 +454,18 @@ namespace DVLD_DataAccess
             finally { connection.Close(); }
             return Username;
         }
-        public static int GetTestFees(string TestTypeTitle)
+        public static int GetTestFees(int TestTypeID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             string query = @"
                             SELECT 
                                   [TestTypeFees]
                               FROM [DVLD].[dbo].[TestTypes]
-                              where TestTypeTitle = @TestTypeTitle
+                              where TestTypeID = @TestTypeID
                             ";
 
             SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@TestTypeTitle", TestTypeTitle);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
 
             try
             {
@@ -538,7 +538,7 @@ namespace DVLD_DataAccess
             return -1;
 
         }
-        public static DataTable LoadTestAppointments(int LocalDrivingLicenseApplicationID)
+        public static DataTable LoadTestAppointments(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -548,9 +548,11 @@ namespace DVLD_DataAccess
                           ,[IsLocked] as 'Is Locked'
                           FROM [DVLD].[dbo].[TestAppointments]
                           where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+                          and TestTypeID = @TestTypeID
                                 ";
             SqlCommand command = new SqlCommand(qeruy, connection);
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
 
             try
             {
@@ -756,7 +758,7 @@ namespace DVLD_DataAccess
             }
             return false;
         }
-        public static bool hasFailedInLastVisionTest(int TestAppointmentID)
+        public static bool GetLastTestResult(int TestAppointmentID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             string qeruy = @"select top 1 TestResult from Tests

@@ -15,38 +15,30 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
 {
     public partial class frmSheduleTest : Form
     {
-        int DLAppID;
-        string CalssName;
-        string ApplicantName;
-        int TestAppointmentID;
-        string Trail;
-        int RAppFees = 5;
-        private enum enTestTypeTitle
-        {
-            VisionTest = 1,
-            WrittenTest = 2,
-            PracticalTest = 3
-        }
-        public enum enTestMode
-        {
-            New, Edit, Retake
-        }
-        public enTestMode Mode = enTestMode.New;
+        private int DLAppID;
+        private string CalssName;
+        private string ApplicantName;
+        private int TestAppointmentID;
+        private string Trail;
+        private int RAppFees = 5;
+        frmVisionTestAppointments.enTestMode Mode { get; set; }
 
         public delegate void RefreshDataGridViewHandler(object sender);
         public event RefreshDataGridViewHandler RefreshDataGridView;
 
-        public frmSheduleTest(int DLAppID, string CalssName, string ApplicantName, string Trail)
+        public frmSheduleTest(int DLAppID, string CalssName, string ApplicantName, 
+            string Trail, frmVisionTestAppointments.enTestMode mode)
         {
             InitializeComponent();
             this.DLAppID = DLAppID;
             this.CalssName = CalssName;
             this.ApplicantName = ApplicantName;
             this.Trail = Trail;
-
-            Text = "Schedule New Vision Test Appointment";
+            Mode = mode;
+            Text = "Schedule New " + GetTestName() + " Test Appointment";
         }
-        public frmSheduleTest(int DLAppID, int TestAppointmentID, string CalssName, string ApplicantName, string Trail)
+        public frmSheduleTest(int DLAppID, int TestAppointmentID, string CalssName, 
+            string ApplicantName, string Trail, frmVisionTestAppointments.enTestMode mode)
         {
             InitializeComponent();
             this.DLAppID = DLAppID;
@@ -54,22 +46,23 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
             this.ApplicantName = ApplicantName;
             this.TestAppointmentID = TestAppointmentID;
             this.Trail = Trail;
-            Mode = enTestMode.Edit;
-            Text = "Edit Vision Test Appointment";
+            Mode = mode;
+
+            Text = "Edit " + GetTestName() + " Test Appointment";
         }
 
-        private string GetTestTypeTitle(enTestTypeTitle testType)
+        private string GetTestName()
         {
-            switch (testType)
+            switch (frmVisionTestAppointments.TestType)
             {
-                case enTestTypeTitle.VisionTest:
-                    return "Vision Test";
-                case enTestTypeTitle.WrittenTest:
-                    return "Written (Theory) Test";
-                case enTestTypeTitle.PracticalTest:
-                    return "Practical (Street) Test";
+                case frmVisionTestAppointments.enTestType.Vision:
+                    return "Vision";
+                case frmVisionTestAppointments.enTestType.Written:
+                    return "Written";
+                case frmVisionTestAppointments.enTestType.Streat:
+                    return "Streat";
                 default:
-                    return "Unknown Test Type";
+                    return string.Empty;
             }
         }
 
@@ -77,11 +70,11 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
         {
             loadInitialData();
 
-            bool isAppointmentStateLocked = LocalDrivingLicenseApplication.IsTestAppointmentLocked(TestAppointmentID);
-            if (isAppointmentStateLocked)
+            if (Mode == frmVisionTestAppointments.enTestMode.Edit)
             {
-                dtpTestAppointment.Enabled = !(Mode == enTestMode.Edit && isAppointmentStateLocked);
-                btnSave.Enabled = !(Mode == enTestMode.Edit && isAppointmentStateLocked);
+                bool isAppointmentStateLocked = LocalDrivingLicenseApplication.IsTestAppointmentLocked(TestAppointmentID);
+                dtpTestAppointment.Enabled = !(isAppointmentStateLocked);
+                btnSave.Enabled = !(isAppointmentStateLocked);
             }
             if (Trail == "1")
             {
@@ -108,7 +101,8 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
 
         private DateTime GetTestAppointmentDate()
         {
-            return Mode == enTestMode.New ? DateTime.Now : LocalDrivingLicenseApplication.GetTestAppointmentDate(DLAppID);
+            return Mode == frmVisionTestAppointments.enTestMode.New ? DateTime.Now : 
+                LocalDrivingLicenseApplication.GetTestAppointmentDate(DLAppID);
         }
 
         private string TotalFees()
@@ -118,30 +112,29 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
 
         private string AppFees()
         {
-            return LocalDrivingLicenseApplication.getTestFee(GetTestTypeTitle(enTestTypeTitle.VisionTest)).ToString();
+            return LocalDrivingLicenseApplication.getTestFee((int)frmVisionTestAppointments.TestType).ToString();
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
             switch (Mode)
             {
-                case enTestMode.New:
+                case frmVisionTestAppointments.enTestMode.New:
                     AddNewTestAppointment();
                     break;
-                case enTestMode.Edit:
+                case frmVisionTestAppointments.enTestMode.Edit:
                     UpdateTestAppointment();
                     break;
-                case enTestMode.Retake:
-                    AddNewRetakeTestAppointment();
+                case frmVisionTestAppointments.enTestMode.Retake:
+                    AddRetakeTestAppointment();
                     break;
             }
 
             RefreshDataGridView?.Invoke(this);
         }
 
-        private void AddNewRetakeTestAppointment()
+        private void AddRetakeTestAppointment()
         {
             lblRTestAppID.Text = AddNewTestAppointment().ToString();
-
         }
 
         private void UpdateTestAppointment()
@@ -161,7 +154,7 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
         private int AddNewTestAppointment()
         {
             int ReturnedAppID = LocalDrivingLicenseApplication.AddNewTestAppointment(
-                (int)enTestTypeTitle.VisionTest, DLAppID, dtpTestAppointment.Value,
+                (int)frmVisionTestAppointments.TestType, DLAppID, dtpTestAppointment.Value,
                 Convert.ToDecimal(TotalFees()), clsGloabalSettings.LogginUser.UserID, false);
 
             if (ReturnedAppID != -1)

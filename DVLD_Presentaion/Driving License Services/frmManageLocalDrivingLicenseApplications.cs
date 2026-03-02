@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -83,10 +84,10 @@ namespace _19___Project___DVLD.Driving_License_Services
         private void btnNewLocalLicense_Click(object sender, EventArgs e)
         {
             frmNewLocalDrivingLicenseApplications frm = new frmNewLocalDrivingLicenseApplications();
-            frm.DataBack += HandleDelgateData;
+            frm.DataBack += RefreshDGV;
             frm.ShowDialog();
         }
-        private void HandleDelgateData(object sender)
+        private void RefreshDGV(object sender)
         {
             LoadLocalDrivingLicensesToDGV();
         }
@@ -205,23 +206,6 @@ namespace _19___Project___DVLD.Driving_License_Services
             PassedTests = GetPassedTestsCountFromDGV();
             AppStatus = GetStatusFromDGV();
         }
-        private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int AppID = 0;
-            string LicenseName = "";
-            string ApplicantFullName = "";
-            DateTime AppDate = DateTime.MinValue;
-            short PassedTests = 0;
-            string AppStatus = "";
-
-            GetAppDataFromDGV(ref AppID, ref LicenseName, ref ApplicantFullName, ref AppDate, ref PassedTests,
-                ref AppStatus);
-
-            frmVisionTestAppointments form = new frmVisionTestAppointments(
-                AppID, LicenseName, ApplicantFullName, AppDate, PassedTests, AppStatus);
-            form.ShowDialog();
-        }
-
         private void schedulTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             short PassedTests = GetPassedTestsCountFromDGV();
@@ -235,6 +219,7 @@ namespace _19___Project___DVLD.Driving_License_Services
             {
                 visionTestToolStripMenuItem.Enabled = false;
                 writtenTestToolStripMenuItem.Enabled = true;
+                streetTestToolStripMenuItem.Enabled = false;
             }
             else if (PassedTests == 2)
             {
@@ -248,6 +233,53 @@ namespace _19___Project___DVLD.Driving_License_Services
                 writtenTestToolStripMenuItem.Enabled = false;
                 streetTestToolStripMenuItem.Enabled = false;
             }
+        }
+        private void OpenTestAppointmentTestScheduler(frmVisionTestAppointments.enTestType TestType)
+        {
+            frmVisionTestAppointments form = new frmVisionTestAppointments();
+            ApplyChangesInForm(TestType, ref form);
+            form.RefreshManageLocalDrivingLicenseApplicationsDGV += RefreshDGV;
+            form.ShowDialog();
+        }
+        private void ApplyChangesInForm(frmVisionTestAppointments.enTestType testType, ref frmVisionTestAppointments form)
+        {
+            int AppID = 0;
+            string LicenseName = "";
+            string ApplicantFullName = "";
+            DateTime AppDate = DateTime.MinValue;
+            short PassedTests = 0;
+            string AppStatus = "";
+
+            GetAppDataFromDGV(ref AppID, ref LicenseName, ref ApplicantFullName, ref AppDate, ref PassedTests,
+                ref AppStatus);
+
+            form = new frmVisionTestAppointments(AppID, LicenseName, ApplicantFullName, AppDate, PassedTests, AppStatus);
+            frmVisionTestAppointments.TestType = testType;
+
+            switch (testType)
+            {
+                case frmVisionTestAppointments.enTestType.Vision:
+                    form.Text = "Schedule Vision Test Appointment";
+                    break;
+                case frmVisionTestAppointments.enTestType.Written:
+                    form.Text = "Schedule Written Test Appointment";
+                    break;
+                case frmVisionTestAppointments.enTestType.Streat:
+                    form.Text = "Schedule Street Test Appointment";
+                    break;
+            }
+        }
+        private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenTestAppointmentTestScheduler(frmVisionTestAppointments.enTestType.Vision);
+        }
+        private void writtenTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenTestAppointmentTestScheduler(frmVisionTestAppointments.enTestType.Written);
+        }
+        private void streetTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenTestAppointmentTestScheduler(frmVisionTestAppointments.enTestType.Streat);
         }
     }
 }
