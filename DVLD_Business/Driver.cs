@@ -20,9 +20,9 @@ namespace DVLD_Business
             CreatedDate = createdDate;
         }
 
-        public static int AddNewDriver(int PersonID, int CreatedByUserID, DateTime CreatedDate)
+        public static int AddNewDriver(int PersonID, int CreatedByUserID)
         {
-            return DriversData.AddNewDriver(PersonID, CreatedByUserID, CreatedDate);
+            return DriversData.AddNewDriver(PersonID, CreatedByUserID, DateTime.Now);
         }
     }
 }

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using DVLD_Business;
 
 namespace _19___Project___DVLD.Driving_License_Services
 {
@@ -18,6 +20,9 @@ namespace _19___Project___DVLD.Driving_License_Services
         private DateTime _appDate { get; set; }
         private short _passedTests { get; set; }
         private string _appStatus { get; set; }
+
+        public delegate void IssueDriverLincenseHandler(object sender);
+        public event IssueDriverLincenseHandler OnIssueDriverLicense;
 
         public frmIssueDriverLicense_FirstTime(int LocalDrivingLicenseAppID, string licenseName,
             string applicantFullName, DateTime appDate, short passedTests, string appStatus)
@@ -33,7 +38,63 @@ namespace _19___Project___DVLD.Driving_License_Services
 
         private void btnIssue_Click(object sender, EventArgs e)
         {
+            int LicenseID = AppLicense.AddNewLicense(
+                LocalDrivingLicenseApplication.GetApplicationID(_LocalDrivingLicenseAppID)
+                , AddNewDriverAndGetID()
+                , GetLinenseClassID()
+                , DateTime.Now
+                , DateTime.Now.AddYears(10)
+                , tbNotes.Text
+                , GetPaidFees()
+                , true
+                , 1
+                , clsGloabalSettings.LogginUser.UserID
+                );
 
+            if (LicenseID != -1)
+            {
+                MessageBox.Show("License issued successfully!\nLicese ID: " + LicenseID, 
+                    "Issued Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LocalDrivingLicenseApplication.UpdateApplicationStatus(_LocalDrivingLicenseAppID,
+                    (short)LocalDrivingLicenseApplication.enApplicationStatus.Completed);
+                OnIssueDriverLicense?.Invoke(this);
+            }
+            else
+            {
+                MessageBox.Show("License not issued!", "Not Issued!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private decimal GetPaidFees()
+        {
+            return Convert.ToDecimal(LocalDrivingLicenseApplication.GetNewLocalDrivingLicenseAppFees());
+        }
+        private int GetLinenseClassID()
+        {
+            int licenseClassID = LocalDrivingLicenseApplication.GetLicenseClassID(_LocalDrivingLicenseAppID);
+            if (licenseClassID != -1)
+            {
+                return licenseClassID;
+            }
+            else
+            {
+                MessageBox.Show("Error while getting license class ID");
+                return licenseClassID;
+            }
+        }
+        private int AddNewDriverAndGetID()
+        {
+            int PersonID = Driver.AddNewDriver(
+            DVLD_Business.Application.GetApplicantPersonID(_LocalDrivingLicenseAppID), clsGloabalSettings.LogginUser.UserID);
+            if (PersonID != -1)
+            {
+                return PersonID;
+            }
+            else
+            {
+                MessageBox.Show("Error while creating new driver");
+                return PersonID;
+            }
         }
         private void LoadPesronInfoToCTRL(object sender, EventArgs e)
         {
@@ -46,7 +107,6 @@ namespace _19___Project___DVLD.Driving_License_Services
 
             ctrlShowDrivingLicenseAppInfo1.ctrlShowDrivingLicenseAppInfo_Load(sender, e);
         }
-
         private void frmIssueDriverLicense_FirstTime_Load(object sender, EventArgs e)
         {
             if (_LocalDrivingLicenseAppID != 0)

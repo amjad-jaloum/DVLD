@@ -7,7 +7,7 @@ using DVLD_DataAccess;
 
 namespace DVLD_Business
 {
-    public class License
+    public class AppLicense
     {
         public int ApplicationID { get; set; }
         public int DriverID { get; set; }
@@ -20,7 +20,7 @@ namespace DVLD_Business
         public short IssueReason { get; set; }
         public int CreatedByUserID { get; set; }
 
-        public License (int applicationID, int driverID, int licenseClass, DateTime issueDate, 
+        public AppLicense (int applicationID, int driverID, int licenseClass, DateTime issueDate, 
             DateTime expirationDate, string notes, decimal paidFees, bool isActive, short issueReason, int createdByUserID)
         {
             ApplicationID = applicationID;

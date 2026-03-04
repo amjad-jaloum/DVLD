@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Mail;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
@@ -221,7 +222,8 @@ namespace DVLD_DataAccess
             {
                 return false;
             }
-            finally { 
+            finally
+            {
                 connection.Close();
             }
             return false;
@@ -377,7 +379,7 @@ namespace DVLD_DataAccess
             finally { connection.Close(); }
             return isFound;
         }
-        public static int GetApplicationIDFromLocalDrivingLicenseApplications(int localDrivingLicenseAppID)
+        public static int GetApplicationID(int localDrivingLicenseAppID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             string query = @"
@@ -822,6 +824,63 @@ namespace DVLD_DataAccess
                 connection.Close();
             }
             return false;
+        }
+        public static bool UpdateApplicaitonStatus(int LocalDrivingLicenseApplicationID, int ApplicationStatus)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"
+                      update Applications 
+                      set ApplicationStatus = @ApplicationStatus
+                      where ApplicationID = 
+                          (
+                            SELECT   ApplicationID
+                            FROM         LocalDrivingLicenseApplications
+                            WHERE     (LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID)
+                          )        
+                    ";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            bool isUpdated = false;
+            try
+            {
+                connection.Open();
+                int effectedRows = command.ExecuteNonQuery();
+                if (effectedRows > 0)
+                {
+                    isUpdated = true;
+                }
+            }
+            catch (Exception)
+            {
+                isUpdated = false;
+            }
+            finally { connection.Close(); }
+            return isUpdated;
+        }
+        public static int GetLicenseClassID(int localDrivingLicenseApplicationID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"
+                    SELECT   LicenseClassID
+                    FROM         LocalDrivingLicenseApplications
+                    WHERE     (LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationID)
+                ";
+            SqlCommand sqlCommand = new SqlCommand(query, connection);
+            sqlCommand.Parameters.AddWithValue("@localDrivingLicenseApplicationID", localDrivingLicenseApplicationID);
+
+            try
+            {
+                connection.Open();
+                object result = sqlCommand.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int LicenseClassID))
+                {
+                    return LicenseClassID;
+                }
+            }
+            catch (Exception) { }
+            finally { connection.Close(); }
+            return -1;
         }
     }
 }

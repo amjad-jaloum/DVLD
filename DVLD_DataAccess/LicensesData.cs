@@ -26,16 +26,16 @@ namespace DVLD_DataAccess
                            ,[IssueReason]
                            ,[CreatedByUserID])
                      VALUES
-                           (<ApplicationID, int,>
-                           ,<DriverID, int,>
-                           ,<LicenseClass, int,>
-                           ,<IssueDate, datetime,>
-                           ,<ExpirationDate, datetime,>
-                           ,<Notes, nvarchar(500),>
-                           ,<PaidFees, smallmoney,>
-                           ,<IsActive, bit,>
-                           ,<IssueReason, tinyint,>
-                           ,<CreatedByUserID, int,>)
+                           (@ApplicationID
+                           ,@DriverID
+                           ,@LicenseClass
+                           ,@IssueDate
+                           ,@ExpirationDate
+                           ,@Notes
+                           ,@PaidFees
+                           ,@IsActive
+                           ,@IssueReason
+                           ,@CreatedByUserID);
 
 
                                 SELECT SCOPE_IDENTITY();

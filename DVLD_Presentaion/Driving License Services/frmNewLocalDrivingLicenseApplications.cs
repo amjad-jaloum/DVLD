@@ -120,7 +120,7 @@ namespace _19___Project___DVLD.Driving_License_Services
         private void LoadLocalLicenseInitialData()
         {
             lblAppDate.Text = DateTime.Now.ToString();
-            lblAppFees.Text = LocalDrivingLicenseApplication.GetLocalDrivingLicenseAppFees();
+            lblAppFees.Text = LocalDrivingLicenseApplication.GetNewLocalDrivingLicenseAppFees();
             lblCreatedBy.Text = clsGloabalSettings.LogginUser.UserName;
         }
         private void ctrlPersonDetailWithFitler1_WhenUserFound(Person obj)

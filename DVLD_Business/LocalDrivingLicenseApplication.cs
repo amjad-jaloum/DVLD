@@ -29,6 +29,12 @@ namespace DVLD_Business
             ReleaseDetainedDrivingLicsense = 5,
             NewInternationalLicense = 5,
         }
+
+        public enum enApplicationStatus
+        {
+            New = 1, Cancelled = 2 , Completed = 3
+        }
+        enApplicationStatus AppStatus;
         public LocalDrivingLicenseApplication(int applicantPersonID, DateTime applicationDate, int applicationTypeID, short applicationStatus, DateTime lastStatusDate, int paidFees, int createdByUserID)
         {
             ApplicantPersonID = applicantPersonID;
@@ -50,7 +56,7 @@ namespace DVLD_Business
             return LocalDrivingLicensApplicationsData.GetLocalLicensesClassNames();
         }
 
-        public static string GetLocalDrivingLicenseAppFees()
+        public static string GetNewLocalDrivingLicenseAppFees()
         {
             return LocalDrivingLicensApplicationsData.GetAppServiceFee((int)enAppServiceFee.NewLocalDrivingLicenseService).ToString();
         }
@@ -110,9 +116,9 @@ namespace DVLD_Business
             }
         }
 
-        public static int GetApplicationIDFromLocalDrivingLicenseApplications(int localDrivingLicenseAppID)
+        public static int GetApplicationID(int localDrivingLicenseAppID)
         {
-            return LocalDrivingLicensApplicationsData.GetApplicationIDFromLocalDrivingLicenseApplications(localDrivingLicenseAppID);
+            return LocalDrivingLicensApplicationsData.GetApplicationID(localDrivingLicenseAppID);
         }
 
         public static string getAppTypeName(int applicationTypeID)
@@ -180,6 +186,16 @@ namespace DVLD_Business
         public static bool IsStatusCompletedOrCancelled(int LocalDrivingLicenseApplicationID)
         {
             return LocalDrivingLicensApplicationsData.IsStatusCompletedOrCancelled(LocalDrivingLicenseApplicationID);
+        }
+
+        public static bool UpdateApplicationStatus(int LocalDrivingLicenseApplicationID, short newStatus)
+        {
+            return LocalDrivingLicensApplicationsData.UpdateApplicaitonStatus(LocalDrivingLicenseApplicationID, newStatus);
+        }
+
+        public static int GetLicenseClassID(int LocalDrivingLicenseApplicationID)
+        {
+            return LocalDrivingLicensApplicationsData.GetLicenseClassID(LocalDrivingLicenseApplicationID);
         }
     }
 }

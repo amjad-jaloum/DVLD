@@ -305,6 +305,7 @@ namespace _19___Project___DVLD.Driving_License_Services
 
             frmIssueDriverLicense_FirstTime form =
                 new frmIssueDriverLicense_FirstTime(AppID, LicenseName, ApplicantFullName, AppDate, PassedTests, AppStatus);
+            form.OnIssueDriverLicense += RefreshDGV;
             form.ShowDialog();
         }
         private bool isStatusCompletedOrCancelled()

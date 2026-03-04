@@ -61,7 +61,7 @@ namespace _19___Project___DVLD
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
 
         private void tbUsername_Leave(object sender, EventArgs e)
