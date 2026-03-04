@@ -176,5 +176,10 @@ namespace DVLD_Business
         {
             return LocalDrivingLicensApplicationsData.GetLastTestResult(testAppointmentID); // 0 fail // 1 pass
         }
+
+        public static bool IsStatusCompletedOrCancelled(int LocalDrivingLicenseApplicationID)
+        {
+            return LocalDrivingLicensApplicationsData.IsStatusCompletedOrCancelled(LocalDrivingLicenseApplicationID);
+        }
     }
 }

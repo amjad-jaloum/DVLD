@@ -144,7 +144,7 @@ namespace _19___Project___DVLD.Driving_License_Services
         {
             if (MessageBox.Show("Are you sure you want to cancel this person Application?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                int AppID = GetAppIDFromDGV();
+                int AppID = GetLocalDrivingLicenseAppIDFromDGV();
                 if (LocalDrivingLicenseApplication.UpdateLocalDrivingLicenseAppStatus(AppID, (int)enAppStatus.Cancelled))
                 {
                     MessageBox.Show("Appliction status is cancelled!", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -152,7 +152,7 @@ namespace _19___Project___DVLD.Driving_License_Services
                 }
             }
         }
-        private int GetAppIDFromDGV()
+        private int GetLocalDrivingLicenseAppIDFromDGV()
         {
             return Convert.ToInt32(dgvLocalLicenses.CurrentRow.Cells[0].Value);
         }
@@ -196,7 +196,7 @@ namespace _19___Project___DVLD.Driving_License_Services
         private void GetAppDataFromDGV(ref int AppID, ref string LicenseName,
             ref string ApplicantFullName, ref DateTime AppDate, ref short PassedTests, ref string AppStatus)
         {
-            AppID = GetAppIDFromDGV();
+            AppID = GetLocalDrivingLicenseAppIDFromDGV();
             LicenseName = GetLecenseNameFromDGV();
             ApplicantFullName = GetApplicantFullNameFromDGV();
             AppDate = GetAppDateFromDGV();
@@ -205,31 +205,6 @@ namespace _19___Project___DVLD.Driving_License_Services
         }
         private void schedulTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            short PassedTests = GetPassedTestsCountFromDGV();
-            if (PassedTests == 0)
-            {
-                visionTestToolStripMenuItem.Enabled = true;
-                writtenTestToolStripMenuItem.Enabled = false;
-                streetTestToolStripMenuItem.Enabled = false;
-            }
-            else if (PassedTests == 1)
-            {
-                visionTestToolStripMenuItem.Enabled = false;
-                writtenTestToolStripMenuItem.Enabled = true;
-                streetTestToolStripMenuItem.Enabled = false;
-            }
-            else if (PassedTests == 2)
-            {
-                visionTestToolStripMenuItem.Enabled = false;
-                writtenTestToolStripMenuItem.Enabled = false;
-                streetTestToolStripMenuItem.Enabled = true;
-            }
-            else
-            {
-                visionTestToolStripMenuItem.Enabled = false;
-                writtenTestToolStripMenuItem.Enabled = false;
-                streetTestToolStripMenuItem.Enabled = false;
-            }
         }
         private void OpenTestAppointmentTestScheduler(frmVisionTestAppointments.enTestType TestType)
         {
@@ -277,6 +252,64 @@ namespace _19___Project___DVLD.Driving_License_Services
         private void streetTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenTestAppointmentTestScheduler(frmVisionTestAppointments.enTestType.Streat);
+        }
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            short PassedTests = GetPassedTestsCountFromDGV();
+            if (PassedTests == 0)
+            {
+                EnableScheduleTestOption(visionTestToolStripMenuItem);
+            }
+            else if (PassedTests == 1)
+            {
+                EnableScheduleTestOption(writtenTestToolStripMenuItem);
+            }
+            else if (PassedTests == 2)
+            {
+                EnableScheduleTestOption(streetTestToolStripMenuItem);
+            }
+            else
+            {
+                disableScheduleTestOptions();
+                EnableIssueDrivingLicenseOption();
+            }
+            IssueDrivingLicense.Enabled = (GetPassedTestsCountFromDGV() == 3 && !isStatusCompletedOrCancelled());
+
+        }
+        private void EnableScheduleTestOption(ToolStripMenuItem menuItem)
+        {
+            disableScheduleTestOptions();
+            menuItem.Enabled = true;
+        }
+        private void disableScheduleTestOptions()
+        {
+            visionTestToolStripMenuItem.Enabled = false;
+            writtenTestToolStripMenuItem.Enabled = false;
+            streetTestToolStripMenuItem.Enabled = false;
+        }
+        private void EnableIssueDrivingLicenseOption()
+        {
+
+        }
+        private void IssueDrivingLicense_Click(object sender, EventArgs e)
+        {
+            int AppID = 0;
+            string LicenseName = "";
+            string ApplicantFullName = "";
+            DateTime AppDate = DateTime.MinValue;
+            short PassedTests = 0;
+            string AppStatus = "";
+
+            GetAppDataFromDGV(ref AppID, ref LicenseName, ref ApplicantFullName, ref AppDate, ref PassedTests,
+                ref AppStatus);
+
+            frmIssueDriverLicense_FirstTime form =
+                new frmIssueDriverLicense_FirstTime(AppID, LicenseName, ApplicantFullName, AppDate, PassedTests, AppStatus);
+            form.ShowDialog();
+        }
+        private bool isStatusCompletedOrCancelled()
+        {
+            return LocalDrivingLicenseApplication.IsStatusCompletedOrCancelled(GetLocalDrivingLicenseAppIDFromDGV());
         }
     }
 }

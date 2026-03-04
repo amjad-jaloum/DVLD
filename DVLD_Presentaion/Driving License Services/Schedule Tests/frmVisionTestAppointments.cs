@@ -28,7 +28,6 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
         public delegate void RefreshManageLocalDrivingLicenseApplicationsDGVHandler(object sender);
         public event RefreshManageLocalDrivingLicenseApplicationsDGVHandler RefreshManageLocalDrivingLicenseApplicationsDGV;
 
-
         public frmVisionTestAppointments(int LocalDrivingLicenseAppID, string licenseName,
             string applicantFullName, DateTime appDate, short passedTests, string appStatus)
         {

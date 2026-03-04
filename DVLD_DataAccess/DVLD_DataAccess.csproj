@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationTypesData.cs" />
+    <Compile Include="DriversData.cs" />
+    <Compile Include="LicensesData.cs" />
     <Compile Include="LocalDrivingLicensApplicationsData.cs" />
     <Compile Include="PeopleData.cs" />
     <Compile Include="clsDataAccessSettings.cs" />

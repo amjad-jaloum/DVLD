@@ -66,6 +66,12 @@
     <Compile Include="Driving License Services\ctrlShowDrivingLicenseAppInfo.Designer.cs">
       <DependentUpon>ctrlShowDrivingLicenseAppInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Driving License Services\frmIssueDriverLicense_FirstTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Driving License Services\frmIssueDriverLicense_FirstTime.Designer.cs">
+      <DependentUpon>frmIssueDriverLicense_FirstTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Driving License Services\frmManageLocalDrivingLicenseApplications.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Driving License Services\ctrlShowDrivingLicenseAppInfo.resx">
       <DependentUpon>ctrlShowDrivingLicenseAppInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Driving License Services\frmIssueDriverLicense_FirstTime.resx">
+      <DependentUpon>frmIssueDriverLicense_FirstTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Driving License Services\frmManageLocalDrivingLicenseApplications.resx">
       <DependentUpon>frmManageLocalDrivingLicenseApplications.cs</DependentUpon>

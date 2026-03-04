@@ -207,7 +207,10 @@ namespace DVLD_DataAccess
                 if (reader.Read())
                 {
                     if (reader["Status"].ToString().Contains("Cancelled"))
+                    {
+                        reader.Close();
                         return true;
+                    }
                 }
                 else
                 {
@@ -218,7 +221,9 @@ namespace DVLD_DataAccess
             {
                 return false;
             }
-            finally { connection.Close(); }
+            finally { 
+                connection.Close();
+            }
             return false;
         }
         public static List<string> LocalDrivingColumns()
@@ -745,6 +750,7 @@ namespace DVLD_DataAccess
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.HasRows)
                 {
+                    reader.Close();
                     return true;
                 }
             }
@@ -775,6 +781,36 @@ namespace DVLD_DataAccess
                 {
                     connection.Close();
                     return value;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+        public static bool IsStatusCompletedOrCancelled(int localDrivingLicenseApplicationID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string qeruy = @"SELECT Status
+                            FROM         LocalDrivingLicenseApplications_View
+                            where LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationID
+                            and Status in ('Completed', 'Cancelled')
+                                ";
+            SqlCommand command = new SqlCommand(qeruy, connection);
+            command.Parameters.AddWithValue("@localDrivingLicenseApplicationID", localDrivingLicenseApplicationID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Close();
+                    return true;
                 }
             }
             catch (Exception)
