@@ -256,6 +256,16 @@ namespace _19___Project___DVLD.Driving_License_Services
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
             short PassedTests = GetPassedTestsCountFromDGV();
+            bool isCompletedOrCancelled = isStatusCompletedOrCancelled();
+
+            editApplicationToolStripMenuItem.Enabled = !isCompletedOrCancelled;
+            cancelApplicationToolStripMenuItem.Enabled = !isCompletedOrCancelled;
+            deleteApplicationToolStripMenuItem.Enabled = !isCompletedOrCancelled;
+            schedulTestToolStripMenuItem.Enabled = !isCompletedOrCancelled;
+            IssueDrivingLicense.Enabled = (PassedTests == 3 && !isCompletedOrCancelled);
+            showLicenseToolStripMenuItem.Enabled = (PassedTests == 3);
+
+
             if (PassedTests == 0)
             {
                 EnableScheduleTestOption(visionTestToolStripMenuItem);
@@ -274,8 +284,6 @@ namespace _19___Project___DVLD.Driving_License_Services
                 EnableIssueDrivingLicenseOption();
             }
 
-            IssueDrivingLicense.Enabled = (GetPassedTestsCountFromDGV() == 3 && !isStatusCompletedOrCancelled());
-            showLicenseToolStripMenuItem.Enabled = (GetPassedTestsCountFromDGV() == 3);
         }
         private void EnableScheduleTestOption(ToolStripMenuItem menuItem)
         {

@@ -60,6 +60,9 @@
             this.lblRowsCountValue = new System.Windows.Forms.Label();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.editApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tlpForm.SuspendLayout();
             this.tlpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalLicenses)).BeginInit();
@@ -81,7 +84,7 @@
             this.tlpForm.Controls.Add(this.pictureBox1, 1, 0);
             this.tlpForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpForm.Location = new System.Drawing.Point(0, 0);
-            this.tlpForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpForm.Margin = new System.Windows.Forms.Padding(2);
             this.tlpForm.Name = "tlpForm";
             this.tlpForm.RowCount = 1;
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36F));
@@ -97,7 +100,7 @@
             this.tlpMain.Controls.Add(this.tplMainFooter, 0, 2);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(2, 2);
-            this.tlpMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpMain.Margin = new System.Windows.Forms.Padding(2);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 3;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
@@ -116,7 +119,7 @@
             this.dgvLocalLicenses.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvLocalLicenses.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLocalLicenses.Location = new System.Drawing.Point(2, 55);
-            this.dgvLocalLicenses.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvLocalLicenses.Margin = new System.Windows.Forms.Padding(2);
             this.dgvLocalLicenses.MultiSelect = false;
             this.dgvLocalLicenses.Name = "dgvLocalLicenses";
             this.dgvLocalLicenses.ReadOnly = true;
@@ -130,18 +133,21 @@
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cancelApplicationToolStripMenuItem,
             this.showApplicationDetailsToolStripMenuItem,
+            this.editApplicationToolStripMenuItem,
             this.deleteApplicationToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.cancelApplicationToolStripMenuItem,
             this.toolStripSeparator1,
             this.schedulTestToolStripMenuItem,
             this.toolStripSeparator2,
             this.IssueDrivingLicense,
+            this.toolStripSeparator4,
             this.showLicenseToolStripMenuItem,
             this.toolStripSeparator3,
             this.showPersonLicensesHistoryToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(242, 198);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(242, 210);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // cancelApplicationToolStripMenuItem
@@ -231,7 +237,6 @@
             // 
             // showPersonLicensesHistoryToolStripMenuItem
             // 
-            this.showPersonLicensesHistoryToolStripMenuItem.Enabled = false;
             this.showPersonLicensesHistoryToolStripMenuItem.Name = "showPersonLicensesHistoryToolStripMenuItem";
             this.showPersonLicensesHistoryToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.showPersonLicensesHistoryToolStripMenuItem.Text = "Show Person Licenses History";
@@ -245,7 +250,7 @@
             this.tlpMainHeader.Controls.Add(this.MainHeaderPanel, 0, 0);
             this.tlpMainHeader.Controls.Add(this.btnNewLocalLicense, 1, 0);
             this.tlpMainHeader.Location = new System.Drawing.Point(2, 2);
-            this.tlpMainHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpMainHeader.Margin = new System.Windows.Forms.Padding(2);
             this.tlpMainHeader.Name = "tlpMainHeader";
             this.tlpMainHeader.RowCount = 1;
             this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -259,7 +264,7 @@
             this.MainHeaderPanel.Controls.Add(this.label1);
             this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainHeaderPanel.Location = new System.Drawing.Point(2, 2);
-            this.MainHeaderPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MainHeaderPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MainHeaderPanel.Name = "MainHeaderPanel";
             this.MainHeaderPanel.Size = new System.Drawing.Size(679, 45);
             this.MainHeaderPanel.TabIndex = 3;
@@ -269,7 +274,7 @@
             this.flowLayoutPanel1.Controls.Add(this.mtxbSearch);
             this.flowLayoutPanel1.Controls.Add(this.cbStatus);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(197, 22);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(228, 31);
             this.flowLayoutPanel1.TabIndex = 2;
@@ -277,7 +282,7 @@
             // mtxbSearch
             // 
             this.mtxbSearch.Location = new System.Drawing.Point(2, 2);
-            this.mtxbSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mtxbSearch.Margin = new System.Windows.Forms.Padding(2);
             this.mtxbSearch.Name = "mtxbSearch";
             this.mtxbSearch.Size = new System.Drawing.Size(116, 20);
             this.mtxbSearch.TabIndex = 5;
@@ -300,7 +305,7 @@
             this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilter.FormattingEnabled = true;
             this.cbFilter.Location = new System.Drawing.Point(59, 24);
-            this.cbFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbFilter.Margin = new System.Windows.Forms.Padding(2);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(135, 21);
             this.cbFilter.TabIndex = 1;
@@ -322,7 +327,7 @@
             this.btnNewLocalLicense.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNewLocalLicense.AutoSize = true;
             this.btnNewLocalLicense.Location = new System.Drawing.Point(728, 17);
-            this.btnNewLocalLicense.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNewLocalLicense.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewLocalLicense.Name = "btnNewLocalLicense";
             this.btnNewLocalLicense.Size = new System.Drawing.Size(155, 30);
             this.btnNewLocalLicense.TabIndex = 2;
@@ -339,7 +344,7 @@
             this.tplMainFooter.Controls.Add(this.plMainfooterLable, 0, 0);
             this.tplMainFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tplMainFooter.Location = new System.Drawing.Point(2, 415);
-            this.tplMainFooter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tplMainFooter.Margin = new System.Windows.Forms.Padding(2);
             this.tplMainFooter.Name = "tplMainFooter";
             this.tplMainFooter.RowCount = 1;
             this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -351,7 +356,7 @@
             // 
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose.Location = new System.Drawing.Point(746, 2);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(137, 45);
             this.btnClose.TabIndex = 0;
@@ -365,7 +370,7 @@
             this.plMainfooterLable.Controls.Add(this.lblRecordsNumber);
             this.plMainfooterLable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plMainfooterLable.Location = new System.Drawing.Point(2, 2);
-            this.plMainfooterLable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.plMainfooterLable.Margin = new System.Windows.Forms.Padding(2);
             this.plMainfooterLable.Name = "plMainfooterLable";
             this.plMainfooterLable.Size = new System.Drawing.Size(740, 45);
             this.plMainfooterLable.TabIndex = 1;
@@ -399,13 +404,29 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::_19___Project___DVLD.Properties.Resources.papers;
             this.pictureBox1.Location = new System.Drawing.Point(913, 20);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(20);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(13, 13, 13, 13);
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(13);
             this.pictureBox1.Size = new System.Drawing.Size(159, 430);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(238, 6);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(238, 6);
+            // 
+            // editApplicationToolStripMenuItem
+            // 
+            this.editApplicationToolStripMenuItem.Name = "editApplicationToolStripMenuItem";
+            this.editApplicationToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.editApplicationToolStripMenuItem.Text = "Edit Application";
             // 
             // frmManageLocalDrivingLicenseApplications
             // 
@@ -413,7 +434,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1092, 470);
             this.Controls.Add(this.tlpForm);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmManageLocalDrivingLicenseApplications";
@@ -471,5 +492,8 @@
         private System.Windows.Forms.ToolStripMenuItem showLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem showPersonLicensesHistoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem editApplicationToolStripMenuItem;
     }
 }
