@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 using DVLD_DataAccess;
@@ -54,33 +55,46 @@ namespace DVLD_Business
             NationalityCountryID = nationalityCountryID;
             ImagePath = imagePath;
         }
+        public string FullName
+        {
+            get
+            {
+                if (FirstName.Length > 0)
+                    return FirstName + " " + SecondName + " " + ThirdName + " " + LastName;
+                else
+                    return "First Name is Empty!";
+            }
+        }
+        public string GenderString
+        {
+            get
+            {
+                return Gender == 1 ? "Female" : "Male";
+            }
+        }
+        
         public static DataTable GetAllPeople()
         {
             return PeopleData.GetAllPeople();
         }
-
         public static List<string> GetAllCountries()
         {
             return PeopleData.GetAllCountries();
         }
-
         public static bool IsNationalNoFound(string nationalNo)
         {
             return PeopleData.IsNationalNoFound(nationalNo);
         }
-
         public static int AddNewPerson(Person person)
         {
             return PeopleData.AddNewPerson(person.NationalNo, person.FirstName, person.SecondName, person.ThirdName, person.LastName, person.DateOfBirth,
                 person.Gender, person.Address, person.Phone, person.Email, person.NationalityCountryID, person.ImagePath);
         }
-
         public static bool UpdatePerson(Person person)
         {
             return PeopleData.UpdatePerson(person.PersonID, person.NationalNo, person.FirstName, person.SecondName, person.ThirdName, person.LastName, person.DateOfBirth,
                 person.Gender, person.Address, person.Phone, person.Email, person.NationalityCountryID, person.ImagePath);
         }
-
         public static Person FindPerson(int ID)
         {
             string FirstName = "", SecondName = "", ThirdName = "", LastName = "";
@@ -106,7 +120,6 @@ namespace DVLD_Business
                 return null;
             }
         }
-
         public static Person GetPersonInfoWithQueryFilter(string col, string value)
         {
             int ID = -1;
@@ -133,23 +146,19 @@ namespace DVLD_Business
                 return null;
             }
         }
-
         public static List<string> GetPeopleColumnNames()
         {
             return PeopleData.GetPeopleColumnNames();
         }
-
         public static DataTable GetFilterdPeopleDataTable(string col, string value)
         {
             return PeopleData.GetDataTableWithQuery(col, value);
         }
-
         public static bool DeletePerson(int PersonID)
         {
             return PeopleData.DeletePerson(PersonID);
         }
-
-        public static string GetCountryName(int  CountryID)
+        public static string GetCountryName(int CountryID)
         {
             return PeopleData.GetCountryName(CountryID);
         }

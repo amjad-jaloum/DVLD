@@ -273,8 +273,9 @@ namespace _19___Project___DVLD.Driving_License_Services
                 disableScheduleTestOptions();
                 EnableIssueDrivingLicenseOption();
             }
-            IssueDrivingLicense.Enabled = (GetPassedTestsCountFromDGV() == 3 && !isStatusCompletedOrCancelled());
 
+            IssueDrivingLicense.Enabled = (GetPassedTestsCountFromDGV() == 3 && !isStatusCompletedOrCancelled());
+            showLicenseToolStripMenuItem.Enabled = (GetPassedTestsCountFromDGV() == 3);
         }
         private void EnableScheduleTestOption(ToolStripMenuItem menuItem)
         {
@@ -311,6 +312,12 @@ namespace _19___Project___DVLD.Driving_License_Services
         private bool isStatusCompletedOrCancelled()
         {
             return LocalDrivingLicenseApplication.IsStatusCompletedOrCancelled(GetLocalDrivingLicenseAppIDFromDGV());
+        }
+
+        private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowLicenseInfo form = new frmShowLicenseInfo(GetLocalDrivingLicenseAppIDFromDGV());
+            form.ShowDialog();
         }
     }
 }

@@ -90,9 +90,9 @@ namespace DVLD_Business
         {
             return LocalDrivingLicensApplicationsData.UpdateLocalDrivingLicenseAppStatus(appID, Status);
         }
-        public static string FindLicenceName(int LicenseClassID, string ClassName)
+        public static string FindLicenceName(int LicenseClassID)
         {
-            return LocalDrivingLicensApplicationsData.FindLicenceName(LicenseClassID, ClassName);
+            return LocalDrivingLicensApplicationsData.FindLicenceName(LicenseClassID);
         }
         public static LocalDrivingLicenseApplication FindLocalDrivingLicenseApplication(int ApplicationID)
         {

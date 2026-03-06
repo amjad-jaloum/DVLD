@@ -66,6 +66,12 @@
     <Compile Include="Driving License Services\ctrlShowDrivingLicenseAppInfo.Designer.cs">
       <DependentUpon>ctrlShowDrivingLicenseAppInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Driving License Services\ctrlShowLicenseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Driving License Services\ctrlShowLicenseInfo.Designer.cs">
+      <DependentUpon>ctrlShowLicenseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Driving License Services\frmIssueDriverLicense_FirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,12 @@
     </Compile>
     <Compile Include="Driving License Services\frmShowDrivingLicenseApp.Designer.cs">
       <DependentUpon>frmShowDrivingLicenseApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Driving License Services\frmShowLicenseInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Driving License Services\frmShowLicenseInfo.Designer.cs">
+      <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Driving License Services\Schedule Tests\frmSheduleTest.cs">
       <SubType>Form</SubType>
@@ -203,6 +215,9 @@
     <EmbeddedResource Include="Driving License Services\ctrlShowDrivingLicenseAppInfo.resx">
       <DependentUpon>ctrlShowDrivingLicenseAppInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Driving License Services\ctrlShowLicenseInfo.resx">
+      <DependentUpon>ctrlShowLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Driving License Services\frmIssueDriverLicense_FirstTime.resx">
       <DependentUpon>frmIssueDriverLicense_FirstTime.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Driving License Services\frmShowDrivingLicenseApp.resx">
       <DependentUpon>frmShowDrivingLicenseApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Driving License Services\frmShowLicenseInfo.resx">
+      <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Driving License Services\Schedule Tests\frmSheduleTest.resx">
       <DependentUpon>frmSheduleTest.cs</DependentUpon>

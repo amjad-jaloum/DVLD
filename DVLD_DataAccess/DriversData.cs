@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLD_DataAccess
 {
@@ -49,5 +51,31 @@ namespace DVLD_DataAccess
             return -1;
         }
 
+        public static bool FindDriver(int driverID, ref int personID, ref int createdByUserID, ref DateTime createdDate)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = "select * from Drivers where driverID = @driverID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@driverID", driverID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    personID = (int)reader["personID"];
+                    createdByUserID = (int)reader["createdByUserID"];
+                    createdDate = (DateTime)reader["createdDate"];
+
+                    reader.Close();
+                    return true;
+                }
+            }
+            catch (Exception)
+            { }
+            finally { connection.Close(); }
+            return false;
+        }
     }
 }

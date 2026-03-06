@@ -20,7 +20,14 @@ namespace DVLD_Business
         public short IssueReason { get; set; }
         public int CreatedByUserID { get; set; }
 
-        public AppLicense (int applicationID, int driverID, int licenseClass, DateTime issueDate, 
+        public string IsAciveString
+        {
+            get
+            {
+                return IsActive ? "Yes" : "No";
+            }
+        }
+        public AppLicense(int applicationID, int driverID, int licenseClass, DateTime issueDate,
             DateTime expirationDate, string notes, decimal paidFees, bool isActive, short issueReason, int createdByUserID)
         {
             ApplicationID = applicationID;
@@ -41,6 +48,35 @@ namespace DVLD_Business
         {
             return LicensesData.AddNewLicense(ApplicationID, DriverID, LicenseClass,
                 IssueDate, ExpirationDate, Notes, PaidFees, IsActive, IssueReason, CreatedByUserID);
+        }
+
+        public static AppLicense FindLicense(int LicenseID)
+        {
+            int ApplicationID = -1; 
+            int DriverID = -1; 
+            int LicenseClass = -1;
+            DateTime IssueDate = DateTime.MinValue; 
+            DateTime ExpirationDate = DateTime.MaxValue; 
+            string Notes = string.Empty; 
+            decimal PaidFees = 0;
+            bool IsActive = false; 
+            short IssueReason = 0; 
+            int CreatedByUserID = -1;
+
+            bool isFound = LicensesData.FindLicense(LicenseID, ref ApplicationID, ref DriverID, ref LicenseClass,
+                ref IssueDate, ref ExpirationDate, ref Notes, ref PaidFees, ref IsActive, ref IssueReason, ref CreatedByUserID);
+            if (isFound)
+            {
+                return new AppLicense(ApplicationID, DriverID, LicenseClass, IssueDate, ExpirationDate,
+                    Notes, PaidFees, IsActive, IssueReason, CreatedByUserID);
+            }
+            else
+                return null;
+        }
+
+        public static int GetLicenseID(int localDrivingLicneseAppID)
+        {
+            return LicensesData.GetLicenseID(localDrivingLicneseAppID);
         }
     }
 }

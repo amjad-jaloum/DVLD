@@ -9,9 +9,9 @@ namespace DVLD_Business
 {
     public class Driver
     {
-        int PersonID { get; set; }
-        int CreatedByUserID { get; set; }
-        DateTime CreatedDate { get; set; }
+        public int PersonID { get; set; }
+        public int CreatedByUserID { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public Driver(int personID, int createdByUserID, DateTime createdDate)
         {
@@ -23,6 +23,19 @@ namespace DVLD_Business
         public static int AddNewDriver(int PersonID, int CreatedByUserID)
         {
             return DriversData.AddNewDriver(PersonID, CreatedByUserID, DateTime.Now);
+        }
+
+        public static Driver FindDriver(int DriverID)
+        {
+            int PersonID = -1;
+            int CreatedByUserID = -1;
+            DateTime CreatedDate = DateTime.MinValue;
+
+            bool isFound = DriversData.FindDriver(DriverID, ref PersonID, ref CreatedByUserID, ref CreatedDate);
+            if (isFound)
+                return new Driver(PersonID, CreatedByUserID, CreatedDate);
+            else
+                return null;
         }
     }
 }

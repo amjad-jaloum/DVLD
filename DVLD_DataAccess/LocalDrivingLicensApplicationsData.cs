@@ -310,7 +310,7 @@ namespace DVLD_DataAccess
             return RowsEffected > 0;
 
         }
-        public static string FindLicenceName(int LicenseClassID, string ClassName)
+        public static string FindLicenceName(int LicenseClassID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             string query = @"SELECT [ClassName]   
@@ -320,7 +320,7 @@ namespace DVLD_DataAccess
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
-
+            string ClassName;
             try
             {
                 connection.Open();
