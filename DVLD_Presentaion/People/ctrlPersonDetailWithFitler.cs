@@ -107,5 +107,10 @@ namespace _19___Project___DVLD.People
         {
             mtxbSearch.Enabled = cbFilter.SelectedItem.ToString() != "None";
         }
+
+        private void gbFilter_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

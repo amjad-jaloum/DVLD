@@ -14,6 +14,16 @@ namespace DVLD_Business
         public string AppTitle { get; set; }
         public float AppFees { get; set; }
 
+        public enum enApplicationType
+        {
+            NewLocalDrivingLicenseService = 1,
+            RenewDrivingLicenseService,
+            ReplacementForLostDrivingLicense,
+            ReplacementForDamagedDrivingLicense,
+            ReleaseDetainedDrivingLicense,
+            NewInternationalLicense
+        }
+
         public ApplicationType(int appID, string appTitle, float appFees)
         {
             AppID = appID;

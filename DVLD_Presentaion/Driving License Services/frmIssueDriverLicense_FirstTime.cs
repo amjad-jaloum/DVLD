@@ -38,9 +38,10 @@ namespace _19___Project___DVLD.Driving_License_Services
 
         private void btnIssue_Click(object sender, EventArgs e)
         {
+            int ApplicationID = LocalDrivingLicenseApplication.GetApplicationID(_LocalDrivingLicenseAppID);
             int LicenseID = AppLicense.AddNewLicense(
-                LocalDrivingLicenseApplication.GetApplicationID(_LocalDrivingLicenseAppID)
-                , AddNewDriverAndGetID()
+                ApplicationID
+                , GetDriverID(ApplicationID)
                 , GetLinenseClassID()
                 , DateTime.Now
                 , DateTime.Now.AddYears(10)
@@ -65,6 +66,20 @@ namespace _19___Project___DVLD.Driving_License_Services
                 MessageBox.Show("License not issued!", "Not Issued!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private int GetDriverID(int applicationID)
+        {
+            int driverID = -1;
+            if (Driver.FindDriverID(_LocalDrivingLicenseAppID, ref driverID))
+            {
+                return driverID;
+            }
+            else
+            {
+                return AddNewDriverAndGetID();
+            }
+        }
+
         private decimal GetPaidFees()
         {
             return Convert.ToDecimal(LocalDrivingLicenseApplication.GetNewLocalDrivingLicenseAppFees());

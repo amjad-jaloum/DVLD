@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
@@ -144,6 +145,43 @@ namespace DVLD_DataAccess
                 connection.Close();
             }
             return 0;
+        }
+
+        public static DataTable GetLicensesHistory(int DriverID, int ApplicationTypeID)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"SELECT LicenseID AS 'Lic ID', ApplicationID AS 'App ID',
+                                 (SELECT ClassName
+                                 FROM    LicenseClasses
+                                 WHERE (LicenseClassID = Licenses.LicenseClass)) AS 'Class Name', IssueDate AS 'Issue Date', ExpirationDate AS 'Expiration Date', IsActive AS 'Is Active'
+                            FROM   Licenses
+                            WHERE (ApplicationID IN
+                                 (SELECT ApplicationID
+                                 FROM    Applications
+                                 WHERE (ApplicationTypeID = @ApplicationTypeID))) AND (DriverID = @DriverID)";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                connection.Close();
+            }
+            return dt;
+
         }
     }
 }

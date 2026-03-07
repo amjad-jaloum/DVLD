@@ -51,6 +51,36 @@ namespace DVLD_DataAccess
             return -1;
         }
 
+        public static int FindDriverID(int PersonID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"SELECT [DriverID]    
+                              FROM [DVLD].[dbo].[Drivers]
+                              where PersonID = @PersonID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    connection.Close();
+                    return insertedID;
+                }
+            }
+            catch (Exception)
+            { }
+            finally
+            {
+                connection.Close();
+            }
+            return -1;
+
+        }
+
         public static bool FindDriver(int driverID, ref int personID, ref int createdByUserID, ref DateTime createdDate)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);

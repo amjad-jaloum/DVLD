@@ -46,6 +46,7 @@
     <Compile Include="DetainedLicense.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="AppLicense.cs" />
+    <Compile Include="LicenseClass.cs" />
     <Compile Include="LocalDrivingLicenseApplication.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

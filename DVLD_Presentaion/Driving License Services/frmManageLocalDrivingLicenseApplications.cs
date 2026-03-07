@@ -327,5 +327,11 @@ namespace _19___Project___DVLD.Driving_License_Services
             frmShowLicenseInfo form = new frmShowLicenseInfo(GetLocalDrivingLicenseAppIDFromDGV());
             form.ShowDialog();
         }
+
+        private void showPersonLicensesHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLicensesHistory form = new frmLicensesHistory(GetLocalDrivingLicenseAppIDFromDGV());
+            form.ShowDialog();
+        }
     }
 }

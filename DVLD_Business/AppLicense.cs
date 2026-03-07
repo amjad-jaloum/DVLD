@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,15 +53,15 @@ namespace DVLD_Business
 
         public static AppLicense FindLicense(int LicenseID)
         {
-            int ApplicationID = -1; 
-            int DriverID = -1; 
+            int ApplicationID = -1;
+            int DriverID = -1;
             int LicenseClass = -1;
-            DateTime IssueDate = DateTime.MinValue; 
-            DateTime ExpirationDate = DateTime.MaxValue; 
-            string Notes = string.Empty; 
+            DateTime IssueDate = DateTime.MinValue;
+            DateTime ExpirationDate = DateTime.MaxValue;
+            string Notes = string.Empty;
             decimal PaidFees = 0;
-            bool IsActive = false; 
-            short IssueReason = 0; 
+            bool IsActive = false;
+            short IssueReason = 0;
             int CreatedByUserID = -1;
 
             bool isFound = LicensesData.FindLicense(LicenseID, ref ApplicationID, ref DriverID, ref LicenseClass,
@@ -78,5 +79,15 @@ namespace DVLD_Business
         {
             return LicensesData.GetLicenseID(localDrivingLicneseAppID);
         }
+
+        public static DataTable GetLocalLicesnsHistory(int DriverID)
+        {
+            return LicensesData.GetLicensesHistory(DriverID, (int)ApplicationType.enApplicationType.NewLocalDrivingLicenseService);
+        }
+        public static DataTable GetInternationalLicesnsHistory(int DriverID)
+        {
+            return LicensesData.GetLicensesHistory(DriverID, (int)ApplicationType.enApplicationType.NewInternationalLicense);
+        }
+
     }
 }

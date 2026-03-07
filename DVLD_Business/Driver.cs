@@ -37,5 +37,16 @@ namespace DVLD_Business
             else
                 return null;
         }
+
+        public static bool FindDriverID(int LocalDrivingLicenseAppID, ref int driverID)
+        {
+            int PersonID = Application.GetApplicantPersonID(LocalDrivingLicenseAppID);
+            driverID = DriversData.FindDriverID(PersonID);
+
+            if (driverID == -1)
+                return false;
+            else
+                return true;
+        }
     }
 }
