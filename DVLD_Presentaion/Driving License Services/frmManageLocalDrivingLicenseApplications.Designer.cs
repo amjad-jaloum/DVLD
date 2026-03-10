@@ -144,7 +144,7 @@
             this.toolStripSeparator3,
             this.showPersonLicensesHistoryToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(333, 290);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(333, 323);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // showApplicationDetailsToolStripMenuItem
@@ -165,6 +165,7 @@
             this.deleteApplicationToolStripMenuItem.Name = "deleteApplicationToolStripMenuItem";
             this.deleteApplicationToolStripMenuItem.Size = new System.Drawing.Size(332, 32);
             this.deleteApplicationToolStripMenuItem.Text = "Delete Application";
+            this.deleteApplicationToolStripMenuItem.Click += new System.EventHandler(this.deleteApplicationToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
