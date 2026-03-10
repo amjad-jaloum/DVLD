@@ -24,9 +24,10 @@ namespace _19___Project___DVLD.Driving_License_Services
         private void frmLicensesHistory_Load(object sender, EventArgs e)
         {
             DriverID = AppLicense.FindLicense(AppLicense.GetLicenseID(LocalDrivingLicenseApplicationID)).DriverID;
-            loadLocaLicensesHistory();
+            ctrlPersonDetailWithFitler1.ShowPersonDetailsWithHistory(Driver.FindDriver(DriverID).PersonID);
+
+            loadLocalLicensesHistory();
             loadInternationalLicensesHistroy();
-            
         }
 
         private void loadInternationalLicensesHistroy()
@@ -35,7 +36,7 @@ namespace _19___Project___DVLD.Driving_License_Services
             lblInternationalLicensesRowsCount.Text = dgvInernationalLicensesHisory.Rows.Count.ToString();
         }
 
-        private void loadLocaLicensesHistory()
+        private void loadLocalLicensesHistory()
         {
             dgvLocalLicensesHisory.DataSource = AppLicense.GetLocalLicesnsHistory(DriverID);
             lblLocalLicensesRowsCount.Text = dgvLocalLicensesHisory.Rows.Count.ToString();

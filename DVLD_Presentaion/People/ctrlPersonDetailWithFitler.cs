@@ -15,6 +15,8 @@ namespace _19___Project___DVLD.People
     public partial class ctrlPersonDetailWithFitler : UserControl
     {
         Person _Person;
+        enum enMode { History = 0, Search = 1 }
+        enMode Mode = enMode.Search;
 
         public event Action<Person> WhenUserFound;
         protected virtual void UserFound(Person person)
@@ -25,12 +27,10 @@ namespace _19___Project___DVLD.People
                 action(person);
             }
         }
-
         public ctrlPersonDetailWithFitler()
         {
             InitializeComponent();
         }
-
         private void ctrlPersonDetailWithFitler_Load(object sender, EventArgs e)
         {
             LoadComboBoxFilter();
@@ -105,12 +105,26 @@ namespace _19___Project___DVLD.People
         }
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mtxbSearch.Enabled = cbFilter.SelectedItem.ToString() != "None";
+            if (Mode != enMode.History)
+                mtxbSearch.Enabled = cbFilter.SelectedItem.ToString() != "None";
         }
-
         private void gbFilter_Enter(object sender, EventArgs e)
         {
 
+        }
+        public void ShowPersonDetailsWithHistory(int Value, string ColumnName = "PersonID")
+        {
+            Mode = enMode.History;
+            mtxbSearch.Text = Value.ToString();
+            mtxbSearch.Enabled = false;
+
+            cbFilter.SelectedItem = ColumnName;
+            cbFilter.Enabled = false;
+
+            btnAddPerson.Enabled = false;
+            btnFindPerson.Enabled = false;
+
+            GetPersonDetailsWithFilterQuery(new EventArgs());
         }
     }
 }
