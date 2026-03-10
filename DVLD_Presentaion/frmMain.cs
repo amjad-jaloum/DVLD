@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using _19___Project___DVLD.Application_Types;
+using _19___Project___DVLD.Drivers;
 using _19___Project___DVLD.Driving_License_Services;
 using _19___Project___DVLD.People;
 using _19___Project___DVLD.Test_Types;
@@ -81,6 +82,13 @@ namespace _19___Project___DVLD
         private void localDrivingApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManageLocalDrivingLicenseApplications frm = new frmManageLocalDrivingLicenseApplications();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageDrivers frm = new frmManageDrivers();
             frm.MdiParent = this;
             frm.Show();
         }

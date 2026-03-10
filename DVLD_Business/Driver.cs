@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +48,21 @@ namespace DVLD_Business
                 return false;
             else
                 return true;
+        }
+
+        public static DataTable GetDriversData()
+        {
+            return DriversData.GetDriversData();
+        }
+
+        public static List<string> GetDriversColumnNames()
+        {
+            return DriversData.GetDriversColumnNames();
+        }
+
+        public static object GetDataTableWithQuery(string ColumnName, string searchValue)
+        {
+            return DriversData.GetDataTableWithQuery(ColumnName, searchValue);
         }
     }
 }

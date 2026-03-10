@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -106,6 +107,91 @@ namespace DVLD_DataAccess
             { }
             finally { connection.Close(); }
             return false;
+        }
+
+        public static DataTable GetDriversData()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"SELECT [DriverID]
+                              ,[PersonID]
+                              ,[NationalNo]
+                              ,[Full Name]
+                              ,[Date]
+                              ,[Active Licenses]
+                          FROM [DVLD].[dbo].[DriversData_View]
+                            ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception) { }
+            finally
+            {
+                connection.Close();
+            }
+            return dt;
+
+        }
+
+        public static List<string> GetDriversColumnNames()
+        {
+            List<string> list = new List<string>();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = "select top 4 INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'DriversData_View'";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add((string)reader["COLUMN_NAME"]);
+                }
+                reader.Close();
+            }
+            catch (Exception)
+            {
+            }
+            finally { connection.Close(); }
+
+            return list;
+        }
+
+        public static object GetDataTableWithQuery(string ColumnName, string value)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = $"select * from DriversData_View where [{ColumnName}] like @value";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@value", '%' + value + '%');
+
+            DataTable dt = new DataTable();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.HasRows)
+                {
+                    dt.Load(reader); // loads all rows at once - read() uses sinbgle row at a time
+                }
+                reader.Close();
+            }
+            catch (Exception) { }
+            finally { connection.Close(); }
+
+            return dt;
+
         }
     }
 }

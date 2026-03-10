@@ -60,6 +60,12 @@
     </Compile>
     <Compile Include="clsCommonMethods.cs" />
     <Compile Include="clsGloabalSettings.cs" />
+    <Compile Include="Drivers\frmManageDrivers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drivers\frmManageDrivers.Designer.cs">
+      <DependentUpon>frmManageDrivers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Driving License Services\ctrlShowDrivingLicenseAppInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -217,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Application Types\frmUdateApplicationTypes.resx">
       <DependentUpon>frmUdateApplicationTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drivers\frmManageDrivers.resx">
+      <DependentUpon>frmManageDrivers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Driving License Services\ctrlShowDrivingLicenseAppInfo.resx">
       <DependentUpon>ctrlShowDrivingLicenseAppInfo.cs</DependentUpon>

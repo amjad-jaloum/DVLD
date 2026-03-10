@@ -107,7 +107,6 @@ namespace _19___Project___DVLD.Driving_License_Services
         }
         private void mtxbSearch_TextChanged(object sender, EventArgs e)
         {
-
             UpdateDataTableWithFilter();
         }
         private void UpdateDataTableWithFilter()
