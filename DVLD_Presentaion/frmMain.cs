@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using _19___Project___DVLD.Application_Types;
 using _19___Project___DVLD.Drivers;
 using _19___Project___DVLD.Driving_License_Services;
+using _19___Project___DVLD.Driving_Licenses.International_Licenses;
 using _19___Project___DVLD.People;
 using _19___Project___DVLD.Test_Types;
 using _19___Project___DVLD.Users;
@@ -89,6 +90,17 @@ namespace _19___Project___DVLD
         private void driversToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManageDrivers frm = new frmManageDrivers();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void inernationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void internationalDrivingApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageInternationalDrivingLicensesApplications frm = new frmManageInternationalDrivingLicensesApplications();
             frm.MdiParent = this;
             frm.Show();
         }
