@@ -34,26 +34,26 @@
             this.label14 = new System.Windows.Forms.Label();
             this.lblAppDate = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.lblIssueDate = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.lblIL_LicenseID = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.lblLocalLicenseID = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblCreatedBy = new System.Windows.Forms.Label();
             this.lblExpirationDate = new System.Windows.Forms.Label();
-            this.lblFee = new System.Windows.Forms.Label();
-            this.lblIssueDate = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblFees = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.lblCreatedBy = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tbSearch = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
-            this.btnIssue = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnShowLicensesHistory = new System.Windows.Forms.Button();
-            this.btnLicensesInfo = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +63,6 @@
             this.ctrlShowLicenseInfo1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ctrlShowLicenseInfo1.Location = new System.Drawing.Point(5, 92);
             this.ctrlShowLicenseInfo1.Name = "ctrlShowLicenseInfo1";
-            this.ctrlShowLicenseInfo1.Padding = new System.Windows.Forms.Padding(5);
             this.ctrlShowLicenseInfo1.Size = new System.Drawing.Size(799, 387);
             this.ctrlShowLicenseInfo1.TabIndex = 1;
             // 
@@ -120,6 +119,16 @@
             this.label16.TabIndex = 8;
             this.label16.Text = "Issue Date:";
             // 
+            // lblIssueDate
+            // 
+            this.lblIssueDate.AutoSize = true;
+            this.lblIssueDate.Location = new System.Drawing.Point(170, 100);
+            this.lblIssueDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblIssueDate.Name = "lblIssueDate";
+            this.lblIssueDate.Size = new System.Drawing.Size(48, 21);
+            this.lblIssueDate.TabIndex = 9;
+            this.lblIssueDate.Text = "None";
+            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -173,6 +182,16 @@
             this.label18.TabIndex = 14;
             this.label18.Text = "Expiration Date:";
             // 
+            // lblExpirationDate
+            // 
+            this.lblExpirationDate.AutoSize = true;
+            this.lblExpirationDate.Location = new System.Drawing.Point(431, 98);
+            this.lblExpirationDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblExpirationDate.Name = "lblExpirationDate";
+            this.lblExpirationDate.Size = new System.Drawing.Size(48, 21);
+            this.lblExpirationDate.TabIndex = 15;
+            this.lblExpirationDate.Text = "None";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -183,6 +202,16 @@
             this.label6.Size = new System.Drawing.Size(47, 21);
             this.label6.TabIndex = 17;
             this.label6.Text = "Fees:";
+            // 
+            // lblFees
+            // 
+            this.lblFees.AutoSize = true;
+            this.lblFees.Location = new System.Drawing.Point(170, 133);
+            this.lblFees.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFees.Name = "lblFees";
+            this.lblFees.Size = new System.Drawing.Size(37, 21);
+            this.lblFees.TabIndex = 18;
+            this.lblFees.Text = "000";
             // 
             // label24
             // 
@@ -195,19 +224,29 @@
             this.label24.TabIndex = 23;
             this.label24.Text = "Created By:";
             // 
+            // lblCreatedBy
+            // 
+            this.lblCreatedBy.AutoSize = true;
+            this.lblCreatedBy.Location = new System.Drawing.Point(432, 130);
+            this.lblCreatedBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCreatedBy.Name = "lblCreatedBy";
+            this.lblCreatedBy.Size = new System.Drawing.Size(37, 21);
+            this.lblCreatedBy.TabIndex = 24;
+            this.lblCreatedBy.Text = "000";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lblCreatedBy);
-            this.groupBox2.Controls.Add(this.lblExpirationDate);
-            this.groupBox2.Controls.Add(this.lblFee);
-            this.groupBox2.Controls.Add(this.lblIssueDate);
             this.groupBox2.Controls.Add(this.label24);
+            this.groupBox2.Controls.Add(this.lblFees);
             this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.lblExpirationDate);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.lblLocalLicenseID);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.lblIL_LicenseID);
             this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.lblIssueDate);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.lblAppDate);
             this.groupBox2.Controls.Add(this.label14);
@@ -224,49 +263,9 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Application Info";
             // 
-            // lblCreatedBy
-            // 
-            this.lblCreatedBy.AutoSize = true;
-            this.lblCreatedBy.Location = new System.Drawing.Point(431, 133);
-            this.lblCreatedBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCreatedBy.Name = "lblCreatedBy";
-            this.lblCreatedBy.Size = new System.Drawing.Size(48, 21);
-            this.lblCreatedBy.TabIndex = 27;
-            this.lblCreatedBy.Text = "None";
-            // 
-            // lblExpirationDate
-            // 
-            this.lblExpirationDate.AutoSize = true;
-            this.lblExpirationDate.Location = new System.Drawing.Point(431, 100);
-            this.lblExpirationDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblExpirationDate.Name = "lblExpirationDate";
-            this.lblExpirationDate.Size = new System.Drawing.Size(48, 21);
-            this.lblExpirationDate.TabIndex = 26;
-            this.lblExpirationDate.Text = "None";
-            // 
-            // lblFee
-            // 
-            this.lblFee.AutoSize = true;
-            this.lblFee.Location = new System.Drawing.Point(170, 133);
-            this.lblFee.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblFee.Name = "lblFee";
-            this.lblFee.Size = new System.Drawing.Size(48, 21);
-            this.lblFee.TabIndex = 25;
-            this.lblFee.Text = "None";
-            // 
-            // lblIssueDate
-            // 
-            this.lblIssueDate.AutoSize = true;
-            this.lblIssueDate.Location = new System.Drawing.Point(170, 100);
-            this.lblIssueDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblIssueDate.Name = "lblIssueDate";
-            this.lblIssueDate.Size = new System.Drawing.Size(48, 21);
-            this.lblIssueDate.TabIndex = 24;
-            this.lblIssueDate.Text = "None";
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.tbSearch);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -280,22 +279,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
             // 
-            // tbSearch
-            // 
-            this.tbSearch.Location = new System.Drawing.Point(115, 36);
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(574, 29);
-            this.tbSearch.TabIndex = 7;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(695, 36);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(88, 29);
-            this.btnSearch.TabIndex = 6;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -307,57 +290,73 @@
             this.label23.TabIndex = 4;
             this.label23.Text = "License ID:";
             // 
-            // btnIssue
+            // btnSearch
             // 
-            this.btnIssue.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnIssue.Enabled = false;
-            this.btnIssue.Location = new System.Drawing.Point(716, 655);
-            this.btnIssue.Name = "btnIssue";
-            this.btnIssue.Size = new System.Drawing.Size(88, 34);
-            this.btnIssue.TabIndex = 11;
-            this.btnIssue.Text = "Issue";
-            this.btnIssue.UseVisualStyleBackColor = true;
+            this.btnSearch.Location = new System.Drawing.Point(695, 36);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(88, 29);
+            this.btnSearch.TabIndex = 6;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // btnClose
+            // textBox1
             // 
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnClose.Location = new System.Drawing.Point(628, 655);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(88, 34);
-            this.btnClose.TabIndex = 12;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.textBox1.Location = new System.Drawing.Point(115, 36);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(574, 29);
+            this.textBox1.TabIndex = 7;
             // 
-            // btnShowLicensesHistory
+            // button1
             // 
-            this.btnShowLicensesHistory.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnShowLicensesHistory.Enabled = false;
-            this.btnShowLicensesHistory.Location = new System.Drawing.Point(5, 655);
-            this.btnShowLicensesHistory.Name = "btnShowLicensesHistory";
-            this.btnShowLicensesHistory.Size = new System.Drawing.Size(135, 34);
-            this.btnShowLicensesHistory.TabIndex = 13;
-            this.btnShowLicensesHistory.Text = "Show Licenses History";
-            this.btnShowLicensesHistory.UseVisualStyleBackColor = true;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(716, 655);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 34);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Issue";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // btnLicensesInfo
+            // button2
             // 
-            this.btnLicensesInfo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnLicensesInfo.Enabled = false;
-            this.btnLicensesInfo.Location = new System.Drawing.Point(140, 655);
-            this.btnLicensesInfo.Name = "btnLicensesInfo";
-            this.btnLicensesInfo.Size = new System.Drawing.Size(135, 34);
-            this.btnLicensesInfo.TabIndex = 14;
-            this.btnLicensesInfo.Text = "Show Licenses Info";
-            this.btnLicensesInfo.UseVisualStyleBackColor = true;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button2.Location = new System.Drawing.Point(628, 655);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(88, 34);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Close";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(5, 655);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(135, 34);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "Show Licenses History";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button4.Enabled = false;
+            this.button4.Location = new System.Drawing.Point(140, 655);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(135, 34);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "Show Licenses Info";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // ctrlShowDriverLicenseAndApplicationInfoWithFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnLicensesInfo);
-            this.Controls.Add(this.btnShowLicensesHistory);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnIssue);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.ctrlShowLicenseInfo1);
             this.Controls.Add(this.groupBox1);
@@ -386,20 +385,19 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblLocalLicenseID;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lblCreatedBy;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblFees;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label lblCreatedBy;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox tbSearch;
-        private System.Windows.Forms.Button btnIssue;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnShowLicensesHistory;
-        private System.Windows.Forms.Button btnLicensesInfo;
-        private System.Windows.Forms.Label lblCreatedBy;
-        private System.Windows.Forms.Label lblExpirationDate;
-        private System.Windows.Forms.Label lblFee;
-        private System.Windows.Forms.Label lblIssueDate;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
