@@ -90,11 +90,11 @@ namespace DVLD_Business
         {
             return LocalDrivingLicensApplicationsData.UpdateLocalDrivingLicenseAppStatus(appID, Status);
         }
-        public static string FindLicenceName(int LicenseClassID)
+        public static string GetLicenceName(int LicenseClassID)
         {
             return LocalDrivingLicensApplicationsData.FindLicenceName(LicenseClassID);
         }
-        public static LocalDrivingLicenseApplication FindLocalDrivingLicenseApplication(int ApplicationID)
+        public static LocalDrivingLicenseApplication FindApplication(int ApplicationID)
         {
             int ApplicantPersonID = 0;
             DateTime ApplicationDate = DateTime.MinValue;
@@ -203,9 +203,14 @@ namespace DVLD_Business
             return LocalDrivingLicensApplicationsData.DeleteLocalDrivingLicenseApplication(appID);
         }
 
-        public static int GetLocalDrivingLicenseApplicationID(string NationalNo)
+        public static int GetLocalDrivingLicenseApplicationIDByNationalNo(string NationalNo)
         {
-            return LocalDrivingLicensApplicationsData.GetLocalDrivingLicenseApplicationID(NationalNo);
+            return LocalDrivingLicensApplicationsData.GetLocalDrivingLicenseApplicationIDByNationalNo(NationalNo);
         }
+        public static int GetLocalDrivingLicenseApplicationIDByApplicationID(int ApplicationID)
+        {
+            return LocalDrivingLicensApplicationsData.GetLocalDrivingLicenseApplicationIDByApplicationID(ApplicationID);
+        }
+
     }
 }

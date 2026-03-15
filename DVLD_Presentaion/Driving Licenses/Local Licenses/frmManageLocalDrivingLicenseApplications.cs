@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using _19___Project___DVLD.Driving_License_Services.Schedule_Tests;
 using _19___Project___DVLD.Users;
 using DVLD_Business;
+using Application = DVLD_Business.Application;
 
 namespace _19___Project___DVLD.Driving_License_Services
 {
@@ -320,23 +321,46 @@ namespace _19___Project___DVLD.Driving_License_Services
         {
             return LocalDrivingLicenseApplication.IsStatusCompletedOrCancelled(GetLocalDrivingLicenseAppIDFromDGV());
         }
-
         private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmShowLicenseInfo form = new frmShowLicenseInfo(GetLocalDrivingLicenseAppIDFromDGV());
-            form.ShowDialog();
+            int LicenseID = AppLicense.GetLicenseIDByLocalDrivingLicenseApplicationID(GetLocalDrivingLicenseAppIDFromDGV());
+            if (LicenseID > 0)
+            {
+                frmShowLicenseInfo form = new frmShowLicenseInfo(LicenseID);
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No license is found for this application yet!",
+                    "No License", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
-
         private void showPersonLicensesHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLicensesHistory form = new frmLicensesHistory(GetLocalDrivingLicenseAppIDFromDGV());
-            form.ShowDialog();
-        }
+            int LicenseID = AppLicense.GetLicenseIDByLocalDrivingLicenseApplicationID(GetLocalDrivingLicenseAppIDFromDGV());
+            if (LicenseID == -1)
+            {
+                MessageBox.Show("No local license is found for this application yet!",
+                    "No License", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            int DriverID = AppLicense.FindLicense(LicenseID).DriverID;
+            if (DriverID > 0)
+            {
+                frmLicensesHistory form = new frmLicensesHistory(DriverID);
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No driver is found for this license!",
+                    "No Driver", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         private void deleteApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int AppID = GetLocalDrivingLicenseAppIDFromDGV();
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this Loacal Driving License Application?", "Confirm to delete",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this Loacal Driving License Application?", "Confirm to delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {

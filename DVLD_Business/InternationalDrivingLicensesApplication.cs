@@ -53,10 +53,10 @@ namespace DVLD_Business
 
         public static bool IsInternationalLicenseExists(int IssuedUsingLocalLicenseID)
         {
-            return InternationalDrivingLicenseApplicatioansData.IsInternationalLicenseExists( IssuedUsingLocalLicenseID );
+            return InternationalDrivingLicenseApplicatioansData.IsInternationalLicenseExists(IssuedUsingLocalLicenseID);
         }
 
-        public static InternationalDrivingLicensesApplication FindLicense(int IssuedUsingLocalLicenseID)
+        public static InternationalDrivingLicensesApplication FindLicenseByLocalLicenseID(int IssuedUsingLocalLicenseID)
         {
             int InternationalLicenseID = 0;
             int ApplicationID = 0;
@@ -66,7 +66,7 @@ namespace DVLD_Business
             bool IsActive = false;
             int CreatedByUserID = 0;
 
-            if (InternationalDrivingLicenseApplicatioansData.FindLicense(ref InternationalLicenseID, ref ApplicationID, ref DriverID,
+            if (InternationalDrivingLicenseApplicatioansData.FindLicenseByLocalLicenseID(ref InternationalLicenseID, ref ApplicationID, ref DriverID,
                 IssuedUsingLocalLicenseID, ref IssueDate, ref ExpirationDate,
                 ref IsActive, ref CreatedByUserID))
             {
@@ -79,6 +79,36 @@ namespace DVLD_Business
                 return null;
             }
 
+        }
+
+        public static InternationalDrivingLicensesApplication FindLicenseByInternationalLicenseID(int InternationalLicenseID)
+        {
+            int IssuedUsingLocalLicenseID = 0;
+            int ApplicationID = 0;
+            int DriverID = 0;
+            DateTime IssueDate = DateTime.MinValue;
+            DateTime ExpirationDate = DateTime.MinValue;
+            bool IsActive = false;
+            int CreatedByUserID = 0;
+
+            if (InternationalDrivingLicenseApplicatioansData.FindLicenseByInternationalLicenseID(InternationalLicenseID, ref ApplicationID, ref DriverID,
+                ref IssuedUsingLocalLicenseID, ref IssueDate, ref ExpirationDate,
+                ref IsActive, ref CreatedByUserID))
+            {
+                return new InternationalDrivingLicensesApplication(InternationalLicenseID, ApplicationID, DriverID,
+                IssuedUsingLocalLicenseID, IssueDate, ExpirationDate,
+                IsActive, CreatedByUserID);
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        public static DataTable GetInternationalLicesnsHistory(int driverID)
+        {
+            return InternationalDrivingLicenseApplicatioansData.GetInternationalLicesnsHistory(driverID);
         }
     }
 }

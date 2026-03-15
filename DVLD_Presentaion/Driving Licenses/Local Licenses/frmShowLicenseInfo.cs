@@ -13,26 +13,17 @@ namespace _19___Project___DVLD.Driving_License_Services
 {
     public partial class frmShowLicenseInfo : Form
     {
-        private int _LocalDrivingLicneseAppID = -1;
-        public frmShowLicenseInfo(int LocalDrivingLicneseAppID)
+        private int LicenseID = -1;
+        public frmShowLicenseInfo(int LicenseID)
         {
             InitializeComponent();
-            _LocalDrivingLicneseAppID = LocalDrivingLicneseAppID;
+            this.LicenseID = LicenseID;
         }
         private void frmShowLicenseInfo_Load(object sender, EventArgs e)
         {
-
-            if (_LocalDrivingLicneseAppID == -1)
-            {
-                MessageBox.Show($"ID (-1) not Valid",
-                    "Not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int LicenseID = AppLicense.GetLicenseID(_LocalDrivingLicneseAppID);
             if (LicenseID == -1)
             {
-                MessageBox.Show("License not found. ID = -1", "License not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("License invalid.", "License not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

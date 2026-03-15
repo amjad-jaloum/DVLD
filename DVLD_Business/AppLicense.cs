@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -17,17 +18,14 @@ namespace DVLD_Business
         public DateTime ExpirationDate { get; set; }
         public string Notes { get; set; }
         public decimal PaidFees { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive
+        {
+            get;
+            set;
+        }
         public short IssueReason { get; set; }
         public int CreatedByUserID { get; set; }
 
-        public string IsAciveString
-        {
-            get
-            {
-                return IsActive ? "Yes" : "No";
-            }
-        }
         public AppLicense(int applicationID, int driverID, int licenseClass, DateTime issueDate,
             DateTime expirationDate, string notes, decimal paidFees, bool isActive, short issueReason, int createdByUserID)
         {
@@ -42,6 +40,7 @@ namespace DVLD_Business
             IssueReason = issueReason;
             CreatedByUserID = createdByUserID;
         }
+
 
         public static int AddNewLicense(int ApplicationID, int DriverID, int LicenseClass,
             DateTime IssueDate, DateTime ExpirationDate, string Notes, decimal PaidFees,
@@ -75,7 +74,7 @@ namespace DVLD_Business
                 return null;
         }
 
-        public static int GetLicenseID(int localDrivingLicneseAppID)
+        public static int GetLicenseIDByLocalDrivingLicenseApplicationID(int localDrivingLicneseAppID)
         {
             return LicensesData.GetLicenseID(localDrivingLicneseAppID);
         }
@@ -83,10 +82,6 @@ namespace DVLD_Business
         public static DataTable GetLocalLicesnsHistory(int DriverID)
         {
             return LicensesData.GetLicensesHistory(DriverID, (int)ApplicationType.enApplicationType.NewLocalDrivingLicenseService);
-        }
-        public static DataTable GetInternationalLicesnsHistory(int DriverID)
-        {
-            return LicensesData.GetLicensesHistory(DriverID, (int)ApplicationType.enApplicationType.NewInternationalLicense);
         }
 
     }

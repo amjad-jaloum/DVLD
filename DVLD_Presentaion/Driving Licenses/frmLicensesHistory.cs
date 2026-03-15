@@ -13,26 +13,33 @@ namespace _19___Project___DVLD.Driving_License_Services
 {
     public partial class frmLicensesHistory : Form
     {
-        private int LocalDrivingLicenseApplicationID;
         int DriverID;
-        public frmLicensesHistory(int LocalDrivingLicenseApplicationID)
+        public frmLicensesHistory(int DriverID)
         {
             InitializeComponent();
-            this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
+            this.DriverID = DriverID;
         }
 
         private void frmLicensesHistory_Load(object sender, EventArgs e)
         {
-            DriverID = AppLicense.FindLicense(AppLicense.GetLicenseID(LocalDrivingLicenseApplicationID)).DriverID;
-            ctrlPersonDetailWithFitler1.ShowPersonDetailsWithHistory(Driver.FindDriver(DriverID).PersonID);
+            Driver driver = Driver.FindDriver(DriverID);
+            if (driver != null)
+            {
+                ctrlPersonDetailWithFitler1.ShowPersonDetailsWithHistory(driver.PersonID);
 
-            loadLocalLicensesHistory();
-            loadInternationalLicensesHistroy();
+                loadLocalLicensesHistory();
+                loadInternationalLicensesHistroy();
+            }
+            else
+            {
+                MessageBox.Show("Driver Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+            }
         }
 
         private void loadInternationalLicensesHistroy()
         {
-            dgvInernationalLicensesHisory.DataSource = AppLicense.GetInternationalLicesnsHistory(DriverID);
+            dgvInernationalLicensesHisory.DataSource = InternationalDrivingLicensesApplication.GetInternationalLicesnsHistory(DriverID);
             lblInternationalLicensesRowsCount.Text = dgvInernationalLicensesHisory.Rows.Count.ToString();
         }
 

@@ -39,16 +39,19 @@ namespace _19___Project___DVLD
                         Close();
                     }
                     else
-                        MessageBox.Show("The user is not allowed to login, please try another user", "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("The user is not allowed to login, please try another user", 
+                            "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("The Username/Password is wrong", "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("The Username/Password is wrong", 
+                        "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Please make sure your fields are valid, all fields are required!", "Required fields", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please make sure your fields are valid, all fields are required!",
+                    "Required fields", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

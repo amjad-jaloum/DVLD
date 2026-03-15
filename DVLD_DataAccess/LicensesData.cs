@@ -144,7 +144,7 @@ namespace DVLD_DataAccess
             {
                 connection.Close();
             }
-            return 0;
+            return -1;
         }
 
         public static DataTable GetLicensesHistory(int DriverID, int ApplicationTypeID)

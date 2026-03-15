@@ -41,18 +41,18 @@ namespace _19___Project___DVLD.Driving_License_Services
         {
             if (license != null)
             {
-                lblClass.Text = LocalDrivingLicenseApplication.FindLicenceName(license.LicenseClass);
+                lblClass.Text = LocalDrivingLicenseApplication.GetLicenceName(license.LicenseClass);
                 lblName.Text = person.FullName;
                 lblLicenseID.Text = LicenseID.ToString();
                 lblNatioinalNo.Text = person.NationalNo;
                 lblGender.Text = person.GenderString;
                 lblIssueDate.Text = license.IssueDate.ToShortDateString();
                 lblNotes.Text = license.Notes;
-                lblIsActive.Text = license.IsAciveString;
+                lblIsActive.Text = IsActive();
                 lblDateOfBirth.Text = person.DateOfBirth.ToShortDateString();
                 lblDriverID.Text = license.DriverID.ToString();
                 lblExpirationDate.Text = license.ExpirationDate.ToShortDateString();
-                lblIsDetained.Text = DetainedLicense.IsLicenseDetained(LicenseID) ? "Yes" : "No";
+                lblIsDetained.Text = IsDetaind();
                 pbProfileImage.Image = GetImagePath(person.ImagePath);
                 return true;
             }
@@ -63,6 +63,22 @@ namespace _19___Project___DVLD.Driving_License_Services
                 return false;
             }
         }
+
+        private string IsDetaind()
+        {
+            return DetainedLicense.IsLicenseDetained(LicenseID) ? "Yes" : "No";
+        }
+
+        private string IsActive()
+        {
+            return license.IsActive && !IsLicenseExpired() ? "Yes" : "No";
+        }
+
+        public bool IsLicenseExpired()
+        {
+            return license.ExpirationDate < DateTime.Now; // 2033 > 2026(now)
+        }
+
         private Image GetImagePath(string ImagePath)
         {
             if (ImagePath == string.Empty)
@@ -73,10 +89,12 @@ namespace _19___Project___DVLD.Driving_License_Services
 
             return Image.FromFile(ImagePath);
         }
+
         private Image GetDefaultImage()
         {
             return Convert.ToBoolean(person.Gender) ? Resources.female : Resources.male;
         }
+        
         private bool GetLicenseAndPersonDetails()
         {
             license = AppLicense.FindLicense(LicenseID);
@@ -100,6 +118,11 @@ namespace _19___Project___DVLD.Driving_License_Services
                     "Not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             return false;
+        }
+
+        public bool IsLicenseValid()
+        {
+            return !IsLicenseExpired() && license.IsActive;
         }
     }
 }

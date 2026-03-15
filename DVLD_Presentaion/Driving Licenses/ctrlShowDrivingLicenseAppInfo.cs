@@ -38,7 +38,7 @@ namespace _19___Project___DVLD.Driving_License_Services
 
             // Basic App info
             int ApplicationID = LocalDrivingLicenseApplication.GetApplicationID(LocalDrivingLicenseAppID);
-            _Application = LocalDrivingLicenseApplication.FindLocalDrivingLicenseApplication(ApplicationID);
+            _Application = LocalDrivingLicenseApplication.FindApplication(ApplicationID);
             if (_Application != null && ApplicationID > 0)
             {
                 lblAppID.Text = ApplicationID.ToString();
