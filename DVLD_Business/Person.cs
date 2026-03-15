@@ -95,7 +95,7 @@ namespace DVLD_Business
             return PeopleData.UpdatePerson(person.PersonID, person.NationalNo, person.FirstName, person.SecondName, person.ThirdName, person.LastName, person.DateOfBirth,
                 person.Gender, person.Address, person.Phone, person.Email, person.NationalityCountryID, person.ImagePath);
         }
-        public static Person FindPerson(int ID)
+        public static Person FindPerson(int PersonID)
         {
             string FirstName = "", SecondName = "", ThirdName = "", LastName = "";
             DateTime DateOfBirth = DateTime.Now;
@@ -104,14 +104,14 @@ namespace DVLD_Business
             int NationalityCountryID = 0;
             string NationalNo = "";
 
-            bool IsPersonFound = PeopleData.GetPersonInfo(ID, ref NationalNo, ref FirstName,
+            bool IsPersonFound = PeopleData.GetPersonInfo(PersonID, ref NationalNo, ref FirstName,
                 ref SecondName, ref ThirdName, ref LastName, ref DateOfBirth,
                 ref Gender, ref Address, ref Phone, ref Email,
                 ref NationalityCountryID, ref ImagePath);
 
             if (IsPersonFound)
             {
-                return new Person(ID, NationalNo, FirstName, SecondName, ThirdName,
+                return new Person(PersonID, NationalNo, FirstName, SecondName, ThirdName,
                     LastName, DateOfBirth, Gender,
                     Address, Phone, Email, NationalityCountryID, ImagePath);
             }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using _19___Project___DVLD.Driving_License_Services;
+using _19___Project___DVLD.People;
 using DVLD_Business;
 
 namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
@@ -36,7 +37,7 @@ namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
             if (InternationalLicenseID > 0)
             {
                 InternationalDrivingLicensesApplication internationalLicense = InternationalDrivingLicensesApplication.FindLicenseByInternationalLicenseID(InternationalLicenseID);
-                if(internationalLicense == null)
+                if (internationalLicense == null)
                 {
                     MessageBox.Show("No license found with the selected license ID",
                         "Invalid license ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -76,7 +77,18 @@ namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
 
         private void showPersonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            int DriverID = InternationalDrivingLicensesApplication.FindLicenseByInternationalLicenseID(GetInternationalLicenseIDFromDGV()).DriverID;
+            Person person = Person.FindPerson(Driver.FindDriver(DriverID).PersonID);
+            if (person != null)
+            {
+                frmShowPersonDetails form = new frmShowPersonDetails(person);
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No person found with the selected license ID",
+                    "Invalid license ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
