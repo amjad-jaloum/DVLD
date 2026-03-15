@@ -23,5 +23,10 @@ namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
             dgvInternationalLicenses.DataSource = InternationalDrivingLicensesApplication.GetInternationalDrivingLicensApplications();
             lblRowsCountValue.Text = dgvInternationalLicenses.Rows.Count.ToString();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

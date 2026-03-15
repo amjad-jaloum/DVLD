@@ -37,6 +37,29 @@ namespace DVLD_DataAccess
             }
             return dt;
         }
+
+        public static int GetFees(int ApplicationTypeID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"SELECT 
+                                  [ApplicationFees]
+                              FROM [DVLD].[dbo].[ApplicationTypes]
+                              where ApplicationTypeID = @ApplicationTypeID";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
+            try
+            {
+                connection.Open();
+                object result = cmd.ExecuteScalar();
+                if (result != null && double.TryParse(result.ToString(), out double value))
+                    return (int)value;
+            }
+            catch (Exception) { }
+            finally { connection.Close(); }
+            return 0;
+        }
+
         public static bool UpdateAppType(int ID, string title, float fees)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);

@@ -96,6 +96,9 @@ namespace _19___Project___DVLD
 
         private void inernationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            frmAddNewInternationalDrivingLicenseApplication frm = new frmAddNewInternationalDrivingLicenseApplication();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void internationalDrivingApplicationsToolStripMenuItem_Click(object sender, EventArgs e)

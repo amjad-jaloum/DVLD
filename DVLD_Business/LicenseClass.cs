@@ -8,7 +8,7 @@ namespace DVLD_Business
 {
     public class LicenseClass
     {
-        enum LicenseType
+        public enum LicenseType
         {
             Class_1_SmallMotorcycle = 1,
             Class_2_HeavyMotorcycleLicense,

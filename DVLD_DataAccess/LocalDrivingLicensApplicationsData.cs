@@ -882,7 +882,6 @@ namespace DVLD_DataAccess
             finally { connection.Close(); }
             return -1;
         }
-
         public static bool DeleteLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID)
         {
             SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -904,6 +903,27 @@ namespace DVLD_DataAccess
 
             return RowsEffected > 0;
 
+        }
+        public static int GetLocalDrivingLicenseApplicationID(string NationalNo)
+        {
+            SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"SELECT top 1 LocalDrivingLicenseApplicationID
+                            FROM LocalDrivingLicenseApplications_View
+                            where NationalNo = @NationalNo
+                            ";
+            SqlCommand command = new SqlCommand(query, conn);
+            command.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+            try
+            {
+                conn.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int returnedID))
+                    return returnedID;
+            }
+            catch (Exception) { }
+            finally { conn.Close(); }
+            return -1;
         }
     }
 }
