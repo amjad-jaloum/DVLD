@@ -16,5 +16,10 @@ namespace _19___Project___DVLD.Renewed_Licenses
         {
             InitializeComponent();
         }
+
+        private void frmRenewLocalDrivingLicense_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

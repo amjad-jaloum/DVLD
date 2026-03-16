@@ -54,6 +54,7 @@ namespace _19___Project___DVLD.Driving_License_Services
                 lblExpirationDate.Text = license.ExpirationDate.ToShortDateString();
                 lblIsDetained.Text = IsDetaind();
                 pbProfileImage.Image = GetImagePath(person.ImagePath);
+                lblIssueReason.Text = license.IssueReasonToString();
                 return true;
             }
             else

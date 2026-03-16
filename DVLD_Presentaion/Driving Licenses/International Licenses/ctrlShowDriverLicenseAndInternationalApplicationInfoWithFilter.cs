@@ -65,6 +65,7 @@ namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
         {
             object sender = null;
             EventArgs e = new EventArgs();
+
             ctrlShowLicenseInfo1.LicenseID = Convert.ToInt32(tbSearch.Text);
             ctrlShowLicenseInfo1.ctrlShowLicenseInfo_Load(sender, e);
             return ctrlShowLicenseInfo1.IsLoaded;

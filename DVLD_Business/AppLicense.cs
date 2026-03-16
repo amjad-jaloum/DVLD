@@ -84,5 +84,25 @@ namespace DVLD_Business
             return LicensesData.GetLicensesHistory(DriverID, (int)ApplicationType.enApplicationType.NewLocalDrivingLicenseService);
         }
 
+        public bool IsExpired()
+        {
+            return DateTime.Now > ExpirationDate;
+        }
+
+        public string IssueReasonToString()
+        {
+            switch (IssueReason)
+            {
+                case 1:
+                    return "First Time";
+                case 2:
+                    return "Renewal";
+                case 3:
+                    return "Replacement";
+                default:
+                    return "Unknown";
+            }
+        }
+
     }
 }

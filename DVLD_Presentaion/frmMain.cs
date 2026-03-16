@@ -113,7 +113,7 @@ namespace _19___Project___DVLD
         {
             frmRenewLocalDrivingLicense form = new frmRenewLocalDrivingLicense();
             form.MdiParent = this;
-            form.ShowDialog();
+            form.Show();
         }
     }
 }

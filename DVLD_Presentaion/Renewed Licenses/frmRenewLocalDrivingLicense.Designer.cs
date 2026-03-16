@@ -53,6 +53,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Renew Local Driving License";
+            this.Load += new System.EventHandler(this.frmRenewLocalDrivingLicense_Load);
             this.ResumeLayout(false);
 
         }

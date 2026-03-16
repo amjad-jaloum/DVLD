@@ -43,6 +43,12 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.label6 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.gbAppInfo = new System.Windows.Forms.GroupBox();
+            this.lblNotes = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblTotalFees = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblLicenseFees = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblCreatedBy = new System.Windows.Forms.Label();
             this.lblExpirationDate = new System.Windows.Forms.Label();
             this.lblAppFees = new System.Windows.Forms.Label();
@@ -55,12 +61,6 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.btnShowLicensesHistory = new System.Windows.Forms.Button();
             this.btnShowLicensesInfo = new System.Windows.Forms.Button();
             this.ctrlShowLicenseInfo1 = new _19___Project___DVLD.Driving_License_Services.ctrlShowLicenseInfo();
-            this.lblLicenseFees = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblTotalFees = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblNotes = new System.Windows.Forms.Label();
             this.gbAppInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -218,7 +218,6 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.gbAppInfo.Controls.Add(this.R_L_ApplicationID);
             this.gbAppInfo.Controls.Add(this.label10);
             this.gbAppInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbAppInfo.Enabled = false;
             this.gbAppInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAppInfo.Location = new System.Drawing.Point(5, 495);
             this.gbAppInfo.Margin = new System.Windows.Forms.Padding(2);
@@ -228,6 +227,70 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.gbAppInfo.TabIndex = 9;
             this.gbAppInfo.TabStop = false;
             this.gbAppInfo.Text = "New Application License Info";
+            // 
+            // lblNotes
+            // 
+            this.lblNotes.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblNotes.Location = new System.Drawing.Point(596, 67);
+            this.lblNotes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNotes.Name = "lblNotes";
+            this.lblNotes.Padding = new System.Windows.Forms.Padding(3);
+            this.lblNotes.Size = new System.Drawing.Size(187, 117);
+            this.lblNotes.TabIndex = 33;
+            this.lblNotes.Text = "Null";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(592, 36);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 21);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "Notes:";
+            // 
+            // lblTotalFees
+            // 
+            this.lblTotalFees.AutoSize = true;
+            this.lblTotalFees.Location = new System.Drawing.Point(490, 163);
+            this.lblTotalFees.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTotalFees.Name = "lblTotalFees";
+            this.lblTotalFees.Size = new System.Drawing.Size(47, 21);
+            this.lblTotalFees.TabIndex = 31;
+            this.lblTotalFees.Text = "[$$$]";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(292, 163);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 21);
+            this.label4.TabIndex = 30;
+            this.label4.Text = "Total Fees:";
+            // 
+            // lblLicenseFees
+            // 
+            this.lblLicenseFees.AutoSize = true;
+            this.lblLicenseFees.Location = new System.Drawing.Point(170, 163);
+            this.lblLicenseFees.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLicenseFees.Name = "lblLicenseFees";
+            this.lblLicenseFees.Size = new System.Drawing.Size(47, 21);
+            this.lblLicenseFees.TabIndex = 29;
+            this.lblLicenseFees.Text = "[$$$]";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(18, 163);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(107, 21);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "License Fees:";
             // 
             // lblCreatedBy
             // 
@@ -291,10 +354,10 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(576, 29);
             this.tbSearch.TabIndex = 7;
+            this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSearch_KeyPress);
             // 
             // btnSearch
             // 
-            this.btnSearch.Enabled = false;
             this.btnSearch.Location = new System.Drawing.Point(695, 36);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(0);
             this.btnSearch.Name = "btnSearch";
@@ -302,6 +365,7 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label23
             // 
@@ -324,6 +388,7 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.btnRenew.TabIndex = 11;
             this.btnRenew.Text = "Renew";
             this.btnRenew.UseVisualStyleBackColor = true;
+            this.btnRenew.Click += new System.EventHandler(this.btnRenew_Click);
             // 
             // btnShowLicensesHistory
             // 
@@ -335,6 +400,7 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.btnShowLicensesHistory.TabIndex = 13;
             this.btnShowLicensesHistory.Text = "Show Licenses History";
             this.btnShowLicensesHistory.UseVisualStyleBackColor = true;
+            this.btnShowLicensesHistory.Click += new System.EventHandler(this.btnShowLicensesHistory_Click);
             // 
             // btnShowLicensesInfo
             // 
@@ -346,6 +412,7 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.btnShowLicensesInfo.TabIndex = 14;
             this.btnShowLicensesInfo.Text = "Show Licenses Info";
             this.btnShowLicensesInfo.UseVisualStyleBackColor = true;
+            this.btnShowLicensesInfo.Click += new System.EventHandler(this.btnShowLicensesInfo_Click);
             // 
             // ctrlShowLicenseInfo1
             // 
@@ -356,70 +423,6 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.ctrlShowLicenseInfo1.Padding = new System.Windows.Forms.Padding(5);
             this.ctrlShowLicenseInfo1.Size = new System.Drawing.Size(804, 403);
             this.ctrlShowLicenseInfo1.TabIndex = 1;
-            // 
-            // lblLicenseFees
-            // 
-            this.lblLicenseFees.AutoSize = true;
-            this.lblLicenseFees.Location = new System.Drawing.Point(170, 163);
-            this.lblLicenseFees.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblLicenseFees.Name = "lblLicenseFees";
-            this.lblLicenseFees.Size = new System.Drawing.Size(47, 21);
-            this.lblLicenseFees.TabIndex = 29;
-            this.lblLicenseFees.Text = "[$$$]";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 163);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 21);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "License Fees:";
-            // 
-            // lblTotalFees
-            // 
-            this.lblTotalFees.AutoSize = true;
-            this.lblTotalFees.Location = new System.Drawing.Point(490, 163);
-            this.lblTotalFees.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblTotalFees.Name = "lblTotalFees";
-            this.lblTotalFees.Size = new System.Drawing.Size(47, 21);
-            this.lblTotalFees.TabIndex = 31;
-            this.lblTotalFees.Text = "[$$$]";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(292, 163);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 21);
-            this.label4.TabIndex = 30;
-            this.label4.Text = "Total Fees:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(592, 36);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 21);
-            this.label7.TabIndex = 32;
-            this.label7.Text = "Notes:";
-            // 
-            // lblNotes
-            // 
-            this.lblNotes.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblNotes.Location = new System.Drawing.Point(596, 67);
-            this.lblNotes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Padding = new System.Windows.Forms.Padding(3);
-            this.lblNotes.Size = new System.Drawing.Size(187, 117);
-            this.lblNotes.TabIndex = 33;
-            this.lblNotes.Text = "Null";
             // 
             // ctrlShowLicenseInfoAndNewApplicationWithFilter
             // 
@@ -434,6 +437,7 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.Name = "ctrlShowLicenseInfoAndNewApplicationWithFilter";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.Size = new System.Drawing.Size(814, 740);
+            this.Load += new System.EventHandler(this.ctrlShowLicenseInfoAndNewApplicationWithFilter_Load);
             this.gbAppInfo.ResumeLayout(false);
             this.gbAppInfo.PerformLayout();
             this.groupBox1.ResumeLayout(false);
