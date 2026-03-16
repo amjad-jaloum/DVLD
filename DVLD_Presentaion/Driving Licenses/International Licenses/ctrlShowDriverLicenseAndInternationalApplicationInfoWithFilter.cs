@@ -13,9 +13,9 @@ using Application = DVLD_Business.Application;
 
 namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
 {
-    public partial class ctrlShowDriverLicenseAndApplicationInfoWithFilter : UserControl
+    public partial class ctrlShowDriverLicenseAndInternationalApplicationInfoWithFilter : UserControl
     {
-        public ctrlShowDriverLicenseAndApplicationInfoWithFilter()
+        public ctrlShowDriverLicenseAndInternationalApplicationInfoWithFilter()
         {
             InitializeComponent();
         }

@@ -78,11 +78,11 @@
     <Compile Include="Driving Licenses\ctrlShowLicenseInfo.Designer.cs">
       <DependentUpon>ctrlShowLicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Driving Licenses\International Licenses\ctrlShowDriverLicenseAndApplicationInfoWithFilter.cs">
+    <Compile Include="Driving Licenses\International Licenses\ctrlShowDriverLicenseAndInternationalApplicationInfoWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Driving Licenses\International Licenses\ctrlShowDriverLicenseAndApplicationInfoWithFilter.Designer.cs">
-      <DependentUpon>ctrlShowDriverLicenseAndApplicationInfoWithFilter.cs</DependentUpon>
+    <Compile Include="Driving Licenses\International Licenses\ctrlShowDriverLicenseAndInternationalApplicationInfoWithFilter.Designer.cs">
+      <DependentUpon>ctrlShowDriverLicenseAndInternationalApplicationInfoWithFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="Driving Licenses\International Licenses\frmAddNewInternationalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
@@ -161,6 +161,18 @@
     </Compile>
     <Compile Include="People\ctrlPersonDetailWithFitler.Designer.cs">
       <DependentUpon>ctrlPersonDetailWithFitler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Renewed Licenses\ctrlShowLicenseInfoAndNewApplicationWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Renewed Licenses\ctrlShowLicenseInfoAndNewApplicationWithFilter.Designer.cs">
+      <DependentUpon>ctrlShowLicenseInfoAndNewApplicationWithFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Renewed Licenses\frmRenewLocalDrivingLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Renewed Licenses\frmRenewLocalDrivingLicense.Designer.cs">
+      <DependentUpon>frmRenewLocalDrivingLicense.cs</DependentUpon>
     </Compile>
     <Compile Include="Test Types\frmManageTestTypes.cs">
       <SubType>Form</SubType>
@@ -257,8 +269,8 @@
     <EmbeddedResource Include="Driving Licenses\ctrlShowLicenseInfo.resx">
       <DependentUpon>ctrlShowLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Driving Licenses\International Licenses\ctrlShowDriverLicenseAndApplicationInfoWithFilter.resx">
-      <DependentUpon>ctrlShowDriverLicenseAndApplicationInfoWithFilter.cs</DependentUpon>
+    <EmbeddedResource Include="Driving Licenses\International Licenses\ctrlShowDriverLicenseAndInternationalApplicationInfoWithFilter.resx">
+      <DependentUpon>ctrlShowDriverLicenseAndInternationalApplicationInfoWithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Driving Licenses\International Licenses\frmAddNewInternationalDrivingLicenseApplication.resx">
       <DependentUpon>frmAddNewInternationalDrivingLicenseApplication.cs</DependentUpon>
@@ -298,6 +310,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="People\ctrlPersonDetailWithFitler.resx">
       <DependentUpon>ctrlPersonDetailWithFitler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Renewed Licenses\ctrlShowLicenseInfoAndNewApplicationWithFilter.resx">
+      <DependentUpon>ctrlShowLicenseInfoAndNewApplicationWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Renewed Licenses\frmRenewLocalDrivingLicense.resx">
+      <DependentUpon>frmRenewLocalDrivingLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test Types\frmManageTestTypes.resx">
       <DependentUpon>frmManageTestTypes.cs</DependentUpon>

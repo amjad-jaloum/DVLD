@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlShowDriverLicenseAndApplicationInfoWithFilter1 = new _19___Project___DVLD.Driving_Licenses.International_Licenses.ctrlShowDriverLicenseAndApplicationInfoWithFilter();
+            this.ctrlShowDriverLicenseAndApplicationInfoWithFilter1 = new _19___Project___DVLD.Driving_Licenses.International_Licenses.ctrlShowDriverLicenseAndInternationalApplicationInfoWithFilter();
             this.SuspendLayout();
             // 
             // ctrlShowDriverLicenseAndApplicationInfoWithFilter1
@@ -59,6 +59,6 @@
 
         #endregion
 
-        private ctrlShowDriverLicenseAndApplicationInfoWithFilter ctrlShowDriverLicenseAndApplicationInfoWithFilter1;
+        private ctrlShowDriverLicenseAndInternationalApplicationInfoWithFilter ctrlShowDriverLicenseAndApplicationInfoWithFilter1;
     }
 }
