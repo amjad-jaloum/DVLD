@@ -89,7 +89,7 @@ namespace DVLD_Business
 
         public static DataTable GetLocalLicesnsHistory(int DriverID)
         {
-            return LicensesData.GetLicensesHistory(DriverID, (int)ApplicationType.enApplicationType.NewLocalDrivingLicenseService);
+            return LicensesData.GetLicensesHistory(DriverID, (int)ApplicationType.enApplicationType.NewInternationalLicense);
         }
 
         public bool IsExpired()

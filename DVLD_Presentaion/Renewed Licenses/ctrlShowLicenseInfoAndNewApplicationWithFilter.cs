@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _19___Project___DVLD.Driving_License_Services;
 using DVLD_Business;
 using Application = DVLD_Business.Application;
 
@@ -34,6 +35,7 @@ namespace _19___Project___DVLD.Renewed_Licenses
             bool isLoaded = LoadLicenseInfo();
             btnShowLicensesInfo.Enabled = false;
             btnShowLicensesHistory.Enabled = isLoaded;
+            btnShowLicensesInfo.Enabled = isLoaded;
             btnRenew.Enabled = false;
 
             if (isLoaded)
@@ -170,12 +172,14 @@ namespace _19___Project___DVLD.Renewed_Licenses
 
         private void btnShowLicensesInfo_Click(object sender, EventArgs e)
         {
-
+            frmShowLicenseInfo showLicenseInfo = new frmShowLicenseInfo(license.LicenseID);
+            showLicenseInfo.ShowDialog();
         }
 
         private void btnShowLicensesHistory_Click(object sender, EventArgs e)
         {
-
+            frmLicensesHistory licensesHistory = new frmLicensesHistory(license.DriverID);
+            licensesHistory.ShowDialog();
         }
     }
 }

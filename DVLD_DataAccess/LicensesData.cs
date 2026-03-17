@@ -183,10 +183,11 @@ namespace DVLD_DataAccess
                                  FROM    LicenseClasses
                                  WHERE (LicenseClassID = Licenses.LicenseClass)) AS 'Class Name', IssueDate AS 'Issue Date', ExpirationDate AS 'Expiration Date', IsActive AS 'Is Active'
                             FROM   Licenses
-                            WHERE (ApplicationID IN
+                            WHERE (ApplicationID Not IN
                                  (SELECT ApplicationID
                                  FROM    Applications
-                                 WHERE (ApplicationTypeID = @ApplicationTypeID))) AND (DriverID = @DriverID)";
+                                 WHERE (ApplicationTypeID = @ApplicationTypeID))) AND (DriverID = @DriverID)
+                                order by [Expiration Date] desc";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@DriverID", DriverID);
