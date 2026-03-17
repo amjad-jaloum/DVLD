@@ -11,6 +11,7 @@ namespace DVLD_Business
 {
     public class AppLicense
     {
+        public int LicenseID { get; set; }
         public int ApplicationID { get; set; }
         public int DriverID { get; set; }
         public int LicenseClass { get; set; }
@@ -25,10 +26,17 @@ namespace DVLD_Business
         }
         public short IssueReason { get; set; }
         public int CreatedByUserID { get; set; }
+        public enum enIssueReason
+        {
+            FirstTime = 1,
+            Renewal = 2,
+            Replacement = 3
+        }
 
-        public AppLicense(int applicationID, int driverID, int licenseClass, DateTime issueDate,
+        public AppLicense(int licenseID, int applicationID, int driverID, int licenseClass, DateTime issueDate,
             DateTime expirationDate, string notes, decimal paidFees, bool isActive, short issueReason, int createdByUserID)
         {
+            LicenseID = licenseID;
             ApplicationID = applicationID;
             DriverID = driverID;
             LicenseClass = licenseClass;
@@ -67,7 +75,7 @@ namespace DVLD_Business
                 ref IssueDate, ref ExpirationDate, ref Notes, ref PaidFees, ref IsActive, ref IssueReason, ref CreatedByUserID);
             if (isFound)
             {
-                return new AppLicense(ApplicationID, DriverID, LicenseClass, IssueDate, ExpirationDate,
+                return new AppLicense(LicenseID, ApplicationID, DriverID, LicenseClass, IssueDate, ExpirationDate,
                     Notes, PaidFees, IsActive, IssueReason, CreatedByUserID);
             }
             else
@@ -104,5 +112,9 @@ namespace DVLD_Business
             }
         }
 
+        public bool Deactivate()
+        {
+            return LicensesData.Deactivate(LicenseID);
+        }
     }
 }

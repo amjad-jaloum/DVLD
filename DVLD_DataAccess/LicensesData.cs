@@ -81,6 +81,33 @@ namespace DVLD_DataAccess
             return -1;
         }
 
+        public static bool Deactivate(int licenseID)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"USE [DVLD]
+	                            UPDATE [dbo].[Licenses]
+	                               SET [IsActive] = 0
+	                             WHERE LicenseID = @licenseID
+                           ";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@licenseID", licenseID);
+
+            int RowsEffected = 0;
+            try
+            {
+                connection.Open();
+                RowsEffected = command.ExecuteNonQuery();
+            }
+            catch (Exception) { }
+            finally
+            {
+                connection.Close();
+            }
+            return RowsEffected > 0;
+
+        }
+
         public static bool FindLicense(int licenseID, ref int applicationID, ref int driverID,
             ref int licenseClass, ref DateTime issueDate, ref DateTime expirationDate,
             ref string notes, ref decimal paidFees, ref bool isActive,

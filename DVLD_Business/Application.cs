@@ -20,6 +20,12 @@ namespace DVLD_Business
         public DateTime LastStatusDate { get; set; }
         public decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
+        public enum enApplicationStatus : short
+        {
+            New = 1,
+            Cancelled = 2,
+            Completed = 3,
+        }
 
         public Application(int applicationID, int applicantPersonID, DateTime applicationDate,
             int applicationTypeID, short applicationStatus, DateTime lastStatusDate, decimal paidFees, int createdByUserID)
@@ -60,5 +66,9 @@ namespace DVLD_Business
             return ApplicationsData.GetApplicantPersonID(localDrivingLicenseAppID);
         }
 
+        public int AddNewApplication()
+        {
+            return ApplicationsData.AddNewApplication(ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
+        }
     }
 }

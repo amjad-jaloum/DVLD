@@ -43,7 +43,6 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.label6 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.gbAppInfo = new System.Windows.Forms.GroupBox();
-            this.lblNotes = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lblTotalFees = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,6 +60,7 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.btnShowLicensesHistory = new System.Windows.Forms.Button();
             this.btnShowLicensesInfo = new System.Windows.Forms.Button();
             this.ctrlShowLicenseInfo1 = new _19___Project___DVLD.Driving_License_Services.ctrlShowLicenseInfo();
+            this.tbLicenseNotes = new System.Windows.Forms.TextBox();
             this.gbAppInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -195,7 +195,7 @@ namespace _19___Project___DVLD.Renewed_Licenses
             // 
             // gbAppInfo
             // 
-            this.gbAppInfo.Controls.Add(this.lblNotes);
+            this.gbAppInfo.Controls.Add(this.tbLicenseNotes);
             this.gbAppInfo.Controls.Add(this.label7);
             this.gbAppInfo.Controls.Add(this.lblTotalFees);
             this.gbAppInfo.Controls.Add(this.label4);
@@ -227,17 +227,6 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.gbAppInfo.TabIndex = 9;
             this.gbAppInfo.TabStop = false;
             this.gbAppInfo.Text = "New Application License Info";
-            // 
-            // lblNotes
-            // 
-            this.lblNotes.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblNotes.Location = new System.Drawing.Point(596, 67);
-            this.lblNotes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Padding = new System.Windows.Forms.Padding(3);
-            this.lblNotes.Size = new System.Drawing.Size(187, 117);
-            this.lblNotes.TabIndex = 33;
-            this.lblNotes.Text = "Null";
             // 
             // label7
             // 
@@ -424,6 +413,14 @@ namespace _19___Project___DVLD.Renewed_Licenses
             this.ctrlShowLicenseInfo1.Size = new System.Drawing.Size(804, 403);
             this.ctrlShowLicenseInfo1.TabIndex = 1;
             // 
+            // tbLicenseNotes
+            // 
+            this.tbLicenseNotes.Location = new System.Drawing.Point(596, 68);
+            this.tbLicenseNotes.Multiline = true;
+            this.tbLicenseNotes.Name = "tbLicenseNotes";
+            this.tbLicenseNotes.Size = new System.Drawing.Size(187, 116);
+            this.tbLicenseNotes.TabIndex = 33;
+            // 
             // ctrlShowLicenseInfoAndNewApplicationWithFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -479,6 +476,6 @@ namespace _19___Project___DVLD.Renewed_Licenses
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblLicenseFees;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblNotes;
+        private System.Windows.Forms.TextBox tbLicenseNotes;
     }
 }
