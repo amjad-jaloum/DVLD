@@ -47,6 +47,7 @@
             this.showCurrentUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.replaceDamagedOrLostLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainNavBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,7 +101,8 @@
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newDrivingLicenseToolStripMenuItem,
-            this.renewDrivingLicenseToolStripMenuItem});
+            this.renewDrivingLicenseToolStripMenuItem,
+            this.replaceDamagedOrLostLicenseToolStripMenuItem});
             this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(254, 24);
@@ -113,7 +115,7 @@
             this.inernationalLicenseToolStripMenuItem});
             this.newDrivingLicenseToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.newDrivingLicenseToolStripMenuItem.Name = "newDrivingLicenseToolStripMenuItem";
-            this.newDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
+            this.newDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(304, 24);
             this.newDrivingLicenseToolStripMenuItem.Text = "New Driving License";
             // 
             // localLicenseToolStripMenuItem
@@ -135,7 +137,7 @@
             // renewDrivingLicenseToolStripMenuItem
             // 
             this.renewDrivingLicenseToolStripMenuItem.Name = "renewDrivingLicenseToolStripMenuItem";
-            this.renewDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(226, 24);
+            this.renewDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(304, 24);
             this.renewDrivingLicenseToolStripMenuItem.Text = "Renew Driving License";
             this.renewDrivingLicenseToolStripMenuItem.Click += new System.EventHandler(this.renewDrivingLicenseToolStripMenuItem_Click);
             // 
@@ -217,6 +219,13 @@
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
+            // replaceDamagedOrLostLicenseToolStripMenuItem
+            // 
+            this.replaceDamagedOrLostLicenseToolStripMenuItem.Name = "replaceDamagedOrLostLicenseToolStripMenuItem";
+            this.replaceDamagedOrLostLicenseToolStripMenuItem.Size = new System.Drawing.Size(304, 24);
+            this.replaceDamagedOrLostLicenseToolStripMenuItem.Text = "Replace Damaged Or Lost License";
+            this.replaceDamagedOrLostLicenseToolStripMenuItem.Click += new System.EventHandler(this.replaceDamagedOrLostLicenseToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,6 +273,7 @@
         private System.Windows.Forms.ToolStripMenuItem localDrivingApplicationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem internationalDrivingApplicationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renewDrivingLicenseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem replaceDamagedOrLostLicenseToolStripMenuItem;
     }
 }
 

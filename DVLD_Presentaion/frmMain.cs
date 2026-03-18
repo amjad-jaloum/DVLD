@@ -11,6 +11,7 @@ using _19___Project___DVLD.Application_Types;
 using _19___Project___DVLD.Drivers;
 using _19___Project___DVLD.Driving_License_Services;
 using _19___Project___DVLD.Driving_Licenses.International_Licenses;
+using _19___Project___DVLD.Driving_Licenses.Licenses_Replacement;
 using _19___Project___DVLD.People;
 using _19___Project___DVLD.Renewed_Licenses;
 using _19___Project___DVLD.Test_Types;
@@ -114,6 +115,13 @@ namespace _19___Project___DVLD
             frmRenewLocalDrivingLicense form = new frmRenewLocalDrivingLicense();
             form.MdiParent = this;
             form.Show();
+        }
+
+        private void replaceDamagedOrLostLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLicesneReplacement frmLicesneReplacement = new frmLicesneReplacement();
+            frmLicesneReplacement.MdiParent = this;
+            frmLicesneReplacement.Show();
         }
     }
 }

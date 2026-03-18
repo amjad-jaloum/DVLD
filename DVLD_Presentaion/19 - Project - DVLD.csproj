@@ -102,6 +102,18 @@
     <Compile Include="Driving Licenses\International Licenses\frmManageInternationalDrivingLicensesApplications.Designer.cs">
       <DependentUpon>frmManageInternationalDrivingLicensesApplications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Driving Licenses\Licenses Replacement\ctrlReplacementForDamagedOrLostLicense.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Driving Licenses\Licenses Replacement\ctrlReplacementForDamagedOrLostLicense.Designer.cs">
+      <DependentUpon>ctrlReplacementForDamagedOrLostLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Driving Licenses\Licenses Replacement\frmLicesneReplacement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Driving Licenses\Licenses Replacement\frmLicesneReplacement.Designer.cs">
+      <DependentUpon>frmLicesneReplacement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Driving Licenses\Local Licenses\frmIssueDriverLicense_FirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,16 +174,16 @@
     <Compile Include="People\ctrlPersonDetailWithFitler.Designer.cs">
       <DependentUpon>ctrlPersonDetailWithFitler.cs</DependentUpon>
     </Compile>
-    <Compile Include="Renewed Licenses\ctrlShowLicenseInfoAndNewApplicationWithFilter.cs">
+    <Compile Include="Driving Licenses\Renewed Licenses\ctrlShowLicenseInfoAndNewApplicationWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Renewed Licenses\ctrlShowLicenseInfoAndNewApplicationWithFilter.Designer.cs">
+    <Compile Include="Driving Licenses\Renewed Licenses\ctrlShowLicenseInfoAndNewApplicationWithFilter.Designer.cs">
       <DependentUpon>ctrlShowLicenseInfoAndNewApplicationWithFilter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Renewed Licenses\frmRenewLocalDrivingLicense.cs">
+    <Compile Include="Driving Licenses\Renewed Licenses\frmRenewLocalDrivingLicense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Renewed Licenses\frmRenewLocalDrivingLicense.Designer.cs">
+    <Compile Include="Driving Licenses\Renewed Licenses\frmRenewLocalDrivingLicense.Designer.cs">
       <DependentUpon>frmRenewLocalDrivingLicense.cs</DependentUpon>
     </Compile>
     <Compile Include="Test Types\frmManageTestTypes.cs">
@@ -281,6 +293,12 @@
     <EmbeddedResource Include="Driving Licenses\International Licenses\frmManageInternationalDrivingLicensesApplications.resx">
       <DependentUpon>frmManageInternationalDrivingLicensesApplications.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Driving Licenses\Licenses Replacement\ctrlReplacementForDamagedOrLostLicense.resx">
+      <DependentUpon>ctrlReplacementForDamagedOrLostLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Driving Licenses\Licenses Replacement\frmLicesneReplacement.resx">
+      <DependentUpon>frmLicesneReplacement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Driving Licenses\Local Licenses\frmIssueDriverLicense_FirstTime.resx">
       <DependentUpon>frmIssueDriverLicense_FirstTime.cs</DependentUpon>
     </EmbeddedResource>
@@ -311,10 +329,10 @@
     <EmbeddedResource Include="People\ctrlPersonDetailWithFitler.resx">
       <DependentUpon>ctrlPersonDetailWithFitler.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Renewed Licenses\ctrlShowLicenseInfoAndNewApplicationWithFilter.resx">
+    <EmbeddedResource Include="Driving Licenses\Renewed Licenses\ctrlShowLicenseInfoAndNewApplicationWithFilter.resx">
       <DependentUpon>ctrlShowLicenseInfoAndNewApplicationWithFilter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Renewed Licenses\frmRenewLocalDrivingLicense.resx">
+    <EmbeddedResource Include="Driving Licenses\Renewed Licenses\frmRenewLocalDrivingLicense.resx">
       <DependentUpon>frmRenewLocalDrivingLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test Types\frmManageTestTypes.resx">
