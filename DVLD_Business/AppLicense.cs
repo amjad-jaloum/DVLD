@@ -30,7 +30,30 @@ namespace DVLD_Business
         {
             FirstTime = 1,
             Renewal = 2,
-            Replacement = 3
+            LostReplacement = 3,
+            DamagedReplacement = 4,
+            ReleasedDetainedLicense = 5,
+            InternationalLicense = 6
+        }
+        public string IssueReasonToString()
+        {
+            switch (IssueReason)
+            {
+                case 1:
+                    return "First Time";
+                case 2:
+                    return "Renewal";
+                case 3:
+                    return "Lost Replacement";
+                case 4:
+                    return "Damaged Replacement";
+                case 5:
+                    return "Released Detained License";
+                case 6:
+                    return "International License";
+                default:
+                    return "Unknown";
+            }
         }
 
         public AppLicense(int licenseID, int applicationID, int driverID, int licenseClass, DateTime issueDate,
@@ -97,20 +120,6 @@ namespace DVLD_Business
             return DateTime.Now > ExpirationDate;
         }
 
-        public string IssueReasonToString()
-        {
-            switch (IssueReason)
-            {
-                case 1:
-                    return "First Time";
-                case 2:
-                    return "Renewal";
-                case 3:
-                    return "Replacement";
-                default:
-                    return "Unknown";
-            }
-        }
 
         public bool Deactivate()
         {

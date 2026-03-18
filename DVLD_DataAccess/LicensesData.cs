@@ -187,7 +187,7 @@ namespace DVLD_DataAccess
                                  (SELECT ApplicationID
                                  FROM    Applications
                                  WHERE (ApplicationTypeID = @ApplicationTypeID))) AND (DriverID = @DriverID)
-                                order by [Expiration Date] desc";
+                                order by LicenseID desc";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@DriverID", DriverID);

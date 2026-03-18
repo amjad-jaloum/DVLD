@@ -45,13 +45,13 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
-            this.btnRenew = new System.Windows.Forms.Button();
+            this.btnIssueReplacement = new System.Windows.Forms.Button();
             this.btnShowLicensesHistory = new System.Windows.Forms.Button();
             this.btnShowLicensesInfo = new System.Windows.Forms.Button();
-            this.ctrlShowLicenseInfo1 = new _19___Project___DVLD.Driving_License_Services.ctrlShowLicenseInfo();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbDamaged = new System.Windows.Forms.RadioButton();
             this.rbLost = new System.Windows.Forms.RadioButton();
+            this.ctrlShowLicenseInfo1 = new _19___Project___DVLD.Driving_License_Services.ctrlShowLicenseInfo();
             this.gbAppInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -231,6 +231,7 @@
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(273, 29);
             this.tbSearch.TabIndex = 7;
+            this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSearch_KeyPress);
             // 
             // btnSearch
             // 
@@ -241,6 +242,7 @@
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label23
             // 
@@ -253,16 +255,17 @@
             this.label23.TabIndex = 4;
             this.label23.Text = "License ID:";
             // 
-            // btnRenew
+            // btnIssueReplacement
             // 
-            this.btnRenew.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnRenew.Enabled = false;
-            this.btnRenew.Location = new System.Drawing.Point(677, 648);
-            this.btnRenew.Name = "btnRenew";
-            this.btnRenew.Size = new System.Drawing.Size(132, 40);
-            this.btnRenew.TabIndex = 11;
-            this.btnRenew.Text = "Issue Replacement";
-            this.btnRenew.UseVisualStyleBackColor = true;
+            this.btnIssueReplacement.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnIssueReplacement.Enabled = false;
+            this.btnIssueReplacement.Location = new System.Drawing.Point(677, 648);
+            this.btnIssueReplacement.Name = "btnIssueReplacement";
+            this.btnIssueReplacement.Size = new System.Drawing.Size(132, 40);
+            this.btnIssueReplacement.TabIndex = 11;
+            this.btnIssueReplacement.Text = "Issue Replacement";
+            this.btnIssueReplacement.UseVisualStyleBackColor = true;
+            this.btnIssueReplacement.Click += new System.EventHandler(this.btnIssueReplacement_Click);
             // 
             // btnShowLicensesHistory
             // 
@@ -274,6 +277,7 @@
             this.btnShowLicensesHistory.TabIndex = 13;
             this.btnShowLicensesHistory.Text = "Show Licenses History";
             this.btnShowLicensesHistory.UseVisualStyleBackColor = true;
+            this.btnShowLicensesHistory.Click += new System.EventHandler(this.btnShowLicensesHistory_Click);
             // 
             // btnShowLicensesInfo
             // 
@@ -285,6 +289,44 @@
             this.btnShowLicensesInfo.TabIndex = 14;
             this.btnShowLicensesInfo.Text = "Show Licenses Info";
             this.btnShowLicensesInfo.UseVisualStyleBackColor = true;
+            this.btnShowLicensesInfo.Click += new System.EventHandler(this.btnShowLicensesInfo_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbLost);
+            this.groupBox2.Controls.Add(this.rbDamaged);
+            this.groupBox2.Location = new System.Drawing.Point(598, 18);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(185, 61);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "License Replacement ";
+            // 
+            // rbDamaged
+            // 
+            this.rbDamaged.AutoSize = true;
+            this.rbDamaged.Checked = true;
+            this.rbDamaged.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.rbDamaged.Location = new System.Drawing.Point(16, 28);
+            this.rbDamaged.Name = "rbDamaged";
+            this.rbDamaged.Size = new System.Drawing.Size(93, 24);
+            this.rbDamaged.TabIndex = 0;
+            this.rbDamaged.TabStop = true;
+            this.rbDamaged.Text = "Damaged";
+            this.rbDamaged.UseVisualStyleBackColor = true;
+            this.rbDamaged.CheckedChanged += new System.EventHandler(this.rbDamaged_CheckedChanged);
+            // 
+            // rbLost
+            // 
+            this.rbLost.AutoSize = true;
+            this.rbLost.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.rbLost.Location = new System.Drawing.Point(115, 28);
+            this.rbLost.Name = "rbLost";
+            this.rbLost.Size = new System.Drawing.Size(54, 24);
+            this.rbLost.TabIndex = 1;
+            this.rbLost.Text = "Lost";
+            this.rbLost.UseVisualStyleBackColor = true;
+            this.rbLost.CheckedChanged += new System.EventHandler(this.rbLost_CheckedChanged);
             // 
             // ctrlShowLicenseInfo1
             // 
@@ -296,54 +338,20 @@
             this.ctrlShowLicenseInfo1.Size = new System.Drawing.Size(804, 403);
             this.ctrlShowLicenseInfo1.TabIndex = 1;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rbLost);
-            this.groupBox2.Controls.Add(this.rbDamaged);
-            this.groupBox2.Location = new System.Drawing.Point(596, 18);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(187, 61);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "License Replacement ";
-            // 
-            // rbDamaged
-            // 
-            this.rbDamaged.AutoSize = true;
-            this.rbDamaged.Checked = true;
-            this.rbDamaged.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.rbDamaged.Location = new System.Drawing.Point(17, 28);
-            this.rbDamaged.Name = "rbDamaged";
-            this.rbDamaged.Size = new System.Drawing.Size(93, 24);
-            this.rbDamaged.TabIndex = 0;
-            this.rbDamaged.TabStop = true;
-            this.rbDamaged.Text = "Damaged";
-            this.rbDamaged.UseVisualStyleBackColor = true;
-            // 
-            // rbLost
-            // 
-            this.rbLost.AutoSize = true;
-            this.rbLost.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.rbLost.Location = new System.Drawing.Point(128, 29);
-            this.rbLost.Name = "rbLost";
-            this.rbLost.Size = new System.Drawing.Size(54, 24);
-            this.rbLost.TabIndex = 1;
-            this.rbLost.Text = "Lost";
-            this.rbLost.UseVisualStyleBackColor = true;
-            // 
             // ctrlReplacementForDamagedOrLostLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnShowLicensesInfo);
             this.Controls.Add(this.btnShowLicensesHistory);
-            this.Controls.Add(this.btnRenew);
+            this.Controls.Add(this.btnIssueReplacement);
             this.Controls.Add(this.gbAppInfo);
             this.Controls.Add(this.ctrlShowLicenseInfo1);
             this.Controls.Add(this.groupBox1);
             this.Name = "ctrlReplacementForDamagedOrLostLicense";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.Size = new System.Drawing.Size(814, 693);
+            this.Load += new System.EventHandler(this.ctrlReplacementForDamagedOrLostLicense_Load);
             this.gbAppInfo.ResumeLayout(false);
             this.gbAppInfo.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -373,7 +381,7 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox tbSearch;
-        private System.Windows.Forms.Button btnRenew;
+        private System.Windows.Forms.Button btnIssueReplacement;
         private System.Windows.Forms.Button btnShowLicensesHistory;
         private System.Windows.Forms.Button btnShowLicensesInfo;
         private System.Windows.Forms.Label lblCreatedBy;

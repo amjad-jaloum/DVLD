@@ -49,5 +49,22 @@ namespace _19___Project___DVLD.Driving_License_Services
             lblLocalLicensesRowsCount.Text = dgvLocalLicensesHisory.Rows.Count.ToString();
         }
 
+        private void showLicenseInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LicenseID = getLicenseIDFromDGV();
+            if (LicenseID < 1)
+            {
+                MessageBox.Show("Please Select a License", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            frmShowLicenseInfo frmShowLicenseInfo = new frmShowLicenseInfo(LicenseID);
+            frmShowLicenseInfo.ShowDialog();
+        }
+
+        private int getLicenseIDFromDGV()
+        {
+            return Convert.ToInt32(dgvLocalLicensesHisory.CurrentRow.Cells[0].Value);
+        }
     }
 }

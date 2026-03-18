@@ -95,7 +95,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(794, 382);
+            this.groupBox2.Size = new System.Drawing.Size(879, 382);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "License Info";
@@ -104,7 +104,7 @@
             // 
             this.pbProfileImage.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pbProfileImage.Image = global::_19___Project___DVLD.Properties.Resources.stakeholder_analysis;
-            this.pbProfileImage.Location = new System.Drawing.Point(587, 23);
+            this.pbProfileImage.Location = new System.Drawing.Point(667, 23);
             this.pbProfileImage.Margin = new System.Windows.Forms.Padding(10);
             this.pbProfileImage.Name = "pbProfileImage";
             this.pbProfileImage.Size = new System.Drawing.Size(200, 200);
@@ -115,7 +115,7 @@
             // lblIsDetained
             // 
             this.lblIsDetained.AutoSize = true;
-            this.lblIsDetained.Location = new System.Drawing.Point(429, 232);
+            this.lblIsDetained.Location = new System.Drawing.Point(519, 233);
             this.lblIsDetained.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIsDetained.Name = "lblIsDetained";
             this.lblIsDetained.Size = new System.Drawing.Size(48, 21);
@@ -126,7 +126,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(289, 233);
+            this.label21.Location = new System.Drawing.Point(379, 234);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(100, 21);
@@ -136,7 +136,7 @@
             // lblExpirationDate
             // 
             this.lblExpirationDate.AutoSize = true;
-            this.lblExpirationDate.Location = new System.Drawing.Point(429, 201);
+            this.lblExpirationDate.Location = new System.Drawing.Point(519, 202);
             this.lblExpirationDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblExpirationDate.Name = "lblExpirationDate";
             this.lblExpirationDate.Size = new System.Drawing.Size(37, 21);
@@ -147,7 +147,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(289, 202);
+            this.label24.Location = new System.Drawing.Point(379, 203);
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(133, 21);
@@ -160,7 +160,7 @@
             this.lblNotes.Location = new System.Drawing.Point(133, 266);
             this.lblNotes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(654, 106);
+            this.lblNotes.Size = new System.Drawing.Size(734, 106);
             this.lblNotes.TabIndex = 22;
             this.lblNotes.Text = "No Notes";
             // 
@@ -220,7 +220,7 @@
             // lblDriverID
             // 
             this.lblDriverID.AutoSize = true;
-            this.lblDriverID.Location = new System.Drawing.Point(428, 169);
+            this.lblDriverID.Location = new System.Drawing.Point(518, 170);
             this.lblDriverID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDriverID.Name = "lblDriverID";
             this.lblDriverID.Size = new System.Drawing.Size(48, 21);
@@ -231,7 +231,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(289, 170);
+            this.label18.Location = new System.Drawing.Point(379, 171);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(82, 21);
@@ -241,7 +241,7 @@
             // lblDateOfBirth
             // 
             this.lblDateOfBirth.AutoSize = true;
-            this.lblDateOfBirth.Location = new System.Drawing.Point(428, 137);
+            this.lblDateOfBirth.Location = new System.Drawing.Point(518, 138);
             this.lblDateOfBirth.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDateOfBirth.Name = "lblDateOfBirth";
             this.lblDateOfBirth.Size = new System.Drawing.Size(48, 21);
@@ -252,7 +252,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(289, 138);
+            this.label20.Location = new System.Drawing.Point(379, 139);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(113, 21);
@@ -262,7 +262,7 @@
             // lblIsActive
             // 
             this.lblIsActive.AutoSize = true;
-            this.lblIsActive.Location = new System.Drawing.Point(428, 106);
+            this.lblIsActive.Location = new System.Drawing.Point(518, 107);
             this.lblIsActive.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIsActive.Name = "lblIsActive";
             this.lblIsActive.Size = new System.Drawing.Size(39, 21);
@@ -273,7 +273,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(289, 107);
+            this.label22.Location = new System.Drawing.Point(379, 108);
             this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(78, 21);
@@ -392,7 +392,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "ctrlShowLicenseInfo";
             this.Padding = new System.Windows.Forms.Padding(5);
-            this.Size = new System.Drawing.Size(804, 392);
+            this.Size = new System.Drawing.Size(889, 392);
             this.Load += new System.EventHandler(this.ctrlShowLicenseInfo_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

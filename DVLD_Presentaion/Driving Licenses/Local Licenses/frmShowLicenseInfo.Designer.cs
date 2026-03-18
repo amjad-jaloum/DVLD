@@ -33,18 +33,18 @@
             // 
             // ctrlShowLicenseInfo1
             // 
-            this.ctrlShowLicenseInfo1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ctrlShowLicenseInfo1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlShowLicenseInfo1.Location = new System.Drawing.Point(0, 0);
             this.ctrlShowLicenseInfo1.Name = "ctrlShowLicenseInfo1";
             this.ctrlShowLicenseInfo1.Padding = new System.Windows.Forms.Padding(30);
-            this.ctrlShowLicenseInfo1.Size = new System.Drawing.Size(859, 446);
+            this.ctrlShowLicenseInfo1.Size = new System.Drawing.Size(948, 446);
             this.ctrlShowLicenseInfo1.TabIndex = 0;
             // 
             // frmShowLicenseInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 446);
+            this.ClientSize = new System.Drawing.Size(948, 446);
             this.Controls.Add(this.ctrlShowLicenseInfo1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
