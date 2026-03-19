@@ -1,6 +1,6 @@
-﻿namespace _19___Project___DVLD.Renewed_Licenses
+﻿namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
 {
-    partial class frmRenewLocalDrivingLicense
+    partial class frmReleaseDetainedLicense
     {
         /// <summary>
         /// Required designer variable.
@@ -28,38 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlShowLicenseInfoAndNewApplicationWithFilter1 = new _19___Project___DVLD.Renewed_Licenses.ctrlShowLicenseInfoAndNewApplicationWithFilter();
+            this.ctrlReleaseDetainedLicense1 = new _19___Project___DVLD.Driving_Licenses.Detained_Licenses.ctrlReleaseDetainedLicense();
             this.SuspendLayout();
             // 
-            // ctrlShowLicenseInfoAndNewApplicationWithFilter1
+            // ctrlReleaseDetainedLicense1
             // 
-            this.ctrlShowLicenseInfoAndNewApplicationWithFilter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlShowLicenseInfoAndNewApplicationWithFilter1.Location = new System.Drawing.Point(30, 30);
-            this.ctrlShowLicenseInfoAndNewApplicationWithFilter1.Name = "ctrlShowLicenseInfoAndNewApplicationWithFilter1";
-            this.ctrlShowLicenseInfoAndNewApplicationWithFilter1.Padding = new System.Windows.Forms.Padding(5);
-            this.ctrlShowLicenseInfoAndNewApplicationWithFilter1.Size = new System.Drawing.Size(913, 738);
-            this.ctrlShowLicenseInfoAndNewApplicationWithFilter1.TabIndex = 0;
+            this.ctrlReleaseDetainedLicense1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ctrlReleaseDetainedLicense1.Location = new System.Drawing.Point(30, 30);
+            this.ctrlReleaseDetainedLicense1.Name = "ctrlReleaseDetainedLicense1";
+            this.ctrlReleaseDetainedLicense1.Padding = new System.Windows.Forms.Padding(5);
+            this.ctrlReleaseDetainedLicense1.Size = new System.Drawing.Size(913, 738);
+            this.ctrlReleaseDetainedLicense1.TabIndex = 0;
             // 
-            // frmRenewLocalDrivingLicense
+            // frmReleaseDetainedLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 776);
-            this.Controls.Add(this.ctrlShowLicenseInfoAndNewApplicationWithFilter1);
+            this.Controls.Add(this.ctrlReleaseDetainedLicense1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmRenewLocalDrivingLicense";
+            this.Name = "frmReleaseDetainedLicense";
             this.Padding = new System.Windows.Forms.Padding(30);
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Renew Local Driving License";
-            this.Load += new System.EventHandler(this.frmRenewLocalDrivingLicense_Load);
+
+            this.Text = "Release Detained License";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private ctrlShowLicenseInfoAndNewApplicationWithFilter ctrlShowLicenseInfoAndNewApplicationWithFilter1;
+        private ctrlReleaseDetainedLicense ctrlReleaseDetainedLicense1;
     }
 }

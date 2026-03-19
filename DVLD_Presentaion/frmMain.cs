@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using _19___Project___DVLD.Application_Types;
 using _19___Project___DVLD.Drivers;
 using _19___Project___DVLD.Driving_License_Services;
+using _19___Project___DVLD.Driving_Licenses.Detained_Licenses;
 using _19___Project___DVLD.Driving_Licenses.International_Licenses;
 using _19___Project___DVLD.Driving_Licenses.Licenses_Replacement;
 using _19___Project___DVLD.People;
@@ -122,6 +123,25 @@ namespace _19___Project___DVLD
             frmLicesneReplacement frmLicesneReplacement = new frmLicesneReplacement();
             frmLicesneReplacement.MdiParent = this;
             frmLicesneReplacement.Show();
+        }
+
+        private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense frm = new frmDetainLicense();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void releaseDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseDetainedLicense frm = new frmReleaseDetainedLicense();
+            frm.MdiParent = this;
+            frm.Show();
         }
     }
 }

@@ -31,7 +31,7 @@ namespace _19___Project___DVLD.Driving_Licenses.Licenses_Replacement
 
         private string GetFees()
         {
-            return rbDamaged.Checked ? ApplicationType.GetFees((int)ApplicationType.enApplicationType.ReplacementForDamagedDrivingLicense).ToString() : ApplicationType.GetFees((int)ApplicationType.enApplicationType.ReplacementForLostDrivingLicense).ToString();
+            return rbDamaged.Checked ? ApplicationType.GetFees(ApplicationType.enApplicationType.ReplacementForDamagedDrivingLicense).ToString() : ApplicationType.GetFees(ApplicationType.enApplicationType.ReplacementForLostDrivingLicense).ToString();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

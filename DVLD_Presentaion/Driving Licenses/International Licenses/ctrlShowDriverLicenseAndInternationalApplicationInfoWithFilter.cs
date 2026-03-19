@@ -25,7 +25,7 @@ namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
             lblIssueDate.Text = DateTime.Now.ToShortDateString();
             lblAppDate.Text = DateTime.Now.ToShortDateString();
             lblExpirationDate.Text = DateTime.Now.AddYears(1).ToShortDateString();
-            lblFees.Text = ApplicationType.GetFees((int)ApplicationType.enApplicationType.NewInternationalLicense).ToString();
+            lblFees.Text = ApplicationType.GetFees(ApplicationType.enApplicationType.NewInternationalLicense).ToString();
             if (!DesignMode)
                 lblCreatedBy.Text = clsGloabalSettings.LogginUser.UserName;
         }

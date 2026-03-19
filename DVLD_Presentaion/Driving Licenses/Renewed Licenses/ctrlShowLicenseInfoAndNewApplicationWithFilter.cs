@@ -25,7 +25,7 @@ namespace _19___Project___DVLD.Renewed_Licenses
         {
             lblAppDate.Text = DateTime.Now.ToShortDateString();
             lblIssueDate.Text = DateTime.Now.ToShortDateString();
-            lblAppFees.Text = ApplicationType.GetFees((int)ApplicationType.enApplicationType.RenewDrivingLicenseService).ToString();
+            lblAppFees.Text = ApplicationType.GetFees(ApplicationType.enApplicationType.RenewDrivingLicenseService).ToString();
             if (!DesignMode)
                 lblCreatedBy.Text = clsGloabalSettings.LogginUser.UserName;
         }

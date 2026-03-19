@@ -41,9 +41,9 @@ namespace DVLD_Business
             return ApplicationTypesData.GetApplicationTypes();
         }
 
-        public static int GetFees(int ApplicationTypeID)
+        public static int GetFees(enApplicationType ApplicationTypeID)
         {
-            return ApplicationTypesData.GetFees(ApplicationTypeID);
+            return ApplicationTypesData.GetFees((int) ApplicationTypeID);
         }
     }
 }
