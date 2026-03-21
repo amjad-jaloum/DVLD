@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -111,6 +112,86 @@ namespace DVLD_DataAccess
             return false;
         }
 
+        public static List<string> GetColumnNames()
+        {
+            List<string> list = new List<string>();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"select INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'DetainedLicenses_View'
+                                and COLUMN_NAME not in ('Fine Fees', 'Release Date', 'L.ID')
+                                ";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if ((string)reader["COLUMN_NAME"] == "ClassName" || (string)reader["COLUMN_NAME"] == "ApplicationDate" | (string)reader["COLUMN_NAME"] == "PassedTestCount")
+                        continue;
+
+                    list.Add((string)reader["COLUMN_NAME"]);
+                }
+                reader.Close();
+            }
+            catch (Exception)
+            {
+            }
+            finally { connection.Close(); }
+
+            return list;
+        }
+
+        public static DataTable GetDataTableWithQuery(string ColumnName, string value)
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = $"select * from DetainedLicenses_View where [{ColumnName}] like @value";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@value", '%' + value + '%');
+
+            DataTable dt = new DataTable();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.HasRows)
+                {
+                    dt.Load(reader); // loads all rows at once - read() uses sinbgle row at a time
+                }
+                reader.Close();
+            }
+            catch (Exception) { }
+            finally { connection.Close(); }
+
+            return dt;
+        }
+
+        public static DataTable GetDetianedLicense()
+        {
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"  SELECT *
+                              FROM [DetainedLicenses_View]
+                            ";
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            DataTable dt = new DataTable();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.HasRows)
+                {
+                    dt.Load(reader); // loads all rows at once - read() uses sinbgle row at a time
+                }
+                reader.Close();
+            }
+            catch (Exception) { }
+            finally { connection.Close(); }
+
+            return dt;
+        }
+
         public static bool IsLicenseDetained(int LicenseID)
         {
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -169,5 +250,6 @@ namespace DVLD_DataAccess
             return RowsEffected > 0;
 
         }
+
     }
 }

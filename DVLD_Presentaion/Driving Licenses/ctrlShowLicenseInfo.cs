@@ -52,7 +52,7 @@ namespace _19___Project___DVLD.Driving_License_Services
                 lblDateOfBirth.Text = person.DateOfBirth.ToShortDateString();
                 lblDriverID.Text = license.DriverID.ToString();
                 lblExpirationDate.Text = license.ExpirationDate.ToShortDateString();
-                lblIsDetained.Text = IsDetaind();
+                lblIsDetained.Text = IsDetained();
                 pbProfileImage.Image = GetImagePath(person.ImagePath);
                 lblIssueReason.Text = license.IssueReasonToString();
                 return true;
@@ -65,7 +65,7 @@ namespace _19___Project___DVLD.Driving_License_Services
             }
         }
 
-        private string IsDetaind()
+        private string IsDetained()
         {
             return DetainedLicense.IsLicenseDetained(LicenseID) ? "Yes" : "No";
         }

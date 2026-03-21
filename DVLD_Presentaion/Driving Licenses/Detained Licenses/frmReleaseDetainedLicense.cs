@@ -16,5 +16,10 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
         {
             InitializeComponent();
         }
+
+        internal void FindDetainedLicense(int LicenseID)
+        {
+            ctrlReleaseDetainedLicense1.FindDetainedLicense(LicenseID);
+        }
     }
 }

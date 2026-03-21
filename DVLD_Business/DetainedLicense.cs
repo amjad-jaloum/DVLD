@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -89,6 +90,21 @@ namespace DVLD_Business
         public bool ReleaseDetainedLicense(int ReleasedByUserID, int ReleaseApplicationID)
         {
             return DetainedLicensesData.ReleaseDetainedLicense(DetainID, ReleasedByUserID, ReleaseApplicationID);
+        }
+
+        public static DataTable GetDetianedLicense()
+        {
+            return DetainedLicensesData.GetDetianedLicense();
+        }
+
+        public static List<string> GetColumnNames()
+        {
+            return DetainedLicensesData.GetColumnNames();
+        }
+
+        public static DataTable GetDataTableWithQuery(string colName, string searchValue)
+        {
+            return DetainedLicensesData.GetDataTableWithQuery(colName, searchValue);
         }
     }
 }

@@ -127,7 +127,9 @@ namespace _19___Project___DVLD
 
         private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmManageDetainedLicenses frm = new frmManageDetainedLicenses();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -138,6 +140,27 @@ namespace _19___Project___DVLD
         }
 
         private void releaseDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseDetainedLicense frm = new frmReleaseDetainedLicense();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void manageTestTypesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmManageTestTypes frm = new frmManageTestTypes();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void retakeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageLocalDrivingLicenseApplications frm = new frmManageLocalDrivingLicenseApplications();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void releaseDetainedDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmReleaseDetainedLicense frm = new frmReleaseDetainedLicense();
             frm.MdiParent = this;

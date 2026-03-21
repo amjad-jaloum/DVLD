@@ -23,6 +23,11 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
         DetainedLicense detainedLicense = null;
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            SearchForLicense();
+        }
+
+        private void SearchForLicense()
+        {
             bool isLoaded = LoadLicenseInfo();
             btnShowLicensesInfo.Enabled = false;
             btnShowLicensesHistory.Enabled = isLoaded;
@@ -99,6 +104,13 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
 
         private void btnRelease_Click(object sender, EventArgs e)
         {
+            if (detainedLicense.IsReleased)
+            {
+                MessageBox.Show("This License is already released",
+                "Regection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to release this detained license?",
                 "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
@@ -168,6 +180,14 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
         {
             frmLicensesHistory licensesHistory = new frmLicensesHistory(license.DriverID);
             licensesHistory.ShowDialog();
+        }
+
+        public void FindDetainedLicense(int LicenseID)
+        {
+            tbSearch.Text = LicenseID.ToString();
+            SearchForLicense();
+            btnSearch.Enabled = false;
+            tbSearch.Enabled = false;
         }
     }
 }
