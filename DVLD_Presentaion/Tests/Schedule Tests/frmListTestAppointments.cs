@@ -12,7 +12,7 @@ using static _19___Project___DVLD.Driving_License_Services.Schedule_Tests.frmShe
 
 namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
 {
-    public partial class frmVisionTestAppointments : Form
+    public partial class frmListTestAppointments : Form
     {
         private int _LocalDrivingLicenseAppID { get; set; }
         private string _licenseName { get; set; }
@@ -28,7 +28,7 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
         public delegate void RefreshManageLocalDrivingLicenseApplicationsDGVHandler(object sender);
         public event RefreshManageLocalDrivingLicenseApplicationsDGVHandler RefreshManageLocalDrivingLicenseApplicationsDGV;
 
-        public frmVisionTestAppointments(int LocalDrivingLicenseAppID, string licenseName,
+        public frmListTestAppointments(int LocalDrivingLicenseAppID, string licenseName,
             string applicantFullName, DateTime appDate, short passedTests, string appStatus)
         {
             InitializeComponent();
@@ -40,7 +40,7 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
             _appStatus = appStatus;
         }
 
-        public frmVisionTestAppointments()
+        public frmListTestAppointments()
         {
             InitializeComponent();
         }

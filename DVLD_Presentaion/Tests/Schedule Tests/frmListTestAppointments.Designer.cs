@@ -1,6 +1,6 @@
 ﻿namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
 {
-    partial class frmVisionTestAppointments
+    partial class frmListTestAppointments
     {
         /// <summary>
         /// Required designer variable.

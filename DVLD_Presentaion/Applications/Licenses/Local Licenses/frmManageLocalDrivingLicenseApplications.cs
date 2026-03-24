@@ -206,14 +206,14 @@ namespace _19___Project___DVLD.Driving_License_Services
         private void schedulTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
-        private void OpenTestAppointmentTestScheduler(frmVisionTestAppointments.enTestType TestType)
+        private void OpenTestAppointmentTestScheduler(frmListTestAppointments.enTestType TestType)
         {
-            frmVisionTestAppointments form = new frmVisionTestAppointments();
+            frmListTestAppointments form = new frmListTestAppointments();
             ApplyChangesInForm(TestType, ref form);
             form.RefreshManageLocalDrivingLicenseApplicationsDGV += RefreshDGV;
             form.ShowDialog();
         }
-        private void ApplyChangesInForm(frmVisionTestAppointments.enTestType testType, ref frmVisionTestAppointments form)
+        private void ApplyChangesInForm(frmListTestAppointments.enTestType testType, ref frmListTestAppointments form)
         {
             int AppID = 0;
             string LicenseName = "";
@@ -225,33 +225,33 @@ namespace _19___Project___DVLD.Driving_License_Services
             GetAppDataFromDGV(ref AppID, ref LicenseName, ref ApplicantFullName, ref AppDate, ref PassedTests,
                 ref AppStatus);
 
-            form = new frmVisionTestAppointments(AppID, LicenseName, ApplicantFullName, AppDate, PassedTests, AppStatus);
-            frmVisionTestAppointments.TestType = testType;
+            form = new frmListTestAppointments(AppID, LicenseName, ApplicantFullName, AppDate, PassedTests, AppStatus);
+            frmListTestAppointments.TestType = testType;
 
             switch (testType)
             {
-                case frmVisionTestAppointments.enTestType.Vision:
+                case frmListTestAppointments.enTestType.Vision:
                     form.Text = "Schedule Vision Test Appointment";
                     break;
-                case frmVisionTestAppointments.enTestType.Written:
+                case frmListTestAppointments.enTestType.Written:
                     form.Text = "Schedule Written Test Appointment";
                     break;
-                case frmVisionTestAppointments.enTestType.Streat:
+                case frmListTestAppointments.enTestType.Streat:
                     form.Text = "Schedule Street Test Appointment";
                     break;
             }
         }
         private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenTestAppointmentTestScheduler(frmVisionTestAppointments.enTestType.Vision);
+            OpenTestAppointmentTestScheduler(frmListTestAppointments.enTestType.Vision);
         }
         private void writtenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenTestAppointmentTestScheduler(frmVisionTestAppointments.enTestType.Written);
+            OpenTestAppointmentTestScheduler(frmListTestAppointments.enTestType.Written);
         }
         private void streetTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenTestAppointmentTestScheduler(frmVisionTestAppointments.enTestType.Streat);
+            OpenTestAppointmentTestScheduler(frmListTestAppointments.enTestType.Streat);
         }
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
