@@ -41,19 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application.cs" />
-    <Compile Include="ApplicationType.cs" />
-    <Compile Include="DetainedLicense.cs" />
-    <Compile Include="Driver.cs" />
-    <Compile Include="AppLicense.cs" />
-    <Compile Include="InternationalDrivingLicensesApplication.cs" />
-    <Compile Include="LicenseClass.cs" />
-    <Compile Include="LocalDrivingLicenseApplication.cs" />
-    <Compile Include="Person.cs" />
+    <Compile Include="clsApplication.cs" />
+    <Compile Include="clsApplicationType.cs" />
+    <Compile Include="clsCountry.cs" />
+    <Compile Include="clsDetainedLicense.cs" />
+    <Compile Include="clsDriver.cs" />
+    <Compile Include="clsLicense.cs" />
+    <Compile Include="clsInternationalLicense.cs" />
+    <Compile Include="clsLicenseClass.cs" />
+    <Compile Include="clsLocalDrivingLicenseApplication.cs" />
+    <Compile Include="clsPerson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestAppointment.cs" />
-    <Compile Include="TestType.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="clsTestAppointment.cs" />
+    <Compile Include="clsTestType.cs" />
+    <Compile Include="clsUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DVLD_DataAccess\DVLD_DataAccess.csproj">

@@ -22,21 +22,21 @@ namespace _19___Project___DVLD
             if (AreFormFieldsValid())
             {
                 bool isUserFound = false;
-                User user = User.FindUser(tbUsername.Text, tbPassword.Text, ref isUserFound);
-                clsGloabalSettings.LogginUser = user;
+                clsUser user = clsUser.FindUser(tbUsername.Text, tbPassword.Text, ref isUserFound);
+                clsGlobal.CurrentUser = user;
 
                 if (isUserFound)
                 {
                     if (chxRememberMe.Checked)
-                        User.SaveUsernameAndPasswordToFile(tbUsername.Text, tbPassword.Text);
+                        clsUser.SaveUsernameAndPasswordToFile(tbUsername.Text, tbPassword.Text);
                     else
-                        User.ResetUsernameAndPasswrodFile();
+                        clsUser.ResetUsernameAndPasswrodFile();
 
                     if (user.IsActive)
                     {
-                        frmMain frmMain = new frmMain();
+                        this.Hide();
+                        frmMain frmMain = new frmMain(this);
                         frmMain.ShowDialog();
-                        Close();
                     }
                     else
                         MessageBox.Show("The user is not allowed to login, please try another user", 
@@ -83,7 +83,7 @@ namespace _19___Project___DVLD
         private void frmLogin_Load(object sender, EventArgs e)
         {
             string username = "", password = "";
-            if (User.LoadSavedLoginData(ref username, ref password))
+            if (clsUser.LoadSavedLoginData(ref username, ref password))
             {
                 tbUsername.Text = username;
                 tbPassword.Text = password;

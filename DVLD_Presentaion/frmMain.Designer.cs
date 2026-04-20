@@ -30,14 +30,14 @@
         {
             this.msMainNavBar = new System.Windows.Forms.MenuStrip();
             this.applicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageApplicationTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageTestTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.newDrivingLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.localLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inernationalLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renewDrivingLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replaceDamagedOrLostLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.releaseDetainedDrivingLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.retakeTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageApplicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.localDrivingApplicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.internationalDrivingApplicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +45,8 @@
             this.manageDetainedLicensesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detainLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.releaseDetainedLicensesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageApplicationTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageTestTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peopleToolStripMenuItem_People = new System.Windows.Forms.ToolStripMenuItem();
             this.driversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,9 +54,9 @@
             this.showCurrentUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.releaseDetainedDrivingLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.retakeTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.msMainNavBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // msMainNavBar
@@ -71,8 +73,7 @@
             this.accountToolStripMenuItem});
             this.msMainNavBar.Location = new System.Drawing.Point(0, 0);
             this.msMainNavBar.Name = "msMainNavBar";
-            this.msMainNavBar.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
-            this.msMainNavBar.Size = new System.Drawing.Size(1062, 38);
+            this.msMainNavBar.Size = new System.Drawing.Size(1062, 40);
             this.msMainNavBar.TabIndex = 0;
             this.msMainNavBar.Text = "menuStrip1";
             // 
@@ -86,24 +87,8 @@
             this.manageTestTypesToolStripMenuItem});
             this.applicationsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.applicationsToolStripMenuItem.Name = "applicationsToolStripMenuItem";
-            this.applicationsToolStripMenuItem.Size = new System.Drawing.Size(146, 34);
+            this.applicationsToolStripMenuItem.Size = new System.Drawing.Size(146, 36);
             this.applicationsToolStripMenuItem.Text = "Applications";
-            // 
-            // manageApplicationTypesToolStripMenuItem
-            // 
-            this.manageApplicationTypesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.manageApplicationTypesToolStripMenuItem.Name = "manageApplicationTypesToolStripMenuItem";
-            this.manageApplicationTypesToolStripMenuItem.Size = new System.Drawing.Size(371, 38);
-            this.manageApplicationTypesToolStripMenuItem.Text = "Manage Application Types";
-            this.manageApplicationTypesToolStripMenuItem.Click += new System.EventHandler(this.manageApplicationTypesToolStripMenuItem_Click);
-            // 
-            // manageTestTypesToolStripMenuItem
-            // 
-            this.manageTestTypesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.manageTestTypesToolStripMenuItem.Name = "manageTestTypesToolStripMenuItem";
-            this.manageTestTypesToolStripMenuItem.Size = new System.Drawing.Size(371, 38);
-            this.manageTestTypesToolStripMenuItem.Text = "Manage Test Types";
-            this.manageTestTypesToolStripMenuItem.Click += new System.EventHandler(this.manageTestTypesToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -157,6 +142,20 @@
             this.replaceDamagedOrLostLicenseToolStripMenuItem.Size = new System.Drawing.Size(443, 38);
             this.replaceDamagedOrLostLicenseToolStripMenuItem.Text = "Replace Damaged Or Lost License";
             this.replaceDamagedOrLostLicenseToolStripMenuItem.Click += new System.EventHandler(this.replaceDamagedOrLostLicenseToolStripMenuItem_Click);
+            // 
+            // releaseDetainedDrivingLicenseToolStripMenuItem
+            // 
+            this.releaseDetainedDrivingLicenseToolStripMenuItem.Name = "releaseDetainedDrivingLicenseToolStripMenuItem";
+            this.releaseDetainedDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(443, 38);
+            this.releaseDetainedDrivingLicenseToolStripMenuItem.Text = "Release Detained Driving License";
+            this.releaseDetainedDrivingLicenseToolStripMenuItem.Click += new System.EventHandler(this.releaseDetainedDrivingLicenseToolStripMenuItem_Click);
+            // 
+            // retakeTestToolStripMenuItem
+            // 
+            this.retakeTestToolStripMenuItem.Name = "retakeTestToolStripMenuItem";
+            this.retakeTestToolStripMenuItem.Size = new System.Drawing.Size(443, 38);
+            this.retakeTestToolStripMenuItem.Text = "Retake Test";
+            this.retakeTestToolStripMenuItem.Click += new System.EventHandler(this.retakeTestToolStripMenuItem_Click);
             // 
             // manageApplicationsToolStripMenuItem
             // 
@@ -212,24 +211,40 @@
             this.releaseDetainedLicensesToolStripMenuItem.Text = "Release Detained License";
             this.releaseDetainedLicensesToolStripMenuItem.Click += new System.EventHandler(this.releaseDetainedLicensesToolStripMenuItem_Click);
             // 
+            // manageApplicationTypesToolStripMenuItem
+            // 
+            this.manageApplicationTypesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.manageApplicationTypesToolStripMenuItem.Name = "manageApplicationTypesToolStripMenuItem";
+            this.manageApplicationTypesToolStripMenuItem.Size = new System.Drawing.Size(371, 38);
+            this.manageApplicationTypesToolStripMenuItem.Text = "Manage Application Types";
+            this.manageApplicationTypesToolStripMenuItem.Click += new System.EventHandler(this.manageApplicationTypesToolStripMenuItem_Click);
+            // 
+            // manageTestTypesToolStripMenuItem
+            // 
+            this.manageTestTypesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.manageTestTypesToolStripMenuItem.Name = "manageTestTypesToolStripMenuItem";
+            this.manageTestTypesToolStripMenuItem.Size = new System.Drawing.Size(371, 38);
+            this.manageTestTypesToolStripMenuItem.Text = "Manage Test Types";
+            this.manageTestTypesToolStripMenuItem.Click += new System.EventHandler(this.manageTestTypesToolStripMenuItem_Click);
+            // 
             // peopleToolStripMenuItem_People
             // 
             this.peopleToolStripMenuItem_People.Name = "peopleToolStripMenuItem_People";
-            this.peopleToolStripMenuItem_People.Size = new System.Drawing.Size(95, 34);
+            this.peopleToolStripMenuItem_People.Size = new System.Drawing.Size(95, 36);
             this.peopleToolStripMenuItem_People.Text = "People";
             this.peopleToolStripMenuItem_People.Click += new System.EventHandler(this.peopleToolStripMenuItem_People_Click);
             // 
             // driversToolStripMenuItem
             // 
             this.driversToolStripMenuItem.Name = "driversToolStripMenuItem";
-            this.driversToolStripMenuItem.Size = new System.Drawing.Size(97, 34);
+            this.driversToolStripMenuItem.Size = new System.Drawing.Size(97, 36);
             this.driversToolStripMenuItem.Text = "Drivers";
             this.driversToolStripMenuItem.Click += new System.EventHandler(this.driversToolStripMenuItem_Click);
             // 
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(82, 34);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(82, 36);
             this.usersToolStripMenuItem.Text = "Users";
             this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
@@ -240,7 +255,7 @@
             this.changePasswordToolStripMenuItem,
             this.logoutToolStripMenuItem});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(197, 34);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(197, 36);
             this.accountToolStripMenuItem.Text = "Account Setttings";
             // 
             // showCurrentUserToolStripMenuItem
@@ -267,28 +282,51 @@
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
-            // releaseDetainedDrivingLicenseToolStripMenuItem
+            // pictureBox1
             // 
-            this.releaseDetainedDrivingLicenseToolStripMenuItem.Name = "releaseDetainedDrivingLicenseToolStripMenuItem";
-            this.releaseDetainedDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(443, 38);
-            this.releaseDetainedDrivingLicenseToolStripMenuItem.Text = "Release Detained Driving License";
-            this.releaseDetainedDrivingLicenseToolStripMenuItem.Click += new System.EventHandler(this.releaseDetainedDrivingLicenseToolStripMenuItem_Click);
-            // 
-            // retakeTestToolStripMenuItem
-            // 
-            this.retakeTestToolStripMenuItem.Name = "retakeTestToolStripMenuItem";
-            this.retakeTestToolStripMenuItem.Size = new System.Drawing.Size(443, 38);
-            this.retakeTestToolStripMenuItem.Text = "Retake Test";
-            this.retakeTestToolStripMenuItem.Click += new System.EventHandler(this.retakeTestToolStripMenuItem_Click);
+            this.pictureBox1.Image = global::_19___Project___DVLD.Properties.Resources.driver_config__1_;
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1924, 1061);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+
             // 
             // frmMain
             // 
+            //this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            //this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            //this.BackColor = System.Drawing.Color.White;
+            //this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            //this.ClientSize = new System.Drawing.Size(1924, 1061);
+            //this.Controls.Add(this.pictureBox1);
+            //this.DoubleBuffered = true;
+            //this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            //this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            //this.Name = "frmMain";
+            //this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            //this.Text = "Main";
+            //this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            //((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            //this.ResumeLayout(false);
+            //this.PerformLayout();
+
+
+
+
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BackgroundImage = global::_19___Project___DVLD.Properties.Resources.driver_config__1_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1062, 620);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.msMainNavBar);
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
@@ -296,11 +334,13 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmMain";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Form";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.msMainNavBar.ResumeLayout(false);
             this.msMainNavBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,6 +374,7 @@
         private System.Windows.Forms.ToolStripMenuItem releaseDetainedLicensesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem releaseDetainedDrivingLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem retakeTestToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

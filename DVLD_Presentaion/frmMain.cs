@@ -22,149 +22,138 @@ namespace _19___Project___DVLD
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        frmLogin _frmLogin;
+        public frmMain(frmLogin frmLogin)
         {
             InitializeComponent();
+            _frmLogin = frmLogin;
         }
 
         private void peopleToolStripMenuItem_People_Click(object sender, EventArgs e)
         {
-            frmManagePeople PeopleForm = new frmManagePeople();
-            PeopleForm.MdiParent = this;
-            PeopleForm.Show();
+            frmListPeople PeopleForm = new frmListPeople();
+            PeopleForm.ShowDialog();
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            clsGlobal.CurrentUser = null;
+            _frmLogin.Show();
             Close();
         }
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManageUsers frmManageUsers = new frmManageUsers();
-            frmManageUsers.MdiParent = this;
-            frmManageUsers.Show();
+            frmListUsers frmManageUsers = new frmListUsers();
+            frmManageUsers.ShowDialog();
         }
 
         private void showCurrentUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmShowUserDetails frmShowDetails = new frmShowUserDetails(clsGloabalSettings.LogginUser.PersonID,clsGloabalSettings.LogginUser.UserID);
-            frmShowDetails.Show();
+            frmUserInfo frmShowDetails = new frmUserInfo(clsGlobal.CurrentUser.PersonID,clsGlobal.CurrentUser.UserID);
+            frmShowDetails.ShowDialog();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangeUserPassword frm = new frmChangeUserPassword(clsGloabalSettings.LogginUser.PersonID, clsGloabalSettings.LogginUser.UserID);
-            frm.Show();
+            frmChangePassword frm = new frmChangePassword(clsGlobal.CurrentUser.PersonID, clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
         }
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmLogin frmLogin = new frmLogin();
-            frmLogin.Show();
+            frmLogin.ShowDialog();
         }
 
         private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManageApplicationTypes frm = new frmManageApplicationTypes();
+            frmListApplicationType frm = new frmListApplicationType();
             frm.ShowDialog();
         }
 
         private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManageTestTypes frm = new frmManageTestTypes();
+            frmListTestTypes frm = new frmListTestTypes();
             frm.ShowDialog();
         }
 
         private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmNewLocalDrivingLicenseApplications frm = new frmNewLocalDrivingLicenseApplications();
-            frm.MdiParent = this;
-            frm.Show();
+            frmAddUpdateLocalDrivingLicenseApplication frm = new frmAddUpdateLocalDrivingLicenseApplication();
+            frm.ShowDialog();
         }
 
         private void localDrivingApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManageLocalDrivingLicenseApplications frm = new frmManageLocalDrivingLicenseApplications();
-            frm.MdiParent = this;
-            frm.Show();
+            frmListLocalDrivingLicenseApplications frm = new frmListLocalDrivingLicenseApplications();
+            frm.ShowDialog();
         }
 
         private void driversToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManageDrivers frm = new frmManageDrivers();
-            frm.MdiParent = this;
-            frm.Show();
+            frmListDrivers frm = new frmListDrivers();
+            frm.ShowDialog();
         }
 
         private void inernationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddNewInternationalDrivingLicenseApplication frm = new frmAddNewInternationalDrivingLicenseApplication();
-            frm.MdiParent = this;
-            frm.Show();
+            frmNewInternationalLicenseApplication frm = new frmNewInternationalLicenseApplication();
+            frm.ShowDialog();
         }
 
         private void internationalDrivingApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManageInternationalDrivingLicensesApplications frm = new frmManageInternationalDrivingLicensesApplications();
-            frm.MdiParent = this;
-            frm.Show();
+            frmListInternationalLicensesApplication frm = new frmListInternationalLicensesApplication();
+            frm.ShowDialog();
         }
 
         private void renewDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRenewLocalDrivingLicense form = new frmRenewLocalDrivingLicense();
-            form.MdiParent = this;
-            form.Show();
+            frmRenewLocalDrivingLicenseApplication form = new frmRenewLocalDrivingLicenseApplication();
+            form.ShowDialog();
         }
 
         private void replaceDamagedOrLostLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLicesneReplacement frmLicesneReplacement = new frmLicesneReplacement();
-            frmLicesneReplacement.MdiParent = this;
-            frmLicesneReplacement.Show();
+            frmReplaceLostOrDamagedLicenseApplication frmLicesneReplacement = new frmReplaceLostOrDamagedLicenseApplication();
+            frmLicesneReplacement.ShowDialog();
         }
 
         private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManageDetainedLicenses frm = new frmManageDetainedLicenses();
-            frm.MdiParent = this;
-            frm.Show();
+            frmListDetainedLicenses frm = new frmListDetainedLicenses();
+            frm.ShowDialog();
         }
 
         private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDetainLicense frm = new frmDetainLicense();
-            frm.MdiParent = this;
-            frm.Show();
+            frmDetainLicenseApplication frm = new frmDetainLicenseApplication();
+            frm.ShowDialog();
         }
 
         private void releaseDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmReleaseDetainedLicense frm = new frmReleaseDetainedLicense();
-            frm.MdiParent = this;
-            frm.Show();
+            frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication();
+            frm.ShowDialog();
         }
 
         private void manageTestTypesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmManageTestTypes frm = new frmManageTestTypes();
-            frm.MdiParent = this;
-            frm.Show();
+            frmListTestTypes frm = new frmListTestTypes();
+            frm.ShowDialog();
         }
 
         private void retakeTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmManageLocalDrivingLicenseApplications frm = new frmManageLocalDrivingLicenseApplications();
-            frm.MdiParent = this;
-            frm.Show();
+            frmListLocalDrivingLicenseApplications frm = new frmListLocalDrivingLicenseApplications();
+            frm.ShowDialog();
         }
 
         private void releaseDetainedDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmReleaseDetainedLicense frm = new frmReleaseDetainedLicense();
-            frm.MdiParent = this;
-            frm.Show();
+            frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication();
+            frm.ShowDialog();
         }
     }
 }
