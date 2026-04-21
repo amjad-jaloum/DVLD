@@ -5,43 +5,101 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using _19___Project___DVLD.Global_Classes;
 using _19___Project___DVLD.Properties;
+using DVLD_Buisness;
 using DVLD_Business;
+using static _19___Project___DVLD.People.frmAddUpdatePerson;
 
 namespace _19___Project___DVLD.People
 {
     public partial class frmAddUpdatePerson : Form
     {
-        private enum enMode
+        public delegate void DataBackEventHandler(object sender, int PersonID);
+        public event DataBackEventHandler DataBack;
+        public enum enMode
         {
-            NewPerson = 1, UpdatePerson = 2
+            AddNew, Update
         }
-        enMode Mode = enMode.NewPerson;
-        clsPerson PersonInfo = null;
+        public enum enGender
+        {
+            Male, Female
+        }
+
+        enMode Mode;
+        private int _PersonID = -1;
+        clsPerson _Person;
         public frmAddUpdatePerson()
         {
             InitializeComponent();
-            Mode = enMode.NewPerson;
+            Mode = enMode.AddNew;
         }
-
-        public frmAddUpdatePerson(clsPerson person)
+        public frmAddUpdatePerson(int PersonID)
         {
             InitializeComponent();
-            Mode = enMode.UpdatePerson;
-            PersonInfo = person;
+            Mode = enMode.Update;
+            _PersonID = PersonID;
         }
 
-        public delegate void HandelDelegateData(object sender);
-        public event HandelDelegateData Handeler;
+        private void _ResetDefaultValues()
+        {
+            _FillCountriesInComoboBox();
 
-        public delegate void HandleDelegatePerson(object sender, int PersonID);
-        public event HandleDelegatePerson PersonHandler;
+            if (Mode == enMode.AddNew)
+            {
+                Text = "Add New Person";
+                _Person = new clsPerson();
+            }
+            else
+            {
+                Text = "Update Person";
+            }
 
+            if (rbMale.Checked)
+            {
+                pbUserImage.Image = Resources.male;
+            }
+            else
+            {
+                pbUserImage.Image = Resources.female;
+            }
+
+            btnRemoveImage.Enabled = pbUserImage.ImageLocation != null;
+
+            dtpDateOfBirth.MaxDate = DateTime.Now.AddYears(-18);
+            dtpDateOfBirth.Value = dtpDateOfBirth.MaxDate;
+
+            dtpDateOfBirth.MinDate = DateTime.Now.AddYears(-100);
+
+            cbCountriesNames.SelectedIndex = cbCountriesNames.FindString("Jordan");
+
+            tbFirstName.Text = "";
+            tbSecondName.Text = "";
+            tbThirdName.Text = "";
+            tbLastName.Text = "";
+            tbNationalNo.Text = "";
+            rbMale.Checked = true;
+            tbPhone.Text = "";
+            tbEmail.Text = "";
+            tbAddress.Text = "";
+
+
+        }
+        private void _FillCountriesInComoboBox()
+        {
+            DataTable dtCountries = clsCountry.GetAllCountries();
+
+            foreach (DataRow row in dtCountries.Rows)
+            {
+                cbCountriesNames.Items.Add(row["CountryName"]);
+            }
+        }
         private void rbFemale_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -49,41 +107,42 @@ namespace _19___Project___DVLD.People
         private void frmAddAndUpdatePerson_Load(object sender, EventArgs e)
         {
             ActiveControl = tbFirstName;
-            LoadAllCountriesToComboBox();
-            if (Mode == enMode.NewPerson)
+
+            _ResetDefaultValues();
+            if (Mode == enMode.Update)
             {
-                dtpDateOfBirth.MaxDate = DateTime.Now.AddYears(-18);
-            }
-            else
-            {
-                if (!LoadAllPersonInfo(PersonInfo))
-                {
-                    MessageBox.Show("Couldn't Load Person information...");
-                    Close();
-                }
-                btnRemoveImage.Visible = true;
+                _LoadData();
             }
         }
-        private bool LoadAllPersonInfo(clsPerson PersonInfo)
+        private bool _LoadData()
         {
-            if (PersonInfo == null)
+            _Person = clsPerson.Find(_PersonID);
+
+            if (_Person == null)
             {
+                MessageBox.Show("No Person with ID = " + _PersonID, "Person Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                this.Close();
                 return false;
             }
-            lblInsertedID.Text = PersonInfo.PersonID.ToString();
-            tbFirstName.Text = PersonInfo.FirstName;
-            tbSecondName.Text = PersonInfo.SecondName;
-            tbThirdName.Text = PersonInfo.ThirdName;
-            tbLastName.Text = PersonInfo.LastName;
-            tbNationalNo.Text = PersonInfo.NationalNo;
-            dtpDateOfBirth.Value = PersonInfo.DateOfBirth;
-            rbMale.Checked = PersonInfo.Gender == 0;
-            rbFemale.Checked = PersonInfo.Gender == 1;
-            tbPhone.Text = PersonInfo.Phone;
-            tbEmail.Text = PersonInfo.Email;
-            cbCountriesNames.SelectedIndex = PersonInfo.NationalityCountryID;
-            tbAddress.Text = PersonInfo.Address;
-            pbUserImage.Image = GetImagePath(PersonInfo.ImagePath);
+
+            lblInsertedID.Text = _Person.PersonID.ToString();
+            tbFirstName.Text = _Person.FirstName;
+            tbSecondName.Text = _Person.SecondName;
+            tbThirdName.Text = _Person.ThirdName;
+            tbLastName.Text = _Person.LastName;
+            tbNationalNo.Text = _Person.NationalNo;
+            dtpDateOfBirth.Value = _Person.DateOfBirth;
+
+            rbMale.Checked = _Person.Gender == 0;
+            rbFemale.Checked = _Person.Gender == 1;
+
+            tbAddress.Text = _Person.Address;
+            tbPhone.Text = _Person.Phone;
+            tbEmail.Text = _Person.Email;
+            cbCountriesNames.SelectedIndex = cbCountriesNames.FindString(_Person.CountryInfo.CountryName);
+
+            pbUserImage.Image = GetImagePath(_Person.ImagePath);
+            btnRemoveImage.Enabled = _Person.ImagePath != "";
 
             return true;
         }
@@ -96,17 +155,6 @@ namespace _19___Project___DVLD.People
                 return rbMale.Checked ? Resources.maleWrong : Resources.femaleWrong;
 
             return Image.FromFile(ImagePath);
-        }
-        private void LoadAllCountriesToComboBox()
-        {
-            List<string> lsCountries = clsPerson.GetAllCountries();
-            // add one item as a placeholder and close the gap
-            cbCountriesNames.Items.Add("Select Country");
-            foreach (string CountryName in lsCountries)
-            {
-                cbCountriesNames.Items.Add(CountryName);
-            }
-            cbCountriesNames.SelectedIndex = cbCountriesNames.FindString("Yemen");
         }
         private void tbEmail_Leave(object sender, EventArgs e)
         {
@@ -130,7 +178,6 @@ namespace _19___Project___DVLD.People
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
-            Handeler?.Invoke(this);
         }
         private void tbFirstName_Leave(object sender, EventArgs e)
         {
@@ -178,132 +225,76 @@ namespace _19___Project___DVLD.People
         private void btnSetImage_Click(object sender, EventArgs e)
         {
             fdSetImage.Title = "Select a profile image";
-            fdSetImage.Filter = "PNG images (*.png)|*.png|JPG images (*.jpg)|*.jpg|All Files (*.*)|*.*";
+            fdSetImage.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
             fdSetImage.InitialDirectory = @"E:\Amjad\My folder\#desktop wallpapers";
-            fdSetImage.FilterIndex = 3;
+            fdSetImage.FilterIndex = 1;
+            fdSetImage.RestoreDirectory = true;
 
             if (fdSetImage.ShowDialog() == DialogResult.OK)
             {
-                if (pbUserImage.Image != null)
-                    pbUserImage.Image.Dispose();
-
-                pbUserImage.Image = Image.FromFile(fdSetImage.FileName);
+                pbUserImage.Load(fdSetImage.FileName);
+                btnRemoveImage.Enabled = true;
             }
-        }
-        private string SaveProfileToPath(string ImagePath)
-        {
-            if (ImagePath == string.Empty)
-            {
-                return string.Empty;
-            }
-
-            if (Mode == enMode.UpdatePerson)
-            {
-                RemoveImageWhenExists();
-            }
-
-            string destinationPath = @"E:\Amjad\Mohammed Abu-Hadhoud Courses\19 - Full Real Project\DVLD Project\DVLD_Presentaion\ProfileImages";
-            string ImageNameWithGUID = RenameImageByGUID(ImagePath);
-
-            if (!Directory.Exists(destinationPath))
-                Directory.CreateDirectory(destinationPath);
-
-            string NewDestFilePath = Path.Combine(destinationPath, ImageNameWithGUID);
-            File.Copy(ImagePath, NewDestFilePath, true);
-
-            return NewDestFilePath;
-        }
-        private void RemoveImageWhenExists()
-        {
-            if (PersonInfo != null && PersonInfo.ImagePath != string.Empty)
-                File.Delete(PersonInfo.ImagePath);
-        }
-        private string RenameImageByGUID(string fileName)
-        {
-            string GUID = Guid.NewGuid().ToString();
-            return GUID + Path.GetExtension(fileName);
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (AreFieldsValid())
-            {
-                PersonInfo = new clsPerson(
-                GetPersonID(),
-                tbNationalNo.Text,
-                tbFirstName.Text,
-                tbSecondName.Text,
-                tbThirdName.Text,
-                tbLastName.Text,
-                dtpDateOfBirth.Value,
-                rbMale.Checked ? 0 : 1,
-                tbAddress.Text,
-                tbPhone.Text,
-                tbEmail.Text,
-                cbCountriesNames.SelectedIndex,
-                SaveProfileToPath(fdSetImage.FileName)
-                );
 
-                if (Mode == enMode.NewPerson)
-                {
-                    AddNewPerson(PersonInfo);
-                }
-                else
-                {
-                    UpdatePreson();
-                }
-                //Close();
-            }
-            else
+            if (!ValidateChildren())
             {
-                MessageBox.Show("Please fill the required fields!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-        }
-        private int GetPersonID()
-        {
-            return Mode == enMode.NewPerson ? -1 : Convert.ToInt32(lblInsertedID.Text);
-        }
-        private void AddNewPerson(clsPerson PersonData)
-        {
-            int insertedID = clsPerson.AddNewPerson(PersonData);
 
-            if (insertedID != -1)
+            if (!_HandlePersonImage())
             {
-                MessageBox.Show("New Person is successfully added!", "Data Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                lblInsertedID.Text = insertedID.ToString();
-                PersonHandler?.Invoke(this, insertedID);
+                return;
+            }
+
+            int NationalityCountryID = clsCountry.Find(cbCountriesNames.Text).ID;
+
+            _Person.FirstName = tbFirstName.Text.Trim();
+            _Person.SecondName = tbSecondName.Text.Trim();
+            _Person.ThirdName = tbThirdName.Text.Trim();
+            _Person.LastName = tbLastName.Text.Trim();
+            _Person.NationalNo = tbNationalNo.Text.Trim();
+            _Person.Email = tbEmail.Text.Trim();
+            _Person.Phone = tbPhone.Text.Trim();
+            _Person.Address = tbAddress.Text.Trim();
+            _Person.DateOfBirth = dtpDateOfBirth.Value;
+
+            if (rbMale.Checked)
+                _Person.Gender = (short)enGender.Male;
+            else
+                _Person.Gender = (short)enGender.Female;
+            _Person.NationalityCountryID = NationalityCountryID;
+
+            if (pbUserImage.ImageLocation != null)
+            {
+                _Person.ImagePath = pbUserImage.ImageLocation;
             }
             else
             {
-                MessageBox.Show("The New Person couldn't be successfully added!\nDatabase Error", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _Person.ImagePath = string.Empty;
             }
+
+            if (_Person.Save())
+            {
+                lblInsertedID.Text = _Person.PersonID.ToString();
+                Mode = enMode.Update;
+                Text = "Update Person";
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                DataBack?.Invoke(this, _Person.PersonID);
+            }
+            else
+            {
+                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
-        private void UpdatePreson()
+        private bool _HandlePersonImage()
         {
-            if (clsPerson.UpdatePerson(PersonInfo))
-            {
-                MessageBox.Show("Person is successfully updated!", "Data Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("The Person couldn't be successfully Updated!\nDatabase Error", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        private bool AreFieldsValid()
-        {
-            if (!clsCommonMethods.HasErrors(epPersonForm.GetError(tbFirstName)) &&
-                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbSecondName)) &&
-                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbThirdName)) &&
-                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbLastName)) &&
-                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbNationalNo)) &&
-                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbPhone)) &&
-                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbEmail)) &&
-                !clsCommonMethods.HasErrors(epPersonForm.GetError(tbAddress)) &&
-                !clsCommonMethods.HasErrors(epPersonForm.GetError(cbCountriesNames)))
-            {
-                return true;
-            }
-            else
-                return false;
+            throw new NotImplementedException();
         }
         private void cbCountriesNames_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -311,11 +302,70 @@ namespace _19___Project___DVLD.People
         }
         private void btnRemoveImage_Click(object sender, EventArgs e)
         {
-            pbUserImage.Image = GetDefaultImage();
+            pbUserImage.ImageLocation = null;
+            pbUserImage.Image = rbMale.Checked ? Resources.male : Resources.female;
+            btnRemoveImage.Enabled = false;
         }
         private Image GetDefaultImage()
         {
             return rbMale.Checked ? Resources.male : Resources.female;
+        }
+        private void ValidateEmptyTextBox(object sender, CancelEventArgs e)
+        {
+            TextBox temp = (TextBox)sender;
+            if (string.IsNullOrEmpty(temp.Text.Trim()))
+            {
+                e.Cancel = true;
+                epPersonForm.SetError(temp, "This filed is required!");
+            }
+            else
+            {
+                epPersonForm.SetError(temp, null);
+            }
+        }
+        private void tbEmail_Validating(object sender, CancelEventArgs e)
+        {
+            if (tbEmail.Text.Trim() == string.Empty)
+            {
+                return;
+            }
+
+            if (!clsValidation.ValidateEmail(tbEmail.Text))
+            {
+                e.Cancel = true;
+                epPersonForm.SetError(tbEmail, "Invalid Email Address Format!");
+            }
+            else
+            {
+                epPersonForm.SetError(tbEmail, null);
+
+            }
+        }
+        private void tbNationalNo_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbNationalNo.Text.Trim()))
+            {
+                e.Cancel = true;
+                epPersonForm.SetError(tbNationalNo, "This field is required!");
+                return;
+
+            }
+            else
+            {
+                epPersonForm.SetError(tbNationalNo, null);
+            }
+
+            //Make sure the national number is not used by another person
+            if (tbNationalNo.Text.Trim() != _Person.NationalNo && clsPerson.isPersonExist(tbNationalNo.Text.Trim()))
+            {
+                e.Cancel = true;
+                epPersonForm.SetError(tbNationalNo, "National Number is used for another person!");
+
+            }
+            else
+            {
+                epPersonForm.SetError(tbNationalNo, null);
+            }
         }
     }
 }

@@ -91,7 +91,7 @@ namespace _19___Project___DVLD.People
         private void btnAddPerson_Click(object sender, EventArgs e)
         {
             frmAddUpdatePerson frm = new frmAddUpdatePerson();
-            frm.PersonHandler += HandleDelegatePerson;
+            frm.DataBack += HandleDelegatePerson;
             frm.ShowDialog();
         }
         private void HandleDelegatePerson(object sender, int PersonID)

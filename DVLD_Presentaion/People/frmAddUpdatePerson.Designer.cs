@@ -165,7 +165,7 @@
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(649, 202);
             this.tbAddress.TabIndex = 12;
-            this.tbAddress.Leave += new System.EventHandler(this.tbAddress_Leave);
+            this.tbAddress.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // tableLayoutPanel3
             // 
@@ -205,6 +205,7 @@
             this.tbEmail.Size = new System.Drawing.Size(267, 35);
             this.tbEmail.TabIndex = 10;
             this.tbEmail.Leave += new System.EventHandler(this.tbEmail_Leave);
+            this.tbEmail.Validating += new System.ComponentModel.CancelEventHandler(this.tbEmail_Validating);
             // 
             // tbPhone
             // 
@@ -215,7 +216,7 @@
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(195, 35);
             this.tbPhone.TabIndex = 9;
-            this.tbPhone.Leave += new System.EventHandler(this.tbPhone_Leave);
+            this.tbPhone.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // tbNationalNo
             // 
@@ -226,6 +227,7 @@
             this.tbNationalNo.Size = new System.Drawing.Size(267, 35);
             this.tbNationalNo.TabIndex = 5;
             this.tbNationalNo.Leave += new System.EventHandler(this.tbNationalNo_Leave);
+            this.tbNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this.tbNationalNo_Validating);
             // 
             // label18
             // 
@@ -435,6 +437,7 @@
             this.tbLastName.Size = new System.Drawing.Size(312, 35);
             this.tbLastName.TabIndex = 4;
             this.tbLastName.Leave += new System.EventHandler(this.tbLastName_Leave);
+            this.tbLastName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // tbThirdName
             // 
@@ -455,7 +458,7 @@
             this.tbSecondName.Name = "tbSecondName";
             this.tbSecondName.Size = new System.Drawing.Size(175, 35);
             this.tbSecondName.TabIndex = 2;
-            this.tbSecondName.Leave += new System.EventHandler(this.tbSecondName_Leave);
+            this.tbSecondName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // label8
             // 
@@ -551,7 +554,7 @@
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(268, 35);
             this.tbFirstName.TabIndex = 1;
-            this.tbFirstName.Leave += new System.EventHandler(this.tbFirstName_Leave);
+            this.tbFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // flowLayoutPanel1
             // 
@@ -608,6 +611,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(1237, 622);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
