@@ -294,7 +294,38 @@ namespace _19___Project___DVLD.People
         }
         private bool _HandlePersonImage()
         {
-            throw new NotImplementedException();
+            if (_Person.ImagePath != pbUserImage.ImageLocation)
+            {
+                if (_Person.ImagePath != string.Empty)
+                {
+                    try
+                    {
+                        File.Delete(_Person.ImagePath);
+                    }
+                    catch (IOException)
+                    {
+                        // log
+                    }
+                }
+
+                if (pbUserImage.ImageLocation != null)
+                {
+                    string sourceImageFile = pbUserImage.ImageLocation.ToString();
+
+                    if (clsUtil.CopyImageToProjectImagesFolder(ref sourceImageFile))
+                    {
+                        pbUserImage.ImageLocation = sourceImageFile;
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Copying Image File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+
+                }
+            }
+            return true;
         }
         private void cbCountriesNames_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -348,7 +379,6 @@ namespace _19___Project___DVLD.People
                 e.Cancel = true;
                 epPersonForm.SetError(tbNationalNo, "This field is required!");
                 return;
-
             }
             else
             {
@@ -360,7 +390,6 @@ namespace _19___Project___DVLD.People
             {
                 e.Cancel = true;
                 epPersonForm.SetError(tbNationalNo, "National Number is used for another person!");
-
             }
             else
             {
