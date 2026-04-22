@@ -23,7 +23,7 @@ namespace _19___Project___DVLD.Users
 
         private void ctrlPersonWithLoggedUserDetails_Load(object sender, EventArgs e)
         {
-            ctrlShowPersonDetails1.person = person;
+            ctrlShowPersonDetails1._Person = person;
             ctrlShowPersonDetails1.ctrlShowPersonDetails_Load(sender,e);
             if (user != null)
             {

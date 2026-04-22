@@ -85,7 +85,7 @@ namespace _19___Project___DVLD.People
         }
         private void LoadPersonDetailsToControl(clsPerson person, EventArgs e)
         {
-            ctrlShowPersonDetails1.person = person;
+            ctrlShowPersonDetails1._Person = person;
             ctrlShowPersonDetails1.ctrlShowPersonDetails_Load(ctrlShowPersonDetails1, e);
         }
         private void btnAddPerson_Click(object sender, EventArgs e)

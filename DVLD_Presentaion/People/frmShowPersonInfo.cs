@@ -16,7 +16,7 @@ namespace _19___Project___DVLD.People
         public frmShowPersonInfo(clsPerson person)
         {
             InitializeComponent();
-            ctrlShowPersonDetails1.person = person;
+            ctrlShowPersonDetails1._Person = person;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

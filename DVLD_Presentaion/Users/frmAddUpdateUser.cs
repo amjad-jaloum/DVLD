@@ -147,7 +147,7 @@ namespace _19___Project___DVLD.Users
         }
         private void LoadPersonDetailsToControl(clsPerson person, EventArgs e)
         {
-            ctrlShowPersonDetails1.person = person;
+            ctrlShowPersonDetails1._Person = person;
             ctrlShowPersonDetails1.ctrlShowPersonDetails_Load(ctrlShowPersonDetails1, e);
         }
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -252,9 +252,9 @@ namespace _19___Project___DVLD.Users
         private clsUser LoadDataToUserObject()
         {
             if (Mode == enMode.NewUser)
-                return new clsUser(-1, ctrlShowPersonDetails1.person.PersonID, tbUsername.Text, tbPassword.Text, chxIsActive.Checked);
+                return new clsUser(-1, ctrlShowPersonDetails1._Person.PersonID, tbUsername.Text, tbPassword.Text, chxIsActive.Checked);
             else
-                return new clsUser(Convert.ToInt32(lblUserID.Text), ctrlShowPersonDetails1.person.PersonID, tbUsername.Text, tbPassword.Text, chxIsActive.Checked);
+                return new clsUser(Convert.ToInt32(lblUserID.Text), ctrlShowPersonDetails1._Person.PersonID, tbUsername.Text, tbPassword.Text, chxIsActive.Checked);
         }
         private void AddNewUser()
         {

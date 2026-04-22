@@ -10,68 +10,114 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using _19___Project___DVLD.Properties;
+using DVLD_Buisness;
 using DVLD_Business;
 
 namespace _19___Project___DVLD.People
 {
     public partial class ctrlPersonCard : UserControl
     {
-        public clsPerson person = null;
+        public clsPerson _Person = null;
+        private int _PersonID = -1;
+
+        public int PersonID
+        {
+            get { return _PersonID; }
+        }
+
+        public clsPerson SelectedPersonInfo
+        {
+            get { return _Person; }
+        }
         public ctrlPersonCard()
         {
             InitializeComponent();
         }
 
-        public void LoadPersonInfo()
+        public void LoadPersonInfo(int PersonID)
         {
-            if (person != null)
+            _Person = clsPerson.Find(PersonID);
+            if (_Person == null)
             {
-                lblPersonID.Text = person.PersonID.ToString();
-                lblName.Text = GetFullName();
-                lblNationalNo.Text = person.NationalNo;
-                lblPhone.Text = person.Phone;
-                lblGender.Text = Convert.ToBoolean(person.Gender) ? "Female" : "Male";
-                lblCountryName.Text = GetCountryName();
-                lblAddress.Text = person.Address;
-                lblDateOfBirth.Text = person.DateOfBirth.ToShortDateString();
-                lblEmail.Text = person.Email;
-                pictureBox1.Image = GetImagePath(person.ImagePath);
+                ResetPersonInfo();
+                MessageBox.Show("No Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             else
             {
-                //MessageBox.Show("Person is null");
+                _fillPersonInfo();
             }
         }
+        public void LoadPersonInfo(string NationalNo)
+        {
+            _Person = clsPerson.Find(NationalNo);
+            if (_Person == null)
+            {
+                ResetPersonInfo();
+                MessageBox.Show("No Person with NationalNo = " + NationalNo, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                _fillPersonInfo();
+            }
+        }
+
+        private void _fillPersonInfo()
+        {
+            lblPersonID.Text = _Person.PersonID.ToString();
+            _PersonID = _Person.PersonID;
+            lblNationalNo.Text = _Person.NationalNo;
+            lblName.Text = _Person.FullName;
+            lblGender.Text = Convert.ToBoolean(_Person.Gender) ? "Female" : "Male";
+            lblEmail.Text = _Person.Email;
+            lblPhone.Text = _Person.Phone;
+            lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
+            lblCountryName.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
+            lblAddress.Text = _Person.Address;
+            pictureBox1.Image = GetImagePath(_Person.ImagePath);
+        }
+
+        public void ResetPersonInfo()
+        {
+            _PersonID = -1;
+            lblPersonID.Text = "[????]";
+            lblNationalNo.Text = "[????]";
+            lblName.Text = "[????]";
+            pictureBox1.Image = Resources.male;
+            lblGender.Text = "[????]";
+            lblEmail.Text = "[????]";
+            lblPhone.Text = "[????]";
+            lblDateOfBirth.Text = "[????]";
+            lblCountryName.Text = "[????]";
+            lblAddress.Text = "[????]";
+
+        }
+
         private Image GetImagePath(string ImagePath)
         {
             if (ImagePath == string.Empty)
                 return GetDefaultImage();
 
             if (!File.Exists(ImagePath))
-                return Convert.ToBoolean(person.Gender) ? Resources.femaleWrong : Resources.maleWrong;
+                return Convert.ToBoolean(_Person.Gender) ? Resources.femaleWrong : Resources.maleWrong;
 
             return Image.FromFile(ImagePath);
         }
         private Image GetDefaultImage()
         {
-            return Convert.ToBoolean(person.Gender) ? Resources.female : Resources.male;
-        }
-        private string GetCountryName()
-        {
-            return clsPerson.GetCountryName(person.NationalityCountryID);
-        }
-        private string GetFullName()
-        {
-            return person.FirstName + " " + person.SecondName + " " + person.ThirdName + " " + person.LastName;
+            return Convert.ToBoolean(_Person.Gender) ? Resources.female : Resources.male;
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            frmAddUpdatePerson frmAddAndUpdate = new frmAddUpdatePerson(person);
+            frmAddUpdatePerson frmAddAndUpdate = new frmAddUpdatePerson(_Person.PersonID);
             frmAddAndUpdate.ShowDialog();
+
+            LoadPersonInfo(_PersonID);
         }
         public void ctrlShowPersonDetails_Load(object sender, EventArgs e)
         {
-            LoadPersonInfo();
+            LoadPersonInfo(_PersonID);
         }
     }
 }
