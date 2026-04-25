@@ -84,7 +84,7 @@
             this.ctrlPersonDetailWithFitler1.Padding = new System.Windows.Forms.Padding(10);
             this.ctrlPersonDetailWithFitler1.Size = new System.Drawing.Size(1170, 603);
             this.ctrlPersonDetailWithFitler1.TabIndex = 0;
-            this.ctrlPersonDetailWithFitler1.WhenUserFound += new System.Action<DVLD_Business.clsPerson>(this.ctrlPersonDetailWithFitler1_WhenUserFound);
+            //this.ctrlPersonDetailWithFitler1.OnPersonSelected += new System.Action<DVLD_Business.clsPerson>(this.ctrlPersonDetailWithFitler1_WhenUserFound);
             // 
             // btnNextTab
             // 

@@ -18,52 +18,101 @@ namespace _19___Project___DVLD.People
         enum enMode { History = 0, Search = 1 }
         enMode Mode = enMode.Search;
 
-        public event Action<clsPerson> WhenUserFound;
-        protected virtual void UserFound(clsPerson person)
+        public event Action<int> OnPersonSelected;
+        protected virtual void PersonSelected(int PersonID)
         {
-            Action<clsPerson> action = WhenUserFound;
+            Action<int> action = OnPersonSelected;
             if (action != null)
             {
-                action(person);
+                action(PersonID);
+            }
+        }
+        private bool _ShowAddPerson = true;
+        public bool ShowAddPerson
+        {
+            get { return _ShowAddPerson; }
+            set
+            {
+                _ShowAddPerson = value;
+                btnAddPerson.Enabled = _ShowAddPerson;
+            }
+        }
+        public bool _FilterEnabled;
+        public bool FilterEnabled
+        {
+            get { return _FilterEnabled; }
+            set
+            {
+                _FilterEnabled = value;
+                gbFilter.Enabled = _FilterEnabled;
             }
         }
         public ctrlPersonCardWithFilter()
         {
             InitializeComponent();
         }
+        public int PersonID
+        {
+            get { return ctrlPersonCard1.PersonID; }
+        }
+        public clsPerson SelectedPersonInfo
+        {
+            get { return ctrlPersonCard1.SelectedPersonInfo; }
+        }
+        public void LoadPersonInfo(int PersonID)
+        {
+            cbFilter.SelectedIndex = 1;
+            mtxbSearch.Text = PersonID.ToString();
+
+        }
+        private void FindNow()
+        {
+            switch (cbFilter.Text)
+            {
+                case "Person ID":
+                    ctrlPersonCard1.LoadPersonInfo(int.Parse(mtxbSearch.Text));
+                    break;
+                
+                case "National No.":
+                    ctrlPersonCard1.LoadPersonInfo(int.Parse(mtxbSearch.Text));
+                    break;
+
+                default:
+                    break;
+            }
+
+            if(OnPersonSelected != null && FilterEnabled)
+            {
+                OnPersonSelected(ctrlPersonCard1.PersonID);
+            }
+        }
         private void ctrlPersonDetailWithFitler_Load(object sender, EventArgs e)
         {
-            LoadComboBoxFilter();
+            cbFilter.SelectedIndex = 0;
+            mtxbSearch.Focus();
         }
-        private void LoadComboBoxFilter()
+        private void txtFilterValue_Validating(object sender, CancelEventArgs e)
         {
-            List<string> ColumnNames = clsPerson.GetPeopleColumnNames();
-            if (ColumnNames == null)
+
+            if (string.IsNullOrEmpty(mtxbSearch.Text.Trim()))
             {
-                MessageBox.Show("Database error, Column names are not loaded properly!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                e.Cancel = true;
+                errorProvider1.SetError(mtxbSearch, "This field is required!");
             }
             else
             {
-                FillFilterComboBox(ColumnNames);
-            }
-        }
-        private void FillFilterComboBox(List<string> ColumnNames)
-        {
-            cbFilter.Items.Add("None");
-            cbFilter.SelectedItem = "None";
-
-            foreach (string ColumnName in ColumnNames)
-            {
-                if (!ColumnName.Contains("PersonID") && !ColumnName.Contains("NationalNo"))
-                    continue;
-
-                cbFilter.Items.Add(ColumnName);
+                //e.Cancel = false;
+                errorProvider1.SetError(mtxbSearch, null);
             }
         }
         private void btnFindPerson_Click(object sender, EventArgs e)
         {
-            GetPersonDetailsWithFilterQuery(e);
+            if (!ValidateChildren())
+            {
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            FindNow();
         }
         private void GetPersonDetailsWithFilterQuery(EventArgs e)
         {
@@ -74,8 +123,8 @@ namespace _19___Project___DVLD.People
                 if (_Person != null)
                 {
                     LoadPersonDetailsToControl(_Person, e);
-                    if (WhenUserFound != null)
-                        UserFound(_Person);
+                    if (OnPersonSelected != null)
+                        OnPersonSelected(_Person.PersonID);
                 }
                 else
                 {
@@ -85,32 +134,41 @@ namespace _19___Project___DVLD.People
         }
         private void LoadPersonDetailsToControl(clsPerson person, EventArgs e)
         {
-            ctrlShowPersonDetails1._Person = person;
-            ctrlShowPersonDetails1.ctrlShowPersonDetails_Load(ctrlShowPersonDetails1, e);
+            ctrlPersonCard1._Person = person;
+            ctrlPersonCard1.ctrlShowPersonDetails_Load(ctrlPersonCard1, e);
         }
         private void btnAddPerson_Click(object sender, EventArgs e)
         {
             frmAddUpdatePerson frm = new frmAddUpdatePerson();
-            frm.DataBack += HandleDelegatePerson;
+            frm.DataBack += DataBackEvent; // subscribe in the event
             frm.ShowDialog();
         }
-        private void HandleDelegatePerson(object sender, int PersonID)
+        private void DataBackEvent(object sender, int PersonID)
         {
-            EventArgs e = new EventArgs();
-            _Person = clsPerson.Find(PersonID);
-            if (_Person != null)
-                LoadPersonDetailsToControl(_Person, e);
-            else
-                MessageBox.Show("Person details are not loaded properly!");
+            cbFilter.SelectedIndex = 1;
+            mtxbSearch.Text = PersonID.ToString();
+            ctrlPersonCard1.LoadPersonInfo(PersonID);
+        }
+        public void FilterFocus()
+        {
+            mtxbSearch.Focus();
+        }
+        private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the pressed key is Enter (character code 13)
+            if (e.KeyChar == (char)13)
+            {
+                btnFindPerson.PerformClick();
+            }
+
+            //this will allow only digits if person id is selected
+            if (cbFilter.Text == "Person ID")
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Mode != enMode.History)
-                mtxbSearch.Enabled = cbFilter.SelectedItem.ToString() != "None";
-        }
-        private void gbFilter_Enter(object sender, EventArgs e)
-        {
-
+            mtxbSearch.Text = string.Empty;
+            mtxbSearch.Focus();
         }
         public void ShowPersonDetailsWithHistory(int Value, string ColumnName = "PersonID")
         {

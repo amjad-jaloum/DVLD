@@ -75,8 +75,8 @@ namespace _19___Project___DVLD.People
         {
             int PersonID = GetIdFromDataGridView();
             clsPerson person = clsPerson.Find(PersonID);
-            frmAddUpdatePerson frm = new frmAddUpdatePerson(person);
-            frm.Handeler += HandleDelagetData;
+            frmAddUpdatePerson frm = new frmAddUpdatePerson(PersonID);
+            frm.DataBack += HandleDelagetData;
 
             frm.ShowDialog();
         }
@@ -86,7 +86,7 @@ namespace _19___Project___DVLD.People
             return Convert.ToInt32(dgvPeople.CurrentRow.Cells[0].Value);
         }
 
-        private void HandleDelagetData(object obj)
+        private void HandleDelagetData(object sender, int PersonID)
         {
             LoadPersons();
         }

@@ -27,7 +27,7 @@ namespace DVLD.Licenses.International_Licenses
 
         private void frmShowInternationalLicenseInfo_Load(object sender, EventArgs e)
         {
-           ctrlDriverInternationalLicenseInfo1.LoadInfo(_InternationalLicenseID);
+           //ctrlDriverInternationalLicenseInfo1.LoadInfo(_InternationalLicenseID);
         }
     }
 }

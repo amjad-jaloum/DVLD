@@ -28,14 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+
             this.gbFilter = new System.Windows.Forms.GroupBox();
             this.btnFindPerson = new System.Windows.Forms.Button();
             this.btnAddPerson = new System.Windows.Forms.Button();
             this.mtxbSearch = new System.Windows.Forms.MaskedTextBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
-            this.ctrlShowPersonDetails1 = new _19___Project___DVLD.People.ctrlPersonCard();
+            this.ctrlPersonCard1 = new _19___Project___DVLD.People.ctrlPersonCard();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+
             this.gbFilter.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+
             // 
             // gbFilter
             // 
@@ -52,7 +63,6 @@
             this.gbFilter.TabIndex = 5;
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Filter";
-            this.gbFilter.Enter += new System.EventHandler(this.gbFilter_Enter);
             // 
             // btnFindPerson
             // 
@@ -83,6 +93,8 @@
             this.mtxbSearch.Name = "mtxbSearch";
             this.mtxbSearch.Size = new System.Drawing.Size(332, 39);
             this.mtxbSearch.TabIndex = 5;
+            this.mtxbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+
             // 
             // cbFilter
             // 
@@ -96,22 +108,24 @@
             // 
             // ctrlShowPersonDetails1
             // 
-            this.ctrlShowPersonDetails1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ctrlShowPersonDetails1.Location = new System.Drawing.Point(10, 105);
-            this.ctrlShowPersonDetails1.Name = "ctrlShowPersonDetails1";
-            this.ctrlShowPersonDetails1.Size = new System.Drawing.Size(989, 488);
-            this.ctrlShowPersonDetails1.TabIndex = 6;
+            this.ctrlPersonCard1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(10, 105);
+            this.ctrlPersonCard1.Name = "ctrlShowPersonDetails1";
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(989, 488);
+            this.ctrlPersonCard1.TabIndex = 6;
             // 
             // ctrlPersonDetailWithFitler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.ctrlShowPersonDetails1);
+            this.Controls.Add(this.ctrlPersonCard1);
             this.Controls.Add(this.gbFilter);
             this.Name = "ctrlPersonDetailWithFitler";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Size = new System.Drawing.Size(1009, 603);
             this.Load += new System.EventHandler(this.ctrlPersonDetailWithFitler_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             this.ResumeLayout(false);
@@ -120,7 +134,9 @@
 
         #endregion
 
-        private ctrlPersonCard ctrlShowPersonDetails1;
+        private ctrlPersonCard ctrlPersonCard1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+
         private System.Windows.Forms.GroupBox gbFilter;
         private System.Windows.Forms.Button btnFindPerson;
         private System.Windows.Forms.Button btnAddPerson;
