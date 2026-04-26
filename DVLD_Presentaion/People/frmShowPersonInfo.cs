@@ -13,10 +13,15 @@ namespace _19___Project___DVLD.People
 {
     public partial class frmShowPersonInfo : Form
     {
-        public frmShowPersonInfo(clsPerson person)
+        public frmShowPersonInfo(int PersonID)
         {
             InitializeComponent();
-            ctrlShowPersonDetails1._Person = person;
+            ctrlShowPersonDetails1.LoadPersonInfo(PersonID);
+        }
+        public frmShowPersonInfo(string NationalNo)
+        {
+            InitializeComponent();
+            ctrlShowPersonDetails1.LoadPersonInfo(NationalNo);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -24,9 +29,5 @@ namespace _19___Project___DVLD.People
             Close();
         }
 
-        private void btnClose_Click_1(object sender, EventArgs e)
-        {
-            Close();
-        }
     }
 }
