@@ -119,5 +119,10 @@ namespace _19___Project___DVLD.People
         {
             LoadPersonInfo(_PersonID);
         }
+
+        internal void FilterFocus()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

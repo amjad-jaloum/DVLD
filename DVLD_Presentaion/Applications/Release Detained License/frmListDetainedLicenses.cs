@@ -67,8 +67,8 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
             clsPerson person = clsPerson.Find(clsDriver.FindDriver(DriverID).PersonID);
             if (person != null)
             {
-                frmShowPersonInfo form = new frmShowPersonInfo(person);
-                form.ShowDialog();
+                //frmShowPersonInfo form = new frmShowPersonInfo(person);
+                //form.ShowDialog();
             }
             else
             {

@@ -137,12 +137,12 @@ namespace _19___Project___DVLD.Users
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int UserID = GetUserIDFromDGV();
-            clsUser user = clsUser.FindByUserID(UserID);
-            frmAddUpdateUser frm = new frmAddUpdateUser(user);
-            frm.Handeler += HandleDelagetData;
+            //int UserID = GetUserIDFromDGV();
+            //clsUser user = clsUser.FindByUserID(UserID);
+            //frmAddUpdateUser frm = new frmAddUpdateUser(user);
+            //frm.Handeler += HandleDelagetData;
 
-            frm.ShowDialog();
+            //frm.ShowDialog();
         }
         private int GetUserIDFromDGV()
         {

@@ -55,8 +55,8 @@ namespace _19___Project___DVLD.Driving_License_Services
             clsPerson _Person = clsPerson.Find(_Application.ApplicantPersonID);
             if (_Person != null)
             {
-                frmShowPersonInfo PersonDetails = new frmShowPersonInfo(_Person);
-                PersonDetails.ShowDialog();
+                //frmShowPersonInfo PersonDetails = new frmShowPersonInfo(_Person);
+                //PersonDetails.ShowDialog();
             }
             else
                 MessageBox.Show("Person details are not loaded properly!");

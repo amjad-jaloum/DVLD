@@ -22,36 +22,36 @@ namespace _19___Project___DVLD
             if (AreFormFieldsValid())
             {
                 bool isUserFound = false;
-                clsUser user = clsUser.FindByUsernameAndPassword(tbUsername.Text, tbPassword.Text, ref isUserFound);
-                clsGlobal.CurrentUser = user;
+                //clsUser user = clsUser.FindByUsernameAndPassword(tbUsername.Text, tbPassword.Text, ref isUserFound);
+                //    clsGlobal.CurrentUser = user;
 
-                if (isUserFound)
-                {
-                    if (chxRememberMe.Checked)
-                        clsUser.SaveUsernameAndPasswordToFile(tbUsername.Text, tbPassword.Text);
-                    else
-                        clsUser.ResetUsernameAndPasswrodFile();
+                //    if (isUserFound)
+                //    {
+                //        if (chxRememberMe.Checked)
+                //            clsUser.SaveUsernameAndPasswordToFile(tbUsername.Text, tbPassword.Text);
+                //        else
+                //            clsUser.ResetUsernameAndPasswrodFile();
 
-                    if (user.IsActive)
-                    {
-                        this.Hide();
-                        frmMain frmMain = new frmMain(this);
-                        frmMain.ShowDialog();
-                    }
-                    else
-                        MessageBox.Show("The user is not allowed to login, please try another user", 
-                            "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("The Username/Password is wrong", 
-                        "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please make sure your fields are valid, all fields are required!",
-                    "Required fields", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //        if (user.IsActive)
+                //        {
+                //            this.Hide();
+                //            frmMain frmMain = new frmMain(this);
+                //            frmMain.ShowDialog();
+                //        }
+                //        else
+                //            MessageBox.Show("The user is not allowed to login, please try another user", 
+                //                "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("The Username/Password is wrong", 
+                //            "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Please make sure your fields are valid, all fields are required!",
+                //        "Required fields", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

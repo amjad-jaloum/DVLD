@@ -14,10 +14,6 @@ namespace _19___Project___DVLD.People
 {
     public partial class ctrlPersonCardWithFilter : UserControl
     {
-        clsPerson _Person;
-        enum enMode { History = 0, Search = 1 }
-        enMode Mode = enMode.Search;
-
         public event Action<int> OnPersonSelected;
         protected virtual void PersonSelected(int PersonID)
         {
@@ -116,21 +112,21 @@ namespace _19___Project___DVLD.People
         }
         private void GetPersonDetailsWithFilterQuery(EventArgs e)
         {
-            if (!cbFilter.SelectedItem.ToString().Contains("None"))
-            {
-                _Person = clsPerson.GetPersonInfoWithQueryFilter(cbFilter.SelectedItem.ToString(), mtxbSearch.Text);
+            //if (!cbFilter.SelectedItem.ToString().Contains("None"))
+            //{
+            //    _Person = clsPerson.GetPersonInfoWithQueryFilter(cbFilter.SelectedItem.ToString(), mtxbSearch.Text);
 
-                if (_Person != null)
-                {
-                    LoadPersonDetailsToControl(_Person, e);
-                    if (OnPersonSelected != null)
-                        OnPersonSelected(_Person.PersonID);
-                }
-                else
-                {
-                    MessageBox.Show("This Person doesn't exist!", "Person not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
+            //    if (_Person != null)
+            //    {
+            //        LoadPersonDetailsToControl(_Person, e);
+            //        if (OnPersonSelected != null)
+            //            OnPersonSelected(_Person.PersonID);
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("This Person doesn't exist!", "Person not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //}
         }
         private void LoadPersonDetailsToControl(clsPerson person, EventArgs e)
         {
@@ -172,7 +168,7 @@ namespace _19___Project___DVLD.People
         }
         public void ShowPersonDetailsWithHistory(int Value, string ColumnName = "PersonID")
         {
-            Mode = enMode.History;
+            //Mode = enMode.History;
             mtxbSearch.Text = Value.ToString();
             mtxbSearch.Enabled = false;
 
