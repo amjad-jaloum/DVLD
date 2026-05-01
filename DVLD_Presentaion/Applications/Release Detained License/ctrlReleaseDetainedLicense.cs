@@ -53,7 +53,7 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
                 lblDetainID.Text = detainedLicense.DetainID.ToString();
                 lblDetainDate.Text = detainedLicense.DetainDate.ToShortDateString();
                 lblAppFees.Text = clsApplicationType.GetFees(clsApplicationType.enApplicationType.ReleaseDetainedDrivingLicense).ToString();
-                lblCreatedBy.Text = clsUser.FindUser(detainedLicense.CreatedByUserID).UserName;
+                lblCreatedBy.Text = clsUser.FindByUserID(detainedLicense.CreatedByUserID).UserName;
                 lblFineFees.Text = detainedLicense.FineFees.ToString();
                 lblTotalFees.Text = GetTotalFees();
             }

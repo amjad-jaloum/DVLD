@@ -45,7 +45,7 @@ namespace _19___Project___DVLD.Users
                 {
                     MessageBox.Show("Please get the person inforamtion to create a user!", "No person found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else if (!clsUser.IsUserFound(_Person.PersonID))
+                else if (!clsUser.IsUserExist(_Person.PersonID))
                 {
                     tabControl1.SelectedIndex = 1;
                     gbUserDetails.Enabled = true;

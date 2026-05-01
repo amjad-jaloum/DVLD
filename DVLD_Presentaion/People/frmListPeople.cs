@@ -111,16 +111,6 @@ namespace _19___Project___DVLD.People
             _RefreshPeopleList();
         }
 
-        private int GetIdFromDataGridView()
-        {
-            return Convert.ToInt32(dgvPeople.CurrentRow.Cells[0].Value);
-        }
-
-        private void HandleDelagetData(object sender, int PersonID)
-        {
-            LoadPersons();
-        }
-
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             mtxbSearch.Enabled = cbFilter.Text != "None";

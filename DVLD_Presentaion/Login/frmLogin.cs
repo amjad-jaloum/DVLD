@@ -22,7 +22,7 @@ namespace _19___Project___DVLD
             if (AreFormFieldsValid())
             {
                 bool isUserFound = false;
-                clsUser user = clsUser.FindUser(tbUsername.Text, tbPassword.Text, ref isUserFound);
+                clsUser user = clsUser.FindByUsernameAndPassword(tbUsername.Text, tbPassword.Text, ref isUserFound);
                 clsGlobal.CurrentUser = user;
 
                 if (isUserFound)
