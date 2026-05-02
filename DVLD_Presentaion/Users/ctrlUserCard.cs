@@ -7,30 +7,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _19___Project___DVLD.People;
 using DVLD_Business;
 
 namespace _19___Project___DVLD.Users
 {
     public partial class ctrlUserCard : UserControl
     {
-        public clsPerson person = null;
-        public clsUser user = null;
+        public clsUser _User;
+        private int _UserID = -1;
+        public int UserID { get { return _UserID; } }
 
         public ctrlUserCard()
         {
             InitializeComponent();
         }
 
-        private void ctrlPersonWithLoggedUserDetails_Load(object sender, EventArgs e)
+        public void LoadUserInfo(int UserID)
         {
-            ctrlShowPersonDetails1._Person = person;
-            ctrlShowPersonDetails1.ctrlShowPersonDetails_Load(sender,e);
-            if (user != null)
+            _UserID = UserID;
+            _User = clsUser.FindByUserID(_UserID);
+            if( _User == null )
             {
-                lblUserID.Text = user.UserID.ToString();
-                lblUsername.Text = user.UserName;
-                lblIsActive.Text = user.IsActive ? "true" : "false";
+                _ResetPersonInfo();
+                MessageBox.Show("No User with UserID = " + _UserID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            _FillUserInfo();
         }
+        private void _FillUserInfo()
+        {
+            ctrlShowPersonDetails1.LoadPersonInfo(_User.PersonID);
+            lblUserID.Text = _User.UserID.ToString();
+            lblUsername.Text = _User.UserName.ToString();
+
+            if (_User.IsActive)
+                lblIsActive.Text = "Yes";
+            else
+                lblIsActive.Text = "No";
+
+        }
+
+        private void _ResetPersonInfo()
+        {
+            ctrlShowPersonDetails1.ResetPersonInfo();
+            lblUserID.Text = "[???]";
+            lblUsername.Text = "[???]";
+            lblIsActive.Text = "[???]";
+        }
+
     }
 }

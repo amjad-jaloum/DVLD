@@ -17,7 +17,7 @@ namespace _19___Project___DVLD.Users
         {
             InitializeComponent();
             ctrlPersonWithLoggedUserDetails1.person = clsPerson.Find(PersonID);
-            ctrlPersonWithLoggedUserDetails1.user = clsUser.FindByUserID(UserID);
+            ctrlPersonWithLoggedUserDetails1._User = clsUser.FindByUserID(UserID);
         }
     }
 }

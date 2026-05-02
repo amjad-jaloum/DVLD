@@ -19,7 +19,7 @@ namespace _19___Project___DVLD.Users
             InitializeComponent();
 
             clsUser user = clsUser.FindByUserID(UserID);
-            ctrlPersonWithLoggedUserDetails1.user = user;
+            ctrlPersonWithLoggedUserDetails1._User = user;
             ctrlPersonWithLoggedUserDetails1.person = clsPerson.Find(PersonID);
 
             _UserInfo = user;
