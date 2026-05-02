@@ -14,6 +14,7 @@ namespace _19___Project___DVLD.Users
 {
     public partial class frmListUsers : Form
     {
+        private static DataTable _dtAllUsers;
         public frmListUsers()
         {
             InitializeComponent();
@@ -21,44 +22,26 @@ namespace _19___Project___DVLD.Users
 
         private void frmManageUsers_Load(object sender, EventArgs e)
         {
-            LoadUsers();
-            LoadComboBoxFilter();
-            LoadComboBoxActiveStatus();
-        }
-        private void LoadComboBoxActiveStatus()
-        {
-            cbActiveStatus.Items.Add("All");
-            cbActiveStatus.Items.Add("Acitve");
-            cbActiveStatus.Items.Add("Not Active");
+            _dtAllUsers = clsUser.GetAllUsers();
+            dgvUsers.DataSource = _dtAllUsers;
 
-            cbActiveStatus.SelectedIndex = 0;
-        }
-        public void LoadUsers()
-        {
-            DataTable dtUsers = clsUser.GetAllUsers();
-            dgvUsers.DataSource = dtUsers;
+            cbFilter.SelectedIndex = 0;
             lblRowsCountValue.Text = dgvUsers.RowCount.ToString();
-        }
-        private void LoadComboBoxFilter()
-        {
-            List<string> ColumnNames = clsUser.GetUserColumnNames();
-            if (ColumnNames == null)
-            {
-                MessageBox.Show("Database error, Column names are not loaded properly!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else
-            {
-                FillFilterComboBox(ColumnNames);
-            }
-        }
-        private void FillFilterComboBox(List<string> ColumnNames)
-        {
-            cbFilter.Items.Add("None");
-            cbFilter.SelectedItem = "None";
 
-            foreach (string ColumnName in ColumnNames)
-                cbFilter.Items.Add(ColumnName);
+            dgvUsers.Columns[0].HeaderText = "User ID";
+            dgvUsers.Columns[0].Width = 110;
+
+            dgvUsers.Columns[1].HeaderText = "Person ID";
+            dgvUsers.Columns[1].Width = 120;
+
+            dgvUsers.Columns[2].HeaderText = "Full Name";
+            dgvUsers.Columns[2].Width = 350;
+
+            dgvUsers.Columns[3].HeaderText = "UserName";
+            dgvUsers.Columns[3].Width = 120;
+
+            dgvUsers.Columns[4].HeaderText = "Is Active";
+            dgvUsers.Columns[4].Width = 120;
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -68,101 +51,116 @@ namespace _19___Project___DVLD.Users
         {
             frmAddUpdateUser frm = new frmAddUpdateUser();
             frm.ShowDialog();
-            LoadUsers();
+            frmManageUsers_Load(null, null);
         }
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mtxbSearch.Visible = !(cbFilter.SelectedItem.ToString() == "None" || cbFilter.SelectedItem.ToString() == "IsActive");
-            cbActiveStatus.Visible = cbFilter.SelectedItem.ToString() == "IsActive";
-
-            if (cbFilter.SelectedItem.ToString() == "UserID" || cbFilter.SelectedItem.ToString() == "PersonID")
+            if (cbFilter.Text == "Is Active")
             {
-                mtxbSearch.Mask = "000000";
+                mtxbSearch.Visible = false;
+                cbActiveStatus.Visible = true;
+                cbActiveStatus.Focus();
+                cbActiveStatus.SelectedIndex = 0;
             }
             else
             {
-                if (cbFilter.SelectedItem.ToString() == "None")
+                mtxbSearch.Visible = (cbFilter.Text != "None");
+                cbActiveStatus.Visible = false;
+
+                if (cbFilter.Text == "None")
                 {
-                    mtxbSearch.Text = string.Empty;
-                    LoadUsers();
+                    mtxbSearch.Enabled = false;
                 }
-                mtxbSearch.Mask = "";
+                else
+                    mtxbSearch.Enabled = true;
+
+                mtxbSearch.Text = "";
+                mtxbSearch.Focus();
             }
         }
         private void mtxbSearch_TextChanged(object sender, EventArgs e)
         {
-            UpdateDataTableWithFilter();
-        }
-        private void UpdateDataTableWithFilter()
-        {
-            if (!cbFilter.SelectedItem.ToString().Contains("None"))
+            string FilterColumn = "";
+
+            switch (cbFilter.Text)
             {
-                string SearchValue = GetSearchValue();
-                dgvUsers.DataSource = clsUser.GetDataTableWithQuery(cbFilter.SelectedItem.ToString(), SearchValue);
-                lblRowsCountValue.Text = dgvUsers.RowCount.ToString();
-            }
-        }
-        private string GetSearchValue()
-        {
-            string SearchValue;
-            if (cbFilter.SelectedItem.ToString() == "IsActive")
-            {
-                if (cbActiveStatus.SelectedItem.ToString() == "Active")
-                {
-                    SearchValue = "1";
-                }
-                else if (cbActiveStatus.SelectedItem.ToString() == "Not Active")
-                {
-                    SearchValue = "0";
-                }
-                else
-                {
-                    SearchValue = string.Empty;
-                }
-            }
-            else
-            {
-                SearchValue = mtxbSearch.Text;
+                case "User ID":
+                    FilterColumn = "UserID";
+                    break;
+                case "UserName":
+                    FilterColumn = "UserName";
+                    break;
+
+                case "Person ID":
+                    FilterColumn = "PersonID";
+                    break;
+
+
+                case "Full Name":
+                    FilterColumn = "FullName";
+                    break;
+
+                default:
+                    FilterColumn = "None";
+                    break;
             }
 
-            return SearchValue;
+            if (mtxbSearch.Text.Trim() == "" || FilterColumn == "None")
+            {
+                _dtAllUsers.DefaultView.RowFilter = string.Empty;
+                lblRowsCountValue.Text = dgvUsers.Rows.Count.ToString();
+                return;
+            }
+
+            if (FilterColumn != "FullName" && FilterColumn != "UserName")
+                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] = '{1}'", FilterColumn, mtxbSearch.Text);
+            else
+                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, mtxbSearch.Text);
+
+            lblRowsCountValue.Text = dgvUsers.Rows.Count.ToString();
         }
         private void cbActiveStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateDataTableWithFilter();
-        }
-        private void mtxbSearch_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
+            string FilterColumn = "IsActive";
+            string FilterValue = cbActiveStatus.Text;
 
+            switch (FilterValue)
+            {
+                case "Yes":
+                    FilterValue = "1";
+                    break;
+                case "No":
+                    FilterValue = "0";
+                    break;
+                default:
+                    break;
+            }
+
+            if (FilterValue == "All")
+                _dtAllUsers.DefaultView.RowFilter = string.Empty;
+            else
+                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] = '{1}'", FilterColumn, FilterValue);
+
+            lblRowsCountValue.Text = _dtAllUsers.Rows.Count.ToString();
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //int UserID = GetUserIDFromDGV();
-            //clsUser user = clsUser.FindByUserID(UserID);
-            //frmAddUpdateUser frm = new frmAddUpdateUser(user);
-            //frm.Handeler += HandleDelagetData;
-
-            //frm.ShowDialog();
+            frmAddUpdateUser frm = new frmAddUpdateUser(GetUserIDFromDGV());
+            frm.ShowDialog();
+            frmManageUsers_Load(null, null);
         }
         private int GetUserIDFromDGV()
         {
             return Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value);
         }
-        private int GetPersonIDFromDGV()
-        {
-            return Convert.ToInt32(dgvUsers.CurrentRow.Cells[1].Value);
-        }
-        private void HandleDelagetData(object obj)
-        {
-            LoadUsers();
-        }
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int UserID = GetUserIDFromDGV();
+
             if (clsUser.DeleteUser(UserID))
             {
                 MessageBox.Show("Deleted Successfully", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadUsers();
+                frmManageUsers_Load(null, null);
             }
             else
             {
@@ -171,20 +169,20 @@ namespace _19___Project___DVLD.Users
         }
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int PersonID = GetPersonIDFromDGV();
-            int UserID = GetUserIDFromDGV();
-
-            frmUserInfo frm = new frmUserInfo(PersonID, UserID);
-            frm.Show();
+            frmUserInfo frm = new frmUserInfo(GetUserIDFromDGV());
+            frm.ShowDialog();
         }
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int PersonID = GetPersonIDFromDGV();
-            int UserID = GetUserIDFromDGV();
-
-            frmChangePassword frm = new frmChangePassword(PersonID, UserID);
+            frmChangePassword frm = new frmChangePassword(GetUserIDFromDGV());
             frm.ShowDialog();
-            LoadUsers();
+        }
+        private void mtxbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cbFilter.Text == "Person ID" || cbFilter.Text == "User ID")
+            {
+                e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
+            }
         }
     }
 }
