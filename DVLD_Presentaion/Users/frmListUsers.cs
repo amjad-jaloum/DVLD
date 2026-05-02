@@ -55,28 +55,27 @@ namespace _19___Project___DVLD.Users
         }
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbFilter.Text == "Is Active")
+            string FilterColumn = "IsActive";
+            string FilterValue = cbActiveStatus.Text;
+
+            switch (FilterValue)
             {
-                mtxbSearch.Visible = false;
-                cbActiveStatus.Visible = true;
-                cbActiveStatus.Focus();
-                cbActiveStatus.SelectedIndex = 0;
+                case "Yes":
+                    FilterValue = "1";
+                    break;
+                case "No":
+                    FilterValue = "0";
+                    break;
+                default:
+                    break;
             }
+
+            if (FilterValue == "All")
+                _dtAllUsers.DefaultView.RowFilter = string.Empty;
             else
-            {
-                mtxbSearch.Visible = (cbFilter.Text != "None");
-                cbActiveStatus.Visible = false;
+                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] = '{1}'", FilterColumn, FilterValue);
 
-                if (cbFilter.Text == "None")
-                {
-                    mtxbSearch.Enabled = false;
-                }
-                else
-                    mtxbSearch.Enabled = true;
-
-                mtxbSearch.Text = "";
-                mtxbSearch.Focus();
-            }
+            lblRowsCountValue.Text = _dtAllUsers.Rows.Count.ToString();
         }
         private void mtxbSearch_TextChanged(object sender, EventArgs e)
         {
@@ -119,29 +118,44 @@ namespace _19___Project___DVLD.Users
 
             lblRowsCountValue.Text = dgvUsers.Rows.Count.ToString();
         }
-        private void cbActiveStatus_SelectedIndexChanged(object sender, EventArgs e)
+        private void UpdateDataTableWithFilter()
         {
-            string FilterColumn = "IsActive";
-            string FilterValue = cbActiveStatus.Text;
-
-            switch (FilterValue)
+            if (!cbFilter.SelectedItem.ToString().Contains("None"))
             {
-                case "Yes":
-                    FilterValue = "1";
-                    break;
-                case "No":
-                    FilterValue = "0";
-                    break;
-                default:
-                    break;
+                string SearchValue = GetSearchValue();
+                dgvUsers.DataSource = clsUser.GetDataTableWithQuery(cbFilter.SelectedItem.ToString(), SearchValue);
+                lblRowsCountValue.Text = dgvUsers.RowCount.ToString();
+            }
+        }
+        private string GetSearchValue()
+        {
+            string SearchValue;
+            if (cbFilter.SelectedItem.ToString() == "IsActive")
+            {
+                if (cbActiveStatus.SelectedItem.ToString() == "Active")
+                {
+                    SearchValue = "1";
+                }
+                else if (cbActiveStatus.SelectedItem.ToString() == "Not Active")
+                {
+                    SearchValue = "0";
+                }
+                else
+                {
+                    SearchValue = string.Empty;
+                }
             }
 
-            if (FilterValue == "All")
-                _dtAllUsers.DefaultView.RowFilter = string.Empty;
+            if (FilterColumn != "FullName" && FilterColumn != "UserName")
+                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] = '{1}'", FilterColumn, mtxbSearch.Text);
             else
-                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] = '{1}'", FilterColumn, FilterValue);
+                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, mtxbSearch.Text);
 
-            lblRowsCountValue.Text = _dtAllUsers.Rows.Count.ToString();
+            lblRowsCountValue.Text = dgvUsers.Rows.Count.ToString();
+        }
+        private void cbActiveStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateDataTableWithFilter();
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
