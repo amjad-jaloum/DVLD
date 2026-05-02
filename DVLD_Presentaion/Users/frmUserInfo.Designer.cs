@@ -37,21 +37,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ctrlPersonWithLoggedUserDetails1.AutoSize = true;
-            this.ctrlPersonWithLoggedUserDetails1.Location = new System.Drawing.Point(119, 68);
+            this.ctrlPersonWithLoggedUserDetails1.Location = new System.Drawing.Point(79, 44);
+            this.ctrlPersonWithLoggedUserDetails1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.ctrlPersonWithLoggedUserDetails1.Name = "ctrlPersonWithLoggedUserDetails1";
-            this.ctrlPersonWithLoggedUserDetails1.Size = new System.Drawing.Size(1001, 607);
+            this.ctrlPersonWithLoggedUserDetails1.Size = new System.Drawing.Size(667, 395);
             this.ctrlPersonWithLoggedUserDetails1.TabIndex = 0;
             // 
-            // frmShowDetails
+            // frmUserInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1225, 732);
+            this.ClientSize = new System.Drawing.Size(817, 476);
             this.Controls.Add(this.ctrlPersonWithLoggedUserDetails1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmShowDetails";
+            this.Name = "frmUserInfo";
             this.Text = "Show User Details";
+            this.Load += new System.EventHandler(this.frmUserInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

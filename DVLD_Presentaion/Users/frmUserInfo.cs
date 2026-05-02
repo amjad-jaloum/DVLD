@@ -13,11 +13,16 @@ namespace _19___Project___DVLD.Users
 {
     public partial class frmUserInfo : Form
     {
-        public frmUserInfo(int PersonID, int UserID)
+        private int _UserID;
+        public frmUserInfo(int UserID)
         {
             InitializeComponent();
-            ctrlPersonWithLoggedUserDetails1.person = clsPerson.Find(PersonID);
-            ctrlPersonWithLoggedUserDetails1._User = clsUser.FindByUserID(UserID);
+            _UserID = UserID;
+        }
+
+        private void frmUserInfo_Load(object sender, EventArgs e)
+        {
+            ctrlPersonWithLoggedUserDetails1.LoadUserInfo(_UserID);
         }
     }
 }
