@@ -15,11 +15,13 @@ namespace _19___Project___DVLD.Users
     {
         clsUser _User;
         private int _UserID;
+       
         public frmChangePassword(int UserID)
         {
             InitializeComponent();
             _UserID = UserID;
         }
+       
         private void _ResetDefualtValues()
         {
             tbCurrentPassword.Text = "";
@@ -53,6 +55,7 @@ namespace _19___Project___DVLD.Users
                 }
             }
         }
+        
         private void frmChangePassword_Load(object sender, EventArgs e)
         {
             _ResetDefualtValues();
