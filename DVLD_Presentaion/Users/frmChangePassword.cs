@@ -13,90 +13,124 @@ namespace _19___Project___DVLD.Users
 {
     public partial class frmChangePassword : Form
     {
-        clsUser _UserInfo = null;
-        public frmChangePassword(int PersonID, int UserID)
+        clsUser _User;
+        private int _UserID;
+        public frmChangePassword(int UserID)
         {
             InitializeComponent();
-
-            clsUser user = clsUser.FindByUserID(UserID);
-            ctrlPersonWithLoggedUserDetails1._User = user;
-            ctrlPersonWithLoggedUserDetails1.person = clsPerson.Find(PersonID);
-
-            _UserInfo = user;
+            _UserID = UserID;
+        }
+        private void _ResetDefualtValues()
+        {
+            tbCurrentPassword.Text = "";
+            tbPassword.Text = "";
+            tbConfirmPassword.Text = "";
+            tbCurrentPassword.Focus();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (AreFieldsValid())
+            if (!ValidateChildren())
             {
-                UpdateUserPassword();
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             else
             {
-                MessageBox.Show("Please fill the requirment fields first!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        private void UpdateUserPassword()
-        {
-            if (clsUser.UpdateUserPassword(_UserInfo.UserID, tbPassword.Text))
-            {
-                MessageBox.Show("User is successfully updated!", "Data Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("The User is not Updated!", "No Data to save", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        private bool AreFieldsValid()
-        {
-            if (
-                !clsCommonMethods.HasErrors(errorProvider1.GetError(tbCurrentPassword)) &&
-                !clsCommonMethods.HasErrors(errorProvider1.GetError(tbPassword)) &&
-                !clsCommonMethods.HasErrors(errorProvider1.GetError(tbConfirmPassword))
-               )
-            {
-                return true;
-            }
-            else
-            {
-                MessageBox.Show("Please make fill the fileds correctly!", "Form is not valid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-        }
-        private void tbCurrentPassword_Leave(object sender, EventArgs e)
-        {
-            clsCommonMethods.MakeTextBoxFieldRequired(tbCurrentPassword, errorProvider1);
+                _User.Password = tbCurrentPassword.Text;
 
-            if (!IsCurrentPasswordCorrect(_UserInfo.Password, tbCurrentPassword.Text))
-                errorProvider1.SetError(tbCurrentPassword, "Current password is wrong!");
-            else
-                errorProvider1.SetError(tbCurrentPassword, string.Empty);
-
-        }
-        private bool IsCurrentPasswordCorrect(string UserPassword, string CurrentPassword)
-        {
-            return UserPassword == CurrentPassword;
-        }
-        private void tbPassword_Leave(object sender, EventArgs e)
-        {
-            clsCommonMethods.MakeTextBoxFieldRequired(tbPassword, errorProvider1);
-        }
-        private void tbConfirmPassword_Leave(object sender, EventArgs e)
-        {
-            clsCommonMethods.MakeTextBoxFieldRequired(tbConfirmPassword, errorProvider1);
-            string password = tbPassword.Text;
-            string confirmPassword = tbConfirmPassword.Text;
-
-            if (tbPassword.Text != string.Empty)
-            {
-                if (password != confirmPassword)
+                if (_User.Save())
                 {
-                    errorProvider1.SetError(tbConfirmPassword, "The confirm passwrod field doesn't match the passwrod field!");
+                    MessageBox.Show("Password Changed Successfully.",
+                       "Saved.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _ResetDefualtValues();
                 }
                 else
                 {
-                    errorProvider1.SetError(tbConfirmPassword, string.Empty);
+                    MessageBox.Show("Password is not changed!",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+        private void frmChangePassword_Load(object sender, EventArgs e)
+        {
+            _ResetDefualtValues();
+            _User = clsUser.FindByUserID(_UserID);
+
+            if (_User == null)
+            {
+                MessageBox.Show("Could not Find User with id = " + _UserID,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+
+                return;
+            }
+
+            ctrlUserCard1.LoadUserInfo(_UserID);
+        }
+
+        private void tbCurrentPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbCurrentPassword.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(tbCurrentPassword, "Username cannot be blank");
+                return;
+            }
+            else
+            {
+                errorProvider1.SetError(tbCurrentPassword, null);
+            }
+
+            if (_User.Password != tbCurrentPassword.Text.Trim())
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(tbCurrentPassword, "Current password is wrong!");
+                return;
+            }
+            else
+            {
+                errorProvider1.SetError(tbCurrentPassword, null);
+            }
+        }
+
+        private void tbPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbPassword.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(tbPassword, "Password cannot be blank");
+                return;
+            }
+            else
+            {
+                errorProvider1.SetError(tbPassword, null);
+            }
+        }
+
+        private void tbConfirmPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbConfirmPassword.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(tbConfirmPassword, "Confirm password cannot be blank");
+                return;
+            }
+            else
+            {
+                errorProvider1.SetError(tbConfirmPassword, null);
+            }
+
+            if (tbPassword.Text.Trim() != tbConfirmPassword.Text.Trim())
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(tbConfirmPassword, "Password confirmation does not match Password!");
+                return;
+            }
+            else
+            {
+                errorProvider1.SetError(tbConfirmPassword, null);
             }
         }
     }
