@@ -50,13 +50,13 @@ namespace _19___Project___DVLD
 
         private void showCurrentUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUserInfo frmShowDetails = new frmUserInfo(clsGlobal.CurrentUser.PersonID,clsGlobal.CurrentUser.UserID);
+            frmUserInfo frmShowDetails = new frmUserInfo(clsGlobal.CurrentUser.UserID);
             frmShowDetails.ShowDialog();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangePassword frm = new frmChangePassword(clsGlobal.CurrentUser.PersonID, clsGlobal.CurrentUser.UserID);
+            frmChangePassword frm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
             frm.ShowDialog();
         }
 

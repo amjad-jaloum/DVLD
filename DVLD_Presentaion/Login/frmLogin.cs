@@ -19,46 +19,32 @@ namespace _19___Project___DVLD
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (AreFormFieldsValid())
+            clsUser user = clsUser.FindByUsernameAndPassword(tbUsername.Text, tbPassword.Text);
+
+            if (user != null)
             {
-                bool isUserFound = false;
-                //clsUser user = clsUser.FindByUsernameAndPassword(tbUsername.Text, tbPassword.Text, ref isUserFound);
-                //    clsGlobal.CurrentUser = user;
+                if (chxRememberMe.Checked)
+                    clsGlobal.RemeberUsernameAndPassword(tbUsername.Text, tbPassword.Text);
+                else
+                    clsGlobal.RemeberUsernameAndPassword("", ""); // reset
 
-                //    if (isUserFound)
-                //    {
-                //        if (chxRememberMe.Checked)
-                //            clsUser.SaveUsernameAndPasswordToFile(tbUsername.Text, tbPassword.Text);
-                //        else
-                //            clsUser.ResetUsernameAndPasswrodFile();
-
-                //        if (user.IsActive)
-                //        {
-                //            this.Hide();
-                //            frmMain frmMain = new frmMain(this);
-                //            frmMain.ShowDialog();
-                //        }
-                //        else
-                //            MessageBox.Show("The user is not allowed to login, please try another user", 
-                //                "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show("The Username/Password is wrong", 
-                //            "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    }
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Please make sure your fields are valid, all fields are required!",
-                //        "Required fields", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (user.IsActive)
+                {
+                    clsGlobal.CurrentUser = user;
+                    this.Hide();
+                    frmMain frmMain = new frmMain(this);
+                    frmMain.ShowDialog();
+                }
+                else
+                    MessageBox.Show("The user is not allowed to login, please try another user",
+                        "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
-        }
-
-        private bool AreFormFieldsValid()
-        {
-            return (!clsCommonMethods.HasErrors(errorProvider1.GetError(tbUsername)) &&
-                !clsCommonMethods.HasErrors(errorProvider1.GetError(tbPassword)));
+            else
+            {
+                MessageBox.Show("The Username/Password is wrong",
+                    "Permession denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -83,11 +69,14 @@ namespace _19___Project___DVLD
         private void frmLogin_Load(object sender, EventArgs e)
         {
             string username = "", password = "";
-            if (clsUser.LoadSavedLoginData(ref username, ref password))
+            if (clsGlobal.GetStoredCredential(ref username, ref password))
             {
                 tbUsername.Text = username;
                 tbPassword.Text = password;
+                chxRememberMe.Checked = true;
             }
+            else
+                chxRememberMe.Checked = false;
         }
 
     }
