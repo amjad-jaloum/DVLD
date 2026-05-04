@@ -55,7 +55,7 @@ namespace DVLD_Business
             if (isFound)
             {
                 return new clsApplication(applicationID, ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus
-                    ,LastStatusDate, PaidFees, CreatedByUserID);
+                    , LastStatusDate, PaidFees, CreatedByUserID);
             }
             else
                 return null;
