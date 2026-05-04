@@ -13,6 +13,7 @@ namespace _19___Project___DVLD.Application_Types
 {
     public partial class frmListApplicationType : Form
     {
+        private DataTable _dtAllApplicationTypes;
         public frmListApplicationType()
         {
             InitializeComponent();
@@ -20,14 +21,21 @@ namespace _19___Project___DVLD.Application_Types
 
         private void frmManageApplicationTypes_Load(object sender, EventArgs e)
         {
-            LoadApplications();
-        }
-
-        public void LoadApplications()
-        {
-            DataTable AppsDataTable = clsApplicationType.GetAllApplicationTypes();
-            dgvApplications.DataSource = AppsDataTable;
+            _dtAllApplicationTypes = clsApplicationType.GetAllApplicationTypes();
+            dgvApplications.DataSource = _dtAllApplicationTypes;
             lblRowsCountValue.Text = dgvApplications.RowCount.ToString();
+
+            if(dgvApplications.RowCount > 0)
+            {
+                dgvApplications.Columns[0].HeaderText = "ID";
+                dgvApplications.Columns[0].Width = 110;
+
+                dgvApplications.Columns[1].HeaderText = "Title";
+                dgvApplications.Columns[1].Width = 400;
+
+                dgvApplications.Columns[2].HeaderText = "Fees";
+                dgvApplications.Columns[2].Width = 100;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -37,32 +45,9 @@ namespace _19___Project___DVLD.Application_Types
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clsApplicationType applicationType = GetAppTypeFromDGV();
-            frmEditApplicationTypes frm = new frmEditApplicationTypes(applicationType);
+            frmEditApplicationTypes frm = new frmEditApplicationTypes((int)dgvApplications.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
-
-            LoadApplications();
-        }
-        private clsApplicationType GetAppTypeFromDGV()
-        {
-            int AppID = GetIDFromDataGridView();
-            string AppTitle = GetAppTitleFromDataGridView();
-            float AppFees = GetAppFeesFromDataGridView();
-
-            clsApplicationType applicationType = new clsApplicationType(AppID,AppTitle,AppFees);
-            return applicationType;
-        }
-        private float GetAppFeesFromDataGridView()
-        {
-            return (float)Convert.ToDouble(dgvApplications.CurrentRow.Cells[2].Value);
-        }
-        private string GetAppTitleFromDataGridView()
-        {
-            return Convert.ToString(dgvApplications.CurrentRow.Cells[1].Value);
-        }
-        private int GetIDFromDataGridView()
-        {
-            return Convert.ToInt32(dgvApplications.CurrentRow.Cells[0].Value);
+            frmManageApplicationTypes_Load(null, null);
         }
     }
 }
