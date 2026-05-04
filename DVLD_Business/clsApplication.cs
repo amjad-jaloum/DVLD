@@ -95,11 +95,6 @@ namespace DVLD_Business
             Mode = enMode.Update;
         }
 
-        public static int GetApplicantPersonID(int localDrivingLicenseAppID)
-        {
-            return clsApplicationData.GetApplicantPersonID(localDrivingLicenseAppID);
-        }
-
         private bool _AddNewApplication()
         {
             ApplicationID = DVLD_DataAccess.clsApplicationData.AddNewApplication(
@@ -147,7 +142,7 @@ namespace DVLD_Business
 
         public bool Cancel()
         {
-            return clsApplicationData.UpdateStatus(ApplicationID, (short) enApplicationStatus.Cancelled);
+            return clsApplicationData.UpdateStatus(ApplicationID, (short)enApplicationStatus.Cancelled);
         }
 
         public bool Complete()
