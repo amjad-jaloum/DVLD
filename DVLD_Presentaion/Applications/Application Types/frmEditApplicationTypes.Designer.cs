@@ -44,60 +44,67 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 30);
+            this.label1.Location = new System.Drawing.Point(26, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 32);
+            this.label1.Size = new System.Drawing.Size(28, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID:";
             // 
             // lblAppID
             // 
             this.lblAppID.AutoSize = true;
-            this.lblAppID.Location = new System.Drawing.Point(87, 30);
+            this.lblAppID.Location = new System.Drawing.Point(58, 20);
+            this.lblAppID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAppID.Name = "lblAppID";
-            this.lblAppID.Size = new System.Drawing.Size(56, 32);
+            this.lblAppID.Size = new System.Drawing.Size(37, 21);
             this.lblAppID.TabIndex = 1;
             this.lblAppID.Text = "###";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 82);
+            this.label3.Location = new System.Drawing.Point(15, 55);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 32);
+            this.label3.Size = new System.Drawing.Size(42, 21);
             this.label3.TabIndex = 2;
             this.label3.Text = "Title:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 134);
+            this.label4.Location = new System.Drawing.Point(15, 89);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 32);
+            this.label4.Size = new System.Drawing.Size(44, 21);
             this.label4.TabIndex = 3;
             this.label4.Text = "Fees:";
             // 
             // tbAppTitle
             // 
-            this.tbAppTitle.Location = new System.Drawing.Point(93, 77);
+            this.tbAppTitle.Location = new System.Drawing.Point(62, 51);
+            this.tbAppTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbAppTitle.Name = "tbAppTitle";
-            this.tbAppTitle.Size = new System.Drawing.Size(456, 39);
+            this.tbAppTitle.Size = new System.Drawing.Size(305, 29);
             this.tbAppTitle.TabIndex = 4;
-            this.tbAppTitle.Leave += new System.EventHandler(this.tbAppTitle_Leave);
+            this.tbAppTitle.Validating += new System.ComponentModel.CancelEventHandler(this.tbAppTitle_Validating);
             // 
             // tbAppFees
             // 
-            this.tbAppFees.Location = new System.Drawing.Point(93, 131);
+            this.tbAppFees.Location = new System.Drawing.Point(62, 87);
+            this.tbAppFees.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbAppFees.Name = "tbAppFees";
-            this.tbAppFees.Size = new System.Drawing.Size(456, 39);
+            this.tbAppFees.Size = new System.Drawing.Size(305, 29);
             this.tbAppFees.TabIndex = 5;
-            this.tbAppFees.Leave += new System.EventHandler(this.tbAppFees_Leave);
+            this.tbAppFees.Validating += new System.ComponentModel.CancelEventHandler(this.tbAppFees_Validating);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(416, 176);
+            this.btnSave.Location = new System.Drawing.Point(277, 117);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(133, 59);
+            this.btnSave.Size = new System.Drawing.Size(89, 39);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -105,9 +112,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(277, 176);
+            this.btnCancel.Location = new System.Drawing.Point(185, 117);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(133, 59);
+            this.btnCancel.Size = new System.Drawing.Size(89, 39);
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -117,11 +125,11 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // frmUdateApplicationTypes
+            // frmEditApplicationTypes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(571, 255);
+            this.ClientSize = new System.Drawing.Size(381, 170);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tbAppFees);
@@ -131,10 +139,9 @@
             this.Controls.Add(this.lblAppID);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmUdateApplicationTypes";
+            this.Name = "frmEditApplicationTypes";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Application";

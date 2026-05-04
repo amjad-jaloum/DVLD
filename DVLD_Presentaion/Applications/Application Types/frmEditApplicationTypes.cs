@@ -13,75 +13,74 @@ namespace _19___Project___DVLD.Application_Types
 {
     public partial class frmEditApplicationTypes : Form
     {
-        clsApplicationType applicationType = null;
-        public frmEditApplicationTypes(clsApplicationType applicationType)
+        clsApplicationType _ApplicationType;
+        private int _ApplicationTypeID;
+        public frmEditApplicationTypes(int ApplicaitonTypeID)
         {
             InitializeComponent();
-            this.applicationType = applicationType;
+            _ApplicationTypeID = ApplicaitonTypeID;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (AreFieldsValied())
+            if (!ValidateChildren())
             {
-                if (UpdateAppType())
-                {
-                    MessageBox.Show("Upated successfully!");
-                }
-                else
-                    MessageBox.Show("Not Upated!");
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-        }
-        private bool AreFieldsValied()
-        {
-            if (
-                !clsCommonMethods.HasErrors(errorProvider1.GetError(tbAppTitle)) &&
-                !clsCommonMethods.HasErrors(errorProvider1.GetError(tbAppFees))
-                )
+
+            _ApplicationType.Title = tbAppTitle.ToString();
+            _ApplicationType.Fees = Convert.ToSingle(tbAppFees.Text.Trim());
+
+            if (_ApplicationType.Save())
             {
-                return true;
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            return false;
-        }
-
-        private bool UpdateAppType()
-        {
-            clsApplicationType application = new clsApplicationType(Convert.ToInt32(lblAppID.Text), tbAppTitle.Text, (float)Convert.ToDouble(tbAppFees.Text));
-            return clsApplicationType.UpdateAppType(application);
-        }
-
-        private void tbAppTitle_Leave(object sender, EventArgs e)
-        {
-            clsCommonMethods.MakeTextBoxFieldRequired(tbAppTitle, errorProvider1);
-        }
-
-        private void tbAppFees_Leave(object sender, EventArgs e)
-        {
-            clsCommonMethods.MakeTextBoxFieldRequired(tbAppFees, errorProvider1);
+            else
+                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void frmUdateApplicationTypes_Load(object sender, EventArgs e)
         {
-            LoadAppTypes();
-        }
+            lblAppID.Text = _ApplicationTypeID.ToString();
+            _ApplicationType = clsApplicationType.Find(_ApplicationTypeID);
 
-        private void LoadAppTypes()
-        {
-            if (applicationType != null)
+            if (_ApplicationType != null)
             {
-                lblAppID.Text = applicationType.ID.ToString();
-                tbAppTitle.Text = applicationType.Title;
-                tbAppFees.Text = applicationType.Fees.ToString();
-            }
-            else
-            {
-                MessageBox.Show("Applicatoin is null to load!");
+                tbAppTitle.Text = _ApplicationType.Title;
+                tbAppFees.Text = _ApplicationType.Fees.ToString();
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tbAppTitle_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbAppTitle.Text.Trim()))
+            {
+                e.Cancel = true; // This prevents the user from moving to another control
+                errorProvider1.SetError(tbAppTitle, "Title cannot be empty!");
+            }
+            else
+            {
+                errorProvider1.SetError(tbAppTitle, string.Empty);
+            }
+        }
+
+        private void tbAppFees_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbAppFees.Text.Trim()))
+            {
+                e.Cancel = true; //
+                errorProvider1.SetError(tbAppFees, "Fees cannot be empty!");
+            }
+            else
+            {
+                errorProvider1.SetError(tbAppFees, string.Empty);
+            }
         }
     }
 }
