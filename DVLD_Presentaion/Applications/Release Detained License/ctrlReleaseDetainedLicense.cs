@@ -167,7 +167,7 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
                 clsGlobal.CurrentUser.UserID
                 );
 
-            return application.AddNewApplication();
+            return application._AddNewApplication();
         }
 
         private void btnShowLicensesInfo_Click(object sender, EventArgs e)

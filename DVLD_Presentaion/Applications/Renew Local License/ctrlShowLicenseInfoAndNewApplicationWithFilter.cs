@@ -131,7 +131,7 @@ namespace _19___Project___DVLD.Renewed_Licenses
                 clsGlobal.CurrentUser.UserID
                 );
 
-            return application.AddNewApplication();
+            return application._AddNewApplication();
         }
 
         private void AddNewLocalLicense(int RenewedApplicationID)
