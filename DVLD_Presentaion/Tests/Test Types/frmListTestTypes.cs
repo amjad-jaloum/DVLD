@@ -14,6 +14,7 @@ namespace _19___Project___DVLD.Test_Types
 {
     public partial class frmListTestTypes : Form
     {
+        private DataTable _dtAllTestTypes;
         public frmListTestTypes()
         {
             InitializeComponent();
@@ -25,47 +26,30 @@ namespace _19___Project___DVLD.Test_Types
         }
         private void frmManageTestTypes_Load(object sender, EventArgs e)
         {
-            LoadTestTypes();
-        }
-        public void LoadTestTypes()
-        {
-            DataTable TestsDataTable = clsTestType.GetAllTestTypes();
-            dgvTestTypes.DataSource = TestsDataTable;
+            _dtAllTestTypes = clsTestType.GetAllTestTypes();
+            dgvTestTypes.DataSource = _dtAllTestTypes;
             lblRowsCountValue.Text = dgvTestTypes.RowCount.ToString();
+
+            if (dgvTestTypes.RowCount > 0)
+            {
+                dgvTestTypes.Columns[0].HeaderText = "ID";
+                dgvTestTypes.Columns[0].Width = 120;
+
+                dgvTestTypes.Columns[1].HeaderText = "Title";
+                dgvTestTypes.Columns[1].Width = 200;
+
+                dgvTestTypes.Columns[2].HeaderText = "Description";
+                dgvTestTypes.Columns[2].Width = 400;
+
+                dgvTestTypes.Columns[3].HeaderText = "Fees";
+                dgvTestTypes.Columns[3].Width = 100;
+            }
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clsTestType test = GetAppTypeFromDGV();
-            frmEditTestType frm = new frmEditTestType(test);
+            frmEditTestType frm = new frmEditTestType((clsTestType.enTestType)dgvTestTypes.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
-
-            LoadTestTypes();
-        }
-        private clsTestType GetAppTypeFromDGV()
-        {
-            int TestID = GetIDFromDataGridView();
-            string TestTitle = GetTestTitleFromDataGridView();
-            string TestDesc = GetTestDescFromDataGridView();
-            float TestFees = GetAppFeesFromDataGridView();
-
-            clsTestType test = new clsTestType(TestID, TestTitle, TestDesc, TestFees);
-            return test;
-        }
-        private int GetIDFromDataGridView()
-        {
-            return Convert.ToInt32(dgvTestTypes.CurrentRow.Cells[0].Value);
-        }
-        private string GetTestTitleFromDataGridView()
-        {
-            return Convert.ToString(dgvTestTypes.CurrentRow.Cells[1].Value);
-        }
-        private string GetTestDescFromDataGridView()
-        {
-            return Convert.ToString(dgvTestTypes.CurrentRow.Cells[2].Value);
-        }
-        private float GetAppFeesFromDataGridView()
-        {
-            return (float)Convert.ToDouble(dgvTestTypes.CurrentRow.Cells[3].Value);
+            frmManageTestTypes_Load(null, null);
         }
     }
 }
