@@ -25,7 +25,7 @@ namespace _19___Project___DVLD.Application_Types
 
         public void LoadApplications()
         {
-            DataTable AppsDataTable = clsApplicationType.GetApplicationTypes();
+            DataTable AppsDataTable = clsApplicationType.GetAllApplicationTypes();
             dgvApplications.DataSource = AppsDataTable;
             lblRowsCountValue.Text = dgvApplications.RowCount.ToString();
         }

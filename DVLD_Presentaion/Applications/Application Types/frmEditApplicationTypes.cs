@@ -69,9 +69,9 @@ namespace _19___Project___DVLD.Application_Types
         {
             if (applicationType != null)
             {
-                lblAppID.Text = applicationType.AppID.ToString();
-                tbAppTitle.Text = applicationType.AppTitle;
-                tbAppFees.Text = applicationType.AppFees.ToString();
+                lblAppID.Text = applicationType.ID.ToString();
+                tbAppTitle.Text = applicationType.Title;
+                tbAppFees.Text = applicationType.Fees.ToString();
             }
             else
             {
