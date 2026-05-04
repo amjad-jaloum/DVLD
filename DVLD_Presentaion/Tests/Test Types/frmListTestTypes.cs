@@ -29,7 +29,7 @@ namespace _19___Project___DVLD.Test_Types
         }
         public void LoadTestTypes()
         {
-            DataTable TestsDataTable = clsTestType.GetTestTypes();
+            DataTable TestsDataTable = clsTestType.GetAllTestTypes();
             dgvTestTypes.DataSource = TestsDataTable;
             lblRowsCountValue.Text = dgvTestTypes.RowCount.ToString();
         }

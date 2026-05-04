@@ -28,10 +28,10 @@ namespace _19___Project___DVLD.Test_Types
         {
             if (testType != null)
             {
-                lblTestID.Text = testType.TestTypeID.ToString();
-                tbTestTitle.Text = testType.TestTypeTitle;
-                tbTestDesc.Text = testType.TestTypeDescription;
-                tbTestFees.Text = testType.TestTypeFees.ToString();
+                lblTestID.Text = testType.ID.ToString();
+                tbTestTitle.Text = testType.Title;
+                tbTestDesc.Text = testType.Description;
+                tbTestFees.Text = testType.Fees.ToString();
             }
             else
             {

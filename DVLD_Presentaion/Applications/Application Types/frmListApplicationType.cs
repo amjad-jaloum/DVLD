@@ -25,7 +25,7 @@ namespace _19___Project___DVLD.Application_Types
             dgvApplications.DataSource = _dtAllApplicationTypes;
             lblRowsCountValue.Text = dgvApplications.RowCount.ToString();
 
-            if(dgvApplications.RowCount > 0)
+            if (dgvApplications.RowCount > 0)
             {
                 dgvApplications.Columns[0].HeaderText = "ID";
                 dgvApplications.Columns[0].Width = 110;
