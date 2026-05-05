@@ -28,6 +28,7 @@ namespace DVLD_Business
         public enMode Mode = enMode.AddNew;
         public int ApplicationID { get; set; }
         public int ApplicantPersonID { get; set; }
+        public clsPerson PersonInfo { get; set; }
         public string ApplicantFullName
         {
             get
@@ -80,6 +81,8 @@ namespace DVLD_Business
         {
             ApplicationID = applicationID;
             ApplicantPersonID = applicantPersonID;
+            PersonInfo = clsPerson.Find(ApplicantPersonID);
+
             ApplicationDate = applicationDate;
 
             ApplicationTypeID = applicationTypeID;
