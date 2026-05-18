@@ -365,7 +365,7 @@ namespace _19___Project___DVLD.Driving_License_Services
             if (result == DialogResult.Yes)
             {
 
-                if (clsLocalDrivingLicenseApplication.DeleteLocalDrivingLicenseApplication(AppID))
+                if (clsLocalDrivingLicenseApplication.Delete(AppID))
                 {
                     MessageBox.Show("Deleted Successfully", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frmManageLocalDrivingLicenseApplications_Load(this, e);

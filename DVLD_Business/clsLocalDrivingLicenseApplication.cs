@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Security;
 using System.Security.Policy;
 using System.Text;
@@ -10,89 +11,87 @@ using DVLD_DataAccess;
 
 namespace DVLD_Business
 {
-    public class clsLocalDrivingLicenseApplication
+    public class clsLocalDrivingLicenseApplication : clsApplication
     {
-        public int ApplicantPersonID { get; set; }
-        public DateTime ApplicationDate { get; set; }
-        public int ApplicationTypeID { get; set; }
-        public short ApplicationStatus { get; set; }
-        public DateTime LastStatusDate { set; get; }
-        public int PaidFees { get; set; }
-        public int CreatedByUserID { get; set; }
+        public new enum enMode { AddNew, Update };
+        public new enMode Mode = enMode.AddNew;
+        public int LocalDrivingLicenseApplicationID { set; get; }
+        public int LicenseClassID { set; get; }
+        public clsLicenseClass LicenseClassInfo { set; get; }
+        public string PersonFullName { get { return clsPerson.Find(ApplicantPersonID).FullName; } }
 
-        private enum enAppServiceFee
+        public clsLocalDrivingLicenseApplication()
         {
-            NewLocalDrivingLicenseService = 1,
-            RenewDrivingLicenseService = 2,
-            ReplacementforLostDrivingLicense = 3,
-            ReplacementforDamagedDrivingLicense = 4,
-            ReleaseDetainedDrivingLicsense = 5,
-            NewInternationalLicense = 5,
+            LocalDrivingLicenseApplicationID = -1;
+            LicenseClassID = -1;
+            Mode = enMode.AddNew;
         }
+        private clsLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID, int ApplicationID, int ApplicantPersonID,
+            DateTime ApplicationDate, int ApplicationTypeID,
+             enApplicationStatus ApplicationStatus, DateTime LastStatusDate,
+             float PaidFees, int CreatedByUserID, int LicenseClassID)
 
-        public enum enApplicationStatus
         {
-            New = 1, Cancelled = 2 , Completed = 3
-        }
-        enApplicationStatus AppStatus;
-        public clsLocalDrivingLicenseApplication(int applicantPersonID, DateTime applicationDate, int applicationTypeID, short applicationStatus, DateTime lastStatusDate, int paidFees, int createdByUserID)
-        {
-            ApplicantPersonID = applicantPersonID;
-            ApplicationDate = applicationDate;
-            ApplicationTypeID = applicationTypeID;
-            ApplicationStatus = applicationStatus;
-            LastStatusDate = lastStatusDate;
-            PaidFees = paidFees;
-            CreatedByUserID = createdByUserID;
+            this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID; ;
+            this.ApplicationID = ApplicationID;
+            this.ApplicantPersonID = ApplicantPersonID;
+            this.ApplicationDate = ApplicationDate;
+            this.ApplicationTypeID = (int)ApplicationTypeID;
+            this.ApplicationStatus = ApplicationStatus;
+            this.LastStatusDate = LastStatusDate;
+            this.PaidFees = PaidFees;
+            this.CreatedByUserID = CreatedByUserID;
+            this.LicenseClassID = LicenseClassID;
+            this.LicenseClassInfo = clsLicenseClass.Find(LicenseClassID);
+            Mode = enMode.Update;
         }
 
         public static DataTable GetLocalLicenseApplications()
         {
-            return clsLocalDrivingLicensApplicationData.GetLocalDrivingLicensApplications();
+            return clsLocalDrivingLicenseApplicationData.GetAllLocalDrivingLicenseApplications();
         }
 
         public static List<string> GetUserColumnNames()
         {
-            return clsLocalDrivingLicensApplicationData.GetLocalLicensesClassNames();
+            return clsLocalDrivingLicenseApplicationData.GetLocalLicensesClassNames();
         }
 
         public static string GetNewLocalDrivingLicenseAppFees()
         {
-            return clsLocalDrivingLicensApplicationData.GetAppServiceFee((int)enAppServiceFee.NewLocalDrivingLicenseService).ToString();
+            return clsLocalDrivingLicenseApplicationData.GetAppServiceFee((int)enAppServiceFee.NewLocalDrivingLicenseService).ToString();
         }
 
-        public int AddNewApplication()
+        private bool _AddNewLocalDrivingLicenseApplication()
         {
-            return clsLocalDrivingLicensApplicationData.AddNewApplication(ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
-        }
+            this.LocalDrivingLicenseApplicationID = clsLocalDrivingLicenseApplicationData.AddNewLocalDrivingLicenseApplication
+                (
+                this.ApplicationID, this.LicenseClassID);
 
-        public static int AddNewLocalDrivingLicenseApplication(int AppID, int ClassID)
-        {
-            return clsLocalDrivingLicensApplicationData.LocalDrivingLicenseApplications(AppID, ClassID);
+            return (this.LocalDrivingLicenseApplicationID != -1);
         }
 
         public static bool IsClassNameAvialable(string nationalNo, object selectedItem)
         {
-            return clsLocalDrivingLicensApplicationData.IsClassNameAvialable(nationalNo, selectedItem.ToString());
+            return clsLocalDrivingLicenseApplicationData.IsClassNameAvialable(nationalNo, selectedItem.ToString());
         }
 
         public static List<string> GetLocalDrivingLincesesColumns()
         {
-            return clsLocalDrivingLicensApplicationData.LocalDrivingColumns();
+            return clsLocalDrivingLicenseApplicationData.LocalDrivingColumns();
         }
 
         public static DataTable GetDataTableWithQuery(string ColName, string searchValue)
         {
-            return clsLocalDrivingLicensApplicationData.GetDataTableWithQuery(ColName, searchValue);
+            return clsLocalDrivingLicenseApplicationData.GetDataTableWithQuery(ColName, searchValue);
         }
 
-        public static bool UpdateLocalDrivingLicenseAppStatus(int appID, int Status)
+        private bool UpdateLocalDrivingLicenseAppStatus()
         {
-            return clsLocalDrivingLicensApplicationData.UpdateLocalDrivingLicenseAppStatus(appID, Status);
+            return clsLocalDrivingLicenseApplicationData.UpdateLocalDrivingLicenseApplication(LocalDrivingLicenseApplicationID, ApplicationID, LicenseClassID);
         }
         public static string GetLicenceName(int LicenseClassID)
         {
-            return clsLocalDrivingLicensApplicationData.FindLicenceName(LicenseClassID);
+            return clsLocalDrivingLicenseApplicationData.FindLicenceName(LicenseClassID);
         }
         public static clsLocalDrivingLicenseApplication FindApplication(int ApplicationID)
         {
@@ -104,8 +103,8 @@ namespace DVLD_Business
             int PaidFees = 0;
             int CreatedByUserID = 0;
 
-            if (clsLocalDrivingLicensApplicationData.FindLocalDrivingLicenseApplication(ApplicationID, ref ApplicantPersonID, 
-                ref ApplicationDate, ref ApplicationTypeID, ref ApplicationStatus, 
+            if (clsLocalDrivingLicenseApplicationData.FindLocalDrivingLicenseApplication(ApplicationID, ref ApplicantPersonID,
+                ref ApplicationDate, ref ApplicationTypeID, ref ApplicationStatus,
                 ref LastStatusDate, ref PaidFees, ref CreatedByUserID))
             {
                 return new clsLocalDrivingLicenseApplication(ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
@@ -118,99 +117,346 @@ namespace DVLD_Business
 
         public static int GetApplicationID(int localDrivingLicenseAppID)
         {
-            return clsLocalDrivingLicensApplicationData.GetApplicationID(localDrivingLicenseAppID);
+            return clsLocalDrivingLicenseApplicationData.GetApplicationID(localDrivingLicenseAppID);
         }
 
         public static string getAppTypeName(int applicationTypeID)
         {
-            return clsLocalDrivingLicensApplicationData.getAppTypeName(applicationTypeID);
+            return clsLocalDrivingLicenseApplicationData.getAppTypeName(applicationTypeID);
         }
 
         public static string getUsername(int createdByUserID)
         {
-            return clsLocalDrivingLicensApplicationData.getUsername(createdByUserID);
+            return clsLocalDrivingLicenseApplicationData.getUsername(createdByUserID);
         }
 
         public static int getTestFee(int TestTypeID)
         {
-            return clsLocalDrivingLicensApplicationData.GetTestFees(TestTypeID);
+            return clsLocalDrivingLicenseApplicationData.GetTestFees(TestTypeID);
         }
 
         public static int AddNewTestAppointment(int TestTypeID, int LocalDrivingLicenseApplicationID,
             DateTime AppointmentDate, decimal PaidFees, int CreatedByUserID, bool IsLocked)
         {
-            return clsLocalDrivingLicensApplicationData.AddNewTestAppointment
-                (TestTypeID,LocalDrivingLicenseApplicationID,AppointmentDate,PaidFees,CreatedByUserID,IsLocked);
+            return clsLocalDrivingLicenseApplicationData.AddNewTestAppointment
+                (TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate, PaidFees, CreatedByUserID, IsLocked);
         }
 
         public static DataTable LoadTestAppointments(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
-            return clsLocalDrivingLicensApplicationData.LoadTestAppointments(LocalDrivingLicenseApplicationID, TestTypeID);
+            return clsLocalDrivingLicenseApplicationData.LoadTestAppointments(LocalDrivingLicenseApplicationID, TestTypeID);
         }
 
         public static bool UpdateTestAppointmentDate(int LocalDrivingLicenseApplicationID, int TestAppointmentID, DateTime AppointmentDate)
         {
-            return clsLocalDrivingLicensApplicationData.UpdateTestAppointmentDate(LocalDrivingLicenseApplicationID, TestAppointmentID, AppointmentDate);
+            return clsLocalDrivingLicenseApplicationData.UpdateTestAppointmentDate(LocalDrivingLicenseApplicationID, TestAppointmentID, AppointmentDate);
         }
 
         public static DateTime GetTestAppointmentDate(int LocalDrivingLicenseApplicationID)
         {
-            return clsLocalDrivingLicensApplicationData.GetTestAppDate(LocalDrivingLicenseApplicationID);
+            return clsLocalDrivingLicenseApplicationData.GetTestAppDate(LocalDrivingLicenseApplicationID);
         }
 
         public static bool hasUnlockedAppointment(int localDrivingLicenseAppID)
         {
-            return clsLocalDrivingLicensApplicationData.hasUnlockedAppointment(localDrivingLicenseAppID);
+            return clsLocalDrivingLicenseApplicationData.hasUnlockedAppointment(localDrivingLicenseAppID);
         }
 
         public static bool AddNewTestResult(int testAppointmentID, bool result, string notes, int userID)
         {
-            return clsLocalDrivingLicensApplicationData.AddNewTestResult(testAppointmentID, result, notes, userID);
+            return clsLocalDrivingLicenseApplicationData.AddNewTestResult(testAppointmentID, result, notes, userID);
         }
 
         public static bool LockTestAppointment(int testAppointmentID)
         {
-            return clsLocalDrivingLicensApplicationData.LockTestAppointment(testAppointmentID);
+            return clsLocalDrivingLicenseApplicationData.LockTestAppointment(testAppointmentID);
         }
 
         public static bool IsTestAppointmentLocked(int testAppointmentID)
         {
-            return clsLocalDrivingLicensApplicationData.isAppointmentLocked(testAppointmentID);
+            return clsLocalDrivingLicenseApplicationData.isAppointmentLocked(testAppointmentID);
         }
 
         public static bool hasPassedTheTest(int testAppointmentID)
         {
-            return clsLocalDrivingLicensApplicationData.GetLastTestResult(testAppointmentID); // 0 fail // 1 pass
+            return clsLocalDrivingLicenseApplicationData.GetLastTestResult(testAppointmentID); // 0 fail // 1 pass
         }
 
         public static bool IsStatusCompletedOrCancelled(int LocalDrivingLicenseApplicationID)
         {
-            return clsLocalDrivingLicensApplicationData.IsStatusCompletedOrCancelled(LocalDrivingLicenseApplicationID);
+            return clsLocalDrivingLicenseApplicationData.IsStatusCompletedOrCancelled(LocalDrivingLicenseApplicationID);
         }
 
         public static bool UpdateApplicationStatus(int LocalDrivingLicenseApplicationID, short newStatus)
         {
-            return clsLocalDrivingLicensApplicationData.UpdateApplicaitonStatus(LocalDrivingLicenseApplicationID, newStatus);
+            return clsLocalDrivingLicenseApplicationData.UpdateApplicaitonStatus(LocalDrivingLicenseApplicationID, newStatus);
+        }
+        private bool _UpdateLocalDrivingLicenseApplication()
+        {
+            //call DataAccess Layer 
+
+            return clsLocalDrivingLicenseApplicationData.UpdateLocalDrivingLicenseApplication
+                (
+                this.LocalDrivingLicenseApplicationID, this.ApplicationID, this.LicenseClassID);
+
         }
 
         public static int GetLicenseClassID(int LocalDrivingLicenseApplicationID)
         {
-            return clsLocalDrivingLicensApplicationData.GetLicenseClassID(LocalDrivingLicenseApplicationID);
+            return clsLocalDrivingLicenseApplicationData.GetLicenseClassID(LocalDrivingLicenseApplicationID);
         }
 
-        public static bool DeleteLocalDrivingLicenseApplication(int appID)
+        public new bool Delete()
         {
-            return clsLocalDrivingLicensApplicationData.DeleteLocalDrivingLicenseApplication(appID);
+            bool IsLocalDrivingApplicationDeleted = clsLocalDrivingLicenseApplicationData.DeleteLocalDrivingLicenseApplication(appID);
+            if (!IsLocalDrivingApplicationDeleted)
+            {
+                return false;
+            }
+            return base.Delete();
+
         }
 
         public static int GetLocalDrivingLicenseApplicationIDByNationalNo(string NationalNo)
         {
-            return clsLocalDrivingLicensApplicationData.GetLocalDrivingLicenseApplicationIDByNationalNo(NationalNo);
+            return clsLocalDrivingLicenseApplicationData.GetLocalDrivingLicenseApplicationIDByNationalNo(NationalNo);
         }
         public static int GetLocalDrivingLicenseApplicationIDByApplicationID(int ApplicationID)
         {
-            return clsLocalDrivingLicensApplicationData.GetLocalDrivingLicenseApplicationIDByApplicationID(ApplicationID);
+            return clsLocalDrivingLicenseApplicationData.GetLocalDrivingLicenseApplicationIDByApplicationID(ApplicationID);
         }
 
+        private clsLocalDrivingLicenseApplication FindByLocalDrivingLicenseApplicationID(int localDrivingLicenseApplicationID)
+        {
+            int AppID = -1, LicID = -1;
+            bool isFound = clsLocalDrivingLicenseApplicationData.GetLocalDrivingLicenseApplicationInfoByID(localDrivingLicenseApplicationID, ref AppID, ref LicID);
+
+            if (isFound)
+            {
+                clsApplication application = FindBaseApplication(AppID);
+                return new clsLocalDrivingLicenseApplication(localDrivingLicenseApplicationID,
+                    application.ApplicationID, application.ApplicantPersonID,
+                    application.ApplicationDate, application.ApplicationTypeID,
+                    application.ApplicationStatus, application.LastStatusDate,
+                    application.PaidFees, application.CreatedByUserID, LicenseClassID);
+            }
+            else
+                return null;
+
+
+        }
+
+        public static clsLocalDrivingLicenseApplication FindByApplicationID(int ApplicationID)
+        {
+            // 
+            int LocalDrivingLicenseApplicationID = -1, LicenseClassID = -1;
+
+            bool IsFound = clsLocalDrivingLicenseApplicationData.GetLocalDrivingLicenseApplicationInfoByApplicationID
+                (ApplicationID, ref LocalDrivingLicenseApplicationID, ref LicenseClassID);
+
+            if (IsFound)
+            {
+                //now we find the base application
+                clsApplication Application = clsApplication.FindBaseApplication(ApplicationID);
+
+                //we return new object of that person with the right data
+                return new clsLocalDrivingLicenseApplication(
+                    LocalDrivingLicenseApplicationID, Application.ApplicationID,
+                    Application.ApplicantPersonID,
+                                     Application.ApplicationDate, Application.ApplicationTypeID,
+                                    (enApplicationStatus)Application.ApplicationStatus, Application.LastStatusDate,
+                                     Application.PaidFees, Application.CreatedByUserID, LicenseClassID);
+            }
+            else
+                return null;
+        }
+        public new bool Save()
+        {
+            base.Mode = (clsApplication.enMode)Mode;
+            if (!base.Save())
+                return false;
+
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (!_AddNewLocalDrivingLicenseApplication())
+                    {
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                        return false;
+
+                case enMode.Update:
+                    return _UpdateLocalDrivingLicenseApplication();
+
+                default:
+                    return false;
+            }
+        }
+
+        public bool DoesPassTestType(clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.DoesPassTestType(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+        public bool DoesAttendTestType(clsTestType.enTestType TestTypeID)
+
+        {
+            return clsLocalDrivingLicenseApplicationData.DoesAttendTestType(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+
+        public bool DoesPassPreviousTest(clsTestType.enTestType PreviousTestTypeID)
+        {
+            switch (PreviousTestTypeID)
+            {
+                case clsTestType.enTestType.VisionTest:
+                    return true;
+                
+                case clsTestType.enTestType.WrittenTest:
+                    return DoesPassTestType(clsTestType.enTestType.VisionTest);
+
+                case clsTestType.enTestType.StreetTest:
+                    return DoesPassTestType(clsTestType.enTestType.WrittenTest);
+                
+                default:
+                    return false;
+            }
+        }
+        public byte TotalTrialsPerTest(clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.TotalTrialsPerTest(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+
+        public static byte TotalTrialsPerTest(int LocalDrivingLicenseApplicationID, clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.TotalTrialsPerTest(LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+        public static bool AttendedTest(int LocalDrivingLicenseApplicationID, clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.TotalTrialsPerTest(LocalDrivingLicenseApplicationID, (int)TestTypeID) > 0;
+        }
+        public bool AttendedTest(clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.TotalTrialsPerTest(this.LocalDrivingLicenseApplicationID, (int)TestTypeID) > 0;
+        }
+
+        public static bool IsThereAnActiveScheduledTest(int LocalDrivingLicenseApplicationID, clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.IsThereAnActiveScheduledTest(LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+        public bool IsThereAnActiveScheduledTest(clsTestType.enTestType TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.IsThereAnActiveScheduledTest(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
+        }
+        public byte GetPassedTestCount()
+        {
+            return clsTest.GetPassedTestCount(this.LocalDrivingLicenseApplicationID);
+        }
+
+        public static byte GetPassedTestCount(int LocalDrivingLicenseApplicationID)
+        {
+            return clsTest.GetPassedTestCount(LocalDrivingLicenseApplicationID);
+        }
+
+        public bool PassedAllTests()
+        {
+            return clsTest.PassedAllTests(this.LocalDrivingLicenseApplicationID);
+        }
+
+        public static bool PassedAllTests(int LocalDrivingLicenseApplicationID)
+        {
+            //if total passed test less than 3 it will return false otherwise will return true
+            return clsTest.PassedAllTests(LocalDrivingLicenseApplicationID);
+        }
+
+        public int IssueLicenseForTheFirtTime(string Notes, int CreatedByUserID)
+        {
+            int DriverID = -1;
+
+            clsDriver Driver = clsDriver.FindByPersonID(this.ApplicantPersonID);
+
+            if (Driver == null)
+            {
+                //we check if the driver already there for this person.
+                Driver = new clsDriver();
+
+                Driver.PersonID = this.ApplicantPersonID;
+                Driver.CreatedByUserID = CreatedByUserID;
+                if (Driver.Save())
+                {
+                    DriverID = Driver.DriverID;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                DriverID = Driver.DriverID;
+            }
+            //now we diver is there, so we add new licesnse
+
+            clsLicense License = new clsLicense();
+            License.ApplicationID = this.ApplicationID;
+            License.DriverID = DriverID;
+            License.LicenseClass = this.LicenseClassID;
+            License.IssueDate = DateTime.Now;
+            License.ExpirationDate = DateTime.Now.AddYears(this.LicenseClassInfo.DefaultValidityLength);
+            License.Notes = Notes;
+            License.PaidFees = this.LicenseClassInfo.ClassFees;
+            License.IsActive = true;
+            License.IssueReason = clsLicense.enIssueReason.FirstTime;
+            License.CreatedByUserID = CreatedByUserID;
+
+            if (License.Save())
+            {
+                //now we should set the application status to complete.
+                this.SetComplete();
+
+                return License.LicenseID;
+            }
+
+            else
+                return -1;
+        }
+
+        public bool IsLicenseIssued()
+        {
+            return (GetActiveLicenseID() != -1);
+        }
+
+        public int GetActiveLicenseID()
+        {//this will get the license id that belongs to this application
+            return clsLicense.GetActiveLicenseIDByPersonID(this.ApplicantPersonID, this.LicenseClassID);
+        }
+
+        public static clsLocalDrivingLicenseApplication FindByLocalDrivingAppLicenseID(int LocalDrivingLicenseApplicationID)
+        {
+            // 
+            int ApplicationID = -1, LicenseClassID = -1;
+
+            bool IsFound = clsLocalDrivingLicenseApplicationData.GetLocalDrivingLicenseApplicationInfoByID
+                (LocalDrivingLicenseApplicationID, ref ApplicationID, ref LicenseClassID);
+
+
+            if (IsFound)
+            {
+                //now we find the base application
+                clsApplication Application = clsApplication.FindBaseApplication(ApplicationID);
+
+                //we return new object of that person with the right data
+                return new clsLocalDrivingLicenseApplication(
+                    LocalDrivingLicenseApplicationID, Application.ApplicationID,
+                    Application.ApplicantPersonID,
+                                     Application.ApplicationDate, Application.ApplicationTypeID,
+                                    (enApplicationStatus)Application.ApplicationStatus, Application.LastStatusDate,
+                                     Application.PaidFees, Application.CreatedByUserID, LicenseClassID);
+            }
+            else
+                return null;
+        }
     }
 }
+
+

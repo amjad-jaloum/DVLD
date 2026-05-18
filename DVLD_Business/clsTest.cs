@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DVLD_DataAccess
+namespace DVLD_Business
 {
-    public class clsLicenseClassData
+    public class clsTest
     {
     }
 }

@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tcApplicationInfo = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.ctrlPersonDetailWithFitler1 = new _19___Project___DVLD.People.ctrlPersonCardWithFilter();
+            this.ctrlPersonCardWithFilter1 = new _19___Project___DVLD.People.ctrlPersonCardWithFilter();
             this.btnNextTab = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tpApplicationInfo = new System.Windows.Forms.TabPage();
             this.gbUserDetails = new System.Windows.Forms.GroupBox();
             this.cbLicenseClass = new System.Windows.Forms.ComboBox();
             this.lblCreatedBy = new System.Windows.Forms.Label();
@@ -46,27 +46,26 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
+            this.tcApplicationInfo.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tpApplicationInfo.SuspendLayout();
             this.gbUserDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1198, 720);
-            this.tabControl1.TabIndex = 4;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tcApplicationInfo.Controls.Add(this.tabPage1);
+            this.tcApplicationInfo.Controls.Add(this.tpApplicationInfo);
+            this.tcApplicationInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcApplicationInfo.Location = new System.Drawing.Point(0, 0);
+            this.tcApplicationInfo.Name = "tabControl1";
+            this.tcApplicationInfo.SelectedIndex = 0;
+            this.tcApplicationInfo.Size = new System.Drawing.Size(1198, 720);
+            this.tcApplicationInfo.TabIndex = 4;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.ctrlPersonDetailWithFitler1);
+            this.tabPage1.Controls.Add(this.ctrlPersonCardWithFilter1);
             this.tabPage1.Controls.Add(this.btnNextTab);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
@@ -78,12 +77,12 @@
             // 
             // ctrlPersonDetailWithFitler1
             // 
-            this.ctrlPersonDetailWithFitler1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlPersonDetailWithFitler1.Location = new System.Drawing.Point(10, 10);
-            this.ctrlPersonDetailWithFitler1.Name = "ctrlPersonDetailWithFitler1";
-            this.ctrlPersonDetailWithFitler1.Padding = new System.Windows.Forms.Padding(10);
-            this.ctrlPersonDetailWithFitler1.Size = new System.Drawing.Size(1170, 603);
-            this.ctrlPersonDetailWithFitler1.TabIndex = 0;
+            this.ctrlPersonCardWithFilter1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(10, 10);
+            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonDetailWithFitler1";
+            this.ctrlPersonCardWithFilter1.Padding = new System.Windows.Forms.Padding(10);
+            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(1170, 603);
+            this.ctrlPersonCardWithFilter1.TabIndex = 0;
             //this.ctrlPersonDetailWithFitler1.OnPersonSelected += new System.Action<DVLD_Business.clsPerson>(this.ctrlPersonDetailWithFitler1_WhenUserFound);
             // 
             // btnNextTab
@@ -100,15 +99,15 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.gbUserDetails);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(100);
-            this.tabPage2.Size = new System.Drawing.Size(1190, 687);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Application info";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            this.tpApplicationInfo.Controls.Add(this.gbUserDetails);
+            this.tpApplicationInfo.Location = new System.Drawing.Point(4, 29);
+            this.tpApplicationInfo.Name = "tabPage2";
+            this.tpApplicationInfo.Padding = new System.Windows.Forms.Padding(100);
+            this.tpApplicationInfo.Size = new System.Drawing.Size(1190, 687);
+            this.tpApplicationInfo.TabIndex = 1;
+            this.tpApplicationInfo.Text = "Application info";
+            this.tpApplicationInfo.UseVisualStyleBackColor = true;
+            this.tpApplicationInfo.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // gbUserDetails
             // 
@@ -261,7 +260,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1198, 720);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tcApplicationInfo);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmNewLocalDrivingLicenseApplications";
@@ -269,10 +268,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Local Driving License Applications";
             this.Load += new System.EventHandler(this.frmNewLocalDrivingLicenseApplications_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tcApplicationInfo.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
+            this.tpApplicationInfo.ResumeLayout(false);
             this.gbUserDetails.ResumeLayout(false);
             this.gbUserDetails.PerformLayout();
             this.ResumeLayout(false);
@@ -281,10 +280,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tcApplicationInfo;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button btnNextTab;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tpApplicationInfo;
         private System.Windows.Forms.GroupBox gbUserDetails;
         private System.Windows.Forms.Label lblDLAppID;
         private System.Windows.Forms.Label label1;
@@ -298,6 +297,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbLicenseClass;
-        private People.ctrlPersonCardWithFilter ctrlPersonDetailWithFitler1;
+        private People.ctrlPersonCardWithFilter ctrlPersonCardWithFilter1;
     }
 }

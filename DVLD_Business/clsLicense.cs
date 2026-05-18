@@ -125,5 +125,15 @@ namespace DVLD_Business
         {
             return DVLD_DataAccess.clsLicense.Deactivate(LicenseID);
         }
+
+        internal static int GetActiveLicenseIDByPersonID(int applicantPersonID, int licenseClassID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool IsLicenseExistByPersonID(int personID, int licenseClassID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

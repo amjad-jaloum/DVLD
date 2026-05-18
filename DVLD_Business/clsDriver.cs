@@ -22,6 +22,10 @@ namespace DVLD_Business
             CreatedDate = createdDate;
         }
 
+        public clsDriver()
+        {
+        }
+
         public static int AddNewDriver(int PersonID, int CreatedByUserID)
         {
             return DVLD_DataAccess.clsDriver.AddNewDriver(PersonID, CreatedByUserID, DateTime.Now);
