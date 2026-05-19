@@ -190,7 +190,7 @@ namespace _19___Project___DVLD.Driving_License_Services
         private void LoadLocalLicenseInitialData()
         {
             lblAppDate.Text = DateTime.Now.ToString();
-            lblAppFees.Text = clsLocalDrivingLicenseApplication.GetNewLocalDrivingLicenseAppFees();
+            //lblAppFees.Text = clsLocalDrivingLicenseApplication.GetNewLocalDrivingLicenseAppFees();
             lblCreatedBy.Text = clsGlobal.CurrentUser.UserName;
         }
         private void btnClose_Click(object sender, EventArgs e)

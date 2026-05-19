@@ -14,6 +14,7 @@ namespace DVLD_Business
         public int PersonID { get; set; }
         public int CreatedByUserID { get; set; }
         public DateTime CreatedDate { get; set; }
+        public int DriverID { get; internal set; }
 
         public clsDriver(int personID, int createdByUserID, DateTime createdDate)
         {
@@ -46,12 +47,12 @@ namespace DVLD_Business
 
         public static bool FindDriverID(int LocalDrivingLicenseAppID, ref int driverID)
         {
-            int PersonID = clsApplication.GetApplicantPersonID(LocalDrivingLicenseAppID);
-            driverID = DVLD_DataAccess.clsDriver.FindDriverID(PersonID);
+            //int PersonID = clsApplication.GetApplicantPersonID(LocalDrivingLicenseAppID);
+            //driverID = DVLD_DataAccess.clsDriver.FindDriverID(PersonID);
 
-            if (driverID == -1)
-                return false;
-            else
+            //if (driverID == -1)
+            //    return false;
+            //else
                 return true;
         }
 
@@ -68,6 +69,16 @@ namespace DVLD_Business
         public static object GetDataTableWithQuery(string ColumnName, string searchValue)
         {
             return DVLD_DataAccess.clsDriver.GetDataTableWithQuery(ColumnName, searchValue);
+        }
+
+        internal bool Save()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static clsDriver FindByPersonID(int applicantPersonID)
+        {
+            throw new NotImplementedException();
         }
     }
 }

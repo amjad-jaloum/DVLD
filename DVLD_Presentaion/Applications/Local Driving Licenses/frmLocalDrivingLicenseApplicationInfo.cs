@@ -14,39 +14,16 @@ namespace _19___Project___DVLD.Driving_License_Services
 {
     public partial class frmShowDrivingLicenseApp : Form
     {
-        private int _LocalDrivingLicenseAppID { get; set; }
-        string _licenseName{ get; set; }
-        string _applicantFullName{ get; set; }
-        DateTime _appDate { get; set; }
-        short _passedTests{ get; set; }
-        string _appStatus { get; set; }
-        public frmShowDrivingLicenseApp(int LocalDrivingLicenseAppID, string licenseName, 
-            string applicantFullName, DateTime appDate, short passedTests, string appStatus)
+        private int _ApplicationID = -1;
+
+        public frmShowDrivingLicenseApp(int ApplicationID)
         {
             InitializeComponent();
-            _LocalDrivingLicenseAppID = LocalDrivingLicenseAppID;
-            _licenseName = licenseName;
-            _applicantFullName = applicantFullName;
-            _appDate = appDate;
-            _passedTests = passedTests;
-            _appStatus = appStatus;
+            _ApplicationID = ApplicationID;
         }
-
         private void frmShowDrivingLicenseApp_Load(object sender, EventArgs e)
         {
-            if (_LocalDrivingLicenseAppID > 0)
-            {
-                ctrlShowDrivingLicenseAppInfo1.LocalDrivingLicenseAppID = _LocalDrivingLicenseAppID;
-                ctrlShowDrivingLicenseAppInfo1.licenseName = _licenseName;
-                ctrlShowDrivingLicenseAppInfo1.applicantFullName = _applicantFullName;
-                ctrlShowDrivingLicenseAppInfo1.passedTests = _passedTests;
-                ctrlShowDrivingLicenseAppInfo1.appDate = _appDate;
-                ctrlShowDrivingLicenseAppInfo1.appStatus = _appStatus;
-
-                ctrlShowDrivingLicenseAppInfo1.ctrlShowDrivingLicenseAppInfo_Load(sender, e);
-            }
-            else
-                MessageBox.Show("Invalid Application ID");
+            ctrlShowDrivingLicenseAppInfo1.LoadApplicationInfoByLocalDrivingAppID(_ApplicationID);
         }
     }
 }

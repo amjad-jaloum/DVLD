@@ -157,12 +157,12 @@
             this.ctrlShowDrivingLicenseAppInfo1.AutoSize = true;
             this.ctrlShowDrivingLicenseAppInfo1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ctrlShowDrivingLicenseAppInfo1.licenseName = null;
-            this.ctrlShowDrivingLicenseAppInfo1.LocalDrivingLicenseAppID = 0;
+            //this.ctrlShowDrivingLicenseAppInfo1._LocalDrivingLicenseApplicationID = 0;
             this.ctrlShowDrivingLicenseAppInfo1.Location = new System.Drawing.Point(0, 0);
             this.ctrlShowDrivingLicenseAppInfo1.Margin = new System.Windows.Forms.Padding(1);
             this.ctrlShowDrivingLicenseAppInfo1.Name = "ctrlShowDrivingLicenseAppInfo1";
             this.ctrlShowDrivingLicenseAppInfo1.Padding = new System.Windows.Forms.Padding(13, 13, 13, 13);
-            this.ctrlShowDrivingLicenseAppInfo1.passedTests = ((short)(0));
+            //this.ctrlShowDrivingLicenseAppInfo1.passedTests = ((short)(0));
             this.ctrlShowDrivingLicenseAppInfo1.Size = new System.Drawing.Size(712, 379);
             this.ctrlShowDrivingLicenseAppInfo1.TabIndex = 1;
             // 

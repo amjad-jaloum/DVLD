@@ -8,5 +8,19 @@ namespace DVLD_Business
 {
     public class clsTest
     {
+        internal static clsTest FindLastTestPerPersonAndLicenseClass(int applicantPersonID, int licenseClassID, clsTestType.enTestType testTypeID)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static byte GetPassedTestCount(int localDrivingLicenseApplicationID)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static bool PassedAllTests(int localDrivingLicenseApplicationID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

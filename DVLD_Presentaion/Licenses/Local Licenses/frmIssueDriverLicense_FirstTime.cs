@@ -38,52 +38,48 @@ namespace _19___Project___DVLD.Driving_License_Services
 
         private void btnIssue_Click(object sender, EventArgs e)
         {
-            int ApplicationID = clsLocalDrivingLicenseApplication.GetApplicationID(_LocalDrivingLicenseAppID);
-            int LicenseID = clsLicense.AddNewLicense(
-                ApplicationID
-                , GetDriverID(ApplicationID)
-                , GetLinenseClassID()
-                , DateTime.Now
-                , DateTime.Now.AddYears(10)
-                , tbNotes.Text
-                , GetPaidFees()
-                , true
-                , 1
-                , clsGlobal.CurrentUser.UserID
-                );
+            //int ApplicationID = clsLocalDrivingLicenseApplication.GetApplicationID(_LocalDrivingLicenseAppID);
+            //int LicenseID = clsLicense.AddNewLicense(
+            //    ApplicationID
+            //    , GetDriverID(ApplicationID)
+            //    , GetLinenseClassID()
+            //    , DateTime.Now
+            //    , DateTime.Now.AddYears(10)
+            //    , tbNotes.Text
+            //    , GetPaidFees()
+            //    , true
+            //    , 1
+            //    , clsGlobal.CurrentUser.UserID
+            //    );
 
-            if (LicenseID != -1)
-            {
-                MessageBox.Show("License issued successfully!\nLicese ID: " + LicenseID, 
-                    "Issued Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //if (LicenseID != -1)
+            //{
+            //    MessageBox.Show("License issued successfully!\nLicese ID: " + LicenseID, 
+            //        "Issued Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                clsLocalDrivingLicenseApplication.UpdateApplicationStatus(_LocalDrivingLicenseAppID,
-                    (short)clsLocalDrivingLicenseApplication.enApplicationStatus.Completed);
-                OnIssueDriverLicense?.Invoke(this);
-            }
-            else
-            {
-                MessageBox.Show("License not issued!", "Not Issued!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //    clsLocalDrivingLicenseApplication.UpdateApplicationStatus(_LocalDrivingLicenseAppID,
+            //        (short)clsLocalDrivingLicenseApplication.enApplicationStatus.Completed);
+            //    OnIssueDriverLicense?.Invoke(this);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("License not issued!", "Not Issued!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
         private int GetDriverID(int applicationID)
         {
             int driverID = -1;
-            if (clsDriver.FindDriverID(_LocalDrivingLicenseAppID, ref driverID))
-            {
+            //if (clsDriver.FindDriverID(_LocalDrivingLicenseAppID, ref driverID))
+            //{
                 return driverID;
-            }
-            else
-            {
-                return AddNewDriverAndGetID();
-            }
+            //}
+            //else
+            //{
+            //    return AddNewDriverAndGetID();
+            //}
         }
 
-        private decimal GetPaidFees()
-        {
-            return Convert.ToDecimal(clsLocalDrivingLicenseApplication.GetNewLocalDrivingLicenseAppFees());
-        }
         private int GetLinenseClassID()
         {
             int licenseClassID = clsLocalDrivingLicenseApplication.GetLicenseClassID(_LocalDrivingLicenseAppID);
@@ -97,37 +93,37 @@ namespace _19___Project___DVLD.Driving_License_Services
                 return licenseClassID;
             }
         }
-        private int AddNewDriverAndGetID()
-        {
-            int PersonID = clsDriver.AddNewDriver(
-            DVLD_Business.clsApplication.GetApplicantPersonID(_LocalDrivingLicenseAppID), clsGlobal.CurrentUser.UserID);
-            if (PersonID != -1)
-            {
-                return PersonID;
-            }
-            else
-            {
-                MessageBox.Show("Error while creating new driver");
-                return PersonID;
-            }
-        }
-        private void LoadPesronInfoToCTRL(object sender, EventArgs e)
-        {
-            ctrlShowDrivingLicenseAppInfo1.LocalDrivingLicenseAppID = _LocalDrivingLicenseAppID;
-            ctrlShowDrivingLicenseAppInfo1.licenseName = _licenseName;
-            ctrlShowDrivingLicenseAppInfo1.applicantFullName = _applicantFullName;
-            ctrlShowDrivingLicenseAppInfo1.passedTests = _passedTests;
-            ctrlShowDrivingLicenseAppInfo1.appDate = _appDate;
-            ctrlShowDrivingLicenseAppInfo1.appStatus = _appStatus;
+        //private int AddNewDriverAndGetID()
+        //{
+        //    int PersonID = clsDriver.AddNewDriver(
+        //    DVLD_Business.clsApplication.GetApplicantPersonID(_LocalDrivingLicenseAppID), clsGlobal.CurrentUser.UserID);
+        //    if (PersonID != -1)
+        //    {
+        //        return PersonID;
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Error while creating new driver");
+        //        return PersonID;
+        //    }
+        //}
+        //private void LoadPesronInfoToCTRL(object sender, EventArgs e)
+        //{
+        //    ctrlShowDrivingLicenseAppInfo1._LocalDrivingLicenseApplicationID = _LocalDrivingLicenseAppID;
+        //    ctrlShowDrivingLicenseAppInfo1.licenseName = _licenseName;
+        //    ctrlShowDrivingLicenseAppInfo1.applicantFullName = _applicantFullName;
+        //    ctrlShowDrivingLicenseAppInfo1.passedTests = _passedTests;
+        //    ctrlShowDrivingLicenseAppInfo1.appDate = _appDate;
+        //    ctrlShowDrivingLicenseAppInfo1.appStatus = _appStatus;
 
-            ctrlShowDrivingLicenseAppInfo1.ctrlShowDrivingLicenseAppInfo_Load(sender, e);
-        }
+        //    ctrlShowDrivingLicenseAppInfo1.ctrlShowDrivingLicenseAppInfo_Load(sender, e);
+        //}
         private void frmIssueDriverLicense_FirstTime_Load(object sender, EventArgs e)
         {
-            if (_LocalDrivingLicenseAppID != 0)
-                LoadPesronInfoToCTRL(this, e);
-            else
-                MessageBox.Show("Invalid Local Driving License ID");
+            //if (_LocalDrivingLicenseAppID != 0)
+            //    LoadPesronInfoToCTRL(this, e);
+            //else
+            //    MessageBox.Show("Invalid Local Driving License ID");
         }
     }
 }

@@ -81,9 +81,9 @@ namespace _19___Project___DVLD.Driving_License_Services
         }
         private void btnNewLocalLicense_Click(object sender, EventArgs e)
         {
-            frmAddUpdateLocalDrivingLicenseApplication frm = new frmAddUpdateLocalDrivingLicenseApplication();
-            frm.DataBack += RefreshDGV;
-            frm.ShowDialog();
+            //frmAddUpdateLocalDrivingLicenseApplication frm = new frmAddUpdateLocalDrivingLicenseApplication();
+            //frm.DataBack += RefreshDGV;
+            //frm.ShowDialog();
         }
         private void RefreshDGV(object sender)
         {
@@ -142,15 +142,15 @@ namespace _19___Project___DVLD.Driving_License_Services
         }
         private void cancelApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to cancel this person Application?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                int AppID = GetLocalDrivingLicenseAppIDFromDGV();
-                if (clsLocalDrivingLicenseApplication.UpdateLocalDrivingLicenseAppStatus(AppID, (int)enAppStatus.Cancelled))
-                {
-                    MessageBox.Show("Appliction status is cancelled!", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadLocalDrivingLicensesToDGV();
-                }
-            }
+            //if (MessageBox.Show("Are you sure you want to cancel this person Application?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            //{
+            //    int AppID = GetLocalDrivingLicenseAppIDFromDGV();
+            //    if (clsLocalDrivingLicenseApplication.UpdateLocalDrivingLicenseAppStatus(AppID, (int)enAppStatus.Cancelled))
+            //    {
+            //        MessageBox.Show("Appliction status is cancelled!", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        LoadLocalDrivingLicensesToDGV();
+            //    }
+            //}
         }
         private int GetLocalDrivingLicenseAppIDFromDGV()
         {
@@ -359,22 +359,22 @@ namespace _19___Project___DVLD.Driving_License_Services
         }
         private void deleteApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int AppID = GetLocalDrivingLicenseAppIDFromDGV();
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this Loacal Driving License Application?", "Confirm to delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            //int AppID = GetLocalDrivingLicenseAppIDFromDGV();
+            //DialogResult result = MessageBox.Show("Are you sure you want to delete this Loacal Driving License Application?", "Confirm to delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if (result == DialogResult.Yes)
-            {
+            //if (result == DialogResult.Yes)
+            //{
 
-                if (clsLocalDrivingLicenseApplication.Delete(AppID))
-                {
-                    MessageBox.Show("Deleted Successfully", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmManageLocalDrivingLicenseApplications_Load(this, e);
-                }
-                else
-                {
-                    MessageBox.Show("This Application record is linked to other data", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
+            //    if (clsLocalDrivingLicenseApplication.Delete(AppID))
+            //    {
+            //        MessageBox.Show("Deleted Successfully", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        frmManageLocalDrivingLicenseApplications_Load(this, e);
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("This Application record is linked to other data", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //}
 
         }
     }

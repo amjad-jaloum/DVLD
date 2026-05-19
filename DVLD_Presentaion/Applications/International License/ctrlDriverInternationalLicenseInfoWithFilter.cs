@@ -148,21 +148,21 @@ namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
                 return;
             }
 
-            clsApplication Application = clsApplication.Find(InternationalApplication.ApplicationID);
-            if(Application == null)
+            //clsApplication Application = clsApplication.Find(InternationalApplication.ApplicationID);
+            //if(Application == null)
             {
-                MessageBox.Show("Failed to load the application information!",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Failed to load the application information!",
+                //    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            lblILAppID.Text = Application.ApplicationID.ToString();
-            lblIL_LicenseID.Text = InternationalApplication.InternationalLicenseID.ToString();
-            lblLocalLicenseID.Text = IssuedUsingLocalLicenseID.ToString();
+            //lblILAppID.Text = Application.ApplicationID.ToString();
+            //lblIL_LicenseID.Text = InternationalApplication.InternationalLicenseID.ToString();
+            //lblLocalLicenseID.Text = IssuedUsingLocalLicenseID.ToString();
 
-            lblAppDate.Text = Application.ApplicationDate.ToShortDateString();
-            lblIssueDate.Text = InternationalApplication.IssueDate.ToShortDateString();
-            lblExpirationDate.Text = InternationalApplication.ExpirationDate.ToShortDateString();
+            //lblAppDate.Text = Application.ApplicationDate.ToShortDateString();
+            //lblIssueDate.Text = InternationalApplication.IssueDate.ToShortDateString();
+            //lblExpirationDate.Text = InternationalApplication.ExpirationDate.ToShortDateString();
         }
 
         private bool IsInternationalLicenseExists()

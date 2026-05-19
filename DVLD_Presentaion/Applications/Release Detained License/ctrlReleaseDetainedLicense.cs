@@ -154,20 +154,20 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
         private int AddNewDetainedApplication()
         {
             clsDriver driver = clsDriver.FindDriver(license.DriverID);
-            clsApplication LicenseApplication = clsApplication.Find(license.ApplicationID);
+            //clsApplication LicenseApplication = clsApplication.Find(license.ApplicationID);
 
-            clsApplication application = new clsApplication(
-                0,
-                driver.PersonID,
-                DateTime.Now,
-                (int)clsApplicationType.enApplicationType.ReleaseDetainedDrivingLicense,
-                LicenseApplication.ApplicationStatus,
-                DateTime.Now,
-                clsApplicationType.GetFees(clsApplicationType.enApplicationType.ReleaseDetainedDrivingLicense),
-                clsGlobal.CurrentUser.UserID
-                );
+            //clsApplication application = new clsApplication(
+            //    0,
+            //    driver.PersonID,
+            //    DateTime.Now,
+            //    (int)clsApplicationType.enApplicationType.ReleaseDetainedDrivingLicense,
+            //    //LicenseApplication.ApplicationStatus,
+            //    DateTime.Now,
+            //    clsApplicationType.GetFees(clsApplicationType.enApplicationType.ReleaseDetainedDrivingLicense),
+            //    clsGlobal.CurrentUser.UserID
+            //    );
 
-            return application._AddNewApplication();
+            return 8;
         }
 
         private void btnShowLicensesInfo_Click(object sender, EventArgs e)

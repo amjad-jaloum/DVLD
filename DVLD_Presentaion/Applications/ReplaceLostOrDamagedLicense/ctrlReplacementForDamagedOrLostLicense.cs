@@ -136,20 +136,20 @@ namespace _19___Project___DVLD.Driving_Licenses.Licenses_Replacement
 
         private int AddNewReplacementApplication()
         {
-            clsDriver driver = clsDriver.FindDriver(license.DriverID);
+            //clsDriver driver = clsDriver.FindDriver(license.DriverID);
 
-            clsApplication application = new clsApplication(
-                0,
-                driver.PersonID,
-                DateTime.Now,
-                GetAppStatusFromRadioBox(),
-                clsApplication.Find(license.ApplicationID).ApplicationStatus,
-                license.IssueDate,
-                license.PaidFees,
-                clsGlobal.CurrentUser.UserID
-                );
+            //clsApplication application = new clsApplication(
+            //    0,
+            //    driver.PersonID,
+            //    DateTime.Now,
+            //    GetAppStatusFromRadioBox(),
+            //    clsApplication.Find(license.ApplicationID).ApplicationStatus,
+            //    license.IssueDate,
+            //    license.PaidFees,
+            //    clsGlobal.CurrentUser.UserID
+            //    );
 
-            return application._AddNewApplication();
+            return 0;
         }
 
         private int GetAppStatusFromRadioBox()
@@ -159,29 +159,29 @@ namespace _19___Project___DVLD.Driving_Licenses.Licenses_Replacement
 
         private void AddNewLocalLicense(int ReplacedApplicationID)
         {
-            int NewLicenseID = clsLicense.AddNewLicense(
-                ReplacedApplicationID,
-                license.DriverID,
-                license.LicenseClass,
-                license.IssueDate,
-                license.ExpirationDate,
-                string.Empty,
-                license.PaidFees,
-                true,
-                GetLicenseIssueReasonFromRadioBox(),
-                clsGlobal.CurrentUser.UserID
-                );
+            //int NewLicenseID = clsLicense.AddNewLicense(
+            //    ReplacedApplicationID,
+            //    license.DriverID,
+            //    license.LicenseClass,
+            //    license.IssueDate,
+            //    license.ExpirationDate,
+            //    string.Empty,
+            //    license.PaidFees,
+            //    true,
+            //    GetLicenseIssueReasonFromRadioBox(),
+            //    clsGlobal.CurrentUser.UserID
+            //    );
 
-            if (NewLicenseID == -1)
-            {
-                MessageBox.Show($"Failed to add new license.",
-                "Database error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                MessageBox.Show($"The replacement driving license is issued successfully!\nLicense ID: {NewLicenseID}",
-                "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //if (NewLicenseID == -1)
+            //{
+            //    MessageBox.Show($"Failed to add new license.",
+            //    "Database error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else
+            //{
+            //    MessageBox.Show($"The replacement driving license is issued successfully!\nLicense ID: {NewLicenseID}",
+            //    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
         private short GetLicenseIssueReasonFromRadioBox()

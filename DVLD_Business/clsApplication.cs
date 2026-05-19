@@ -97,6 +97,10 @@ namespace DVLD_Business
 
             Mode = enMode.Update;
         }
+        public bool SetComplete()
+        {
+            return clsApplicationData.UpdateStatus(ApplicationID, 3);
+        }
 
         private bool _AddNewApplication()
         {

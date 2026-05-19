@@ -95,70 +95,55 @@ namespace _19___Project___DVLD.Renewed_Licenses
 
         private void btnRenew_Click(object sender, EventArgs e)
         {
-            if (license.IsActive)
-            {
-                int RenewedApplicationID = AddNewRenewedApplication();
+            //if (license.IsActive)
+            //{
+            //    int RenewedApplicationID = AddNewRenewedApplication();
 
-                if (RenewedApplicationID != -1)
-                {
-                    AddNewLocalLicense(RenewedApplicationID);
-                    DeactivateCurrentLicense();
-                }
-                else
-                {
-                    MessageBox.Show($"Failed to add new application.",
-                    "Database error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            else
-            {
-                MessageBox.Show($"This license is not active. Renewing licenses require active licenses!",
-                "Rejection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //    if (RenewedApplicationID != -1)
+            //    {
+            //        AddNewLocalLicense(RenewedApplicationID);
+            //        DeactivateCurrentLicense();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show($"Failed to add new application.",
+            //        "Database error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show($"This license is not active. Renewing licenses require active licenses!",
+            //    "Rejection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
-        private int AddNewRenewedApplication()
-        {
-            clsDriver driver = clsDriver.FindDriver(license.DriverID);
-            clsApplication application = new clsApplication(
-                0,
-                driver.PersonID,
-                DateTime.Now,
-                (int)clsApplicationType.enApplicationType.RenewDrivingLicenseService,
-                (short)clsApplication.enApplicationStatus.New,
-                license.IssueDate,
-                license.PaidFees,
-                clsGlobal.CurrentUser.UserID
-                );
 
-            return application._AddNewApplication();
-        }
 
         private void AddNewLocalLicense(int RenewedApplicationID)
         {
-            int NewLicenseID = clsLicense.AddNewLicense(
-                RenewedApplicationID,
-                license.DriverID,
-                license.LicenseClass,
-                DateTime.Now,
-                DateTime.Now.AddYears(10),
-                tbLicenseNotes.Text,
-                license.PaidFees,
-                true,
-                (short)clsLicense.enIssueReason.Renewal,
-                clsGlobal.CurrentUser.UserID
-                );
+            //int NewLicenseID = clsLicense.AddNewLicense(
+            //    RenewedApplicationID,
+            //    license.DriverID,
+            //    license.LicenseClass,
+            //    DateTime.Now,
+            //    DateTime.Now.AddYears(10),
+            //    tbLicenseNotes.Text,
+            //    license.PaidFees,
+            //    true,
+            //    (short)clsLicense.enIssueReason.Renewal,
+            //    clsGlobal.CurrentUser.UserID
+            //    );
 
-            if (NewLicenseID == -1)
-            {
-                MessageBox.Show($"Failed to add new license.",
-                "Database error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                MessageBox.Show($"The renewed driving license is issued successfully!\nLicense ID: {NewLicenseID}",
-                "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //if (NewLicenseID == -1)
+            //{
+            //    MessageBox.Show($"Failed to add new license.",
+            //    "Database error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else
+            //{
+            //    MessageBox.Show($"The renewed driving license is issued successfully!\nLicense ID: {NewLicenseID}",
+            //    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
         private void DeactivateCurrentLicense()
