@@ -24,6 +24,8 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
         public static enTestType TestType { get; set; }
         public enum enTestMode { New, Edit, Retake }
         enTestMode Mode = enTestMode.New;
+        private int localDrivingLicenseApplicationID;
+        private clsTestType.enTestType testType;
 
         public delegate void RefreshManageLocalDrivingLicenseApplicationsDGVHandler(object sender);
         public event RefreshManageLocalDrivingLicenseApplicationsDGVHandler RefreshManageLocalDrivingLicenseApplicationsDGV;
@@ -43,6 +45,12 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
         public frmListTestAppointments()
         {
             InitializeComponent();
+        }
+
+        public frmListTestAppointments(int localDrivingLicenseApplicationID, clsTestType.enTestType testType)
+        {
+            this.localDrivingLicenseApplicationID = localDrivingLicenseApplicationID;
+            this.testType = testType;
         }
 
         private void frmVisionTestAppointments_Load(object sender, EventArgs e)

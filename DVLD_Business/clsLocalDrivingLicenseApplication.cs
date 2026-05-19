@@ -445,11 +445,15 @@ namespace DVLD_Business
             return clsLicense.GetActiveLicenseIDByPersonID(this.ApplicantPersonID, this.LicenseClassID);
         }
 
+        public static DataTable GetAllLocalDrivingLicenseApplications()
+        {
+            return clsLocalDrivingLicenseApplicationData.GetAllLocalDrivingLicenseApplications();
+        }
 
-
-
-
-
+        public static bool DoesPassTestType(int localDrivingLicenseApplicationID, clsTestType.enTestType visionTest)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

@@ -20,6 +20,8 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
         private string _Trail;
         private DateTime _AppointmentDate;
         private string _fees;
+        private object testAppointmentID;
+        private clsTestType.enTestType visionTest;
 
         public delegate void RefreshDataGridViewHandler(object sender);
         public event RefreshDataGridViewHandler RefreshDataGridView;
@@ -34,6 +36,12 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
             _Trail = Trail;
             _AppointmentDate = AppointmentDate;
             _fees = fees;
+        }
+
+        public frmTakeTest(object testAppointmentID, clsTestType.enTestType visionTest)
+        {
+            this.testAppointmentID = testAppointmentID;
+            this.visionTest = visionTest;
         }
 
         private void frmTakeTest_Load(object sender, EventArgs e)

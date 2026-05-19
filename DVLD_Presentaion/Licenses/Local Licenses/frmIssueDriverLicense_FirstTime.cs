@@ -14,6 +14,8 @@ namespace _19___Project___DVLD.Driving_License_Services
 {
     public partial class frmIssueDriverLicense_FirstTime : Form
     {
+        private int localDrivingLicenseApplicationID;
+
         private int _LocalDrivingLicenseAppID { get; set; }
         private string _licenseName { get; set; }
         private string _applicantFullName { get; set; }
@@ -34,6 +36,11 @@ namespace _19___Project___DVLD.Driving_License_Services
             _appDate = appDate;
             _passedTests = passedTests;
             _appStatus = appStatus;
+        }
+
+        public frmIssueDriverLicense_FirstTime(int localDrivingLicenseApplicationID)
+        {
+            this.localDrivingLicenseApplicationID = localDrivingLicenseApplicationID;
         }
 
         private void btnIssue_Click(object sender, EventArgs e)
