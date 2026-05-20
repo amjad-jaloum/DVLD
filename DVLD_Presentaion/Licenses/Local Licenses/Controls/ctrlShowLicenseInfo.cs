@@ -15,115 +15,64 @@ namespace _19___Project___DVLD.Driving_License_Services
 {
     public partial class ctrlShowLicenseInfo : UserControl
     {
-        public clsPerson person = null;
-        public clsLicense license = null;
-        public int LicenseID = -1;
-        public bool IsLoaded = false;
+        private int _LicenseID = -1;
+        private clsLicense _License;
+        public int LicenseID
+        {
+            get { return _LicenseID; }
+        }
+
         public ctrlShowLicenseInfo()
         {
             InitializeComponent();
         }
 
-        public void ctrlShowLicenseInfo_Load(object sender, EventArgs e)
+        public void LoadInfo(int LicenseID)
         {
-            if (LicenseID != -1)
+            _LicenseID = LicenseID;
+            _License = clsLicense.Find(LicenseID);
+            if (_License == null)
             {
-                if (GetLicenseAndPersonDetails() && LoadLicenseAndPersonDetails())
-                {
-                    IsLoaded = true;
-                    return;
-                }
+                MessageBox.Show("No License with ID=" + LicenseID.ToString(), "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _LicenseID = -1;
+                return;
             }
-            IsLoaded = false;
-        }
 
-        private bool LoadLicenseAndPersonDetails()
-        {
-            if (license != null)
-            {
-                lblClass.Text = clsLocalDrivingLicenseApplication.GetLicenceName(license.LicenseClass);
-                lblName.Text = person.FullName;
-                lblLicenseID.Text = LicenseID.ToString();
-                lblNatioinalNo.Text = person.NationalNo;
-                lblGender.Text = person.GenderString;
-                lblIssueDate.Text = license.IssueDate.ToShortDateString();
-                lblNotes.Text = license.Notes;
-                lblIsActive.Text = IsActive();
-                lblDateOfBirth.Text = person.DateOfBirth.ToShortDateString();
-                lblDriverID.Text = license.DriverID.ToString();
-                lblExpirationDate.Text = license.ExpirationDate.ToShortDateString();
-                lblIsDetained.Text = IsDetained();
-                pbProfileImage.Image = GetImagePath(person.ImagePath);
-                lblIssueReason.Text = license.IssueReasonToString();
-                return true;
-            }
-            else
-            {
-                MessageBox.Show($"Couldn't Load License Details",
-                    "Not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-        }
+            lblLicenseID.Text = _License.LicenseID.ToString();
+            lblIsActive.Text = _License.IsActive ? "Yes" : "No";
+            lblIsDetained.Text = _License.IsDetained ? "Yes" : "No";
+            lblClass.Text = _License.LicenseClassIfo.ClassName;
+            lblName.Text = _License.DriverInfo.PersonInfo.FullName;
+            lblNatioinalNo.Text = _License.DriverInfo.PersonInfo.NationalNo;
+            lblGender.Text = _License.DriverInfo.PersonInfo.Gender == 0 ? "Male" : "Female";
+            lblDateOfBirth.Text = _License.DriverInfo.PersonInfo.DateOfBirth.ToShortDateString();
 
-        private string IsDetained()
-        {
-            return clsDetainedLicense.IsLicenseDetained(LicenseID) ? "Yes" : "No";
-        }
+            lblDriverID.Text = _License.DriverID.ToString();
+            lblIssueDate.Text = _License.IssueDate.ToShortDateString();
+            lblExpirationDate.Text = _License.ExpirationDate.ToShortDateString();
+            lblIssueReason.Text = _License.IssueReasonText;
+            lblNotes.Text = _License.Notes == "" ? "No Notes" : _License.Notes;
+            _LoadPersonImage();
 
-        private string IsActive()
-        {
-            return license.IsActive && !IsLicenseExpired() ? "Yes" : "No";
-        }
 
-        public bool IsLicenseExpired()
-        {
-            return license.ExpirationDate < DateTime.Now; // 2033 > 2026(now)
         }
-
-        private Image GetImagePath(string ImagePath)
+        private void _LoadPersonImage()
         {
+            string ImagePath = _License.DriverInfo.PersonInfo.ImagePath;
             if (ImagePath == string.Empty)
-                return GetDefaultImage();
+            {
+                pbProfileImage.Image = _License.DriverInfo.PersonInfo.Gender == 0 ? Resources.male : Resources.female;
+                return;
+            }
 
             if (!File.Exists(ImagePath))
-                return Convert.ToBoolean(person.Gender) ? Resources.femaleWrong : Resources.maleWrong;
-
-            return Image.FromFile(ImagePath);
-        }
-
-        private Image GetDefaultImage()
-        {
-            return Convert.ToBoolean(person.Gender) ? Resources.female : Resources.male;
-        }
-        
-        private bool GetLicenseAndPersonDetails()
-        {
-            license = clsLicense.FindLicense(LicenseID);
-            if (license != null)
             {
-                int PersonID = clsDriver.FindDriver(license.DriverID).PersonID;
-                if (PersonID != -1)
-                {
-                    person = clsPerson.Find(PersonID);
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show($"Person is not found with Database error. Person ID: {PersonID}",
-                        "Not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                pbProfileImage.Image = Convert.ToBoolean(_License.DriverInfo.PersonInfo.Gender) ? Resources.femaleWrong : Resources.maleWrong;
+                return;
             }
-            else
-            {
-                MessageBox.Show($"Licnese is not found Database error. Licnese ID: {LicenseID}",
-                    "Not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            return false;
+
+            pbProfileImage.Load(ImagePath);
         }
 
-        public bool IsLicenseValid()
-        {
-            return !IsLicenseExpired() && license.IsActive;
-        }
     }
 }

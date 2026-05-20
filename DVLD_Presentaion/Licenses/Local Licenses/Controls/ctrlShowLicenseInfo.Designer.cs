@@ -366,7 +366,6 @@
             this.Name = "ctrlShowLicenseInfo";
             this.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.Size = new System.Drawing.Size(1334, 603);
-            this.Load += new System.EventHandler(this.ctrlShowLicenseInfo_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfileImage)).EndInit();
