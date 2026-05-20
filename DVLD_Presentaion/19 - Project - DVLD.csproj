@@ -390,9 +390,6 @@
     <EmbeddedResource Include="Applications\Local Driving Licenses\frmAddUpdateLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmAddUpdateLocalDrivingLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Applications\Local Driving Licenses\frmShowDrivingLicenseApp.resx">
-      <DependentUpon>frmLocalDrivingLicenseApplicationInfo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Local Licenses\frmShowLicenseInfo.resx">
       <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>

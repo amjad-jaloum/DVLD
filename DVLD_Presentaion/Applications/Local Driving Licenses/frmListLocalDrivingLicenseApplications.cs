@@ -238,8 +238,8 @@ namespace _19___Project___DVLD.Driving_License_Services
         }
         private void showApplicationDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmShowDrivingLicenseApp frm =
-                        new frmShowDrivingLicenseApp((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
+            frmLocalDrivingLicenseApplicationInfo frm =
+                        new frmLocalDrivingLicenseApplicationInfo((int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
             //refresh
             frmManageLocalDrivingLicenseApplications_Load(null, null);

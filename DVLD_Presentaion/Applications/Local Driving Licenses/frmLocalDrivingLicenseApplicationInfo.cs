@@ -12,11 +12,11 @@ using DVLD_Business;
 
 namespace _19___Project___DVLD.Driving_License_Services
 {
-    public partial class frmShowDrivingLicenseApp : Form
+    public partial class frmLocalDrivingLicenseApplicationInfo : Form
     {
         private int _ApplicationID = -1;
 
-        public frmShowDrivingLicenseApp(int ApplicationID)
+        public frmLocalDrivingLicenseApplicationInfo(int ApplicationID)
         {
             InitializeComponent();
             _ApplicationID = ApplicationID;

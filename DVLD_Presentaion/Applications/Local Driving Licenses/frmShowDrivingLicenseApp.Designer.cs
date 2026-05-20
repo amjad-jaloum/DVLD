@@ -1,6 +1,6 @@
 ﻿namespace _19___Project___DVLD.Driving_License_Services
 {
-    partial class frmShowDrivingLicenseApp
+    partial class frmLocalDrivingLicenseApplicationInfo
     {
         /// <summary>
         /// Required designer variable.

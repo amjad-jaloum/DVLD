@@ -64,23 +64,24 @@ namespace DVLD_Business
 
         public string IssueReasonToString()
         {
-            switch (IssueReason)
-            {
-                case 1:
-                    return "First Time";
-                case 2:
-                    return "Renewal";
-                case 3:
-                    return "Lost Replacement";
-                case 4:
-                    return "Damaged Replacement";
-                case 5:
-                    return "Released Detained License";
-                case 6:
-                    return "International License";
-                default:
-                    return "Unknown";
-            }
+            //switch (IssueReason)
+            //{
+            //    case 1:
+            //        return "First Time";
+            //    case 2:
+            //        return "Renewal";
+            //    case 3:
+            //        return "Lost Replacement";
+            //    case 4:
+            //        return "Damaged Replacement";
+            //    case 5:
+            //        return "Released Detained License";
+            //    case 6:
+            //        return "International License";
+            //    default:
+            //        return "Unknown";
+            //}
+            return "";
         }
 
         public clsLicense(int licenseID, int applicationID, int driverID, int licenseClass, DateTime issueDate,
@@ -95,7 +96,7 @@ namespace DVLD_Business
             Notes = notes;
             PaidFees = paidFees;
             IsActive = isActive;
-            IssueReason = issueReason;
+            IssueReason =(enIssueReason) issueReason;
             CreatedByUserID = createdByUserID;
         }
 
