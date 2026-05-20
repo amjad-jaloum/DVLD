@@ -29,18 +29,18 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            bool isLoaded = LoadLicenseInfo();
-            btnShowLicensesInfo.Enabled = false;
-            btnShowLicensesHistory.Enabled = isLoaded;
-            btnShowLicensesInfo.Enabled = isLoaded;
-            btnDetain.Enabled = false;
+            //bool isLoaded = LoadLicenseInfo();
+            //btnShowLicensesInfo.Enabled = false;
+            //btnShowLicensesHistory.Enabled = isLoaded;
+            //btnShowLicensesInfo.Enabled = isLoaded;
+            //btnDetain.Enabled = false;
 
-            if (isLoaded)
-            {
-                license = ctrlShowLicenseInfo1.license;
-                btnDetain.Enabled = CheckLicenseValidation();
-                loadDetainDetails();
-            }
+            //if (isLoaded)
+            //{
+            //    license = ctrlShowLicenseInfo1.license;
+            //    btnDetain.Enabled = CheckLicenseValidation();
+            //    loadDetainDetails();
+            //}
         }
 
         private void loadDetainDetails()
@@ -64,15 +64,15 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
             }
         }
 
-        private bool LoadLicenseInfo()
-        {
-            object sender = null;
-            EventArgs e = new EventArgs();
+        //private bool LoadLicenseInfo()
+        //{
+        //    //object sender = null;
+        //    //EventArgs e = new EventArgs();
 
-            ctrlShowLicenseInfo1.LicenseID = Convert.ToInt32(tbSearch.Text);
-            ctrlShowLicenseInfo1.ctrlShowLicenseInfo_Load(sender, e);
-            return ctrlShowLicenseInfo1.IsLoaded;
-        }
+        //    //ctrlShowLicenseInfo1.LicenseID = Convert.ToInt32(tbSearch.Text);
+        //    //ctrlShowLicenseInfo1.ctrlShowLicenseInfo_Load(sender, e);
+        //    //return ctrlShowLicenseInfo1.IsLoaded;
+        //}
 
         private void tbSearch_KeyPress(object sender, KeyPressEventArgs e)
         {

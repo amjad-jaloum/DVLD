@@ -13,7 +13,7 @@ using DVLD_Business;
 
 namespace _19___Project___DVLD.Driving_License_Services
 {
-    public partial class ctrlShowLicenseInfo : UserControl
+    public partial class ctrlDriverLicenseInfo : UserControl
     {
         private int _LicenseID = -1;
         private clsLicense _License;
@@ -21,8 +21,10 @@ namespace _19___Project___DVLD.Driving_License_Services
         {
             get { return _LicenseID; }
         }
+        public clsLicense SelectedLicenseInfo
+        { get { return _License; } }
 
-        public ctrlShowLicenseInfo()
+        public ctrlDriverLicenseInfo()
         {
             InitializeComponent();
         }

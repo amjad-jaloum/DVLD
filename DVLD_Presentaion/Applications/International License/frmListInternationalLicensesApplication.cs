@@ -77,18 +77,18 @@ namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
 
         private void showPersonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int DriverID = clsInternationalLicense.FindLicenseByInternationalLicenseID(GetInternationalLicenseIDFromDGV()).DriverID;
-            clsPerson person = clsPerson.Find(clsDriver.FindDriver(DriverID).PersonID);
-            if (person != null)
-            {
-                //frmShowPersonInfo form = new frmShowPersonInfo(person);
-                //form.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("No person found with the selected license ID",
-                    "Invalid license ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //int DriverID = clsInternationalLicense.FindLicenseByInternationalLicenseID(GetInternationalLicenseIDFromDGV()).DriverID;
+            //clsPerson person = clsPerson.Find(clsDriver.FindDriver(DriverID).PersonID);
+            //if (person != null)
+            //{
+            //    //frmShowPersonInfo form = new frmShowPersonInfo(person);
+            //    //form.ShowDialog();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No person found with the selected license ID",
+            //        "Invalid license ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
     }
 }

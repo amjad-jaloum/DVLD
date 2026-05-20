@@ -22,19 +22,19 @@ namespace _19___Project___DVLD.Driving_License_Services
 
         private void frmLicensesHistory_Load(object sender, EventArgs e)
         {
-            clsDriver driver = clsDriver.FindDriver(DriverID);
-            if (driver != null)
-            {
-                ctrlPersonDetailWithFitler1.ShowPersonDetailsWithHistory(driver.PersonID);
+            //clsDriver driver = clsDriver.FindDriver(DriverID);
+            //if (driver != null)
+            //{
+            //    ctrlPersonDetailWithFitler1.ShowPersonDetailsWithHistory(driver.PersonID);
 
-                loadLocalLicensesHistory();
-                loadInternationalLicensesHistroy();
-            }
-            else
-            {
-                MessageBox.Show("Driver Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close();
-            }
+            //    loadLocalLicensesHistory();
+            //    loadInternationalLicensesHistroy();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Driver Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    Close();
+            //}
         }
 
         private void loadInternationalLicensesHistroy()
@@ -45,8 +45,8 @@ namespace _19___Project___DVLD.Driving_License_Services
 
         private void loadLocalLicensesHistory()
         {
-            dgvLocalLicensesHisory.DataSource = clsLicense.GetLocalLicesnsHistory(DriverID);
-            lblLocalLicensesRowsCount.Text = dgvLocalLicensesHisory.Rows.Count.ToString();
+            //dgvLocalLicensesHisory.DataSource = clsLicense.GetLocalLicesnsHistory(DriverID);
+            //lblLocalLicensesRowsCount.Text = dgvLocalLicensesHisory.Rows.Count.ToString();
         }
 
         private void showLicenseInfoToolStripMenuItem_Click(object sender, EventArgs e)

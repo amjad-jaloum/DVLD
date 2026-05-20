@@ -32,18 +32,18 @@ namespace _19___Project___DVLD.Renewed_Licenses
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            bool isLoaded = LoadLicenseInfo();
-            btnShowLicensesInfo.Enabled = false;
-            btnShowLicensesHistory.Enabled = isLoaded;
-            btnShowLicensesInfo.Enabled = isLoaded;
-            btnRenew.Enabled = false;
+            //bool isLoaded = LoadLicenseInfo();
+            //btnShowLicensesInfo.Enabled = false;
+            //btnShowLicensesHistory.Enabled = isLoaded;
+            //btnShowLicensesInfo.Enabled = isLoaded;
+            //btnRenew.Enabled = false;
 
-            if (isLoaded)
-            {
-                license = ctrlShowLicenseInfo1.license;
-                btnRenew.Enabled = CheckLicenseValidation();
-                loadRenewDetails();
-            }
+            //if (isLoaded)
+            //{
+            //    license = ctrlShowLicenseInfo1.license;
+            //    btnRenew.Enabled = CheckLicenseValidation();
+            //    loadRenewDetails();
+            //}
         }
 
         private void loadRenewDetails()
@@ -62,27 +62,27 @@ namespace _19___Project___DVLD.Renewed_Licenses
 
         private bool CheckLicenseValidation()
         {
-            if (license.IsExpired())
-            {
-                return true;
-            }
-            else
-            {
-                MessageBox.Show($"This License is not expired yet. This license will expire at: {license.ExpirationDate.ToShortDateString()}",
-                    "Regection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //if (license.IsExpired())
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    MessageBox.Show($"This License is not expired yet. This license will expire at: {license.ExpirationDate.ToShortDateString()}",
+            //        "Regection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
-            }
+            //}
         }
 
-        private bool LoadLicenseInfo()
-        {
-            object sender = null;
-            EventArgs e = new EventArgs();
+        //private bool LoadLicenseInfo()
+        //{
+        //    //object sender = null;
+        //    //EventArgs e = new EventArgs();
 
-            ctrlShowLicenseInfo1.LicenseID = Convert.ToInt32(tbSearch.Text);
-            ctrlShowLicenseInfo1.ctrlShowLicenseInfo_Load(sender, e);
-            return ctrlShowLicenseInfo1.IsLoaded;
-        }
+        //    //ctrlShowLicenseInfo1.LicenseID = Convert.ToInt32(tbSearch.Text);
+        //    //ctrlShowLicenseInfo1.ctrlShowLicenseInfo_Load(sender, e);
+        //    //return ctrlShowLicenseInfo1.IsLoaded;
+        //}
 
         private void tbSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -148,11 +148,11 @@ namespace _19___Project___DVLD.Renewed_Licenses
 
         private void DeactivateCurrentLicense()
         {
-            if (!license.Deactivate())
-            {
-                MessageBox.Show($"Couldn't deactivte the previous license. It could be already deactivated",
-                 "Failed To Deactivate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //if (!license.Deactivate())
+            //{
+            //    MessageBox.Show($"Couldn't deactivte the previous license. It could be already deactivated",
+            //     "Failed To Deactivate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
         private void btnShowLicensesInfo_Click(object sender, EventArgs e)

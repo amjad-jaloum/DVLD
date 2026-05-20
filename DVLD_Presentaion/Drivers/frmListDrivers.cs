@@ -25,16 +25,16 @@ namespace _19___Project___DVLD.Drivers
         }
         private void LoadComboBoxFilter()
         {
-            List<string> ColumnNames = clsDriver.GetDriversColumnNames();
-            if (ColumnNames == null)
-            {
-                MessageBox.Show("Database error, Column names are not loaded properly!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else
-            {
-                FillFilterComboBox(ColumnNames);
-            }
+            //List<string> ColumnNames = clsDriver.GetDriversColumnNames();
+            //if (ColumnNames == null)
+            //{
+            //    MessageBox.Show("Database error, Column names are not loaded properly!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+            //else
+            //{
+            //    FillFilterComboBox(ColumnNames);
+            //}
         }
         private void FillFilterComboBox(List<string> ColumnNames)
         {
@@ -47,8 +47,8 @@ namespace _19___Project___DVLD.Drivers
 
         private void LoadDriversToDGV()
         {
-            dgvDrivers.DataSource = clsDriver.GetDriversData();
-            lblRowsCountValue.Text = dgvDrivers.Rows.Count.ToString();
+            //dgvDrivers.DataSource = clsDriver.GetDriversData();
+            //lblRowsCountValue.Text = dgvDrivers.Rows.Count.ToString();
         }
 
         private void mtxbSearch_TextChanged(object sender, EventArgs e)
@@ -57,12 +57,12 @@ namespace _19___Project___DVLD.Drivers
         }
         private void UpdateDataTableWithFilter()
         {
-            if (!cbFilter.SelectedItem.ToString().Contains("None"))
-            {
-                string SearchValue = mtxbSearch.Text;
-                dgvDrivers.DataSource = clsDriver.GetDataTableWithQuery(cbFilter.SelectedItem.ToString(), SearchValue);
-                lblRowsCountValue.Text = dgvDrivers.RowCount.ToString();
-            }
+            //if (!cbFilter.SelectedItem.ToString().Contains("None"))
+            //{
+            //    string SearchValue = mtxbSearch.Text;
+            //    dgvDrivers.DataSource = clsDriver.GetDataTableWithQuery(cbFilter.SelectedItem.ToString(), SearchValue);
+            //    lblRowsCountValue.Text = dgvDrivers.RowCount.ToString();
+            //}
         }
 
     }

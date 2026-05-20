@@ -28,18 +28,18 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
 
         private void SearchForLicense()
         {
-            bool isLoaded = LoadLicenseInfo();
-            btnShowLicensesInfo.Enabled = false;
-            btnShowLicensesHistory.Enabled = isLoaded;
-            btnShowLicensesInfo.Enabled = isLoaded;
-            btnRelease.Enabled = false;
+            //bool isLoaded = LoadLicenseInfo();
+            //btnShowLicensesInfo.Enabled = false;
+            //btnShowLicensesHistory.Enabled = isLoaded;
+            //btnShowLicensesInfo.Enabled = isLoaded;
+            //btnRelease.Enabled = false;
 
-            if (isLoaded)
-            {
-                license = ctrlShowLicenseInfo1.license;
-                btnRelease.Enabled = CheckLicenseValidation();
-                loadDetainDetails();
-            }
+            //if (isLoaded)
+            //{
+            //    license = ctrlShowLicenseInfo1.license;
+            //    btnRelease.Enabled = CheckLicenseValidation();
+            //    loadDetainDetails();
+            //}
         }
 
         private void loadDetainDetails()
@@ -83,15 +83,15 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
             }
         }
 
-        private bool LoadLicenseInfo()
-        {
-            object sender = null;
-            EventArgs e = new EventArgs();
+        //private bool LoadLicenseInfo()
+        //{
+        //    //object sender = null;
+        //    //EventArgs e = new EventArgs();
 
-            ctrlShowLicenseInfo1.LicenseID = Convert.ToInt32(tbSearch.Text);
-            ctrlShowLicenseInfo1.ctrlShowLicenseInfo_Load(sender, e);
-            return ctrlShowLicenseInfo1.IsLoaded;
-        }
+        //    //ctrlShowLicenseInfo1.LicenseID = Convert.ToInt32(tbSearch.Text);
+        //    //ctrlShowLicenseInfo1.ctrlShowLicenseInfo_Load(sender, e);
+        //    //return ctrlShowLicenseInfo1.IsLoaded;
+        //}
 
         private void tbSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -153,7 +153,7 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
 
         private int AddNewDetainedApplication()
         {
-            clsDriver driver = clsDriver.FindDriver(license.DriverID);
+            //clsDriver driver = clsDriver.FindDriver(license.DriverID);
             //clsApplication LicenseApplication = clsApplication.Find(license.ApplicationID);
 
             //clsApplication application = new clsApplication(

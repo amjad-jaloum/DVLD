@@ -36,28 +36,28 @@ namespace _19___Project___DVLD.Driving_Licenses.Licenses_Replacement
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            bool isLoaded = LoadLicenseInfo();
-            btnShowLicensesInfo.Enabled = false;
-            btnShowLicensesHistory.Enabled = isLoaded;
-            btnShowLicensesInfo.Enabled = isLoaded;
-            btnIssueReplacement.Enabled = false;
+            //bool isLoaded = LoadLicenseInfo();
+            //btnShowLicensesInfo.Enabled = false;
+            //btnShowLicensesHistory.Enabled = isLoaded;
+            //btnShowLicensesInfo.Enabled = isLoaded;
+            //btnIssueReplacement.Enabled = false;
 
-            if (isLoaded)
-            {
-                license = ctrlShowLicenseInfo1.license;
-                btnIssueReplacement.Enabled = CheckLicenseValidation();
-                loadRenewDetails();
-            }
+            //if (isLoaded)
+            //{
+            //    license = ctrlShowLicenseInfo1.license;
+            //    btnIssueReplacement.Enabled = CheckLicenseValidation();
+            //    loadRenewDetails();
+            //}
         }
-        private bool LoadLicenseInfo()
-        {
-            object sender = null;
-            EventArgs e = new EventArgs();
+        //private bool LoadLicenseInfo()
+        //{
+        //    object sender = null;
+        //    EventArgs e = new EventArgs();
 
-            ctrlShowLicenseInfo1.LicenseID = Convert.ToInt32(tbSearch.Text);
-            ctrlShowLicenseInfo1.ctrlShowLicenseInfo_Load(sender, e);
-            return ctrlShowLicenseInfo1.IsLoaded;
-        }
+        //    ctrlShowLicenseInfo1.LicenseID = Convert.ToInt32(tbSearch.Text);
+        //    ctrlShowLicenseInfo1.ctrlShowLicenseInfo_Load(sender, e);
+        //    return ctrlShowLicenseInfo1.IsLoaded;
+        //}
 
         private void loadRenewDetails()
         {
@@ -191,11 +191,11 @@ namespace _19___Project___DVLD.Driving_Licenses.Licenses_Replacement
 
         private void DeactivateCurrentLicense()
         {
-            if (!license.Deactivate())
-            {
-                MessageBox.Show($"Couldn't deactivte the previous license. It could be already deactivated",
-                 "Failed To Deactivate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //if (!license.Deactivate())
+            //{
+            //    MessageBox.Show($"Couldn't deactivte the previous license. It could be already deactivated",
+            //     "Failed To Deactivate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
     }

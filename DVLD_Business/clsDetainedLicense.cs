@@ -27,7 +27,7 @@ namespace DVLD_Business
             DetainID = detainID;
             LicenseID = licenseID;
             DetainDate = detainDate;
-            FineFees = fineFees;
+            FineFees = Convert.ToSingle(fineFees);
             CreatedByUserID = createdByUserID;
             IsReleased = isReleased;
             ReleaseDate = releaseDate;
@@ -41,7 +41,7 @@ namespace DVLD_Business
 
         public int AddNewDetainedLicense()
         {
-            return DVLD_DataAccess.clsDetainedLicense.AddNewDetainedLicense(LicenseID, DetainDate, FineFees, CreatedByUserID);
+            return DVLD_DataAccess.clsDetainedLicense.AddNewDetainedLicense(LicenseID, DetainDate, Convert.ToDecimal( FineFees), CreatedByUserID);
         }
 
         public static bool IsLicenseDetained(int LicenseID)

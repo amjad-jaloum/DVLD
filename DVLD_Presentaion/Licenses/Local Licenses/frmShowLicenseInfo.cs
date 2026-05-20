@@ -21,14 +21,14 @@ namespace _19___Project___DVLD.Driving_License_Services
         }
         private void frmShowLicenseInfo_Load(object sender, EventArgs e)
         {
-            if (LicenseID == -1)
-            {
-                MessageBox.Show("License invalid.", "License not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //if (LicenseID == -1)
+            //{
+            //    MessageBox.Show("License invalid.", "License not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
 
-            ctrlShowLicenseInfo1.LicenseID = LicenseID;
-            ctrlShowLicenseInfo1.ctrlShowLicenseInfo_Load(this, e);
+            //ctrlShowLicenseInfo1.LicenseID = LicenseID;
+            //ctrlShowLicenseInfo1.ctrlShowLicenseInfo_Load(this, e);
         }
     }
 }

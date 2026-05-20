@@ -51,7 +51,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbDamaged = new System.Windows.Forms.RadioButton();
             this.rbLost = new System.Windows.Forms.RadioButton();
-            this.ctrlShowLicenseInfo1 = new _19___Project___DVLD.Driving_License_Services.ctrlShowLicenseInfo();
+            this.ctrlShowLicenseInfo1 = new _19___Project___DVLD.Driving_License_Services.ctrlDriverLicenseInfo();
             this.gbAppInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -365,7 +365,7 @@
 
         #endregion
 
-        private Driving_License_Services.ctrlShowLicenseInfo ctrlShowLicenseInfo1;
+        private Driving_License_Services.ctrlDriverLicenseInfo ctrlShowLicenseInfo1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label R_L_ApplicationID;
         private System.Windows.Forms.Label label14;

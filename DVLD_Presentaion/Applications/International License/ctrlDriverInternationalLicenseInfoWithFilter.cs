@@ -32,43 +32,44 @@ namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            bool isLoaded = LoadLicenseInfo();
-            btnShowLicensesInfo.Enabled = false;
-            gbAppInfo.Enabled = false;
-            btnShowLicensesHistory.Enabled = isLoaded;
-            btnIssue.Enabled = false;
+            //bool isLoaded = LoadLicenseInfo();
+            //btnShowLicensesInfo.Enabled = false;
+            //gbAppInfo.Enabled = false;
+            //btnShowLicensesHistory.Enabled = isLoaded;
+            //btnIssue.Enabled = false;
 
-            if (isLoaded)
-            {
-                if (IsInternationalLicenseExists())
-                {
-                    MessageBox.Show("The international driving license is already issued!",
-                        "Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    loadInternationalLicenseInfo(Convert.ToInt32(tbSearch.Text));
-                    btnShowLicensesInfo.Enabled = true;
-                    gbAppInfo.Enabled = true;
-                }
-                else if (!ctrlShowLicenseInfo1.IsLicenseValid())
-                {
-                    MessageBox.Show("The international driving license is not active or expired!",
-                        "Expired/Not Active", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    lblLocalLicenseID.Text = tbSearch.Text;
-                    btnIssue.Enabled = CheckClassValidation();
-                }
-            }
+            //if (isLoaded)
+            //{
+            //    if (IsInternationalLicenseExists())
+            //    {
+            //        MessageBox.Show("The international driving license is already issued!",
+            //            "Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        loadInternationalLicenseInfo(Convert.ToInt32(tbSearch.Text));
+            //        btnShowLicensesInfo.Enabled = true;
+            //        gbAppInfo.Enabled = true;
+            //    }
+            //    else if (!ctrlShowLicenseInfo1.IsLicenseValid())
+            //    {
+            //        MessageBox.Show("The international driving license is not active or expired!",
+            //            "Expired/Not Active", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //    else
+            //    {
+            //        lblLocalLicenseID.Text = tbSearch.Text;
+            //        btnIssue.Enabled = CheckClassValidation();
+            //    }
+            //}
         }
 
         private bool LoadLicenseInfo()
         {
-            object sender = null;
-            EventArgs e = new EventArgs();
+            //object sender = null;
+            //EventArgs e = new EventArgs();
 
-            ctrlShowLicenseInfo1.LicenseID = Convert.ToInt32(tbSearch.Text);
-            ctrlShowLicenseInfo1.ctrlShowLicenseInfo_Load(sender, e);
-            return ctrlShowLicenseInfo1.IsLoaded;
+            //ctrlShowLicenseInfo1.LicenseID = Convert.ToInt32(tbSearch.Text);
+            //ctrlShowLicenseInfo1.ctrlShowLicenseInfo_Load(sender, e);
+            //return ctrlShowLicenseInfo1.IsLoaded;
+            return false;
         }
 
         private bool CheckClassValidation()
@@ -87,7 +88,8 @@ namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
 
         private bool isClassThree()
         {
-            return ctrlShowLicenseInfo1.license.LicenseClass == (int)clsLicenseClass.LicenseType.Class_3_Ordinarydrivinglicense;
+            //return ctrlShowLicenseInfo1.license.LicenseClass == (int)clsLicenseClass.LicenseType.Class_3_Ordinarydrivinglicense;
+            return false;
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
@@ -106,17 +108,17 @@ namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
 
         private void btnShowLicensesHistory_Click(object sender, EventArgs e)
         {
-            int DriverId = ctrlShowLicenseInfo1.license.DriverID;
-            if (DriverId > 0)
-            {
-                frmLicensesHistory frm = new frmLicensesHistory(DriverId);
-                frm.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Failed to load the licenses history!",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //int DriverId = ctrlShowLicenseInfo1.license.DriverID;
+            //if (DriverId > 0)
+            //{
+            //    frmLicensesHistory frm = new frmLicensesHistory(DriverId);
+            //    frm.ShowDialog();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Failed to load the licenses history!",
+            //        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void btnIssue_Click(object sender, EventArgs e)
@@ -172,20 +174,21 @@ namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
 
         private int AddNewInternationalLicense()
         {
-            int LicenseID = Convert.ToInt32(tbSearch.Text);
-            clsLicense appLicense = clsLicense.FindLicense(LicenseID);
-            clsInternationalLicense internationalLicense = new clsInternationalLicense(
-                0,
-                appLicense.ApplicationID,
-                appLicense.DriverID,
-                LicenseID,
-                DateTime.Now,
-                DateTime.Now.AddYears(10),
-                true,
-                clsGlobal.CurrentUser.UserID
-                );
+            //int LicenseID = Convert.ToInt32(tbSearch.Text);
+            //clsLicense appLicense = clsLicense.FindLicense(LicenseID);
+            //clsInternationalLicense internationalLicense = new clsInternationalLicense(
+            //    0,
+            //    appLicense.ApplicationID,
+            //    appLicense.DriverID,
+            //    LicenseID,
+            //    DateTime.Now,
+            //    DateTime.Now.AddYears(10),
+            //    true,
+            //    clsGlobal.CurrentUser.UserID
+            //    );
 
-            return clsInternationalLicense.AddNewInternationalDrivingApplication(internationalLicense);
+            //return clsInternationalLicense.AddNewInternationalDrivingApplication(internationalLicense);
+            return 0;
         }
 
         private void btnShowLicensesInfo_Click(object sender, EventArgs e)

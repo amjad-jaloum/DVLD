@@ -52,7 +52,7 @@
             this.btnIssue = new System.Windows.Forms.Button();
             this.btnShowLicensesHistory = new System.Windows.Forms.Button();
             this.btnShowLicensesInfo = new System.Windows.Forms.Button();
-            this.ctrlShowLicenseInfo1 = new _19___Project___DVLD.Driving_License_Services.ctrlShowLicenseInfo();
+            this.ctrlShowLicenseInfo1 = new _19___Project___DVLD.Driving_License_Services.ctrlDriverLicenseInfo();
             this.gbAppInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -373,7 +373,7 @@
 
         #endregion
 
-        private Driving_License_Services.ctrlShowLicenseInfo ctrlShowLicenseInfo1;
+        private Driving_License_Services.ctrlDriverLicenseInfo ctrlShowLicenseInfo1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblILAppID;
         private System.Windows.Forms.Label label14;

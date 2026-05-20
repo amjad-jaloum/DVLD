@@ -63,18 +63,18 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
 
         private void showPersonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int DriverID = clsLicense.FindLicense(GetLicenseIDFromDGV()).DriverID;
-            clsPerson person = clsPerson.Find(clsDriver.FindDriver(DriverID).PersonID);
-            if (person != null)
-            {
-                //frmShowPersonInfo form = new frmShowPersonInfo(person);
-                //form.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("No person found with the selected license ID",
-                    "Invalid license ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //int DriverID = clsLicense.FindLicense(GetLicenseIDFromDGV()).DriverID;
+            //clsPerson person = clsPerson.Find(clsDriver.FindDriver(DriverID).PersonID);
+            //if (person != null)
+            //{
+            //    //frmShowPersonInfo form = new frmShowPersonInfo(person);
+            //    //form.ShowDialog();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No person found with the selected license ID",
+            //        "Invalid license ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private int GetLicenseIDFromDGV()
@@ -84,26 +84,26 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
 
         private void showLicenseDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int licenseID = clsLicense.FindLicense(GetLicenseIDFromDGV()).LicenseID;
-            if (licenseID > 0)
-            {
-                frmShowLicenseInfo form = new frmShowLicenseInfo(licenseID);
-                form.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("No license found with the selected license ID",
-                    "Invalid license ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //int licenseID = clsLicense.FindLicense(GetLicenseIDFromDGV()).LicenseID;
+            //if (licenseID > 0)
+            //{
+            //    frmShowLicenseInfo form = new frmShowLicenseInfo(licenseID);
+            //    form.ShowDialog();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No license found with the selected license ID",
+            //        "Invalid license ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
         }
 
         private void showLicensesHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int DriverID = clsLicense.FindLicense(GetLicenseIDFromDGV()).DriverID;
+            //int DriverID = clsLicense.FindLicense(GetLicenseIDFromDGV()).DriverID;
 
-            frmLicensesHistory frmLicensesHistory = new frmLicensesHistory(DriverID);
-            frmLicensesHistory.ShowDialog();
+            //frmLicensesHistory frmLicensesHistory = new frmLicensesHistory(DriverID);
+            //frmLicensesHistory.ShowDialog();
         }
 
         private void ReleaseDetainedLicenseStripMenuItem1_Click(object sender, EventArgs e)
