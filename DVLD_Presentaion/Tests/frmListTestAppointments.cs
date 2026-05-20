@@ -7,190 +7,130 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _19___Project___DVLD.Properties;
 using DVLD_Business;
 using static _19___Project___DVLD.Driving_License_Services.Schedule_Tests.frmSheduleTest;
+using static DVLD_Business.clsTestType;
 
 namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
 {
     public partial class frmListTestAppointments : Form
     {
-        private int _LocalDrivingLicenseAppID { get; set; }
-        private string _licenseName { get; set; }
-        private string _applicantFullName { get; set; }
-        private DateTime _appDate { get; set; }
-        private short _passedTests { get; set; }
-        private string _appStatus { get; set; }
-        public enum enTestType { Vision = 1, Written = 2, Streat = 3 }
-        public static enTestType TestType { get; set; }
-        public enum enTestMode { New, Edit, Retake }
-        enTestMode Mode = enTestMode.New;
-        private int localDrivingLicenseApplicationID;
-        private clsTestType.enTestType testType;
+        private DataTable _dtLicenseTestAppointments;
+        private int _LocalDrivingLicenseApplicationID;
+        private clsTestType.enTestType _TestType = clsTestType.enTestType.VisionTest;
 
-        public delegate void RefreshManageLocalDrivingLicenseApplicationsDGVHandler(object sender);
-        public event RefreshManageLocalDrivingLicenseApplicationsDGVHandler RefreshManageLocalDrivingLicenseApplicationsDGV;
-
-        public frmListTestAppointments(int LocalDrivingLicenseAppID, string licenseName,
-            string applicantFullName, DateTime appDate, short passedTests, string appStatus)
+        public frmListTestAppointments(int LocalDrivingLicenseApplicationID,
+            clsTestType.enTestType TestType)
         {
             InitializeComponent();
-            _LocalDrivingLicenseAppID = LocalDrivingLicenseAppID;
-            _licenseName = licenseName;
-            _applicantFullName = applicantFullName;
-            _appDate = appDate;
-            _passedTests = passedTests;
-            _appStatus = appStatus;
-        }
+            _LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
+            _TestType = TestType;
 
-        public frmListTestAppointments()
-        {
-            InitializeComponent();
-        }
-
-        public frmListTestAppointments(int localDrivingLicenseApplicationID, clsTestType.enTestType testType)
-        {
-            this.localDrivingLicenseApplicationID = localDrivingLicenseApplicationID;
-            this.testType = testType;
         }
 
         private void frmVisionTestAppointments_Load(object sender, EventArgs e)
         {
-            LoadTestAppointmentsToDGV((int)TestType);
-            if (_LocalDrivingLicenseAppID > 0)
+            _LoadTestTypeImageAndTitle();
+
+            ctrlDrivingLicenseApplicationInfo1.LoadApplicationInfoByLocalDrivingAppID(_LocalDrivingLicenseApplicationID);
+            _dtLicenseTestAppointments = clsTestAppointment.GetApplicationTestAppointmentsPerTestType(_LocalDrivingLicenseApplicationID, _TestType);
+
+            dgvLicenseTestAppointments.DataSource = _dtLicenseTestAppointments;
+            lblRecordsCount.Text = dgvLicenseTestAppointments.Rows.Count.ToString();
+
+            if (dgvLicenseTestAppointments.Rows.Count > 0)
             {
-                LoadPesronInfoToCTRL(sender, e);
+                dgvLicenseTestAppointments.Columns[0].HeaderText = "Appointment ID";
+                dgvLicenseTestAppointments.Columns[0].Width = 150;
+
+                dgvLicenseTestAppointments.Columns[1].HeaderText = "Appointment Date";
+                dgvLicenseTestAppointments.Columns[1].Width = 200;
+
+                dgvLicenseTestAppointments.Columns[2].HeaderText = "Paid Fees";
+                dgvLicenseTestAppointments.Columns[2].Width = 150;
+
+                dgvLicenseTestAppointments.Columns[3].HeaderText = "Is Locked";
+                dgvLicenseTestAppointments.Columns[3].Width = 100;
             }
-            else
-                MessageBox.Show("Invalid Application ID");
         }
-
-        private void LoadPesronInfoToCTRL(object sender, EventArgs e)
+        private void _LoadTestTypeImageAndTitle()
         {
-            //ctrlShowDrivingLicenseAppInfo1._LocalDrivingLicenseApplicationID = _LocalDrivingLicenseAppID;
-            ctrlShowDrivingLicenseAppInfo1.licenseName = _licenseName;
-            ctrlShowDrivingLicenseAppInfo1.applicantFullName = _applicantFullName;
-            //ctrlShowDrivingLicenseAppInfo1.passedTests = _passedTests;
-            ctrlShowDrivingLicenseAppInfo1.appDate = _appDate;
-            ctrlShowDrivingLicenseAppInfo1.appStatus = _appStatus;
-
-            //ctrlShowDrivingLicenseAppInfo1.ctrlShowDrivingLicenseAppInfo_Load(sender, e);
+            switch (_TestType)
+            {
+                case clsTestType.enTestType.VisionTest:
+                    {
+                        Text = "Vision Test Appointments";
+                        break;
+                    }
+                case clsTestType.enTestType.WrittenTest:
+                    {
+                        Text = "Written Test Appointments";
+                        break;
+                    }
+                case clsTestType.enTestType.StreetTest:
+                    {
+                        Text = "Street Test Appointments";
+                        break;
+                    }
+            }
         }
 
         private void btnNewAppointment_Click(object sender, EventArgs e)
         {
-            if (dgvVisionTestAppointments.Rows.Count == 0)
+            clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(_LocalDrivingLicenseApplicationID);
+
+
+            if (localDrivingLicenseApplication.IsThereAnActiveScheduledTest(_TestType))
             {
-                // new test
-                frmSheduleTest scheduleTestForm = new frmSheduleTest(_LocalDrivingLicenseAppID,
-                    _licenseName, _applicantFullName, GetTrailState(), Mode);
-
-                scheduleTestForm.RefreshDataGridView += RefreshDataGridViewHandler;
-                scheduleTestForm.ShowDialog();
+                MessageBox.Show("Person Already have an active appointment for this test, You cannot add new appointment", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else if (!hasAciveAppointment())
+
+
+
+            //---
+            clsTest LastTest = localDrivingLicenseApplication.GetLastTestPerTestType(_TestType);
+
+            if (LastTest == null)
             {
-                if (clsLocalDrivingLicenseApplication.hasPassedTheTest(GetTestAppointmentIDFromDGV()))
-                {
-                    MessageBox.Show("The person has already passed this test.\n" +
-                        "The last Test has to be failed to add new appointment!",
-                        "Last Test is Passed!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    // retake test
-                    Mode = enTestMode.Retake;
-
-                    frmSheduleTest scheduleTestForm = new frmSheduleTest(_LocalDrivingLicenseAppID,
-                        _licenseName, _applicantFullName, GetTrailState(), Mode);
-
-                    scheduleTestForm.Text = "Retake Test";
-                    scheduleTestForm.RefreshDataGridView += RefreshDataGridViewHandler;
-                    scheduleTestForm.ShowDialog();
-                }
+                frmSheduleTest frm1 = new frmSheduleTest(_LocalDrivingLicenseApplicationID, _TestType);
+                frm1.ShowDialog();
+                frmVisionTestAppointments_Load(null, null);
+                return;
             }
-            else
+
+            //if person already passed the test s/he cannot retak it.
+            if (LastTest.TestResult == true)
             {
-                MessageBox.Show("This Person already has an active appointment!",
-                    "Active Appointment Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("This person already passed this test before, you can only retake faild test", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-        }
 
-        private bool hasAciveAppointment()
-        {
-            return clsLocalDrivingLicenseApplication.hasUnlockedAppointment(_LocalDrivingLicenseAppID);
-        }
+            frmSheduleTest frm2 = new frmSheduleTest
+                (LastTest.TestAppointmentInfo.LocalDrivingLicenseApplicationID, _TestType);
+            frm2.ShowDialog();
 
-        private void RefreshDataGridViewHandler(object sender)
-        {
-            LoadTestAppointmentsToDGV((int)TestType);
-        }
-
-        private void LoadTestAppointmentsToDGV(int TestTypeID)
-        {
-            dgvVisionTestAppointments.DataSource = clsLocalDrivingLicenseApplication.LoadTestAppointments(_LocalDrivingLicenseAppID, TestTypeID);
-            lblRecordsCount.Text = dgvVisionTestAppointments.Rows.Count.ToString();
-
-            if (dgvVisionTestAppointments.Rows.Count > 0)
-                dgvVisionTestAppointments.Sort(dgvVisionTestAppointments.Columns["Appointment Date"], ListSortDirection.Descending);
+            frmVisionTestAppointments_Load(null, null);
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Mode = IsRetakeTest() ? enTestMode.Retake : enTestMode.Edit;
+            int TestAppointmentID = (int)dgvLicenseTestAppointments.CurrentRow.Cells[0].Value;
 
-            frmSheduleTest scheduleTestForm =
-                new frmSheduleTest(_LocalDrivingLicenseAppID, GetTestAppointmentIDFromDGV(), _licenseName,
-                _applicantFullName, GetTrailState(), Mode);
 
-            scheduleTestForm.RefreshDataGridView += RefreshDataGridViewHandler;
-            scheduleTestForm.ShowDialog();
-        }
-
-        private bool IsRetakeTest()
-        {
-            return Convert.ToDouble(GetFeesFromDGV()) != clsLocalDrivingLicenseApplication.getTestFee((int)TestType);
+            frmSheduleTest frm = new frmSheduleTest(_LocalDrivingLicenseApplicationID, _TestType, TestAppointmentID);
+            frm.ShowDialog();
+            frmVisionTestAppointments_Load(null, null);
         }
 
         private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (CheckTestAppointmentStatus())
-            {
-                MessageBox.Show("This Test is already taken! you can take a new Test.", "Test Already Taken",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                frmTakeTest form = new frmTakeTest(GetTestAppointmentIDFromDGV(), _LocalDrivingLicenseAppID, _licenseName,
-                    _applicantFullName, _appDate, GetFeesFromDGV(), GetTrailState());
-                form.RefreshDataGridView += RefreshDataGridViewHandler;
-                form.ShowDialog();
-            }
-        }
+            int TestAppointmentID = (int)dgvLicenseTestAppointments.CurrentRow.Cells[0].Value;
 
-        private string GetTrailState()
-        {
-            return Mode == enTestMode.Retake ? "1" : "0";
-        }
-
-        private bool CheckTestAppointmentStatus()
-        {
-            return clsLocalDrivingLicenseApplication.IsTestAppointmentLocked(GetTestAppointmentIDFromDGV());
-        }
-
-        private int GetTestAppointmentIDFromDGV()
-        {
-            return Convert.ToInt32(dgvVisionTestAppointments.CurrentRow.Cells[0].Value.ToString());
-        }
-
-        private string GetFeesFromDGV()
-        {
-            return dgvVisionTestAppointments.CurrentRow.Cells[2].Value.ToString();
-        }
-
-        private void frmVisionTestAppointments_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (clsLocalDrivingLicenseApplication.hasPassedTheTest(GetTestAppointmentIDFromDGV()))
-                RefreshManageLocalDrivingLicenseApplicationsDGV?.Invoke(this);
+            frmTakeTest frm = new frmTakeTest(TestAppointmentID, _TestType);
+            frm.ShowDialog();
+            frmVisionTestAppointments_Load(null, null);
         }
     }
 }
