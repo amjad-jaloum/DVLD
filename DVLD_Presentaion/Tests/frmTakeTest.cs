@@ -7,80 +7,79 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _19___Project___DVLD.Tests.Controls;
 using DVLD_Business;
 
 namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
 {
     public partial class frmTakeTest : Form
     {
-        private int _AppID;
-        private int _TestAppointmentID;
-        private string _LicenseName;
-        private string _ApplicantName;
-        private string _Trail;
-        private DateTime _AppointmentDate;
-        private string _fees;
-        private object testAppointmentID;
-        private clsTestType.enTestType visionTest;
+        private int _AppointmentID;
+        private clsTestType.enTestType _TestType;
 
-        public delegate void RefreshDataGridViewHandler(object sender);
-        public event RefreshDataGridViewHandler RefreshDataGridView;
-        public frmTakeTest(int TestAppointmentID, int AppID, string LicenseName,
-            string ApplicantName, DateTime AppointmentDate, string fees, string Trail)
+        private clsTest _Test;
+
+        public frmTakeTest(int AppointmentID, clsTestType.enTestType TestType)
         {
             InitializeComponent();
-            _TestAppointmentID = TestAppointmentID;
-            _AppID = AppID;
-            _LicenseName = LicenseName;
-            _ApplicantName = ApplicantName;
-            _Trail = Trail;
-            _AppointmentDate = AppointmentDate;
-            _fees = fees;
-        }
+            _AppointmentID = AppointmentID;
+            _TestType = TestType;
 
-        public frmTakeTest(object testAppointmentID, clsTestType.enTestType visionTest)
-        {
-            this.testAppointmentID = testAppointmentID;
-            this.visionTest = visionTest;
         }
 
         private void frmTakeTest_Load(object sender, EventArgs e)
         {
-            lblLocalDrivingAppID.Text = _AppID.ToString();
-            lblLicenseName.Text = _LicenseName;
-            lblApplicant.Text = _ApplicantName;
-            lblTrail.Text = _Trail;
-            lblTestAppointmentDate.Text = _AppointmentDate.ToString();
-            lblAppFees.Text = _fees;
+            ctrlSecheduledTest1.TestTypeID = _TestType;
+
+            ctrlSecheduledTest1.LoadInfo(_AppointmentID);
+
+            if (ctrlSecheduledTest1.TestAppointmentID == -1)
+                btnSave.Enabled = false;
+            else
+                btnSave.Enabled = true;
+
+            int _TestID = ctrlSecheduledTest1.TestID;
+            if (_TestID != -1)
+            {
+                _Test = clsTest.Find(_TestID);
+
+                if (_Test.TestResult)
+                    rbPassed.Checked = true;
+                else
+                    rbFailed.Checked = true;
+                tbTestNotes.Text = _Test.Notes;
+
+                rbFailed.Enabled = false;
+                rbPassed.Enabled = false;
+            }
+            else
+                _Test = new clsTest();
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (AddNewTestResult(_TestAppointmentID, TestResult(), tbTestNotes.Text, clsGlobal.CurrentUser.UserID))
+            if (MessageBox.Show("Are you sure you want to save? After that you cannot change the Pass/Fail results after you save?.",
+                                   "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
             {
-                MessageBox.Show("Test Result Added Successfully", "Success",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
-                RefreshDataGridView?.Invoke(this);
-                Close();
+            _Test.TestAppointmentID = _AppointmentID;
+            _Test.TestResult = rbPassed.Checked;
+            _Test.Notes = tbTestNotes.Text.Trim();
+            _Test.CreatedByUserID = clsGlobal.CurrentUser.UserID;
+
+            if (_Test.Save())
+            {
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnSave.Enabled = false;
+
             }
             else
-            {
-                MessageBox.Show("Failed to add test result or block test appointment\nDatabase Error.",
-                    "Failed To Add/Block Appointment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private bool AddNewTestResult(int testAppointmentID, bool result, string notes, int userID)
-        {
-            return (clsLocalDrivingLicenseApplication.AddNewTestResult(testAppointmentID, result, notes, userID)
-                && clsLocalDrivingLicenseApplication.LockTestAppointment(testAppointmentID));
-        }
-
-        private bool TestResult()
-        {
-            return rbPassed.Checked;
-        }
     }
 }
 

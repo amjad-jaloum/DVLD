@@ -258,41 +258,41 @@ namespace _19___Project___DVLD.Driving_License_Services
         private void schedulTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
-        private void OpenTestAppointmentTestScheduler(frmListTestAppointments.enTestType TestType)
-        {
-            frmListTestAppointments form = new frmListTestAppointments();
-            ApplyChangesInForm(TestType, ref form);
-            form.RefreshManageLocalDrivingLicenseApplicationsDGV += RefreshDGV;
-            form.ShowDialog();
-        }
-        private void ApplyChangesInForm(frmListTestAppointments.enTestType testType, ref frmListTestAppointments form)
-        {
-            int AppID = 0;
-            string LicenseName = "";
-            string ApplicantFullName = "";
-            DateTime AppDate = DateTime.MinValue;
-            short PassedTests = 0;
-            string AppStatus = "";
+        //private void OpenTestAppointmentTestScheduler(frmListTestAppointments.enTestType TestType)
+        //{
+        //    //frmListTestAppointments form = new frmListTestAppointments();
+        //    //ApplyChangesInForm(TestType, ref form);
+        //    //form.RefreshManageLocalDrivingLicenseApplicationsDGV += RefreshDGV;
+        //    //form.ShowDialog();
+        //}
+        //private void ApplyChangesInForm(frmListTestAppointments.enTestType testType, ref frmListTestAppointments form)
+        //{
+        //    int AppID = 0;
+        //    string LicenseName = "";
+        //    string ApplicantFullName = "";
+        //    DateTime AppDate = DateTime.MinValue;
+        //    short PassedTests = 0;
+        //    string AppStatus = "";
 
-            GetAppDataFromDGV(ref AppID, ref LicenseName, ref ApplicantFullName, ref AppDate, ref PassedTests,
-                ref AppStatus);
+        //    GetAppDataFromDGV(ref AppID, ref LicenseName, ref ApplicantFullName, ref AppDate, ref PassedTests,
+        //        ref AppStatus);
 
-            form = new frmListTestAppointments(AppID, LicenseName, ApplicantFullName, AppDate, PassedTests, AppStatus);
-            frmListTestAppointments.TestType = testType;
+        //    form = new frmListTestAppointments(AppID, LicenseName, ApplicantFullName, AppDate, PassedTests, AppStatus);
+        //    frmListTestAppointments.TestType = testType;
 
-            switch (testType)
-            {
-                case frmListTestAppointments.enTestType.Vision:
-                    form.Text = "Schedule Vision Test Appointment";
-                    break;
-                case frmListTestAppointments.enTestType.Written:
-                    form.Text = "Schedule Written Test Appointment";
-                    break;
-                case frmListTestAppointments.enTestType.Streat:
-                    form.Text = "Schedule Street Test Appointment";
-                    break;
-            }
-        }
+        //    switch (testType)
+        //    {
+        //        case frmListTestAppointments.enTestType.Vision:
+        //            form.Text = "Schedule Vision Test Appointment";
+        //            break;
+        //        case frmListTestAppointments.enTestType.Written:
+        //            form.Text = "Schedule Written Test Appointment";
+        //            break;
+        //        case frmListTestAppointments.enTestType.Streat:
+        //            form.Text = "Schedule Street Test Appointment";
+        //            break;
+        //    }
+        //}
         private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _ScheduleTest(clsTestType.enTestType.VisionTest);
