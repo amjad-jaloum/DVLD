@@ -14,7 +14,7 @@ namespace DVLD_Business
         public int DetainID { get; set; }
         public int LicenseID { get; set; }
         public DateTime DetainDate { get; set; }
-        public decimal FineFees { get; set; }
+        public float FineFees { get; set; }
         public int CreatedByUserID { get; set; }
         public bool IsReleased { get; set; }
         public DateTime? ReleaseDate { get; set; }
@@ -33,6 +33,10 @@ namespace DVLD_Business
             ReleaseDate = releaseDate;
             ReleasedByUserID = releasedByUserID;
             ReleaseApplicationID = releaseApplicationID;
+        }
+
+        public clsDetainedLicense()
+        {
         }
 
         public int AddNewDetainedLicense()
@@ -105,6 +109,16 @@ namespace DVLD_Business
         public static DataTable GetDataTableWithQuery(string colName, string searchValue)
         {
             return DVLD_DataAccess.clsDetainedLicense.GetDataTableWithQuery(colName, searchValue);
+        }
+
+        internal bool Save()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static clsDetainedLicense FindByLicenseID(int licenseID)
+        {
+            throw new NotImplementedException();
         }
     }
 }
