@@ -10,75 +10,123 @@ namespace DVLD_Business
 {
     public class clsDriver
     {
-        public clsPerson PersonInfo;
-        public int PersonID { get; set; }
-        public int CreatedByUserID { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public int DriverID { get; internal set; }
 
-        public clsDriver(int personID, int createdByUserID, DateTime createdDate)
-        {
-            PersonID = personID;
-            CreatedByUserID = createdByUserID;
-            CreatedDate = createdDate;
-        }
+        public enum enMode { AddNew = 0, Update = 1 };
+        public enMode Mode = enMode.AddNew;
+
+        public clsPerson PersonInfo;
+
+        public int DriverID { set; get; }
+        public int PersonID { set; get; }
+        public int CreatedByUserID { set; get; }
+        public DateTime CreatedDate { get; }
 
         public clsDriver()
+
         {
+            this.DriverID = -1;
+            this.PersonID = -1;
+            this.CreatedByUserID = -1;
+            this.CreatedDate = DateTime.Now;
+            Mode = enMode.AddNew;
+
         }
 
-        public static int AddNewDriver(int PersonID, int CreatedByUserID)
+        public clsDriver(int DriverID, int PersonID, int CreatedByUserID, DateTime CreatedDate)
+
         {
-            return DVLD_DataAccess.clsDriver.AddNewDriver(PersonID, CreatedByUserID, DateTime.Now);
+            this.DriverID = DriverID;
+            this.PersonID = PersonID;
+            this.CreatedByUserID = CreatedByUserID;
+            this.CreatedDate = CreatedDate;
+            this.PersonInfo = clsPerson.Find(PersonID);
+
+            Mode = enMode.Update;
         }
 
-        public static clsDriver FindDriver(int DriverID)
+        private bool _AddNewDriver()
         {
-            int PersonID = -1;
-            int CreatedByUserID = -1;
-            DateTime CreatedDate = DateTime.MinValue;
+            //call DataAccess Layer 
 
-            bool isFound = DVLD_DataAccess.clsDriver.FindDriver(DriverID, ref PersonID, ref CreatedByUserID, ref CreatedDate);
-            if (isFound)
-                return new clsDriver(PersonID, CreatedByUserID, CreatedDate);
+            this.DriverID = clsDriverData.AddNewDriver(PersonID, CreatedByUserID);
+
+
+            return (this.DriverID != -1);
+        }
+
+        private bool _UpdateDriver()
+        {
+            //call DataAccess Layer 
+
+            return clsDriverData.UpdateDriver(this.DriverID, this.PersonID, this.CreatedByUserID);
+        }
+
+        public static clsDriver FindByDriverID(int DriverID)
+        {
+
+            int PersonID = -1; int CreatedByUserID = -1; DateTime CreatedDate = DateTime.Now;
+
+            if (clsDriverData.GetDriverInfoByDriverID(DriverID, ref PersonID, ref CreatedByUserID, ref CreatedDate))
+
+                return new clsDriver(DriverID, PersonID, CreatedByUserID, CreatedDate);
             else
                 return null;
+
         }
 
-        public static bool FindDriverID(int LocalDrivingLicenseAppID, ref int driverID)
+        public static clsDriver FindByPersonID(int PersonID)
         {
-            //int PersonID = clsApplication.GetApplicantPersonID(LocalDrivingLicenseAppID);
-            //driverID = DVLD_DataAccess.clsDriver.FindDriverID(PersonID);
 
-            //if (driverID == -1)
-            //    return false;
-            //else
-                return true;
+            int DriverID = -1; int CreatedByUserID = -1; DateTime CreatedDate = DateTime.Now;
+
+            if (clsDriverData.GetDriverInfoByPersonID(PersonID, ref DriverID, ref CreatedByUserID, ref CreatedDate))
+
+                return new clsDriver(DriverID, PersonID, CreatedByUserID, CreatedDate);
+            else
+                return null;
+
         }
 
-        public static DataTable GetDriversData()
+        public static DataTable GetAllDrivers()
         {
-            return DVLD_DataAccess.clsDriver.GetDriversData();
+            return clsDriverData.GetAllDrivers();
+
         }
 
-        public static List<string> GetDriversColumnNames()
+        public bool Save()
         {
-            return DVLD_DataAccess.clsDriver.GetDriversColumnNames();
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (_AddNewDriver())
+                    {
+
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                case enMode.Update:
+
+                    return _UpdateDriver();
+
+            }
+
+            return false;
         }
 
-        public static object GetDataTableWithQuery(string ColumnName, string searchValue)
+        public static DataTable GetLicenses(int DriverID)
         {
-            return DVLD_DataAccess.clsDriver.GetDataTableWithQuery(ColumnName, searchValue);
+            return clsLicense.GetDriverLicenses(DriverID);
         }
 
-        internal bool Save()
+        public static DataTable GetInternationalLicenses(int DriverID)
         {
-            throw new NotImplementedException();
+            return clsInternationalLicense.GetDriverInternationalLicenses(DriverID);
         }
 
-        internal static clsDriver FindByPersonID(int applicantPersonID)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

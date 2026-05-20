@@ -111,5 +111,10 @@ namespace DVLD_Business
         {
             return DVLD_DataAccess.clsInternationalLicense.GetInternationalLicesnsHistory(driverID);
         }
+
+        internal static DataTable GetDriverInternationalLicenses(int driverID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

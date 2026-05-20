@@ -171,5 +171,10 @@ namespace DVLD_Business
         {
             throw new NotImplementedException();
         }
+
+        internal static DataTable GetDriverLicenses(int driverID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
