@@ -31,48 +31,59 @@
             this.tbNotes = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnIssue = new System.Windows.Forms.Button();
+            this.ctrlDrivingLicenseApplicationInfo1 = new _19___Project___DVLD.Driving_License_Services.ctrlDrivingLicenseApplicationInfo();
             this.SuspendLayout();
-
             // 
             // tbNotes
             // 
-            this.tbNotes.Location = new System.Drawing.Point(112, 589);
-            this.tbNotes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbNotes.Location = new System.Drawing.Point(12, 405);
             this.tbNotes.Multiline = true;
             this.tbNotes.Name = "tbNotes";
-            this.tbNotes.Size = new System.Drawing.Size(1068, 141);
+            this.tbNotes.Size = new System.Drawing.Size(776, 71);
             this.tbNotes.TabIndex = 28;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(16, 585);
+            this.label8.Location = new System.Drawing.Point(11, 381);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 32);
+            this.label8.Size = new System.Drawing.Size(59, 21);
             this.label8.TabIndex = 27;
             this.label8.Text = "Notes:";
             // 
             // btnIssue
             // 
             this.btnIssue.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIssue.Location = new System.Drawing.Point(996, 740);
+            this.btnIssue.Location = new System.Drawing.Point(664, 481);
+            this.btnIssue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnIssue.Name = "btnIssue";
-            this.btnIssue.Size = new System.Drawing.Size(188, 46);
+            this.btnIssue.Size = new System.Drawing.Size(125, 30);
             this.btnIssue.TabIndex = 29;
             this.btnIssue.Text = "Issue";
             this.btnIssue.UseVisualStyleBackColor = true;
             this.btnIssue.Click += new System.EventHandler(this.btnIssue_Click);
             // 
+            // ctrlDrivingLicenseApplicationInfo1
+            // 
+            this.ctrlDrivingLicenseApplicationInfo1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ctrlDrivingLicenseApplicationInfo1.Location = new System.Drawing.Point(0, 0);
+            this.ctrlDrivingLicenseApplicationInfo1.Margin = new System.Windows.Forms.Padding(2);
+            this.ctrlDrivingLicenseApplicationInfo1.Name = "ctrlDrivingLicenseApplicationInfo1";
+            this.ctrlDrivingLicenseApplicationInfo1.Padding = new System.Windows.Forms.Padding(13);
+            this.ctrlDrivingLicenseApplicationInfo1.Size = new System.Drawing.Size(800, 379);
+            this.ctrlDrivingLicenseApplicationInfo1.TabIndex = 30;
+            // 
             // frmIssueDriverLicense_FirstTime
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 803);
+            this.ClientSize = new System.Drawing.Size(800, 522);
+            this.Controls.Add(this.ctrlDrivingLicenseApplicationInfo1);
             this.Controls.Add(this.btnIssue);
             this.Controls.Add(this.tbNotes);
             this.Controls.Add(this.label8);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmIssueDriverLicense_FirstTime";
@@ -90,5 +101,6 @@
         private System.Windows.Forms.TextBox tbNotes;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnIssue;
+        private ctrlDrivingLicenseApplicationInfo ctrlDrivingLicenseApplicationInfo1;
     }
 }
