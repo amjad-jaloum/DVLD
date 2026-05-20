@@ -202,12 +202,6 @@
     <Compile Include="Licenses\Local Licenses\frmShowLicenseInfo.Designer.cs">
       <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tests\Controls\ctrlSchduleTest.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Tests\Controls\ctrlSchduleTest.Designer.cs">
-      <DependentUpon>ctrlSchduleTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tests\frmSheduleTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -398,9 +392,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Local Licenses\frmShowLicenseInfo.resx">
       <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tests\Controls\ctrlSchduleTest.resx">
-      <DependentUpon>ctrlSchduleTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tests\frmSheduleTest.resx">
       <DependentUpon>frmSheduleTest.cs</DependentUpon>

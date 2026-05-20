@@ -28,28 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlShowDrivingLicenseAppInfo1 = new _19___Project___DVLD.Driving_License_Services.ctrlDrivingLicenseApplicationInfo();
             this.tbNotes = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnIssue = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // ctrlShowDrivingLicenseAppInfo1
-            // 
-            this.ctrlShowDrivingLicenseAppInfo1.appDate = new System.DateTime(((long)(0)));
-            this.ctrlShowDrivingLicenseAppInfo1.applicantFullName = null;
-            this.ctrlShowDrivingLicenseAppInfo1.appStatus = null;
-            this.ctrlShowDrivingLicenseAppInfo1.AutoSize = true;
-            this.ctrlShowDrivingLicenseAppInfo1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlShowDrivingLicenseAppInfo1.licenseName = null;
-            //this.ctrlShowDrivingLicenseAppInfo1._LocalDrivingLicenseApplicationID = 0;
-            this.ctrlShowDrivingLicenseAppInfo1.Location = new System.Drawing.Point(0, 0);
-            this.ctrlShowDrivingLicenseAppInfo1.Margin = new System.Windows.Forms.Padding(2);
-            this.ctrlShowDrivingLicenseAppInfo1.Name = "ctrlShowDrivingLicenseAppInfo1";
-            this.ctrlShowDrivingLicenseAppInfo1.Padding = new System.Windows.Forms.Padding(20);
-            //this.ctrlShowDrivingLicenseAppInfo1.passedTests = ((short)(0));
-            this.ctrlShowDrivingLicenseAppInfo1.Size = new System.Drawing.Size(1200, 582);
-            this.ctrlShowDrivingLicenseAppInfo1.TabIndex = 2;
+
             // 
             // tbNotes
             // 
@@ -89,7 +72,6 @@
             this.Controls.Add(this.btnIssue);
             this.Controls.Add(this.tbNotes);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.ctrlShowDrivingLicenseAppInfo1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -105,7 +87,6 @@
 
         #endregion
 
-        private ctrlDrivingLicenseApplicationInfo ctrlShowDrivingLicenseAppInfo1;
         private System.Windows.Forms.TextBox tbNotes;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnIssue;
