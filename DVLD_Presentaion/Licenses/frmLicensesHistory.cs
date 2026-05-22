@@ -7,64 +7,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _19___Project___DVLD.People;
 using DVLD_Business;
 
 namespace _19___Project___DVLD.Driving_License_Services
 {
     public partial class frmLicensesHistory : Form
     {
-        int DriverID;
-        public frmLicensesHistory(int DriverID)
+        private int _PersonID = -1;
+        public frmLicensesHistory(int PersonID)
         {
             InitializeComponent();
-            this.DriverID = DriverID;
+            _PersonID = PersonID;
+        }
+        public frmLicensesHistory()
+        {
+            InitializeComponent();
         }
 
         private void frmLicensesHistory_Load(object sender, EventArgs e)
         {
-            //clsDriver driver = clsDriver.FindDriver(DriverID);
-            //if (driver != null)
-            //{
-            //    ctrlPersonDetailWithFitler1.ShowPersonDetailsWithHistory(driver.PersonID);
-
-            //    loadLocalLicensesHistory();
-            //    loadInternationalLicensesHistroy();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Driver Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    Close();
-            //}
-        }
-
-        private void loadInternationalLicensesHistroy()
-        {
-            dgvInernationalLicensesHisory.DataSource = clsInternationalLicense.GetInternationalLicesnsHistory(DriverID);
-            lblInternationalLicensesRowsCount.Text = dgvInernationalLicensesHisory.Rows.Count.ToString();
-        }
-
-        private void loadLocalLicensesHistory()
-        {
-            //dgvLocalLicensesHisory.DataSource = clsLicense.GetLocalLicesnsHistory(DriverID);
-            //lblLocalLicensesRowsCount.Text = dgvLocalLicensesHisory.Rows.Count.ToString();
-        }
-
-        private void showLicenseInfoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int LicenseID = getLicenseIDFromDGV();
-            if (LicenseID < 1)
+            if (_PersonID != -1)
             {
-                MessageBox.Show("Please Select a License", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                ctrlPersonCardWithFilter1.LoadPersonInfo(_PersonID);
+                ctrlPersonCardWithFilter1.FilterEnabled = false;
+                ctrlDriverLicenses1.LoadInfoByPersonID(_PersonID);
             }
-
-            frmShowLicenseInfo frmShowLicenseInfo = new frmShowLicenseInfo(LicenseID);
-            frmShowLicenseInfo.ShowDialog();
+            else
+            {
+                ctrlPersonCardWithFilter1.Enabled = true;
+                ctrlPersonCardWithFilter1.FilterFocus();
+            }
         }
 
-        private int getLicenseIDFromDGV()
+        private void ctrlPersonCardWithFilter1_OnPersonSelected(int obj)
         {
-            return Convert.ToInt32(dgvLocalLicensesHisory.CurrentRow.Cells[0].Value);
+            _PersonID = obj;
+            if (_PersonID == -1)
+            {
+                ctrlDriverLicenses1.Clear();
+            }
+            else
+                ctrlDriverLicenses1.LoadInfoByPersonID(_PersonID);
         }
     }
 }
