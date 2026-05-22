@@ -82,6 +82,12 @@
     </Compile>
     <Compile Include="Global Classes\clsUtil.cs" />
     <Compile Include="Global Classes\clsValidation.cs" />
+    <Compile Include="Licenses\Controls\ctrlDriverLicenses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Licenses\Controls\ctrlDriverLicenses.Designer.cs">
+      <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\International Licneses\Controls\ctrlDriverInternationalLicenseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -348,6 +354,9 @@
     <EmbeddedResource Include="Applications\Local Driving Licenses\ctrlDrivingLicenseApplicationInfo.resx">
       <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\Controls\ctrlDriverLicenses.resx">
+      <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Licenses\International Licneses\Controls\ctrlDriverInternationalLicenseInfo.resx">
       <DependentUpon>ctrlDriverInternationalLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -530,8 +539,6 @@
   <ItemGroup>
     <None Include="Resources\papers.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Licenses\Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
