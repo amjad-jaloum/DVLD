@@ -154,12 +154,6 @@
     <Compile Include="Applications\International License\frmListInternationalLicensesApplication.Designer.cs">
       <DependentUpon>frmListInternationalLicensesApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\ReplaceLostOrDamagedLicense\ctrlReplacementForDamagedOrLostLicense.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Applications\ReplaceLostOrDamagedLicense\ctrlReplacementForDamagedOrLostLicense.Designer.cs">
-      <DependentUpon>ctrlReplacementForDamagedOrLostLicense.cs</DependentUpon>
-    </Compile>
     <Compile Include="Applications\ReplaceLostOrDamagedLicense\frmReplaceLostOrDamagedLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -389,9 +383,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\International License\frmListInternationalLicensesApplication.resx">
       <DependentUpon>frmListInternationalLicensesApplication.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Applications\ReplaceLostOrDamagedLicense\ctrlReplacementForDamagedOrLostLicense.resx">
-      <DependentUpon>ctrlReplacementForDamagedOrLostLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\ReplaceLostOrDamagedLicense\frmReplaceLostOrDamagedLicenseApplication.resx">
       <DependentUpon>frmReplaceLostOrDamagedLicenseApplication.cs</DependentUpon>
