@@ -21,6 +21,7 @@ namespace _19___Project___DVLD.Driving_Licenses.Licenses_Replacement
         {
             InitializeComponent();
         }
+        
         private int _GetApplicationTypeID()
         {
             // this will decide which application type to use according 
@@ -32,6 +33,7 @@ namespace _19___Project___DVLD.Driving_Licenses.Licenses_Replacement
             else
                 return (int)clsApplication.enApplicationType.ReplaceLostDrivingLicense;
         }
+        
         private enIssueReason _GetIssueReason()
         {
             // this will decide which reason to issue a replacement for

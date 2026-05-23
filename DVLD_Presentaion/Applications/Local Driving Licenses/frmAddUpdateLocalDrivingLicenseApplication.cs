@@ -66,10 +66,12 @@ namespace _19___Project___DVLD.Driving_License_Services
                 btnSave.Enabled = true;
             }
         }
+       
         private void tabPage2_Click(object sender, EventArgs e)
         {
 
         }
+       
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren())
@@ -121,6 +123,7 @@ namespace _19___Project___DVLD.Driving_License_Services
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
+        
         private void frmNewLocalDrivingLicenseApplications_Load(object sender, EventArgs e)
         {
             _ResetDefaultValues();
@@ -150,20 +153,12 @@ namespace _19___Project___DVLD.Driving_License_Services
             lblAppFees.Text = _LocalDrivingLicenseApplication.PaidFees.ToString();
             lblCreatedBy.Text = clsUser.FindByUserID(_LocalDrivingLicenseApplication.CreatedByUserID).UserName;
         }
-
-        private void FillComboBox(List<string> lsClassNames)
-        {
-            cbLicenseClass.Items.Add("None");
-
-            foreach (string ColumnName in lsClassNames)
-                cbLicenseClass.Items.Add(ColumnName);
-
-            cbLicenseClass.SelectedIndex = 3;
-        }
+       
         private void cbLicenseClass_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnSave.Enabled = !cbLicenseClass.SelectedItem.ToString().Contains("None");
         }
+        
         private void btnNextTab_Click(object sender, EventArgs e)
         {
             if (_Mode == enMode.Update)
@@ -187,12 +182,7 @@ namespace _19___Project___DVLD.Driving_License_Services
             }
 
         }
-        private void LoadLocalLicenseInitialData()
-        {
-            lblAppDate.Text = DateTime.Now.ToString();
-            //lblAppFees.Text = clsLocalDrivingLicenseApplication.GetNewLocalDrivingLicenseAppFees();
-            lblCreatedBy.Text = clsGlobal.CurrentUser.UserName;
-        }
+        
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -202,6 +192,7 @@ namespace _19___Project___DVLD.Driving_License_Services
         {
             _SelectedPersonID = obj;
         }
+        
         private void frmAddUpdateLocalDrivingLicesnseApplication_Activated(object sender, EventArgs e)
         {
             ctrlPersonCardWithFilter1.FilterFocus();

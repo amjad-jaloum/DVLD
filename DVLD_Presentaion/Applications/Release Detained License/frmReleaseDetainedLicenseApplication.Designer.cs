@@ -113,12 +113,12 @@
             this.gbAppInfo.TabStop = false;
             this.gbAppInfo.Text = "Detain Info";
             // 
-            // lblD_L_ApplicationID
+            // lblApplicationID
             // 
             this.lblApplicationID.AutoSize = true;
             this.lblApplicationID.Location = new System.Drawing.Point(540, 140);
             this.lblApplicationID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblApplicationID.Name = "lblD_L_ApplicationID";
+            this.lblApplicationID.Name = "lblApplicationID";
             this.lblApplicationID.Size = new System.Drawing.Size(41, 21);
             this.lblApplicationID.TabIndex = 36;
             this.lblApplicationID.Text = "[???]";
@@ -307,6 +307,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Release Detained License";
+            this.Activated += new System.EventHandler(this.frmReleaseDetainedLicenseApplication_Activated);
             this.gbAppInfo.ResumeLayout(false);
             this.gbAppInfo.PerformLayout();
             this.ResumeLayout(false);

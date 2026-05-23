@@ -299,6 +299,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "License Replacement";
+            this.Activated += new System.EventHandler(this.frmReplaceLostOrDamagedLicenseApplication_Activated);
             this.Load += new System.EventHandler(this.frmReplaceLostOrDamagedLicenseApplication_Load);
             this.gbAppInfo.ResumeLayout(false);
             this.gbAppInfo.PerformLayout();

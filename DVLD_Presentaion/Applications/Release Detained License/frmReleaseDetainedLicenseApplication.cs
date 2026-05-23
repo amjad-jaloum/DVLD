@@ -62,6 +62,7 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
             btnRelease.Enabled = true;
 
         }
+
         private void frmReleaseDetainedLicenseApplication_Activated(object sender, EventArgs e)
         {
             ctrlDriverLicenseInfoWithFilter1.txtLicenseIDFocus();

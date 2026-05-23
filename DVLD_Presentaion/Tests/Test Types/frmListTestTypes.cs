@@ -24,6 +24,7 @@ namespace _19___Project___DVLD.Test_Types
         {
             Close();
         }
+
         private void frmManageTestTypes_Load(object sender, EventArgs e)
         {
             _dtAllTestTypes = clsTestType.GetAllTestTypes();
@@ -45,6 +46,7 @@ namespace _19___Project___DVLD.Test_Types
                 dgvTestTypes.Columns[3].Width = 100;
             }
         }
+
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmEditTestType frm = new frmEditTestType((clsTestType.enTestType)dgvTestTypes.CurrentRow.Cells[0].Value);

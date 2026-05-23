@@ -54,6 +54,7 @@ namespace _19___Project___DVLD.Driving_License_Services.Schedule_Tests
                 dgvLicenseTestAppointments.Columns[3].Width = 100;
             }
         }
+
         private void _LoadTestTypeImageAndTitle()
         {
             switch (_TestType)

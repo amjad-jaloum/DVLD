@@ -60,12 +60,6 @@ namespace _19___Project___DVLD
             frm.ShowDialog();
         }
 
-        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            frmLogin frmLogin = new frmLogin();
-            frmLogin.ShowDialog();
-        }
-
         private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListApplicationType frm = new frmListApplicationType();

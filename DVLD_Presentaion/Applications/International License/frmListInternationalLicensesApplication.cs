@@ -70,11 +70,6 @@ namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
             frm.ShowDialog();
         }
 
-        private int GetInternationalLicenseIDFromDGV()
-        {
-            return Convert.ToInt16(dgvInternationalLicenses.CurrentRow.Cells[0].Value);
-        }
-
         private void showLicenseDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int InternationalLicenseID = (int)dgvInternationalLicenses.CurrentRow.Cells[0].Value;

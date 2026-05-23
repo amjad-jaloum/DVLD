@@ -104,12 +104,13 @@
             this.gbAppInfo.TabStop = false;
             this.gbAppInfo.Text = "Detain Info";
             // 
-            // tbFineFees
+            // txtFineFees
             // 
             this.txtFineFees.Location = new System.Drawing.Point(174, 100);
-            this.txtFineFees.Name = "tbFineFees";
+            this.txtFineFees.Name = "txtFineFees";
             this.txtFineFees.Size = new System.Drawing.Size(92, 29);
             this.txtFineFees.TabIndex = 8;
+            this.txtFineFees.Validating += new System.ComponentModel.CancelEventHandler(this.txtFineFees_Validating);
             // 
             // lblCreatedBy
             // 
@@ -236,6 +237,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detain License";
+            this.Activated += new System.EventHandler(this.frmDetainLicenseApplication_Activated);
             this.Load += new System.EventHandler(this.frmDetainLicenseApplication_Load);
             this.gbAppInfo.ResumeLayout(false);
             this.gbAppInfo.PerformLayout();

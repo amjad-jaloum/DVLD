@@ -37,6 +37,7 @@ namespace _19___Project___DVLD.Test_Types
                 this.Close();
             }
         }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
 
@@ -60,6 +61,7 @@ namespace _19___Project___DVLD.Test_Types
                 MessageBox.Show("Failed to update Test Type!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();

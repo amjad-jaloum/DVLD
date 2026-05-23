@@ -308,6 +308,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add New International Driving License Application";
+            this.Activated += new System.EventHandler(this.frmNewInternationalLicenseApplication_Activated);
             this.Load += new System.EventHandler(this.frmNewInternationalLicenseApplication_Load);
             this.gbAppInfo.ResumeLayout(false);
             this.gbAppInfo.PerformLayout();

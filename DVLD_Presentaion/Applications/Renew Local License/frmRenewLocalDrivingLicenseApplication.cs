@@ -77,6 +77,7 @@ namespace _19___Project___DVLD.Renewed_Licenses
             btnRenew.Enabled = true;
 
         }
+
         private void btnRenewLicense_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to Renew the license?",
@@ -105,6 +106,7 @@ namespace _19___Project___DVLD.Renewed_Licenses
             ctrlDriverLicenseInfoWithFilter1.FilterEnabled = false;
             btnShowLicensesInfo.Enabled = true;
         }
+
         private void frmRenewLocalDrivingLicenseApplication_Activated(object sender, EventArgs e)
         {
             ctrlDriverLicenseInfoWithFilter1.txtLicenseIDFocus();

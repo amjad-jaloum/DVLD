@@ -458,7 +458,6 @@
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(209, 26);
             this.tbLastName.TabIndex = 4;
-            this.tbLastName.Leave += new System.EventHandler(this.tbLastName_Leave);
             this.tbLastName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // tbThirdName
@@ -470,7 +469,6 @@
             this.tbThirdName.Name = "tbThirdName";
             this.tbThirdName.Size = new System.Drawing.Size(131, 26);
             this.tbThirdName.TabIndex = 3;
-            this.tbThirdName.Leave += new System.EventHandler(this.tbThirdName_Leave);
             // 
             // tbSecondName
             // 

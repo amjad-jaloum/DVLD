@@ -96,6 +96,7 @@
             this.txtFilterValue.Size = new System.Drawing.Size(116, 20);
             this.txtFilterValue.TabIndex = 5;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.mtxbSearch_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
             // cbIsReleased
             // 
@@ -259,6 +260,7 @@
             this.releaseDetainedLicenseToolStripMenuItem});
             this.cmsApplications.Name = "contextMenuStrip1";
             this.cmsApplications.Size = new System.Drawing.Size(206, 92);
+            this.cmsApplications.Opening += new System.ComponentModel.CancelEventHandler(this.cmsApplications_Opening);
             // 
             // showPersonDetailsToolStripMenuItem
             // 

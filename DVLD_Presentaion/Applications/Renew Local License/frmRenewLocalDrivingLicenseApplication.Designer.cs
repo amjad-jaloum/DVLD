@@ -89,6 +89,7 @@
             this.btnRenew.TabIndex = 16;
             this.btnRenew.Text = "Renew";
             this.btnRenew.UseVisualStyleBackColor = true;
+            this.btnRenew.Click += new System.EventHandler(this.btnRenewLicense_Click);
             // 
             // gbAppInfo
             // 
@@ -382,6 +383,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Renew Local Driving License";
+            this.Activated += new System.EventHandler(this.frmRenewLocalDrivingLicenseApplication_Activated);
             this.Load += new System.EventHandler(this.frmRenewLocalDrivingLicense_Load);
             this.gbAppInfo.ResumeLayout(false);
             this.gbAppInfo.PerformLayout();

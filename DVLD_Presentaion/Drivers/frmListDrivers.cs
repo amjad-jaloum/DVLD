@@ -49,52 +49,12 @@ namespace _19___Project___DVLD.Drivers
                 dgvDrivers.Columns[5].Width = 150;
             }
         }
+
         private void mtxbSearch_TextChanged(object sender, EventArgs e)
         {
-            string FilterColumn = "";
-            //Map Selected Filter to real Column name 
-            switch (cbFilterBy.Text)
-            {
-                case "Driver ID":
-                    FilterColumn = "DriverID";
-                    break;
 
-                case "Person ID":
-                    FilterColumn = "PersonID";
-                    break;
-
-                case "National No.":
-                    FilterColumn = "NationalNo";
-                    break;
-
-
-                case "Full Name":
-                    FilterColumn = "FullName";
-                    break;
-
-                default:
-                    FilterColumn = "None";
-                    break;
-
-            }
-
-            //Reset the filters in case nothing selected or filter value conains nothing.
-            if (txtFilterValue.Text.Trim() == "" || FilterColumn == "None")
-            {
-                _dtAllDrivers.DefaultView.RowFilter = "";
-                lblRecordsCount.Text = dgvDrivers.Rows.Count.ToString();
-                return;
-            }
-
-
-            if (FilterColumn != "FullName" && FilterColumn != "NationalNo")
-                //in this case we deal with numbers not string.
-                _dtAllDrivers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilterValue.Text.Trim());
-            else
-                _dtAllDrivers.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFilterValue.Text.Trim());
-
-            lblRecordsCount.Text = _dtAllDrivers.Rows.Count.ToString();
         }
+
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtFilterValue.Enabled = (cbFilterBy.Text != "None");
@@ -109,6 +69,7 @@ namespace _19___Project___DVLD.Drivers
             txtFilterValue.Text = "";
             txtFilterValue.Focus();
         }
+
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             //we allow number incase person id or user id is selected.

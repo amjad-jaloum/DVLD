@@ -99,6 +99,7 @@ namespace _19___Project___DVLD.Driving_Licenses.International_Licenses
             btnShowLicensesInfo.Enabled = true;
 
         }
+
         private void frmNewInternationalLicenseApplication_Activated(object sender, EventArgs e)
         {
             ctrlDriverLicenseInfoWithFilter1.txtLicenseIDFocus();
