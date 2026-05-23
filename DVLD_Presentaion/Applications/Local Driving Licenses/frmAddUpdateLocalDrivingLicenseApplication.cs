@@ -136,7 +136,7 @@ namespace _19___Project___DVLD.Driving_License_Services
 
         private void _LoadData()
         {
-            ctrlPersonCardWithFilter1.FilterEnabled = true;
+            ctrlPersonCardWithFilter1.FilterEnabled = false;
             _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(_LocalDrivingLicenseApplicationID);
             if (_LocalDrivingLicenseApplication == null)
             {
@@ -182,7 +182,7 @@ namespace _19___Project___DVLD.Driving_License_Services
             }
 
         }
-        
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();

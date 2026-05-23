@@ -129,7 +129,7 @@
             this.Name = "ctrlPersonCardWithFilter";
             this.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Size = new System.Drawing.Size(689, 403);
-            this.Click += new System.EventHandler(this.ctrlPersonDetailWithFitler_Load);
+            this.Load += new System.EventHandler(this.ctrlPersonDetailWithFitler_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();

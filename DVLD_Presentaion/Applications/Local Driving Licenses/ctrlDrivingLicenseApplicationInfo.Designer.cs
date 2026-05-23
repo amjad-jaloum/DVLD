@@ -1,4 +1,4 @@
-﻿namespace _19___Project___DVLD.Driving_License_Services
+﻿namespace _19___Project___DVLD.Applications.Local_Driving_Licenses
 {
     partial class ctrlDrivingLicenseApplicationInfo
     {
@@ -28,357 +28,147 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.ctrlApplicationBasicInfo1 = new DVLD.Controls.ApplicationControls.ctrlApplicationBasicInfo();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.llShowLicenceInfo = new System.Windows.Forms.LinkLabel();
             this.lblPassedTests = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblLicenseName = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblLocalDrivingAppID = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblCreatedByUsername = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.lblStatusDate = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.lblAppDate = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.lblApplicant = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.lblAppTypeName = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.lblAppFees = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblAppliedFor = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.lblAppStatus = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblAppID = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblLocalDrivingLicenseApplicationID = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // ctrlApplicationBasicInfo1
+            // 
+            this.ctrlApplicationBasicInfo1.BackColor = System.Drawing.Color.Transparent;
+            this.ctrlApplicationBasicInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlApplicationBasicInfo1.Location = new System.Drawing.Point(4, 143);
+            this.ctrlApplicationBasicInfo1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctrlApplicationBasicInfo1.Name = "ctrlApplicationBasicInfo1";
+            this.ctrlApplicationBasicInfo1.Size = new System.Drawing.Size(753, 217);
+            this.ctrlApplicationBasicInfo1.TabIndex = 0;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.llShowLicenceInfo);
             this.groupBox1.Controls.Add(this.lblPassedTests);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.lblLicenseName);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.lblLocalDrivingAppID);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.lblAppliedFor);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.lblLocalDrivingLicenseApplicationID);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(699, 133);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.Size = new System.Drawing.Size(754, 132);
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Driving Licesne App Info";
+            this.groupBox1.Text = "Driving License Application Info";
+            // 
+            // llShowLicenceInfo
+            // 
+            this.llShowLicenceInfo.AutoSize = true;
+            this.llShowLicenceInfo.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.llShowLicenceInfo.Location = new System.Drawing.Point(23, 73);
+            this.llShowLicenceInfo.Name = "llShowLicenceInfo";
+            this.llShowLicenceInfo.Size = new System.Drawing.Size(135, 21);
+            this.llShowLicenceInfo.TabIndex = 191;
+            this.llShowLicenceInfo.TabStop = true;
+            this.llShowLicenceInfo.Text = "Show License Info";
+            this.llShowLicenceInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenceInfo_LinkClicked);
             // 
             // lblPassedTests
             // 
             this.lblPassedTests.AutoSize = true;
-            this.lblPassedTests.Location = new System.Drawing.Point(400, 81);
-            this.lblPassedTests.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPassedTests.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lblPassedTests.Location = new System.Drawing.Point(459, 73);
+            this.lblPassedTests.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassedTests.Name = "lblPassedTests";
-            this.lblPassedTests.Size = new System.Drawing.Size(34, 21);
-            this.lblPassedTests.TabIndex = 5;
-            this.lblPassedTests.Text = "0/3";
+            this.lblPassedTests.Size = new System.Drawing.Size(19, 21);
+            this.lblPassedTests.TabIndex = 188;
+            this.lblPassedTests.Text = "0";
             // 
-            // label5
+            // label2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(284, 81);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 21);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Passed Tests: ";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(338, 73);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(107, 21);
+            this.label2.TabIndex = 187;
+            this.label2.Text = "Passed Tests:";
             // 
-            // lblLicenseName
+            // lblAppliedFor
             // 
-            this.lblLicenseName.AutoSize = true;
-            this.lblLicenseName.Location = new System.Drawing.Point(400, 42);
-            this.lblLicenseName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblLicenseName.Name = "lblLicenseName";
-            this.lblLicenseName.Size = new System.Drawing.Size(107, 21);
-            this.lblLicenseName.TabIndex = 3;
-            this.lblLicenseName.Text = "License Name";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(233, 42);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(162, 21);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Applied For License:";
-            // 
-            // lblLocalDrivingAppID
-            // 
-            this.lblLocalDrivingAppID.AutoSize = true;
-            this.lblLocalDrivingAppID.Location = new System.Drawing.Point(139, 42);
-            this.lblLocalDrivingAppID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblLocalDrivingAppID.Name = "lblLocalDrivingAppID";
-            this.lblLocalDrivingAppID.Size = new System.Drawing.Size(57, 21);
-            this.lblLocalDrivingAppID.TabIndex = 1;
-            this.lblLocalDrivingAppID.Text = "App ID";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(39, 42);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "D.L App ID:";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.lblCreatedByUsername);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.lblStatusDate);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.lblAppDate);
-            this.groupBox2.Controls.Add(this.label22);
-            this.groupBox2.Controls.Add(this.lblApplicant);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.lblAppTypeName);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.lblAppFees);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.lblAppStatus);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.lblAppID);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(13, 146);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(699, 220);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Application Basic Info";
-            // 
-            // lblCreatedByUsername
-            // 
-            this.lblCreatedByUsername.AutoSize = true;
-            this.lblCreatedByUsername.Location = new System.Drawing.Point(352, 105);
-            this.lblCreatedByUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCreatedByUsername.Name = "lblCreatedByUsername";
-            this.lblCreatedByUsername.Size = new System.Drawing.Size(48, 21);
-            this.lblCreatedByUsername.TabIndex = 15;
-            this.lblCreatedByUsername.Text = "None";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(252, 105);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(96, 21);
-            this.label18.TabIndex = 14;
-            this.label18.Text = "Created By:";
-            // 
-            // lblStatusDate
-            // 
-            this.lblStatusDate.AutoSize = true;
-            this.lblStatusDate.Location = new System.Drawing.Point(352, 73);
-            this.lblStatusDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblStatusDate.Name = "lblStatusDate";
-            this.lblStatusDate.Size = new System.Drawing.Size(48, 21);
-            this.lblStatusDate.TabIndex = 13;
-            this.lblStatusDate.Text = "None";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(248, 73);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(101, 21);
-            this.label20.TabIndex = 12;
-            this.label20.Text = "Status Date:";
-            // 
-            // lblAppDate
-            // 
-            this.lblAppDate.AutoSize = true;
-            this.lblAppDate.Location = new System.Drawing.Point(352, 42);
-            this.lblAppDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAppDate.Name = "lblAppDate";
-            this.lblAppDate.Size = new System.Drawing.Size(39, 21);
-            this.lblAppDate.TabIndex = 11;
-            this.lblAppDate.Text = "Null";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(299, 42);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(50, 21);
-            this.label22.TabIndex = 10;
-            this.label22.Text = "Date:";
-            // 
-            // lblApplicant
-            // 
-            this.lblApplicant.AutoSize = true;
-            this.lblApplicant.Location = new System.Drawing.Point(109, 169);
-            this.lblApplicant.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblApplicant.Name = "lblApplicant";
-            this.lblApplicant.Size = new System.Drawing.Size(48, 21);
-            this.lblApplicant.TabIndex = 9;
-            this.lblApplicant.Text = "None";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(18, 169);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(88, 21);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "Applicant:";
-            // 
-            // lblAppTypeName
-            // 
-            this.lblAppTypeName.AutoSize = true;
-            this.lblAppTypeName.Location = new System.Drawing.Point(109, 137);
-            this.lblAppTypeName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAppTypeName.Name = "lblAppTypeName";
-            this.lblAppTypeName.Size = new System.Drawing.Size(48, 21);
-            this.lblAppTypeName.TabIndex = 7;
-            this.lblAppTypeName.Text = "None";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(55, 137);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(50, 21);
-            this.label14.TabIndex = 6;
-            this.label14.Text = "Type:";
-            // 
-            // lblAppFees
-            // 
-            this.lblAppFees.AutoSize = true;
-            this.lblAppFees.Location = new System.Drawing.Point(109, 105);
-            this.lblAppFees.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAppFees.Name = "lblAppFees";
-            this.lblAppFees.Size = new System.Drawing.Size(37, 21);
-            this.lblAppFees.TabIndex = 5;
-            this.lblAppFees.Text = "000";
+            this.lblAppliedFor.AutoSize = true;
+            this.lblAppliedFor.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lblAppliedFor.Location = new System.Drawing.Point(459, 36);
+            this.lblAppliedFor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAppliedFor.Name = "lblAppliedFor";
+            this.lblAppliedFor.Size = new System.Drawing.Size(41, 21);
+            this.lblAppliedFor.TabIndex = 185;
+            this.lblAppliedFor.Text = "[???]";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(59, 105);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(289, 36);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 21);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "Fees:";
+            this.label10.Size = new System.Drawing.Size(162, 21);
+            this.label10.TabIndex = 184;
+            this.label10.Text = "Applied For License:";
             // 
-            // lblAppStatus
+            // lblLocalDrivingLicenseApplicationID
             // 
-            this.lblAppStatus.AutoSize = true;
-            this.lblAppStatus.Location = new System.Drawing.Point(109, 73);
-            this.lblAppStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAppStatus.Name = "lblAppStatus";
-            this.lblAppStatus.Size = new System.Drawing.Size(48, 21);
-            this.lblAppStatus.TabIndex = 3;
-            this.lblAppStatus.Text = "None";
+            this.lblLocalDrivingLicenseApplicationID.AutoSize = true;
+            this.lblLocalDrivingLicenseApplicationID.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lblLocalDrivingLicenseApplicationID.Location = new System.Drawing.Point(124, 36);
+            this.lblLocalDrivingLicenseApplicationID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLocalDrivingLicenseApplicationID.Name = "lblLocalDrivingLicenseApplicationID";
+            this.lblLocalDrivingLicenseApplicationID.Size = new System.Drawing.Size(41, 21);
+            this.lblLocalDrivingLicenseApplicationID.TabIndex = 161;
+            this.lblLocalDrivingLicenseApplicationID.Text = "[???]";
             // 
-            // label8
+            // label4
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(45, 73);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 21);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Status:";
-            // 
-            // lblAppID
-            // 
-            this.lblAppID.AutoSize = true;
-            this.lblAppID.Location = new System.Drawing.Point(109, 42);
-            this.lblAppID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAppID.Name = "lblAppID";
-            this.lblAppID.Size = new System.Drawing.Size(37, 21);
-            this.lblAppID.TabIndex = 1;
-            this.lblAppID.Text = "000";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(74, 42);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(31, 21);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "ID:";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(23, 36);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 21);
+            this.label4.TabIndex = 160;
+            this.label4.Text = "D.L.App ID:";
             // 
             // ctrlDrivingLicenseApplicationInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Controls.Add(this.ctrlApplicationBasicInfo1);
             this.Name = "ctrlDrivingLicenseApplicationInfo";
-            this.Padding = new System.Windows.Forms.Padding(13);
-            this.Size = new System.Drawing.Size(725, 383);
+            this.Size = new System.Drawing.Size(760, 361);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private DVLD.Controls.ApplicationControls.ctrlApplicationBasicInfo ctrlApplicationBasicInfo1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.LinkLabel llShowLicenceInfo;
         private System.Windows.Forms.Label lblPassedTests;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblLicenseName;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblLocalDrivingAppID;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label lblAppID;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label lblCreatedByUsername;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label lblStatusDate;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label lblAppDate;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label lblApplicant;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label lblAppTypeName;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label lblAppFees;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblAppliedFor;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lblAppStatus;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblLocalDrivingLicenseApplicationID;
+        private System.Windows.Forms.Label label4;
     }
 }

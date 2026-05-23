@@ -38,7 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvLicenseTestAppointments = new System.Windows.Forms.DataGridView();
-            this.ctrlDrivingLicenseApplicationInfo1 = new _19___Project___DVLD.Driving_License_Services.ctrlDrivingLicenseApplicationInfo();
+            this.ctrlDrivingLicenseApplicationInfo1 = new _19___Project___DVLD.Applications.Local_Driving_Licenses.ctrlDrivingLicenseApplicationInfo();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLicenseTestAppointments)).BeginInit();
@@ -75,10 +75,10 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dgvLicenseTestAppointments);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 361);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(712, 239);
+            this.panel1.Size = new System.Drawing.Size(762, 239);
             this.panel1.TabIndex = 10;
             // 
             // btnNewAppointment
@@ -86,7 +86,7 @@
             this.btnNewAppointment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNewAppointment.AutoSize = true;
             this.btnNewAppointment.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnNewAppointment.Location = new System.Drawing.Point(498, 198);
+            this.btnNewAppointment.Location = new System.Drawing.Point(548, 198);
             this.btnNewAppointment.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewAppointment.Name = "btnNewAppointment";
             this.btnNewAppointment.Size = new System.Drawing.Size(200, 30);
@@ -146,18 +146,15 @@
             this.dgvLicenseTestAppointments.RowHeadersWidth = 62;
             this.dgvLicenseTestAppointments.RowTemplate.Height = 28;
             this.dgvLicenseTestAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLicenseTestAppointments.Size = new System.Drawing.Size(684, 152);
+            this.dgvLicenseTestAppointments.Size = new System.Drawing.Size(734, 152);
             this.dgvLicenseTestAppointments.TabIndex = 9;
             // 
             // ctrlDrivingLicenseApplicationInfo1
             // 
-            this.ctrlDrivingLicenseApplicationInfo1.AutoSize = true;
             this.ctrlDrivingLicenseApplicationInfo1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlDrivingLicenseApplicationInfo1.Location = new System.Drawing.Point(0, 239);
-            this.ctrlDrivingLicenseApplicationInfo1.Margin = new System.Windows.Forms.Padding(2);
+            this.ctrlDrivingLicenseApplicationInfo1.Location = new System.Drawing.Point(0, 0);
             this.ctrlDrivingLicenseApplicationInfo1.Name = "ctrlDrivingLicenseApplicationInfo1";
-            this.ctrlDrivingLicenseApplicationInfo1.Padding = new System.Windows.Forms.Padding(13);
-            this.ctrlDrivingLicenseApplicationInfo1.Size = new System.Drawing.Size(712, 379);
+            this.ctrlDrivingLicenseApplicationInfo1.Size = new System.Drawing.Size(762, 361);
             this.ctrlDrivingLicenseApplicationInfo1.TabIndex = 11;
             // 
             // frmListTestAppointments
@@ -165,9 +162,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(712, 622);
-            this.Controls.Add(this.ctrlDrivingLicenseApplicationInfo1);
+            this.ClientSize = new System.Drawing.Size(762, 600);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.ctrlDrivingLicenseApplicationInfo1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -180,7 +177,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLicenseTestAppointments)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -195,6 +191,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvLicenseTestAppointments;
-        private ctrlDrivingLicenseApplicationInfo ctrlDrivingLicenseApplicationInfo1;
+        private Applications.Local_Driving_Licenses.ctrlDrivingLicenseApplicationInfo ctrlDrivingLicenseApplicationInfo1;
     }
 }

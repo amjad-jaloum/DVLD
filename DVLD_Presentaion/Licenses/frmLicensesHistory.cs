@@ -29,8 +29,8 @@ namespace _19___Project___DVLD.Driving_License_Services
         {
             if (_PersonID != -1)
             {
-                ctrlPersonCardWithFilter1.LoadPersonInfo(_PersonID);
                 ctrlPersonCardWithFilter1.FilterEnabled = false;
+                ctrlPersonCardWithFilter1.LoadPersonInfo(_PersonID);
                 ctrlDriverLicenses1.LoadInfoByPersonID(_PersonID);
             }
             else

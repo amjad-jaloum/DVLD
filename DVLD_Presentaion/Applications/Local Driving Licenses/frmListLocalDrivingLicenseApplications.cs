@@ -55,33 +55,6 @@ namespace _19___Project___DVLD.Driving_License_Services
             cbFilterBy.SelectedIndex = 0;
         }
         
-        private void LoadComboBoxFilter()
-        {
-            List<string> ColumnNames = clsLocalDrivingLicenseApplication.GetLocalDrivingLincesesColumns();
-            if (ColumnNames == null)
-            {
-                MessageBox.Show("Database error, Column names are not loaded properly!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else
-            {
-                FillFilterComboBox(ColumnNames);
-            }
-        }
-        private void FillFilterComboBox(List<string> ColumnNames)
-        {
-            cbFilterBy.Items.Add("None");
-            cbFilterBy.SelectedItem = "None";
-
-            foreach (string ColumnName in ColumnNames)
-                cbFilterBy.Items.Add(ColumnName);
-        }
-        private void LoadLocalDrivingLicensesToDGV()
-        {
-            dgvLocalDrivingLicenseApplications.DataSource = clsLocalDrivingLicenseApplication.GetLocalLicenseApplications();
-            dgvLocalDrivingLicenseApplications.Columns[0].HeaderText = "L.App ID";
-            lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.Rows.Count.ToString();
-        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -92,10 +65,6 @@ namespace _19___Project___DVLD.Driving_License_Services
             frm.ShowDialog();
             //refresh
             frmManageLocalDrivingLicenseApplications_Load(null, null);
-        }
-        private void RefreshDGV(object sender)
-        {
-            LoadLocalDrivingLicensesToDGV();
         }
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -182,30 +151,6 @@ namespace _19___Project___DVLD.Driving_License_Services
                 }
             }
         }
-        private int GetLocalDrivingLicenseAppIDFromDGV()
-        {
-            return Convert.ToInt32(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value);
-        }
-        private short GetPassedTestsCountFromDGV()
-        {
-            return Convert.ToInt16(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[5].Value);
-        }
-        private string GetLecenseNameFromDGV()
-        {
-            return Convert.ToString(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[1].Value);
-        }
-        private DateTime GetAppDateFromDGV()
-        {
-            return Convert.ToDateTime(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[4].Value);
-        }
-        private string GetStatusFromDGV()
-        {
-            return Convert.ToString(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[6].Value);
-        }
-        private string GetApplicantFullNameFromDGV()
-        {
-            return Convert.ToString(dgvLocalDrivingLicenseApplications.CurrentRow.Cells[3].Value);
-        }
         private void showApplicationDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmLocalDrivingLicenseApplicationInfo frm =
@@ -213,56 +158,10 @@ namespace _19___Project___DVLD.Driving_License_Services
             frm.ShowDialog();
             //refresh
             frmManageLocalDrivingLicenseApplications_Load(null, null);
-            frm.ShowDialog();
-        }
-        private void GetAppDataFromDGV(ref int AppID, ref string LicenseName,
-            ref string ApplicantFullName, ref DateTime AppDate, ref short PassedTests, ref string AppStatus)
-        {
-            AppID = GetLocalDrivingLicenseAppIDFromDGV();
-            LicenseName = GetLecenseNameFromDGV();
-            ApplicantFullName = GetApplicantFullNameFromDGV();
-            AppDate = GetAppDateFromDGV();
-            PassedTests = GetPassedTestsCountFromDGV();
-            AppStatus = GetStatusFromDGV();
         }
         private void schedulTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
-        //private void OpenTestAppointmentTestScheduler(frmListTestAppointments.enTestType TestType)
-        //{
-        //    //frmListTestAppointments form = new frmListTestAppointments();
-        //    //ApplyChangesInForm(TestType, ref form);
-        //    //form.RefreshManageLocalDrivingLicenseApplicationsDGV += RefreshDGV;
-        //    //form.ShowDialog();
-        //}
-        //private void ApplyChangesInForm(frmListTestAppointments.enTestType testType, ref frmListTestAppointments form)
-        //{
-        //    int AppID = 0;
-        //    string LicenseName = "";
-        //    string ApplicantFullName = "";
-        //    DateTime AppDate = DateTime.MinValue;
-        //    short PassedTests = 0;
-        //    string AppStatus = "";
-
-        //    GetAppDataFromDGV(ref AppID, ref LicenseName, ref ApplicantFullName, ref AppDate, ref PassedTests,
-        //        ref AppStatus);
-
-        //    form = new frmListTestAppointments(AppID, LicenseName, ApplicantFullName, AppDate, PassedTests, AppStatus);
-        //    frmListTestAppointments.TestType = testType;
-
-        //    switch (testType)
-        //    {
-        //        case frmListTestAppointments.enTestType.Vision:
-        //            form.Text = "Schedule Vision Test Appointment";
-        //            break;
-        //        case frmListTestAppointments.enTestType.Written:
-        //            form.Text = "Schedule Written Test Appointment";
-        //            break;
-        //        case frmListTestAppointments.enTestType.Streat:
-        //            form.Text = "Schedule Street Test Appointment";
-        //            break;
-        //    }
-        //}
         private void visionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _ScheduleTest(clsTestType.enTestType.VisionTest);
@@ -335,21 +234,6 @@ namespace _19___Project___DVLD.Driving_License_Services
             }
 
         }
-        private void EnableScheduleTestOption(ToolStripMenuItem menuItem)
-        {
-            disableScheduleTestOptions();
-            menuItem.Enabled = true;
-        }
-        private void disableScheduleTestOptions()
-        {
-            scheduleVisionTestToolStripMenuItem.Enabled = false;
-            scheduleWrittenTestToolStripMenuItem.Enabled = false;
-            scheduleStreetTestToolStripMenuItem.Enabled = false;
-        }
-        private void EnableIssueDrivingLicenseOption()
-        {
-
-        }
         private void IssueDrivingLicense_Click(object sender, EventArgs e)
         {
             int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
@@ -358,10 +242,6 @@ namespace _19___Project___DVLD.Driving_License_Services
             //refresh
             frmManageLocalDrivingLicenseApplications_Load(null, null);
 
-        }
-        private bool isStatusCompletedOrCancelled()
-        {
-            return clsLocalDrivingLicenseApplication.IsStatusCompletedOrCancelled(GetLocalDrivingLicenseAppIDFromDGV());
         }
         private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {

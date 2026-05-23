@@ -21,7 +21,7 @@ namespace _19___Project___DVLD.Licenses.Local_Licenses.Controls
                 handler(licenseId);
         }
 
-        private bool _FilterEnabled = false;
+        private bool _FilterEnabled = true;
 
         public bool FilterEnabled
         {
@@ -29,7 +29,7 @@ namespace _19___Project___DVLD.Licenses.Local_Licenses.Controls
             set
             {
                 _FilterEnabled = value;
-                gbFilters.Enabled = value;
+                gbFilters.Enabled = _FilterEnabled;
             }
         }
 
@@ -52,9 +52,13 @@ namespace _19___Project___DVLD.Licenses.Local_Licenses.Controls
 
         public void LoadLicenseInfo(int LicenseID)
         {
-
             txtLicenseID.Text = LicenseID.ToString();
             ctrlDriverLicenseInfo1.LoadInfo(LicenseID);
+
+            if (ctrlDriverLicenseInfo1.LicenseID == -1)
+                return;
+
+
             _LicenseID = ctrlDriverLicenseInfo1.LicenseID;
 
             if (OnLicenseSelecetd != null && FilterEnabled)

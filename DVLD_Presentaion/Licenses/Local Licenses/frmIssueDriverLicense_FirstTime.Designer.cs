@@ -31,7 +31,7 @@
             this.tbNotes = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnIssue = new System.Windows.Forms.Button();
-            this.ctrlDrivingLicenseApplicationInfo1 = new _19___Project___DVLD.Driving_License_Services.ctrlDrivingLicenseApplicationInfo();
+            this.ctrlDrivingLicenseApplicationInfo1 = new _19___Project___DVLD.Applications.Local_Driving_Licenses.ctrlDrivingLicenseApplicationInfo();
             this.SuspendLayout();
             // 
             // tbNotes
@@ -57,7 +57,7 @@
             // 
             this.btnIssue.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIssue.Location = new System.Drawing.Point(664, 481);
-            this.btnIssue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnIssue.Margin = new System.Windows.Forms.Padding(2);
             this.btnIssue.Name = "btnIssue";
             this.btnIssue.Size = new System.Drawing.Size(125, 30);
             this.btnIssue.TabIndex = 29;
@@ -67,12 +67,9 @@
             // 
             // ctrlDrivingLicenseApplicationInfo1
             // 
-            this.ctrlDrivingLicenseApplicationInfo1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlDrivingLicenseApplicationInfo1.Location = new System.Drawing.Point(0, 0);
-            this.ctrlDrivingLicenseApplicationInfo1.Margin = new System.Windows.Forms.Padding(2);
+            this.ctrlDrivingLicenseApplicationInfo1.Location = new System.Drawing.Point(15, 13);
             this.ctrlDrivingLicenseApplicationInfo1.Name = "ctrlDrivingLicenseApplicationInfo1";
-            this.ctrlDrivingLicenseApplicationInfo1.Padding = new System.Windows.Forms.Padding(13);
-            this.ctrlDrivingLicenseApplicationInfo1.Size = new System.Drawing.Size(800, 379);
+            this.ctrlDrivingLicenseApplicationInfo1.Size = new System.Drawing.Size(760, 361);
             this.ctrlDrivingLicenseApplicationInfo1.TabIndex = 30;
             // 
             // frmIssueDriverLicense_FirstTime
@@ -101,6 +98,6 @@
         private System.Windows.Forms.TextBox tbNotes;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnIssue;
-        private ctrlDrivingLicenseApplicationInfo ctrlDrivingLicenseApplicationInfo1;
+        private Applications.Local_Driving_Licenses.ctrlDrivingLicenseApplicationInfo ctrlDrivingLicenseApplicationInfo1;
     }
 }

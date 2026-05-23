@@ -358,7 +358,7 @@
             // 
             this.ctrlDriverLicenseInfoWithFilter1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ctrlDriverLicenseInfoWithFilter1.AutoSize = true;
-            this.ctrlDriverLicenseInfoWithFilter1.FilterEnabled = false;
+            this.ctrlDriverLicenseInfoWithFilter1.FilterEnabled = true;
             this.ctrlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(30, 14);
             this.ctrlDriverLicenseInfoWithFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ctrlDriverLicenseInfoWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";

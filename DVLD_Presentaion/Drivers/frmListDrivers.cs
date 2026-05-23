@@ -95,5 +95,10 @@ namespace _19___Project___DVLD.Drivers
             frmLicensesHistory frm = new frmLicensesHistory(PersonID);
             frm.ShowDialog();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

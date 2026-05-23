@@ -304,6 +304,7 @@
             this.txtFilterValue.Size = new System.Drawing.Size(116, 20);
             this.txtFilterValue.TabIndex = 5;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.mtxbSearch_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
             // cbFilterBy
             // 

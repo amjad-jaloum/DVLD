@@ -44,7 +44,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 20);
+            this.label1.Location = new System.Drawing.Point(74, 42);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 21);
@@ -54,7 +54,7 @@
             // lblAppID
             // 
             this.lblAppID.AutoSize = true;
-            this.lblAppID.Location = new System.Drawing.Point(58, 20);
+            this.lblAppID.Location = new System.Drawing.Point(106, 42);
             this.lblAppID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAppID.Name = "lblAppID";
             this.lblAppID.Size = new System.Drawing.Size(37, 21);
@@ -64,7 +64,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 55);
+            this.label3.Location = new System.Drawing.Point(74, 84);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 21);
@@ -74,7 +74,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 89);
+            this.label4.Location = new System.Drawing.Point(72, 159);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 21);
@@ -83,8 +83,8 @@
             // 
             // tbAppTitle
             // 
-            this.tbAppTitle.Location = new System.Drawing.Point(62, 51);
-            this.tbAppTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbAppTitle.Location = new System.Drawing.Point(76, 108);
+            this.tbAppTitle.Margin = new System.Windows.Forms.Padding(2);
             this.tbAppTitle.Name = "tbAppTitle";
             this.tbAppTitle.Size = new System.Drawing.Size(305, 29);
             this.tbAppTitle.TabIndex = 4;
@@ -92,8 +92,8 @@
             // 
             // tbAppFees
             // 
-            this.tbAppFees.Location = new System.Drawing.Point(62, 87);
-            this.tbAppFees.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbAppFees.Location = new System.Drawing.Point(76, 182);
+            this.tbAppFees.Margin = new System.Windows.Forms.Padding(2);
             this.tbAppFees.Name = "tbAppFees";
             this.tbAppFees.Size = new System.Drawing.Size(305, 29);
             this.tbAppFees.TabIndex = 5;
@@ -101,8 +101,8 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(277, 117);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Location = new System.Drawing.Point(354, 258);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(89, 39);
             this.btnSave.TabIndex = 6;
@@ -112,8 +112,8 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(185, 117);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Location = new System.Drawing.Point(262, 258);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 39);
             this.btnCancel.TabIndex = 7;
@@ -129,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(381, 170);
+            this.ClientSize = new System.Drawing.Size(454, 308);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tbAppFees);

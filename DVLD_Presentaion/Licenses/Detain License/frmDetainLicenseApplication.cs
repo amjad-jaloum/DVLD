@@ -101,20 +101,19 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
 
             if (string.IsNullOrEmpty(txtFineFees.Text.Trim()))
             {
-                e.Cancel = true;
+                //e.Cancel = true;
                 errorProvider1.SetError(txtFineFees, "Fees cannot be empty!");
                 return;
             }
             else
             {
                 errorProvider1.SetError(txtFineFees, null);
-
             }
 
 
             if (!clsValidation.IsNumber(txtFineFees.Text))
             {
-                e.Cancel = true;
+                //e.Cancel = true;
                 errorProvider1.SetError(txtFineFees, "Invalid Number.");
             }
             else

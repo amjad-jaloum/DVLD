@@ -7,22 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
-using _19___Project___DVLD.People;
-using DVLD.Controls.ApplicationControls;
+using _19___Project___DVLD.Driving_License_Services;
 using DVLD_Business;
 
-namespace _19___Project___DVLD.Driving_License_Services
+namespace _19___Project___DVLD.Applications.Local_Driving_Licenses
 {
     public partial class ctrlDrivingLicenseApplicationInfo : UserControl
     {
-        private int _LocalDrivingLicenseApplicationID { get; set; }
         private clsLocalDrivingLicenseApplication _LocalDrivingLicenseApplication;
+
+        private int _LocalDrivingLicenseApplicationID = -1;
+
         private int _LicenseID;
-        internal DateTime appDate;
-        internal object applicantFullName;
-        internal object appStatus;
-        internal object licenseName;
 
         public int LocalDrivingLicenseApplicationID
         {
@@ -33,10 +29,9 @@ namespace _19___Project___DVLD.Driving_License_Services
         {
             InitializeComponent();
         }
-
         public void LoadApplicationInfoByLocalDrivingAppID(int LocalDrivingLicenseApplicationID)
         {
-            _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(_LocalDrivingLicenseApplicationID);
+            _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID);
             if (_LocalDrivingLicenseApplication == null)
             {
                 _ResetLocalDrivingLicenseApplicationInfo();
@@ -69,21 +64,24 @@ namespace _19___Project___DVLD.Driving_License_Services
             _LicenseID = _LocalDrivingLicenseApplication.GetActiveLicenseID();
 
             //incase there is license enable the show link.
-            //btnViewPersonInfo.Enabled = (_LicenseID != -1);
+            llShowLicenceInfo.Enabled = (_LicenseID != -1);
 
 
-            lblLocalDrivingAppID.Text = _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID.ToString();
-            lblLicenseName.Text = clsLicenseClass.Find(_LocalDrivingLicenseApplication.LicenseClassID).ClassName;
-            //lblPassedTests.Text = _LocalDrivingLicenseApplication.GetPassedTestCount().ToString() + "/3";
-            //ctrlApplicationBasicInfo1.LoadApplicationInfo(_LocalDrivingLicenseApplication.ApplicationID);
+            lblLocalDrivingLicenseApplicationID.Text = _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID.ToString();
+            lblAppliedFor.Text = clsLicenseClass.Find(_LocalDrivingLicenseApplication.LicenseClassID).ClassName;
+            lblPassedTests.Text = _LocalDrivingLicenseApplication.GetPassedTestCount().ToString() + "/3";
+            ctrlApplicationBasicInfo1.LoadApplicationInfo(_LocalDrivingLicenseApplication.ApplicationID);
+
         }
+
         private void _ResetLocalDrivingLicenseApplicationInfo()
         {
             _LocalDrivingLicenseApplicationID = -1;
-            //ctrlApplicationBasicInfo1.ResetApplicationInfo();
-            lblLocalDrivingAppID.Text = "[????]";
-            lblLicenseName.Text = "[????]";
+            ctrlApplicationBasicInfo1.ResetApplicationInfo();
+            lblLocalDrivingLicenseApplicationID.Text = "[????]";
+            lblAppliedFor.Text = "[????]";
         }
+
         private void llShowLicenceInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmShowLicenseInfo frm = new frmShowLicenseInfo(_LocalDrivingLicenseApplication.GetActiveLicenseID());

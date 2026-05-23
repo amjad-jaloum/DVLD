@@ -30,7 +30,6 @@
         {
             this.tcApplicationInfo = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.ctrlPersonCardWithFilter1 = new _19___Project___DVLD.People.ctrlPersonCardWithFilter();
             this.btnNextTab = new System.Windows.Forms.Button();
             this.tpApplicationInfo = new System.Windows.Forms.TabPage();
             this.gbUserDetails = new System.Windows.Forms.GroupBox();
@@ -46,6 +45,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.ctrlPersonCardWithFilter1 = new People.ctrlPersonCardWithFilter();
             this.tcApplicationInfo.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tpApplicationInfo.SuspendLayout();
@@ -58,10 +58,10 @@
             this.tcApplicationInfo.Controls.Add(this.tpApplicationInfo);
             this.tcApplicationInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcApplicationInfo.Location = new System.Drawing.Point(0, 0);
-            this.tcApplicationInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tcApplicationInfo.Margin = new System.Windows.Forms.Padding(2);
             this.tcApplicationInfo.Name = "tcApplicationInfo";
             this.tcApplicationInfo.SelectedIndex = 0;
-            this.tcApplicationInfo.Size = new System.Drawing.Size(799, 468);
+            this.tcApplicationInfo.Size = new System.Drawing.Size(799, 503);
             this.tcApplicationInfo.TabIndex = 4;
             // 
             // tabPage1
@@ -69,33 +69,20 @@
             this.tabPage1.Controls.Add(this.ctrlPersonCardWithFilter1);
             this.tabPage1.Controls.Add(this.btnNextTab);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.tabPage1.Size = new System.Drawing.Size(791, 442);
+            this.tabPage1.Size = new System.Drawing.Size(791, 477);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Person info";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // ctrlPersonCardWithFilter1
-            // 
-            this.ctrlPersonCardWithFilter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlPersonCardWithFilter1.FilterEnabled = false;
-            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(7, 6);
-            this.ctrlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
-            this.ctrlPersonCardWithFilter1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
-            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(777, 392);
-            this.ctrlPersonCardWithFilter1.TabIndex = 0;
-            this.ctrlPersonCardWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonCardWithFilter1_OnPersonSelected);
             // 
             // btnNextTab
             // 
             this.btnNextTab.AutoSize = true;
             this.btnNextTab.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnNextTab.Location = new System.Drawing.Point(679, 402);
-            this.btnNextTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNextTab.Location = new System.Drawing.Point(640, 426);
+            this.btnNextTab.Margin = new System.Windows.Forms.Padding(2);
             this.btnNextTab.Name = "btnNextTab";
             this.btnNextTab.Size = new System.Drawing.Size(98, 31);
             this.btnNextTab.TabIndex = 8;
@@ -107,7 +94,7 @@
             // 
             this.tpApplicationInfo.Controls.Add(this.gbUserDetails);
             this.tpApplicationInfo.Location = new System.Drawing.Point(4, 22);
-            this.tpApplicationInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpApplicationInfo.Margin = new System.Windows.Forms.Padding(2);
             this.tpApplicationInfo.Name = "tpApplicationInfo";
             this.tpApplicationInfo.Padding = new System.Windows.Forms.Padding(67, 65, 67, 65);
             this.tpApplicationInfo.Size = new System.Drawing.Size(791, 442);
@@ -133,7 +120,7 @@
             this.gbUserDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbUserDetails.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.gbUserDetails.Location = new System.Drawing.Point(67, 65);
-            this.gbUserDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbUserDetails.Margin = new System.Windows.Forms.Padding(2);
             this.gbUserDetails.Name = "gbUserDetails";
             this.gbUserDetails.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.gbUserDetails.Size = new System.Drawing.Size(657, 312);
@@ -146,7 +133,7 @@
             this.cbLicenseClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLicenseClass.FormattingEnabled = true;
             this.cbLicenseClass.Location = new System.Drawing.Point(197, 144);
-            this.cbLicenseClass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbLicenseClass.Margin = new System.Windows.Forms.Padding(2);
             this.cbLicenseClass.Name = "cbLicenseClass";
             this.cbLicenseClass.Size = new System.Drawing.Size(269, 29);
             this.cbLicenseClass.TabIndex = 23;
@@ -233,7 +220,7 @@
             // 
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnClose.Location = new System.Drawing.Point(447, 259);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(89, 32);
             this.btnClose.TabIndex = 14;
@@ -245,7 +232,7 @@
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnSave.Location = new System.Drawing.Point(540, 259);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(90, 32);
             this.btnSave.TabIndex = 16;
@@ -275,13 +262,25 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "D.L App ID:";
             // 
+            // ctrlPersonCardWithFilter1
+            // 
+            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
+            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(49, 8);
+            this.ctrlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(2);
+            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
+            this.ctrlPersonCardWithFilter1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
+            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(689, 403);
+            this.ctrlPersonCardWithFilter1.TabIndex = 9;
+            this.ctrlPersonCardWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonCardWithFilter1_OnPersonSelected);
+            // 
             // frmAddUpdateLocalDrivingLicenseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 468);
+            this.ClientSize = new System.Drawing.Size(799, 503);
             this.Controls.Add(this.tcApplicationInfo);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddUpdateLocalDrivingLicenseApplication";

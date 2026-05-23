@@ -110,6 +110,8 @@ namespace _19___Project___DVLD.People
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (_Person == null) return;
+
             frmAddUpdatePerson frmAddAndUpdate = new frmAddUpdatePerson(_Person.PersonID);
             frmAddAndUpdate.ShowDialog();
 

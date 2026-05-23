@@ -33,7 +33,7 @@ namespace _19___Project___DVLD.People
                 btnAddPerson.Enabled = _ShowAddPerson;
             }
         }
-        public bool _FilterEnabled;
+        public bool _FilterEnabled = true;
         public bool FilterEnabled
         {
             get { return _FilterEnabled; }
@@ -45,6 +45,7 @@ namespace _19___Project___DVLD.People
         }
         public ctrlPersonCardWithFilter()
         {
+
             InitializeComponent();
         }
         public int PersonID
@@ -59,7 +60,7 @@ namespace _19___Project___DVLD.People
         {
             cbFilter.SelectedIndex = 1;
             mtxbSearch.Text = PersonID.ToString();
-
+            FindNow();
         }
         private void FindNow()
         {
@@ -70,7 +71,7 @@ namespace _19___Project___DVLD.People
                     break;
                 
                 case "National No.":
-                    ctrlPersonCard1.LoadPersonInfo(int.Parse(mtxbSearch.Text));
+                    ctrlPersonCard1.LoadPersonInfo(mtxbSearch.Text.Trim());
                     break;
 
                 default:
