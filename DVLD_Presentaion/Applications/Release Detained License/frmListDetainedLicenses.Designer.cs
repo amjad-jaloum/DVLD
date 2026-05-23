@@ -73,7 +73,7 @@
             this.MainHeaderPanel.Controls.Add(this.label1);
             this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainHeaderPanel.Location = new System.Drawing.Point(2, 2);
-            this.MainHeaderPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MainHeaderPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MainHeaderPanel.Name = "MainHeaderPanel";
             this.MainHeaderPanel.Size = new System.Drawing.Size(549, 45);
             this.MainHeaderPanel.TabIndex = 3;
@@ -83,21 +83,21 @@
             this.flowLayoutPanel1.Controls.Add(this.txtFilterValue);
             this.flowLayoutPanel1.Controls.Add(this.cbIsReleased);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(198, 22);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(239, 27);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // mtxbSearch
+            // txtFilterValue
             // 
             this.txtFilterValue.Location = new System.Drawing.Point(2, 2);
-            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtFilterValue.Name = "mtxbSearch";
+            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.Size = new System.Drawing.Size(116, 20);
             this.txtFilterValue.TabIndex = 5;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.mtxbSearch_TextChanged);
             // 
-            // cbStatus
+            // cbIsReleased
             // 
             this.cbIsReleased.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbIsReleased.FormattingEnabled = true;
@@ -107,19 +107,26 @@
             "No"});
             this.cbIsReleased.Location = new System.Drawing.Point(122, 2);
             this.cbIsReleased.Margin = new System.Windows.Forms.Padding(2, 2, 2, 4);
-            this.cbIsReleased.Name = "cbStatus";
+            this.cbIsReleased.Name = "cbIsReleased";
             this.cbIsReleased.Size = new System.Drawing.Size(105, 21);
             this.cbIsReleased.TabIndex = 4;
             this.cbIsReleased.Visible = false;
             this.cbIsReleased.SelectedIndexChanged += new System.EventHandler(this.cbIsReleased_SelectedIndexChanged);
             // 
-            // cbFilter
+            // cbFilterBy
             // 
             this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterBy.FormattingEnabled = true;
+            this.cbFilterBy.Items.AddRange(new object[] {
+            "None",
+            "Detain ID",
+            "Is Released",
+            "National No.",
+            "Full Name",
+            "Release Application ID"});
             this.cbFilterBy.Location = new System.Drawing.Point(59, 24);
-            this.cbFilterBy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbFilterBy.Name = "cbFilter";
+            this.cbFilterBy.Margin = new System.Windows.Forms.Padding(2);
+            this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(135, 21);
             this.cbFilterBy.TabIndex = 1;
             this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
@@ -144,7 +151,7 @@
             this.tlpMainHeader.Controls.Add(this.MainHeaderPanel, 0, 0);
             this.tlpMainHeader.Controls.Add(this.panel1, 1, 0);
             this.tlpMainHeader.Location = new System.Drawing.Point(2, 2);
-            this.tlpMainHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpMainHeader.Margin = new System.Windows.Forms.Padding(2);
             this.tlpMainHeader.Name = "tlpMainHeader";
             this.tlpMainHeader.RowCount = 1;
             this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -167,7 +174,7 @@
             this.BtnReleaseLicense.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnReleaseLicense.AutoSize = true;
             this.BtnReleaseLicense.Location = new System.Drawing.Point(34, 11);
-            this.BtnReleaseLicense.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnReleaseLicense.Margin = new System.Windows.Forms.Padding(2);
             this.BtnReleaseLicense.Name = "BtnReleaseLicense";
             this.BtnReleaseLicense.Size = new System.Drawing.Size(143, 30);
             this.BtnReleaseLicense.TabIndex = 4;
@@ -180,7 +187,7 @@
             this.btnDetainLicense.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDetainLicense.AutoSize = true;
             this.btnDetainLicense.Location = new System.Drawing.Point(181, 11);
-            this.btnDetainLicense.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDetainLicense.Margin = new System.Windows.Forms.Padding(2);
             this.btnDetainLicense.Name = "btnDetainLicense";
             this.btnDetainLicense.Size = new System.Drawing.Size(143, 30);
             this.btnDetainLicense.TabIndex = 3;
@@ -197,7 +204,7 @@
             this.tlpForm.Controls.Add(this.pictureBox1, 1, 0);
             this.tlpForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpForm.Location = new System.Drawing.Point(0, 0);
-            this.tlpForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpForm.Margin = new System.Windows.Forms.Padding(2);
             this.tlpForm.Name = "tlpForm";
             this.tlpForm.RowCount = 1;
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36F));
@@ -213,7 +220,7 @@
             this.tlpMain.Controls.Add(this.tplMainFooter, 0, 2);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(2, 2);
-            this.tlpMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpMain.Margin = new System.Windows.Forms.Padding(2);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 3;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
@@ -232,7 +239,7 @@
             this.dgvDetainedLicenses.ContextMenuStrip = this.cmsApplications;
             this.dgvDetainedLicenses.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDetainedLicenses.Location = new System.Drawing.Point(2, 55);
-            this.dgvDetainedLicenses.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvDetainedLicenses.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDetainedLicenses.MultiSelect = false;
             this.dgvDetainedLicenses.Name = "dgvDetainedLicenses";
             this.dgvDetainedLicenses.ReadOnly = true;
@@ -242,7 +249,7 @@
             this.dgvDetainedLicenses.Size = new System.Drawing.Size(885, 356);
             this.dgvDetainedLicenses.TabIndex = 2;
             // 
-            // contextMenuStrip1
+            // cmsApplications
             // 
             this.cmsApplications.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.cmsApplications.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -274,9 +281,9 @@
             this.showLicensesHistoryToolStripMenuItem.Text = "Show License History";
             this.showLicensesHistoryToolStripMenuItem.Click += new System.EventHandler(this.showLicensesHistoryToolStripMenuItem_Click);
             // 
-            // ReleaseDetainedLicenseStripMenuItem1
+            // releaseDetainedLicenseToolStripMenuItem
             // 
-            this.releaseDetainedLicenseToolStripMenuItem.Name = "ReleaseDetainedLicenseStripMenuItem1";
+            this.releaseDetainedLicenseToolStripMenuItem.Name = "releaseDetainedLicenseToolStripMenuItem";
             this.releaseDetainedLicenseToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.releaseDetainedLicenseToolStripMenuItem.Text = "Release Detained License";
             this.releaseDetainedLicenseToolStripMenuItem.Click += new System.EventHandler(this.ReleaseDetainedLicenseStripMenuItem1_Click);
@@ -290,7 +297,7 @@
             this.tplMainFooter.Controls.Add(this.plMainfooterLable, 0, 0);
             this.tplMainFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tplMainFooter.Location = new System.Drawing.Point(2, 415);
-            this.tplMainFooter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tplMainFooter.Margin = new System.Windows.Forms.Padding(2);
             this.tplMainFooter.Name = "tplMainFooter";
             this.tplMainFooter.RowCount = 1;
             this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -302,7 +309,7 @@
             // 
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose.Location = new System.Drawing.Point(746, 2);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(137, 45);
             this.btnClose.TabIndex = 0;
@@ -316,18 +323,18 @@
             this.plMainfooterLable.Controls.Add(this.lblRecordsNumber);
             this.plMainfooterLable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plMainfooterLable.Location = new System.Drawing.Point(2, 2);
-            this.plMainfooterLable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.plMainfooterLable.Margin = new System.Windows.Forms.Padding(2);
             this.plMainfooterLable.Name = "plMainfooterLable";
             this.plMainfooterLable.Size = new System.Drawing.Size(740, 45);
             this.plMainfooterLable.TabIndex = 1;
             // 
-            // lblRowsCountValue
+            // lblTotalRecords
             // 
             this.lblTotalRecords.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblTotalRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalRecords.Location = new System.Drawing.Point(79, 0);
             this.lblTotalRecords.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblTotalRecords.Name = "lblRowsCountValue";
+            this.lblTotalRecords.Name = "lblTotalRecords";
             this.lblTotalRecords.Padding = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.lblTotalRecords.Size = new System.Drawing.Size(66, 45);
             this.lblTotalRecords.TabIndex = 3;
@@ -350,9 +357,9 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::_19___Project___DVLD.Properties.Resources.papers;
             this.pictureBox1.Location = new System.Drawing.Point(913, 20);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(20);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(13, 13, 13, 13);
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(13);
             this.pictureBox1.Size = new System.Drawing.Size(159, 430);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
@@ -364,7 +371,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1092, 470);
             this.Controls.Add(this.tlpForm);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmListDetainedLicenses";

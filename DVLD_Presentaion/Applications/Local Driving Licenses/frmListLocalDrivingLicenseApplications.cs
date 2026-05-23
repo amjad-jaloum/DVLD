@@ -158,36 +158,7 @@ namespace _19___Project___DVLD.Driving_License_Services
 
             lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.Rows.Count.ToString();
         }
-        private void UpdateDataTableWithFilter()
-        {
-            if (!cbFilterBy.SelectedItem.ToString().Contains("None"))
-            {
-                string SearchValue = GetSearchValue();
-                dgvLocalDrivingLicenseApplications.DataSource = clsLocalDrivingLicenseApplication.GetDataTableWithQuery(cbFilterBy.SelectedItem.ToString(), SearchValue);
-                lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.RowCount.ToString();
-            }
-        }
-        private string GetSearchValue()
-        {
-            string SearchValue;
-            if (cbFilterBy.SelectedItem.ToString() == "Status")
-            {
-                if (cbStatus.SelectedItem.ToString() == "All")
-                    SearchValue = string.Empty;
-                else
-                    SearchValue = cbStatus.SelectedItem.ToString();
-            }
-            else
-            {
-                SearchValue = txtFilterValue.Text;
-            }
 
-            return SearchValue;
-        }
-        private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateDataTableWithFilter();
-        }
         private void cancelApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure do want to cancel this application?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)

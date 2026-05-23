@@ -130,12 +130,6 @@
     <Compile Include="Applications\International License\frmNewInternationalLicenseApplication.Designer.cs">
       <DependentUpon>frmNewInternationalLicenseApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licenses\frmShowLic.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Licenses\frmShowLic.Designer.cs">
-      <DependentUpon>frmShowLic.cs</DependentUpon>
-    </Compile>
     <Compile Include="Applications\International License\frmListInternationalLicensesApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,12 +219,6 @@
     </Compile>
     <Compile Include="People\Controls\ctrlPersonCardWithFilter.Designer.cs">
       <DependentUpon>ctrlPersonCardWithFilter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Applications\Renew Local License\ctrlShowLicenseInfoAndNewApplicationWithFilter.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Applications\Renew Local License\ctrlShowLicenseInfoAndNewApplicationWithFilter.Designer.cs">
-      <DependentUpon>ctrlShowLicenseInfoAndNewApplicationWithFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\Renew Local License\frmRenewLocalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
@@ -360,9 +348,6 @@
     <EmbeddedResource Include="Applications\International License\frmNewInternationalLicenseApplication.resx">
       <DependentUpon>frmNewInternationalLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Licenses\frmShowLic.resx">
-      <DependentUpon>frmShowLic.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Applications\International License\frmListInternationalLicensesApplication.resx">
       <DependentUpon>frmListInternationalLicensesApplication.cs</DependentUpon>
     </EmbeddedResource>
@@ -404,9 +389,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="People\Controls\ctrlPersonCardWithFilter.resx">
       <DependentUpon>ctrlPersonCardWithFilter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Applications\Renew Local License\ctrlShowLicenseInfoAndNewApplicationWithFilter.resx">
-      <DependentUpon>ctrlShowLicenseInfoAndNewApplicationWithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Renew Local License\frmRenewLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmRenewLocalDrivingLicenseApplication.cs</DependentUpon>

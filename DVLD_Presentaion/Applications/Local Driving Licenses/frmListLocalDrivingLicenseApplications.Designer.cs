@@ -53,7 +53,6 @@
             this.MainHeaderPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtFilterValue = new System.Windows.Forms.MaskedTextBox();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnNewLocalLicense = new System.Windows.Forms.Button();
@@ -84,7 +83,7 @@
             this.tlpForm.Controls.Add(this.pictureBox1, 1, 0);
             this.tlpForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpForm.Location = new System.Drawing.Point(0, 0);
-            this.tlpForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpForm.Margin = new System.Windows.Forms.Padding(2);
             this.tlpForm.Name = "tlpForm";
             this.tlpForm.RowCount = 1;
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36F));
@@ -100,7 +99,7 @@
             this.tlpMain.Controls.Add(this.tplMainFooter, 0, 2);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(2, 2);
-            this.tlpMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpMain.Margin = new System.Windows.Forms.Padding(2);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 3;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
@@ -119,7 +118,7 @@
             this.dgvLocalDrivingLicenseApplications.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvLocalDrivingLicenseApplications.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLocalDrivingLicenseApplications.Location = new System.Drawing.Point(2, 55);
-            this.dgvLocalDrivingLicenseApplications.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvLocalDrivingLicenseApplications.Margin = new System.Windows.Forms.Padding(2);
             this.dgvLocalDrivingLicenseApplications.MultiSelect = false;
             this.dgvLocalDrivingLicenseApplications.Name = "dgvLocalDrivingLicenseApplications";
             this.dgvLocalDrivingLicenseApplications.ReadOnly = true;
@@ -147,7 +146,7 @@
             this.toolStripSeparator3,
             this.showPersonLicensesHistoryToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(242, 232);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(242, 210);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // showApplicationDetailsToolStripMenuItem
@@ -157,16 +156,16 @@
             this.showApplicationDetailsToolStripMenuItem.Text = "Show Application Details";
             this.showApplicationDetailsToolStripMenuItem.Click += new System.EventHandler(this.showApplicationDetailsToolStripMenuItem_Click);
             // 
-            // editApplicationToolStripMenuItem
+            // editToolStripMenuItem
             // 
-            this.editToolStripMenuItem.Name = "editApplicationToolStripMenuItem";
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.editToolStripMenuItem.Text = "Edit Application";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editApplicationToolStripMenuItem_Click);
             // 
-            // deleteApplicationToolStripMenuItem
+            // DeleteApplicationToolStripMenuItem
             // 
-            this.DeleteApplicationToolStripMenuItem.Name = "deleteApplicationToolStripMenuItem";
+            this.DeleteApplicationToolStripMenuItem.Name = "DeleteApplicationToolStripMenuItem";
             this.DeleteApplicationToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.DeleteApplicationToolStripMenuItem.Text = "Delete Application";
             this.DeleteApplicationToolStripMenuItem.Click += new System.EventHandler(this.deleteApplicationToolStripMenuItem_Click);
@@ -176,9 +175,9 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(238, 6);
             // 
-            // cancelApplicationToolStripMenuItem
+            // CancelApplicaitonToolStripMenuItem
             // 
-            this.CancelApplicaitonToolStripMenuItem.Name = "cancelApplicationToolStripMenuItem";
+            this.CancelApplicaitonToolStripMenuItem.Name = "CancelApplicaitonToolStripMenuItem";
             this.CancelApplicaitonToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.CancelApplicaitonToolStripMenuItem.Text = "Cancel Application";
             this.CancelApplicaitonToolStripMenuItem.Click += new System.EventHandler(this.cancelApplicationToolStripMenuItem_Click);
@@ -188,36 +187,36 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(238, 6);
             // 
-            // schedulTestToolStripMenuItem
+            // ScheduleTestsMenue
             // 
             this.ScheduleTestsMenue.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.scheduleVisionTestToolStripMenuItem,
             this.scheduleWrittenTestToolStripMenuItem,
             this.scheduleStreetTestToolStripMenuItem});
-            this.ScheduleTestsMenue.Name = "schedulTestToolStripMenuItem";
+            this.ScheduleTestsMenue.Name = "ScheduleTestsMenue";
             this.ScheduleTestsMenue.Size = new System.Drawing.Size(241, 22);
             this.ScheduleTestsMenue.Text = "Schedule Test";
             this.ScheduleTestsMenue.Click += new System.EventHandler(this.schedulTestToolStripMenuItem_Click);
             // 
-            // visionTestToolStripMenuItem
+            // scheduleVisionTestToolStripMenuItem
             // 
-            this.scheduleVisionTestToolStripMenuItem.Name = "visionTestToolStripMenuItem";
+            this.scheduleVisionTestToolStripMenuItem.Name = "scheduleVisionTestToolStripMenuItem";
             this.scheduleVisionTestToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.scheduleVisionTestToolStripMenuItem.Text = "Vision Test";
             this.scheduleVisionTestToolStripMenuItem.Click += new System.EventHandler(this.visionTestToolStripMenuItem_Click);
             // 
-            // writtenTestToolStripMenuItem
+            // scheduleWrittenTestToolStripMenuItem
             // 
             this.scheduleWrittenTestToolStripMenuItem.Enabled = false;
-            this.scheduleWrittenTestToolStripMenuItem.Name = "writtenTestToolStripMenuItem";
+            this.scheduleWrittenTestToolStripMenuItem.Name = "scheduleWrittenTestToolStripMenuItem";
             this.scheduleWrittenTestToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.scheduleWrittenTestToolStripMenuItem.Text = "Written Test";
             this.scheduleWrittenTestToolStripMenuItem.Click += new System.EventHandler(this.writtenTestToolStripMenuItem_Click);
             // 
-            // streetTestToolStripMenuItem
+            // scheduleStreetTestToolStripMenuItem
             // 
             this.scheduleStreetTestToolStripMenuItem.Enabled = false;
-            this.scheduleStreetTestToolStripMenuItem.Name = "streetTestToolStripMenuItem";
+            this.scheduleStreetTestToolStripMenuItem.Name = "scheduleStreetTestToolStripMenuItem";
             this.scheduleStreetTestToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.scheduleStreetTestToolStripMenuItem.Text = "Street Test";
             this.scheduleStreetTestToolStripMenuItem.Click += new System.EventHandler(this.streetTestToolStripMenuItem_Click);
@@ -227,10 +226,10 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(238, 6);
             // 
-            // IssueDrivingLicense
+            // issueDrivingLicenseFirstTimeToolStripMenuItem
             // 
             this.issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = false;
-            this.issueDrivingLicenseFirstTimeToolStripMenuItem.Name = "IssueDrivingLicense";
+            this.issueDrivingLicenseFirstTimeToolStripMenuItem.Name = "issueDrivingLicenseFirstTimeToolStripMenuItem";
             this.issueDrivingLicenseFirstTimeToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.issueDrivingLicenseFirstTimeToolStripMenuItem.Text = "Issue Driving License (first time)";
             this.issueDrivingLicenseFirstTimeToolStripMenuItem.Click += new System.EventHandler(this.IssueDrivingLicense_Click);
@@ -269,7 +268,7 @@
             this.tlpMainHeader.Controls.Add(this.MainHeaderPanel, 0, 0);
             this.tlpMainHeader.Controls.Add(this.btnNewLocalLicense, 1, 0);
             this.tlpMainHeader.Location = new System.Drawing.Point(2, 2);
-            this.tlpMainHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpMainHeader.Margin = new System.Windows.Forms.Padding(2);
             this.tlpMainHeader.Name = "tlpMainHeader";
             this.tlpMainHeader.RowCount = 1;
             this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -283,7 +282,7 @@
             this.MainHeaderPanel.Controls.Add(this.label1);
             this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainHeaderPanel.Location = new System.Drawing.Point(2, 2);
-            this.MainHeaderPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MainHeaderPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MainHeaderPanel.Name = "MainHeaderPanel";
             this.MainHeaderPanel.Size = new System.Drawing.Size(679, 45);
             this.MainHeaderPanel.TabIndex = 3;
@@ -291,40 +290,33 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.txtFilterValue);
-            this.flowLayoutPanel1.Controls.Add(this.cbStatus);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(197, 22);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(228, 31);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(249, 31);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // txtFilterValue
             // 
             this.txtFilterValue.Location = new System.Drawing.Point(2, 2);
-            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(2);
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.Size = new System.Drawing.Size(116, 20);
             this.txtFilterValue.TabIndex = 5;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.mtxbSearch_TextChanged);
             // 
-            // cbStatus
-            // 
-            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(2, 26);
-            this.cbStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 4);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(105, 21);
-            this.cbStatus.TabIndex = 4;
-            this.cbStatus.Visible = false;
-            this.cbStatus.SelectedIndexChanged += new System.EventHandler(this.cbStatus_SelectedIndexChanged);
-            // 
             // cbFilterBy
             // 
             this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterBy.FormattingEnabled = true;
+            this.cbFilterBy.Items.AddRange(new object[] {
+            "None",
+            "L.D.L.AppID",
+            "National No.",
+            "Full Name",
+            "Status"});
             this.cbFilterBy.Location = new System.Drawing.Point(59, 24);
-            this.cbFilterBy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbFilterBy.Margin = new System.Windows.Forms.Padding(2);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(135, 21);
             this.cbFilterBy.TabIndex = 1;
@@ -346,7 +338,7 @@
             this.btnNewLocalLicense.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNewLocalLicense.AutoSize = true;
             this.btnNewLocalLicense.Location = new System.Drawing.Point(728, 17);
-            this.btnNewLocalLicense.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNewLocalLicense.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewLocalLicense.Name = "btnNewLocalLicense";
             this.btnNewLocalLicense.Size = new System.Drawing.Size(155, 30);
             this.btnNewLocalLicense.TabIndex = 2;
@@ -363,7 +355,7 @@
             this.tplMainFooter.Controls.Add(this.plMainfooterLable, 0, 0);
             this.tplMainFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tplMainFooter.Location = new System.Drawing.Point(2, 415);
-            this.tplMainFooter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tplMainFooter.Margin = new System.Windows.Forms.Padding(2);
             this.tplMainFooter.Name = "tplMainFooter";
             this.tplMainFooter.RowCount = 1;
             this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -375,7 +367,7 @@
             // 
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose.Location = new System.Drawing.Point(746, 2);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(137, 45);
             this.btnClose.TabIndex = 0;
@@ -389,7 +381,7 @@
             this.plMainfooterLable.Controls.Add(this.lblRecordsNumber);
             this.plMainfooterLable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plMainfooterLable.Location = new System.Drawing.Point(2, 2);
-            this.plMainfooterLable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.plMainfooterLable.Margin = new System.Windows.Forms.Padding(2);
             this.plMainfooterLable.Name = "plMainfooterLable";
             this.plMainfooterLable.Size = new System.Drawing.Size(740, 45);
             this.plMainfooterLable.TabIndex = 1;
@@ -423,9 +415,9 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::_19___Project___DVLD.Properties.Resources.papers;
             this.pictureBox1.Location = new System.Drawing.Point(913, 20);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(20);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(13, 13, 13, 13);
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(13);
             this.pictureBox1.Size = new System.Drawing.Size(159, 430);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
@@ -437,7 +429,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1092, 470);
             this.Controls.Add(this.tlpForm);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmListLocalDrivingLicenseApplications";
@@ -478,7 +470,6 @@
         private System.Windows.Forms.Panel MainHeaderPanel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.MaskedTextBox txtFilterValue;
-        private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;

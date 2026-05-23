@@ -36,7 +36,6 @@
             this.MainHeaderPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtFilterValue = new System.Windows.Forms.MaskedTextBox();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tplMainFooter = new System.Windows.Forms.TableLayoutPanel();
@@ -144,11 +143,10 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.txtFilterValue);
-            this.flowLayoutPanel1.Controls.Add(this.cbStatus);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(197, 22);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(228, 31);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(253, 31);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // txtFilterValue
@@ -159,17 +157,6 @@
             this.txtFilterValue.Size = new System.Drawing.Size(116, 20);
             this.txtFilterValue.TabIndex = 5;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.mtxbSearch_TextChanged);
-            // 
-            // cbStatus
-            // 
-            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(2, 26);
-            this.cbStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 4);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(105, 21);
-            this.cbStatus.TabIndex = 4;
-            this.cbStatus.Visible = false;
             // 
             // cbFilterBy
             // 
@@ -281,7 +268,7 @@
             this.toolStripSeparator2,
             this.showPersonLicenseHistoryToolStripMenuItem});
             this.cmsDrivers.Name = "contextMenuStrip1";
-            this.cmsDrivers.Size = new System.Drawing.Size(226, 76);
+            this.cmsDrivers.Size = new System.Drawing.Size(226, 54);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -343,7 +330,6 @@
         private System.Windows.Forms.Panel MainHeaderPanel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.MaskedTextBox txtFilterValue;
-        private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tplMainFooter;

@@ -68,7 +68,7 @@
             this.tlpForm.Controls.Add(this.pictureBox1, 1, 0);
             this.tlpForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpForm.Location = new System.Drawing.Point(0, 0);
-            this.tlpForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpForm.Margin = new System.Windows.Forms.Padding(2);
             this.tlpForm.Name = "tlpForm";
             this.tlpForm.RowCount = 1;
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36F));
@@ -84,7 +84,7 @@
             this.tlpMain.Controls.Add(this.tplMainFooter, 0, 2);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(2, 2);
-            this.tlpMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpMain.Margin = new System.Windows.Forms.Padding(2);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 3;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
@@ -101,7 +101,7 @@
             this.dgvPeople.ContextMenuStrip = this.cmsPersonMenu;
             this.dgvPeople.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPeople.Location = new System.Drawing.Point(2, 55);
-            this.dgvPeople.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvPeople.Margin = new System.Windows.Forms.Padding(2);
             this.dgvPeople.MultiSelect = false;
             this.dgvPeople.Name = "dgvPeople";
             this.dgvPeople.ReadOnly = true;
@@ -151,7 +151,7 @@
             this.tlpMainHeader.Controls.Add(this.MainHeaderPanel, 0, 0);
             this.tlpMainHeader.Controls.Add(this.btnAddNewPerson, 1, 0);
             this.tlpMainHeader.Location = new System.Drawing.Point(2, 2);
-            this.tlpMainHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpMainHeader.Margin = new System.Windows.Forms.Padding(2);
             this.tlpMainHeader.Name = "tlpMainHeader";
             this.tlpMainHeader.RowCount = 1;
             this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -165,7 +165,7 @@
             this.MainHeaderPanel.Controls.Add(this.label1);
             this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainHeaderPanel.Location = new System.Drawing.Point(2, 2);
-            this.MainHeaderPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MainHeaderPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MainHeaderPanel.Name = "MainHeaderPanel";
             this.MainHeaderPanel.Size = new System.Drawing.Size(439, 45);
             this.MainHeaderPanel.TabIndex = 1;
@@ -174,7 +174,7 @@
             // 
             this.mtxbSearch.BeepOnError = true;
             this.mtxbSearch.Location = new System.Drawing.Point(243, 25);
-            this.mtxbSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mtxbSearch.Margin = new System.Windows.Forms.Padding(2);
             this.mtxbSearch.Name = "mtxbSearch";
             this.mtxbSearch.Size = new System.Drawing.Size(195, 20);
             this.mtxbSearch.TabIndex = 2;
@@ -186,8 +186,20 @@
             // 
             this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Items.AddRange(new object[] {
+            "None",
+            "Person ID",
+            "National No.",
+            "First Name",
+            "Second Name",
+            "Third Name",
+            "Last Name",
+            "Nationality",
+            "Gendor",
+            "Phone",
+            "Email"});
             this.cbFilter.Location = new System.Drawing.Point(59, 24);
-            this.cbFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbFilter.Margin = new System.Windows.Forms.Padding(2);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(181, 21);
             this.cbFilter.TabIndex = 1;
@@ -208,7 +220,7 @@
             // 
             this.btnAddNewPerson.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnAddNewPerson.Location = new System.Drawing.Point(544, 2);
-            this.btnAddNewPerson.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddNewPerson.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddNewPerson.Name = "btnAddNewPerson";
             this.btnAddNewPerson.Size = new System.Drawing.Size(99, 45);
             this.btnAddNewPerson.TabIndex = 2;
@@ -225,7 +237,7 @@
             this.tplMainFooter.Controls.Add(this.plMainfooterLable, 0, 0);
             this.tplMainFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tplMainFooter.Location = new System.Drawing.Point(2, 299);
-            this.tplMainFooter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tplMainFooter.Margin = new System.Windows.Forms.Padding(2);
             this.tplMainFooter.Name = "tplMainFooter";
             this.tplMainFooter.RowCount = 1;
             this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -237,7 +249,7 @@
             // 
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose.Location = new System.Drawing.Point(544, 2);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(99, 45);
             this.btnClose.TabIndex = 0;
@@ -251,7 +263,7 @@
             this.plMainfooterLable.Controls.Add(this.lblRecordsNumber);
             this.plMainfooterLable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plMainfooterLable.Location = new System.Drawing.Point(2, 2);
-            this.plMainfooterLable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.plMainfooterLable.Margin = new System.Windows.Forms.Padding(2);
             this.plMainfooterLable.Name = "plMainfooterLable";
             this.plMainfooterLable.Size = new System.Drawing.Size(538, 45);
             this.plMainfooterLable.TabIndex = 1;
@@ -285,9 +297,9 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::_19___Project___DVLD.Properties.Resources.user_sttings;
             this.pictureBox1.Location = new System.Drawing.Point(673, 20);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(20);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(13, 13, 13, 13);
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(13);
             this.pictureBox1.Size = new System.Drawing.Size(159, 314);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
@@ -300,7 +312,7 @@
             this.ClientSize = new System.Drawing.Size(852, 354);
             this.ControlBox = false;
             this.Controls.Add(this.tlpForm);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmListPeople";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage People";
