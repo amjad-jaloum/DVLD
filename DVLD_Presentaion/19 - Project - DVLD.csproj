@@ -106,12 +106,6 @@
     <Compile Include="Licenses\Local Licenses\Controls\ctrlDriverLicenseInfo.Designer.cs">
       <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licenses\Detain License\ctrlShowLicenseAndDetainInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Licenses\Detain License\ctrlShowLicenseAndDetainInfo.Designer.cs">
-      <DependentUpon>ctrlShowLicenseAndDetainInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Licenses\Detain License\frmDetainLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,12 +123,6 @@
     </Compile>
     <Compile Include="Applications\Release Detained License\frmReleaseDetainedLicenseApplication.Designer.cs">
       <DependentUpon>frmReleaseDetainedLicenseApplication.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Applications\International License\ctrlDriverInternationalLicenseInfoWithFilter.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Applications\International License\ctrlDriverInternationalLicenseInfoWithFilter.Designer.cs">
-      <DependentUpon>ctrlDriverInternationalLicenseInfoWithFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\International License\frmNewInternationalLicenseApplication.cs">
       <SubType>Form</SubType>
@@ -360,9 +348,6 @@
     <EmbeddedResource Include="Licenses\Local Licenses\Controls\ctrlDriverLicenseInfo.resx">
       <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Licenses\Detain License\ctrlShowLicenseAndDetainInfo.resx">
-      <DependentUpon>ctrlShowLicenseAndDetainInfo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Detain License\frmDetainLicenseApplication.resx">
       <DependentUpon>frmDetainLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
@@ -371,9 +356,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Release Detained License\frmReleaseDetainedLicenseApplication.resx">
       <DependentUpon>frmReleaseDetainedLicenseApplication.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Applications\International License\ctrlDriverInternationalLicenseInfoWithFilter.resx">
-      <DependentUpon>ctrlDriverInternationalLicenseInfoWithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\International License\frmNewInternationalLicenseApplication.resx">
       <DependentUpon>frmNewInternationalLicenseApplication.cs</DependentUpon>
