@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.MainHeaderPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.mtxbSearch = new System.Windows.Forms.MaskedTextBox();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
-            this.cbFilter = new System.Windows.Forms.ComboBox();
+            this.txtFilterValue = new System.Windows.Forms.MaskedTextBox();
+            this.cbIsReleased = new System.Windows.Forms.ComboBox();
+            this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tlpMainHeader = new System.Windows.Forms.TableLayoutPanel();
             this.btnNewInternationalLicense = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@
             this.tplMainFooter = new System.Windows.Forms.TableLayoutPanel();
             this.btnClose = new System.Windows.Forms.Button();
             this.plMainfooterLable = new System.Windows.Forms.Panel();
-            this.lblRowsCountValue = new System.Windows.Forms.Label();
+            this.lblInternationalLicensesRecords = new System.Windows.Forms.Label();
             this.lblRecordsNumber = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MainHeaderPanel.SuspendLayout();
@@ -65,53 +65,68 @@
             // MainHeaderPanel
             // 
             this.MainHeaderPanel.Controls.Add(this.flowLayoutPanel1);
-            this.MainHeaderPanel.Controls.Add(this.cbFilter);
+            this.MainHeaderPanel.Controls.Add(this.cbFilterBy);
             this.MainHeaderPanel.Controls.Add(this.label1);
             this.MainHeaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainHeaderPanel.Location = new System.Drawing.Point(2, 2);
-            this.MainHeaderPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MainHeaderPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MainHeaderPanel.Name = "MainHeaderPanel";
             this.MainHeaderPanel.Size = new System.Drawing.Size(679, 45);
             this.MainHeaderPanel.TabIndex = 3;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.mtxbSearch);
-            this.flowLayoutPanel1.Controls.Add(this.cbStatus);
+            this.flowLayoutPanel1.Controls.Add(this.txtFilterValue);
+            this.flowLayoutPanel1.Controls.Add(this.cbIsReleased);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(197, 22);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(228, 31);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(244, 31);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // mtxbSearch
+            // txtFilterValue
             // 
-            this.mtxbSearch.Location = new System.Drawing.Point(2, 2);
-            this.mtxbSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.mtxbSearch.Name = "mtxbSearch";
-            this.mtxbSearch.Size = new System.Drawing.Size(116, 20);
-            this.mtxbSearch.TabIndex = 5;
+            this.txtFilterValue.Location = new System.Drawing.Point(2, 2);
+            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFilterValue.Name = "txtFilterValue";
+            this.txtFilterValue.Size = new System.Drawing.Size(116, 20);
+            this.txtFilterValue.TabIndex = 5;
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
-            // cbStatus
+            // cbIsReleased
             // 
-            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(2, 26);
-            this.cbStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 4);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(105, 21);
-            this.cbStatus.TabIndex = 4;
-            this.cbStatus.Visible = false;
+            this.cbIsReleased.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbIsReleased.FormattingEnabled = true;
+            this.cbIsReleased.Items.AddRange(new object[] {
+            "All",
+            "Yes",
+            "No"});
+            this.cbIsReleased.Location = new System.Drawing.Point(122, 2);
+            this.cbIsReleased.Margin = new System.Windows.Forms.Padding(2, 2, 2, 4);
+            this.cbIsReleased.Name = "cbIsReleased";
+            this.cbIsReleased.Size = new System.Drawing.Size(105, 21);
+            this.cbIsReleased.TabIndex = 4;
+            this.cbIsReleased.Visible = false;
+            this.cbIsReleased.SelectedIndexChanged += new System.EventHandler(this.cbIsReleased_SelectedIndexChanged);
             // 
-            // cbFilter
+            // cbFilterBy
             // 
-            this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Location = new System.Drawing.Point(59, 24);
-            this.cbFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(135, 21);
-            this.cbFilter.TabIndex = 1;
+            this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterBy.FormattingEnabled = true;
+            this.cbFilterBy.Items.AddRange(new object[] {
+            "None",
+            "International License ID",
+            "Application ID",
+            "Driver ID",
+            "Local License ID",
+            "Is Active"});
+            this.cbFilterBy.Location = new System.Drawing.Point(59, 24);
+            this.cbFilterBy.Margin = new System.Windows.Forms.Padding(2);
+            this.cbFilterBy.Name = "cbFilterBy";
+            this.cbFilterBy.Size = new System.Drawing.Size(135, 21);
+            this.cbFilterBy.TabIndex = 1;
+            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -133,7 +148,7 @@
             this.tlpMainHeader.Controls.Add(this.MainHeaderPanel, 0, 0);
             this.tlpMainHeader.Controls.Add(this.btnNewInternationalLicense, 1, 0);
             this.tlpMainHeader.Location = new System.Drawing.Point(2, 2);
-            this.tlpMainHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpMainHeader.Margin = new System.Windows.Forms.Padding(2);
             this.tlpMainHeader.Name = "tlpMainHeader";
             this.tlpMainHeader.RowCount = 1;
             this.tlpMainHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -145,12 +160,13 @@
             this.btnNewInternationalLicense.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNewInternationalLicense.AutoSize = true;
             this.btnNewInternationalLicense.Location = new System.Drawing.Point(685, 17);
-            this.btnNewInternationalLicense.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNewInternationalLicense.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewInternationalLicense.Name = "btnNewInternationalLicense";
             this.btnNewInternationalLicense.Size = new System.Drawing.Size(198, 30);
             this.btnNewInternationalLicense.TabIndex = 2;
             this.btnNewInternationalLicense.Text = "New International License ";
             this.btnNewInternationalLicense.UseVisualStyleBackColor = true;
+            this.btnNewInternationalLicense.Click += new System.EventHandler(this.btnNewInternationalLicense_Click);
             // 
             // tlpForm
             // 
@@ -161,7 +177,7 @@
             this.tlpForm.Controls.Add(this.pictureBox1, 1, 0);
             this.tlpForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpForm.Location = new System.Drawing.Point(0, 0);
-            this.tlpForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpForm.Margin = new System.Windows.Forms.Padding(2);
             this.tlpForm.Name = "tlpForm";
             this.tlpForm.RowCount = 1;
             this.tlpForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36F));
@@ -177,7 +193,7 @@
             this.tlpMain.Controls.Add(this.tplMainFooter, 0, 2);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(2, 2);
-            this.tlpMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlpMain.Margin = new System.Windows.Forms.Padding(2);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 3;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
@@ -196,7 +212,7 @@
             this.dgvInternationalLicenses.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvInternationalLicenses.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvInternationalLicenses.Location = new System.Drawing.Point(2, 55);
-            this.dgvInternationalLicenses.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvInternationalLicenses.Margin = new System.Windows.Forms.Padding(2);
             this.dgvInternationalLicenses.MultiSelect = false;
             this.dgvInternationalLicenses.Name = "dgvInternationalLicenses";
             this.dgvInternationalLicenses.ReadOnly = true;
@@ -214,7 +230,7 @@
             this.showLicensesHistoryToolStripMenuItem,
             this.showPersonDetailsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(186, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(186, 70);
             // 
             // showLicenseDetailsToolStripMenuItem
             // 
@@ -246,7 +262,7 @@
             this.tplMainFooter.Controls.Add(this.plMainfooterLable, 0, 0);
             this.tplMainFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tplMainFooter.Location = new System.Drawing.Point(2, 415);
-            this.tplMainFooter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tplMainFooter.Margin = new System.Windows.Forms.Padding(2);
             this.tplMainFooter.Name = "tplMainFooter";
             this.tplMainFooter.RowCount = 1;
             this.tplMainFooter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -258,7 +274,7 @@
             // 
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose.Location = new System.Drawing.Point(746, 2);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(137, 45);
             this.btnClose.TabIndex = 0;
@@ -268,26 +284,26 @@
             // 
             // plMainfooterLable
             // 
-            this.plMainfooterLable.Controls.Add(this.lblRowsCountValue);
+            this.plMainfooterLable.Controls.Add(this.lblInternationalLicensesRecords);
             this.plMainfooterLable.Controls.Add(this.lblRecordsNumber);
             this.plMainfooterLable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plMainfooterLable.Location = new System.Drawing.Point(2, 2);
-            this.plMainfooterLable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.plMainfooterLable.Margin = new System.Windows.Forms.Padding(2);
             this.plMainfooterLable.Name = "plMainfooterLable";
             this.plMainfooterLable.Size = new System.Drawing.Size(740, 45);
             this.plMainfooterLable.TabIndex = 1;
             // 
-            // lblRowsCountValue
+            // lblInternationalLicensesRecords
             // 
-            this.lblRowsCountValue.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblRowsCountValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRowsCountValue.Location = new System.Drawing.Point(79, 0);
-            this.lblRowsCountValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRowsCountValue.Name = "lblRowsCountValue";
-            this.lblRowsCountValue.Padding = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.lblRowsCountValue.Size = new System.Drawing.Size(66, 45);
-            this.lblRowsCountValue.TabIndex = 3;
-            this.lblRowsCountValue.Text = "### ";
+            this.lblInternationalLicensesRecords.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblInternationalLicensesRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInternationalLicensesRecords.Location = new System.Drawing.Point(79, 0);
+            this.lblInternationalLicensesRecords.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblInternationalLicensesRecords.Name = "lblInternationalLicensesRecords";
+            this.lblInternationalLicensesRecords.Padding = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.lblInternationalLicensesRecords.Size = new System.Drawing.Size(66, 45);
+            this.lblInternationalLicensesRecords.TabIndex = 3;
+            this.lblInternationalLicensesRecords.Text = "### ";
             // 
             // lblRecordsNumber
             // 
@@ -306,24 +322,24 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::_19___Project___DVLD.Properties.Resources.papers;
             this.pictureBox1.Location = new System.Drawing.Point(913, 20);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(20);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(13, 13, 13, 13);
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(13);
             this.pictureBox1.Size = new System.Drawing.Size(159, 430);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // frmManageInternationalDrivingLicensesApplications
+            // frmListInternationalLicensesApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1092, 470);
             this.Controls.Add(this.tlpForm);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmManageInternationalDrivingLicensesApplications";
+            this.Name = "frmListInternationalLicensesApplication";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage International Driving License Applications";
@@ -349,9 +365,9 @@
 
         private System.Windows.Forms.Panel MainHeaderPanel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.MaskedTextBox mtxbSearch;
-        private System.Windows.Forms.ComboBox cbStatus;
-        private System.Windows.Forms.ComboBox cbFilter;
+        private System.Windows.Forms.MaskedTextBox txtFilterValue;
+        private System.Windows.Forms.ComboBox cbIsReleased;
+        private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tlpMainHeader;
         private System.Windows.Forms.Button btnNewInternationalLicense;
@@ -361,7 +377,7 @@
         private System.Windows.Forms.TableLayoutPanel tplMainFooter;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel plMainfooterLable;
-        private System.Windows.Forms.Label lblRowsCountValue;
+        private System.Windows.Forms.Label lblInternationalLicensesRecords;
         private System.Windows.Forms.Label lblRecordsNumber;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
