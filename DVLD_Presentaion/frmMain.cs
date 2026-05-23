@@ -35,13 +35,6 @@ namespace _19___Project___DVLD
             PeopleForm.ShowDialog();
         }
 
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            clsGlobal.CurrentUser = null;
-            _frmLogin.Show();
-            Close();
-        }
-
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListUsers frmManageUsers = new frmListUsers();
@@ -153,7 +146,13 @@ namespace _19___Project___DVLD
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             clsGlobal.CurrentUser = null;
-            _frmLogin.Close();
+            _frmLogin.Show();
+        }
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsGlobal.CurrentUser = null;
+            _frmLogin.Show();
+            Close();
         }
 
         private void frmMain_KeyDown(object sender, KeyEventArgs e)

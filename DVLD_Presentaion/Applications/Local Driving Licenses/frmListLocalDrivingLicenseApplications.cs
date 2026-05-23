@@ -184,7 +184,7 @@ namespace _19___Project___DVLD.Driving_License_Services
             frmManageLocalDrivingLicenseApplications_Load(null, null);
 
         }
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        private void cmsApplications_Opening(object sender, CancelEventArgs e)
         {
             int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
             clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication =
@@ -232,6 +232,8 @@ namespace _19___Project___DVLD.Driving_License_Services
                 scheduleStreetTestToolStripMenuItem.Enabled = PassedVisionTest && PassedWrittenTest && !PassedStreetTest;
 
             }
+
+
 
         }
         private void IssueDrivingLicense_Click(object sender, EventArgs e)

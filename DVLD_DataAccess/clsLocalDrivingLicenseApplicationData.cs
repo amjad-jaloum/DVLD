@@ -963,7 +963,9 @@ namespace DVLD_DataAccess
 
             string query = @" SELECT top 1 TestResult
                             FROM LocalDrivingLicenseApplications INNER JOIN
-                                 TestAppointments ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID                            WHERE
+                                 TestAppointments ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID INNER JOIN
+                                 Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID
+                            WHERE
                             (LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID) 
                             AND(TestAppointments.TestTypeID = @TestTypeID)
                             ORDER BY TestAppointments.TestAppointmentID desc";
