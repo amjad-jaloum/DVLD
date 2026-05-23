@@ -284,8 +284,8 @@
             // 
             // ctrlDriverLicenseInfoWithFilter1
             // 
-            this.ctrlDriverLicenseInfoWithFilter1.FilterEnabled = false;
-            this.ctrlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(32, 33);
+            this.ctrlDriverLicenseInfoWithFilter1.FilterEnabled = true;
+            this.ctrlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(32, 34);
             this.ctrlDriverLicenseInfoWithFilter1.Name = "ctrlDriverLicenseInfoWithFilter1";
             this.ctrlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(893, 468);
             this.ctrlDriverLicenseInfoWithFilter1.TabIndex = 19;
