@@ -1,4 +1,6 @@
-﻿namespace _19___Project___DVLD.Licenses.Local_Licenses.Controls
+﻿using _19___Project___DVLD.Driving_License_Services;
+
+namespace _19___Project___DVLD.Licenses.Local_Licenses.Controls
 {
     partial class ctrlDriverLicenseInfoWithFilter
     {
@@ -79,6 +81,8 @@
             this.txtLicenseID.Name = "txtLicenseID";
             this.txtLicenseID.Size = new System.Drawing.Size(611, 22);
             this.txtLicenseID.TabIndex = 17;
+            this.txtLicenseID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLicenseID_KeyPress);
+            this.txtLicenseID.Validating += new System.ComponentModel.CancelEventHandler(this.txtLicenseID_Validating);
             // 
             // label1
             // 
@@ -111,7 +115,7 @@
 
         #endregion
 
-        private Driving_License_Services.ctrlDriverLicenseInfo ctrlDriverLicenseInfo1;
+        private ctrlDriverLicenseInfo ctrlDriverLicenseInfo1;
         private System.Windows.Forms.GroupBox gbFilters;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox txtLicenseID;

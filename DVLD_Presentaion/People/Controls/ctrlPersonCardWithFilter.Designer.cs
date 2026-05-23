@@ -93,6 +93,7 @@
             this.mtxbSearch.Size = new System.Drawing.Size(223, 29);
             this.mtxbSearch.TabIndex = 5;
             this.mtxbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+            this.mtxbSearch.Validating += new System.ComponentModel.CancelEventHandler(this.txtFilterValue_Validating);
             // 
             // cbFilter
             // 
@@ -128,6 +129,7 @@
             this.Name = "ctrlPersonCardWithFilter";
             this.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Size = new System.Drawing.Size(689, 403);
+            this.Click += new System.EventHandler(this.ctrlPersonDetailWithFitler_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();

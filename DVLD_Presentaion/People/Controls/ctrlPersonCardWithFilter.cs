@@ -128,11 +128,6 @@ namespace _19___Project___DVLD.People
             //    }
             //}
         }
-        private void LoadPersonDetailsToControl(clsPerson person, EventArgs e)
-        {
-            ctrlPersonCard1._Person = person;
-            ctrlPersonCard1.ctrlShowPersonDetails_Load(ctrlPersonCard1, e);
-        }
         private void btnAddPerson_Click(object sender, EventArgs e)
         {
             frmAddUpdatePerson frm = new frmAddUpdatePerson();
