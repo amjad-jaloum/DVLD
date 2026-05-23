@@ -15,161 +15,168 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
 {
     public partial class frmListDetainedLicenses : Form
     {
+        private DataTable _dtDetainedLicenses;
+
         public frmListDetainedLicenses()
         {
             InitializeComponent();
         }
 
-        private void frmManageDetainedLicenses_Load(object sender, EventArgs e)
+        private void frmListDetainedLicenses_Load(object sender, EventArgs e)
         {
-            dgvDetainedLicenses.DataSource = clsDetainedLicense.GetDetianedLicense();
-            lblRowsCountValue.Text = dgvDetainedLicenses.Rows.Count.ToString();
-            LoadComboBoxFilter();
-            LoadComboBoxActiveStatus();
+            cbFilterBy.SelectedIndex = 0;
 
-        }
+            _dtDetainedLicenses = clsDetainedLicense.GetAllDetainedLicenses();
 
-        private void LoadComboBoxActiveStatus()
-        {
-            cbStatus.Items.Add("All");      // index 0
-            cbStatus.Items.Add("Detained"); // index 1
-            cbStatus.Items.Add("Released"); // index 2
+            dgvDetainedLicenses.DataSource = _dtDetainedLicenses;
+            lblTotalRecords.Text = dgvDetainedLicenses.Rows.Count.ToString();
 
-            cbStatus.SelectedIndex = 0;
-        }
-
-        private void LoadComboBoxFilter()
-        {
-            List<string> ColumnNames = clsDetainedLicense.GetColumnNames();
-            if (ColumnNames == null)
+            if (dgvDetainedLicenses.Rows.Count > 0)
             {
-                MessageBox.Show("Database error, Column names are not loaded properly!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else
-            {
-                FillFilterComboBox(ColumnNames);
-            }
-        }
+                dgvDetainedLicenses.Columns[0].HeaderText = "D.ID";
+                dgvDetainedLicenses.Columns[0].Width = 90;
 
-        private void FillFilterComboBox(List<string> ColumnNames)
-        {
-            cbFilter.Items.Add("None");
-            cbFilter.SelectedItem = "None";
+                dgvDetainedLicenses.Columns[1].HeaderText = "L.ID";
+                dgvDetainedLicenses.Columns[1].Width = 90;
 
-            foreach (string ColumnName in ColumnNames)
-                cbFilter.Items.Add(ColumnName);
+                dgvDetainedLicenses.Columns[2].HeaderText = "D.Date";
+                dgvDetainedLicenses.Columns[2].Width = 160;
+
+                dgvDetainedLicenses.Columns[3].HeaderText = "Is Released";
+                dgvDetainedLicenses.Columns[3].Width = 110;
+
+                dgvDetainedLicenses.Columns[4].HeaderText = "Fine Fees";
+                dgvDetainedLicenses.Columns[4].Width = 110;
+
+                dgvDetainedLicenses.Columns[5].HeaderText = "Release Date";
+                dgvDetainedLicenses.Columns[5].Width = 160;
+
+                dgvDetainedLicenses.Columns[6].HeaderText = "N.No.";
+                dgvDetainedLicenses.Columns[6].Width = 90;
+
+                dgvDetainedLicenses.Columns[7].HeaderText = "Full Name";
+                dgvDetainedLicenses.Columns[7].Width = 330;
+
+                dgvDetainedLicenses.Columns[8].HeaderText = "Rlease App.ID";
+                dgvDetainedLicenses.Columns[8].Width = 150;
+
+            }
+
         }
 
         private void showPersonDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //int DriverID = clsLicense.FindLicense(GetLicenseIDFromDGV()).DriverID;
-            //clsPerson person = clsPerson.Find(clsDriver.FindDriver(DriverID).PersonID);
-            //if (person != null)
-            //{
-            //    //frmShowPersonInfo form = new frmShowPersonInfo(person);
-            //    //form.ShowDialog();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No person found with the selected license ID",
-            //        "Invalid license ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-        }
+            int LicenseID = (int)dgvDetainedLicenses.CurrentRow.Cells[1].Value;
+            int PersonID = clsLicense.Find(LicenseID).DriverInfo.PersonID;
 
-        private int GetLicenseIDFromDGV()
-        {
-            return Convert.ToInt32(dgvDetainedLicenses.CurrentRow.Cells["L.ID"].Value.ToString());
+            frmShowPersonInfo frm = new frmShowPersonInfo(PersonID);
+            frm.ShowDialog();
         }
 
         private void showLicenseDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //int licenseID = clsLicense.FindLicense(GetLicenseIDFromDGV()).LicenseID;
-            //if (licenseID > 0)
-            //{
-            //    frmShowLicenseInfo form = new frmShowLicenseInfo(licenseID);
-            //    form.ShowDialog();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No license found with the selected license ID",
-            //        "Invalid license ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            int LicenseID = (int)dgvDetainedLicenses.CurrentRow.Cells[1].Value;
+
+            frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
+            frm.ShowDialog();
 
         }
 
         private void showLicensesHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //int DriverID = clsLicense.FindLicense(GetLicenseIDFromDGV()).DriverID;
+            int PersonID = clsLicense.Find((int)dgvDetainedLicenses.CurrentRow.Cells[1].Value).DriverInfo.PersonID;
 
-            //frmLicensesHistory frmLicensesHistory = new frmLicensesHistory(DriverID);
-            //frmLicensesHistory.ShowDialog();
+            frmLicensesHistory frmLicensesHistory = new frmLicensesHistory(PersonID);
+            frmLicensesHistory.ShowDialog();
         }
 
         private void ReleaseDetainedLicenseStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication();
-            frm.FindDetainedLicense(GetLicenseIDFromDGV());
+            int LicenseID = (int)dgvDetainedLicenses.CurrentRow.Cells[1].Value;
+
+            frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication(LicenseID);
             frm.ShowDialog();
+            frmListDetainedLicenses_Load(null, null);
         }
 
         private void mtxbSearch_TextChanged(object sender, EventArgs e)
         {
-            UpdateDataTableWithFilter();
-
-        }
-
-        private void UpdateDataTableWithFilter()
-        {
-            if (!cbFilter.SelectedItem.ToString().Contains("None"))
+            string FilterColumn = "";
+            //Map Selected Filter to real Column name 
+            switch (cbFilterBy.Text)
             {
-                string SearchValue = GetSearchValue();
-                dgvDetainedLicenses.DataSource = clsDetainedLicense.GetDataTableWithQuery(cbFilter.SelectedItem.ToString(), SearchValue);
-                lblRowsCountValue.Text = dgvDetainedLicenses.RowCount.ToString();
-            }
-        }
+                case "Detain ID":
+                    FilterColumn = "DetainID";
+                    break;
+                case "Is Released":
+                    {
+                        FilterColumn = "IsReleased";
+                        break;
+                    }
 
-        private string GetSearchValue()
-        {
-            string SearchValue;
-            if (cbFilter.SelectedItem.ToString() == "Is Released")
-            {
-                if (cbStatus.SelectedItem.ToString() == "All")
-                    SearchValue = string.Empty;
-                else
-                    SearchValue = GetItemValueByIndex();
+                case "National No.":
+                    FilterColumn = "NationalNo";
+                    break;
+
+
+                case "Full Name":
+                    FilterColumn = "FullName";
+                    break;
+
+                case "Release Application ID":
+                    FilterColumn = "ReleaseApplicationID";
+                    break;
+
+                default:
+                    FilterColumn = "None";
+                    break;
             }
+
+
+            //Reset the filters in case nothing selected or filter value conains nothing.
+            if (txtFilterValue.Text.Trim() == "" || FilterColumn == "None")
+            {
+                _dtDetainedLicenses.DefaultView.RowFilter = "";
+                lblTotalRecords.Text = dgvDetainedLicenses.Rows.Count.ToString();
+                return;
+            }
+
+
+            if (FilterColumn == "DetainID" || FilterColumn == "ReleaseApplicationID")
+                //in this case we deal with numbers not string.
+                _dtDetainedLicenses.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilterValue.Text.Trim());
             else
-            {
-                SearchValue = mtxbSearch.Text;
-            }
+                _dtDetainedLicenses.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFilterValue.Text.Trim());
 
-            return SearchValue;
-        }
-
-        private string GetItemValueByIndex()
-        {
-            return (cbStatus.SelectedIndex - 1).ToString();
+            lblTotalRecords.Text = _dtDetainedLicenses.Rows.Count.ToString();
         }
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mtxbSearch.Visible = !(cbFilter.SelectedItem.ToString() == "None" || cbFilter.SelectedItem.ToString() == "Is Released");
-            cbStatus.Visible = cbFilter.SelectedItem.ToString().Contains("Is Released");
-
-            if (cbFilter.SelectedItem.ToString() == "D.ID" || cbFilter.SelectedItem.ToString() == "Release App.ID")
-                mtxbSearch.Mask = "000000";
+            if (cbFilterBy.Text == "Is Released")
+            {
+                txtFilterValue.Visible = false;
+                cbIsReleased.Visible = true;
+                cbIsReleased.Focus();
+                cbIsReleased.SelectedIndex = 0;
+            }
             else
             {
-                if (cbFilter.SelectedItem.ToString() == "None")
-                {
-                    mtxbSearch.Text = string.Empty;
-                    dgvDetainedLicenses.DataSource = clsDetainedLicense.GetDetianedLicense();
-                    lblRowsCountValue.Text = dgvDetainedLicenses.Rows.Count.ToString();
-                }
-                mtxbSearch.Mask = "";
-            }
+                txtFilterValue.Visible = (cbFilterBy.Text != "None");
+                cbIsReleased.Visible = false;
 
+                if (cbFilterBy.Text == "None")
+                {
+                    txtFilterValue.Enabled = false;
+                    //_dtDetainedLicenses.DefaultView.RowFilter = "";
+                    //lblTotalRecords.Text = dgvDetainedLicenses.Rows.Count.ToString();
+                }
+                else
+                    txtFilterValue.Enabled = true;
+
+                txtFilterValue.Text = "";
+                txtFilterValue.Focus();
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -181,17 +188,54 @@ namespace _19___Project___DVLD.Driving_Licenses.Detained_Licenses
         {
             frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication();
             frm.ShowDialog();
+            //refresh
+            frmListDetainedLicenses_Load(null, null);
         }
 
         private void btnDetainLicense_Click(object sender, EventArgs e)
         {
             frmDetainLicenseApplication frm = new frmDetainLicenseApplication();
             frm.ShowDialog();
+            frmListDetainedLicenses_Load(null, null);
         }
 
-        private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbIsReleased_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateDataTableWithFilter();
+            string FilterColumn = "IsReleased";
+            string FilterValue = cbIsReleased.Text;
+
+            switch (FilterValue)
+            {
+                case "All":
+                    break;
+                case "Yes":
+                    FilterValue = "1";
+                    break;
+                case "No":
+                    FilterValue = "0";
+                    break;
+            }
+
+            if (FilterValue == "All")
+                _dtDetainedLicenses.DefaultView.RowFilter = "";
+            else
+                //in this case we deal with numbers not string.
+                _dtDetainedLicenses.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, FilterValue);
+
+            lblTotalRecords.Text = _dtDetainedLicenses.Rows.Count.ToString();
         }
+
+        private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //we allow number incase person id or user id is selected.
+            if (cbFilterBy.Text == "Detain ID" || cbFilterBy.Text == "Release Application ID")
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        
+        private void cmsApplications_Opening(object sender, CancelEventArgs e)
+        {
+            releaseDetainedLicenseToolStripMenuItem.Enabled = !(bool)dgvDetainedLicenses.CurrentRow.Cells[3].Value;
+        }
+
     }
 }

@@ -106,12 +106,6 @@
     <Compile Include="Licenses\Local Licenses\Controls\ctrlDriverLicenseInfo.Designer.cs">
       <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\Release Detained License\ctrlReleaseDetainedLicense.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Applications\Release Detained License\ctrlReleaseDetainedLicense.Designer.cs">
-      <DependentUpon>ctrlReleaseDetainedLicense.cs</DependentUpon>
-    </Compile>
     <Compile Include="Licenses\Detain License\ctrlShowLicenseAndDetainInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -365,9 +359,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Local Licenses\Controls\ctrlDriverLicenseInfo.resx">
       <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Applications\Release Detained License\ctrlReleaseDetainedLicense.resx">
-      <DependentUpon>ctrlReleaseDetainedLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Detain License\ctrlShowLicenseAndDetainInfo.resx">
       <DependentUpon>ctrlShowLicenseAndDetainInfo.cs</DependentUpon>
