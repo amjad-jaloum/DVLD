@@ -149,5 +149,16 @@ namespace _19___Project___DVLD
             frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication();
             frm.ShowDialog();
         }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            clsGlobal.CurrentUser = null;
+            _frmLogin.Close();
+        }
+
+        private void frmMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            frmMain_FormClosing(null,null);
+        }
     }
 }

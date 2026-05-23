@@ -61,9 +61,10 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(615, 604);
+            this.panel1.Size = new System.Drawing.Size(410, 392);
             this.panel1.TabIndex = 1;
             // 
             // label4
@@ -71,9 +72,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 26F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(384, 182);
+            this.label4.Location = new System.Drawing.Point(256, 118);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(168, 70);
+            this.label4.Size = new System.Drawing.Size(113, 47);
             this.label4.TabIndex = 9;
             this.label4.Text = "DVLD";
             // 
@@ -83,10 +85,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::_19___Project___DVLD.Properties.Resources.driver_config__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(75, 135);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(30);
+            this.pictureBox1.Location = new System.Drawing.Point(50, 88);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(425, 328);
+            this.pictureBox1.Size = new System.Drawing.Size(283, 212);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
@@ -100,10 +102,11 @@
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1242, 610);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(828, 396);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel2
@@ -117,9 +120,10 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(624, 3);
+            this.panel2.Location = new System.Drawing.Point(416, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(615, 604);
+            this.panel2.Size = new System.Drawing.Size(410, 392);
             this.panel2.TabIndex = 2;
             // 
             // chxRememberMe
@@ -128,9 +132,10 @@
             this.chxRememberMe.Checked = true;
             this.chxRememberMe.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chxRememberMe.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chxRememberMe.Location = new System.Drawing.Point(171, 358);
+            this.chxRememberMe.Location = new System.Drawing.Point(114, 233);
+            this.chxRememberMe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chxRememberMe.Name = "chxRememberMe";
-            this.chxRememberMe.Size = new System.Drawing.Size(139, 25);
+            this.chxRememberMe.Size = new System.Drawing.Size(98, 17);
             this.chxRememberMe.TabIndex = 15;
             this.chxRememberMe.Text = "Remember me";
             this.chxRememberMe.UseVisualStyleBackColor = true;
@@ -138,9 +143,10 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnClose.Location = new System.Drawing.Point(170, 446);
+            this.btnClose.Location = new System.Drawing.Point(113, 290);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(302, 41);
+            this.btnClose.Size = new System.Drawing.Size(201, 27);
             this.btnClose.TabIndex = 14;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -149,9 +155,10 @@
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnLogin.Location = new System.Drawing.Point(169, 399);
+            this.btnLogin.Location = new System.Drawing.Point(113, 259);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(303, 41);
+            this.btnLogin.Size = new System.Drawing.Size(202, 27);
             this.btnLogin.TabIndex = 13;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -160,28 +167,30 @@
             // tbPassword
             // 
             this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tbPassword.Location = new System.Drawing.Point(170, 317);
+            this.tbPassword.Location = new System.Drawing.Point(113, 206);
+            this.tbPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(302, 35);
+            this.tbPassword.Size = new System.Drawing.Size(203, 26);
             this.tbPassword.TabIndex = 12;
-            this.tbPassword.Leave += new System.EventHandler(this.tbPassword_Leave);
             // 
             // tbUsername
             // 
             this.tbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tbUsername.Location = new System.Drawing.Point(170, 246);
+            this.tbUsername.Location = new System.Drawing.Point(113, 160);
+            this.tbUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(302, 35);
+            this.tbUsername.Size = new System.Drawing.Size(203, 26);
             this.tbUsername.TabIndex = 11;
-            this.tbUsername.Leave += new System.EventHandler(this.tbUsername_Leave);
+            this.tbUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbUsername_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(165, 284);
+            this.label3.Location = new System.Drawing.Point(110, 185);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 32);
+            this.label3.Size = new System.Drawing.Size(76, 21);
             this.label3.TabIndex = 10;
             this.label3.Text = "Password";
             // 
@@ -189,9 +198,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(165, 211);
+            this.label2.Location = new System.Drawing.Point(110, 137);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 32);
+            this.label2.Size = new System.Drawing.Size(81, 21);
             this.label2.TabIndex = 9;
             this.label2.Text = "Username";
             // 
@@ -199,19 +209,21 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 26F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(237, 117);
+            this.label1.Location = new System.Drawing.Point(158, 76);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 70);
+            this.label1.Size = new System.Drawing.Size(112, 47);
             this.label1.TabIndex = 8;
             this.label1.Text = "Login";
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1242, 610);
+            this.ClientSize = new System.Drawing.Size(828, 396);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmLogin_Load);

@@ -55,10 +55,7 @@ namespace _19___Project___DVLD
 
         private void tbUsername_Leave(object sender, EventArgs e)
         {
-            if (tbUsername.Text == string.Empty)
-                errorProvider1.SetError(tbUsername, "This field is required");
-            else
-                errorProvider1.SetError(tbUsername, string.Empty);
+
         }
 
         private void tbPassword_Leave(object sender, EventArgs e)
@@ -79,5 +76,9 @@ namespace _19___Project___DVLD
                 chxRememberMe.Checked = false;
         }
 
+        private void tbUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            btnLogin.PerformClick();
+        }
     }
 }
