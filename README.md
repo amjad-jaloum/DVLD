@@ -113,52 +113,33 @@ The project follows a **3-Tier Architecture**:
 | International Licenses  | Issue and manage international licenses |
 
 ---
+# 🖼️ Application Screenshots
+Below are the key interfaces of the application, showcasing the entire workflow from login to specialized license management.
 
-# Some Screenshots
+### 🔐 Getting Started
+<p align="center">
+  <img src="Screenshots/screen%20(1).png" width="400" alt="Login Screen" />
+  <img src="Screenshots/screen%20(2).png" width="400" alt="Main Menu Screen" />
+</p>
 
-## Login Screen
-![Login Screen](Screenshots/screen%20(1).png)
+### 📄 License Issuance Process
+<p align="center">
+  <img src="Screenshots/screen%20(3).png" width="260" alt="Adding Local License Screen" />
+  <img src="Screenshots/screen%20(4).png" width="260" alt="Adding License Details" />
+  <img src="Screenshots/screen%20(5).png" width="260" alt="Local License Management" />
+</p>
 
----
+### 👁️ Vision Testing & Appointments
+<p align="center">
+  <img src="Screenshots/screen%20(6).png" width="400" alt="Scheduling Vision Test" />
+  <img src="Screenshots/screen%20(7).png" width="400" alt="Schedule Test Appointment" />
+</p>
 
-## Main Menu Screen
-![Main Menu Screen](Screenshots/screen%20(2).png)
-
----
-
-## Adding Local License Screen
-![Adding Local License Screen](Screenshots/screen%20(3).png)
-
----
-
-## Adding License Details
-![Adding License Details](Screenshots/screen%20(4).png)
-
----
-
-## Local License Management
-![Local License Management](Screenshots/screen%20(5).png)
-
----
-
-## Scheduling Vision Test
-![Scheduling Vision Test](Screenshots/screen%20(6).png)
-
----
-
-## Schedule Test Appointment
-![Schedule Test Appointment](Screenshots/screen%20(7).png)
-
----
-
-## Releassing Detained License
-![Releassing Detained License](Screenshots/screen%20(8).png)
-
----
-
-## Detained Licenses Management
-![Detained Licenses Management](Screenshots/screen%20(9).png)
-
+### 🚫 Detained Licenses
+<p align="center">
+  <img src="Screenshots/screen%20(8).png" width="400" alt="Releasing Detained License" />
+  <img src="Screenshots/screen%20(9).png" width="400" alt="Detained Licenses Management" />
+</p>
 
 # Learning Outcomes
 
@@ -184,6 +165,14 @@ Through this project, the following concepts were practiced and implemented:
 * Add Multi-language support
 
 ---
+
+
+## 🚀 Quick Start (Deployment Guide)
+
+### Manual SQL Script Generation
+1. Open **SQL Server Management Studio (SSMS)** and connect to your local server.
+2. Open and execute the comprehensive script file found at: `/Database schema & data.sql` (Press `F5` to generate tables and insert data).
+3. Launch the application executable.
 
 # Author
 
