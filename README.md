@@ -121,28 +121,28 @@ The project follows a **3-Tier Architecture**:
 
 ---
 
-## Main Dashboard
-![Main Dashboard](Screenshots/screen%20(2).png)
+## Main Menu Screen
+![Main Menu Screen](Screenshots/screen%20(2).png)
 
 ---
 
-## People Management
-![People Management](Screenshots/screen%20(3).png)
+## Adding Local License Screen
+![Adding Local License Screen](Screenshots/screen%20(3).png)
 
 ---
 
-## Add New Person
-![Add New Person](Screenshots/screen%20(4).png)
+## Adding License Details
+![Adding License Details](Screenshots/screen%20(4).png)
 
 ---
 
-## Users Management
-![Users Management](Screenshots/screen%20(5).png)
+## Local License Management
+![Local License Management](Screenshots/screen%20(5).png)
 
 ---
 
-## Driver License Applications
-![Driver License Applications](Screenshots/screen%20(6).png)
+## Scheduling Vision Test
+![Scheduling Vision Test](Screenshots/screen%20(6).png)
 
 ---
 
@@ -151,13 +151,13 @@ The project follows a **3-Tier Architecture**:
 
 ---
 
-## Vision Test
-![Vision Test](Screenshots/screen%20(8).png)
+## Releassing Detained License
+![Releassing Detained License](Screenshots/screen%20(8).png)
 
 ---
 
-## Written Test
-![Written Test](Screenshots/screen%20(9).png)
+## Detained Licenses Management
+![Detained Licenses Management](Screenshots/screen%20(9).png)
 
 
 # Learning Outcomes
