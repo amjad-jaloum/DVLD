@@ -94,7 +94,6 @@ The project follows a **3-Tier Architecture**:
 # Database Features
 
 * Relational SQL Server Database
-* Stored Procedures
 * Data Validation
 * Relationships and Constraints
 * Secure Authentication Handling
@@ -115,103 +114,51 @@ The project follows a **3-Tier Architecture**:
 
 ---
 
-# Screenshots
+# Some Screenshots
 
 ## Login Screen
-
-![Login Screen](screen%20\(1\).png)
+![Login Screen](Screenshots/screen%20(1).png)
 
 ---
 
 ## Main Dashboard
-
-![Main Dashboard](screen%20\(2\).png)
+![Main Dashboard](Screenshots/screen%20(2).png)
 
 ---
 
 ## People Management
-
-![People Management](screen%20\(3\).png)
+![People Management](Screenshots/screen%20(3).png)
 
 ---
 
 ## Add New Person
-
-![Add New Person](screen%20\(4\).png)
+![Add New Person](Screenshots/screen%20(4).png)
 
 ---
 
 ## Users Management
-
-![Users Management](screen%20\(5\).png)
+![Users Management](Screenshots/screen%20(5).png)
 
 ---
 
 ## Driver License Applications
-
-![Driver License Applications](screen%20\(6\).png)
+![Driver License Applications](Screenshots/screen%20(6).png)
 
 ---
 
 ## Schedule Test Appointment
-
-![Schedule Test Appointment](screen%20\(7\).png)
+![Schedule Test Appointment](Screenshots/screen%20(7).png)
 
 ---
 
 ## Vision Test
-
-![Vision Test](screen%20\(8\).png)
+![Vision Test](Screenshots/screen%20(8).png)
 
 ---
 
 ## Written Test
+![Written Test](Screenshots/screen%20(9).png)
 
-![Written Test](screen%20\(9\).png)
-
----
-
-## Practical Driving Test
-
-![Practical Driving Test](screen%20\(10\).png)
-
----
-
-## Issue Driving License
-
-![Issue Driving License](screen%20\(11\).png)
-
----
-
-## Renew License
-
-![Renew License](screen%20\(12\).png)
-
----
-
-## Replace Lost/Damaged License
-
-![Replace License](screen%20\(13\).png)
-
----
-
-## Detain License
-
-![Detain License](screen%20\(14\).png)
-
----
-
-## Release Detained License
-
-![Release License](screen%20\(15\).png)
-
----
-
-## International License
-
-![International License](screen%20\(16\).png)
-
----
 
 # Learning Outcomes
 
