@@ -78,7 +78,8 @@ namespace _19___Project___DVLD
 
         private void tbUsername_KeyPress(object sender, KeyPressEventArgs e)
         {
-            btnLogin.PerformClick();
+            if (e.KeyChar == (char)Keys.Enter)
+                btnLogin.PerformClick();
         }
     }
 }

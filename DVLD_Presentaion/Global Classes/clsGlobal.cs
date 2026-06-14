@@ -6,30 +6,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_Business;
+using Microsoft.Win32;
 
 namespace _19___Project___DVLD
 {
     public class clsGlobal
     {
         public static clsUser CurrentUser;
+        private static string _keyPath = @"HKEY_CURRENT_USER\SOFTWARE\DVLD";
+        private static string _valueName = "DVLD";
+
         public static bool RemeberUsernameAndPassword(string Username, string Password)
         {
             try
             {
-                string currentDirectory = Directory.GetCurrentDirectory();
-                string filePath = currentDirectory + @"\data.txt";
-                if (Username == string.Empty && File.Exists(filePath))
-                {
-                    File.Delete(filePath);
-                    return true;
-                }
+                string valueData = Username == string.Empty ? string.Empty : Username + "#//#" + Password;
 
-                string SavedData = Username + "#//#" + Password;
-                using (StreamWriter sw = new StreamWriter(filePath))
-                {
-                    sw.WriteLine(SavedData);
-                    return true;
-                }
+                Registry.SetValue(_keyPath, _valueName, valueData, RegistryValueKind.String);
+                return true;
+
             }
             catch (Exception ex)
             {
@@ -42,24 +37,18 @@ namespace _19___Project___DVLD
         {
             try
             {
-                string currentDir = Directory.GetCurrentDirectory();
-                string filePath = currentDir + @"\data.txt";
-                if (File.Exists(filePath))
+                string value = Registry.GetValue(_keyPath, _valueName, null) as string;
+
+                if (!string.IsNullOrEmpty(value))
                 {
-                    using (StreamReader sr = new StreamReader(filePath))
-                    {
-                        string line;
-                        while ((line = sr.ReadLine()) != null)
-                        {
-                            string[] result = line.Split(new string[] { "#//#" }, StringSplitOptions.None);
-                            Username = result[0];
-                            Password = result[1];
-                        }
-                        return true;
-                    }
+                    string[] result = value.Split(new string[] { "#//#" }, StringSplitOptions.None);
+                    Username = result[0];
+                    Password = result[1];
+                    return true;
                 }
                 else
                     return false;
+
             }
             catch (Exception ex)
             {
