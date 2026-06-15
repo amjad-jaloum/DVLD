@@ -38,6 +38,17 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
             }
             finally { connection.Close(); }
             return isFound;
@@ -45,54 +56,63 @@ namespace DVLD_DataAccess
         public static bool GetLocalDrivingLicenseApplicationInfoByApplicationID(
          int ApplicationID, ref int LocalDrivingLicenseApplicationID,
          ref int LicenseClassID)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * FROM LocalDrivingLicenseApplications WHERE ApplicationID = @ApplicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
                 {
-                    bool isFound = false;
 
-                    SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+                    // The record was found
+                    isFound = true;
 
-                    string query = "SELECT * FROM LocalDrivingLicenseApplications WHERE ApplicationID = @ApplicationID";
+                    LocalDrivingLicenseApplicationID = (int)reader["LocalDrivingLicenseApplicationID"];
+                    LicenseClassID = (int)reader["LicenseClassID"];
 
-                    SqlCommand command = new SqlCommand(query, connection);
-
-                    command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
-
-                    try
-                    {
-                        connection.Open();
-                        SqlDataReader reader = command.ExecuteReader();
-
-                        if (reader.Read())
-                        {
-
-                            // The record was found
-                            isFound = true;
-
-                            LocalDrivingLicenseApplicationID = (int)reader["LocalDrivingLicenseApplicationID"];
-                            LicenseClassID = (int)reader["LicenseClassID"];
-
-                        }
-                        else
-                        {
-                            // The record was not found
-                            isFound = false;
-                        }
-
-                        reader.Close();
-
-
-                    }
-                    catch (Exception ex)
-                    {
-                        //Console.WriteLine("Error: " + ex.Message);
-                        isFound = false;
-                    }
-                    finally
-                    {
-                        connection.Close();
-                    }
-
-                    return isFound;
                 }
+                else
+                {
+                    // The record was not found
+                    isFound = false;
+                }
+
+                reader.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
 
         public static DataTable GetAllLocalDrivingLicenseApplications()
         {
@@ -125,7 +145,16 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                // Console.WriteLine("Error: " + ex.Message);
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
             }
             finally
             {
@@ -157,8 +186,19 @@ namespace DVLD_DataAccess
                     return value;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 return -1;
             }
             finally
@@ -185,8 +225,19 @@ namespace DVLD_DataAccess
                 }
                 reader.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
             }
             finally { connection.Close(); }
 
@@ -219,8 +270,19 @@ namespace DVLD_DataAccess
                     return insertedID;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 return -1;
             }
             finally
@@ -257,7 +319,16 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
                 return false;
             }
 
@@ -299,8 +370,19 @@ namespace DVLD_DataAccess
                     return true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 return false;
             }
             finally
@@ -330,8 +412,19 @@ namespace DVLD_DataAccess
                 }
                 reader.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
             }
             finally { connection.Close(); }
 
@@ -356,7 +449,19 @@ namespace DVLD_DataAccess
                 }
                 reader.Close();
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+            }
             finally { connection.Close(); }
 
             return dt;
@@ -378,8 +483,19 @@ namespace DVLD_DataAccess
                 object result = command.ExecuteScalar();
                 ClassName = result != null ? result.ToString() : string.Empty;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 ClassName = string.Empty;
             }
             finally { connection.Close(); }
@@ -423,8 +539,19 @@ namespace DVLD_DataAccess
                 }
                 reader.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 isFound = false;
             }
             finally { connection.Close(); }
@@ -453,8 +580,19 @@ namespace DVLD_DataAccess
                     return insertedID;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 return -1;
             }
             finally
@@ -481,8 +619,19 @@ namespace DVLD_DataAccess
                 object result = command.ExecuteScalar();
                 AppTypeName = result != null ? result.ToString() : string.Empty;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 AppTypeName = string.Empty;
             }
             finally { connection.Close(); }
@@ -505,8 +654,19 @@ namespace DVLD_DataAccess
                 object result = command.ExecuteScalar();
                 Username = result != null ? result.ToString() : string.Empty;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 Username = string.Empty;
             }
             finally { connection.Close(); }
@@ -535,8 +695,19 @@ namespace DVLD_DataAccess
                     return (int)value;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 return -1;
             }
             finally
@@ -585,8 +756,19 @@ namespace DVLD_DataAccess
                     return insertedID;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 return -1;
             }
             finally
@@ -622,8 +804,19 @@ namespace DVLD_DataAccess
                 }
                 reader.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
             }
             finally
             {
@@ -654,8 +847,19 @@ namespace DVLD_DataAccess
                 if (rowsEffected > 0)
                     return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 isUpdated = false;
             }
             finally { connection.Close(); }
@@ -684,8 +888,19 @@ namespace DVLD_DataAccess
                     return value;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 return DateTime.MinValue;
             }
             finally
@@ -714,8 +929,19 @@ namespace DVLD_DataAccess
                     return true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
             }
             finally
             {
@@ -756,8 +982,19 @@ namespace DVLD_DataAccess
                 if (rowsEffected > 0)
                     return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 isAdded = false;
             }
             finally { connection.Close(); }
@@ -781,8 +1018,19 @@ namespace DVLD_DataAccess
                 if (rowsEffected > 0)
                     return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 isUpdated = false;
             }
             finally { connection.Close(); }
@@ -807,8 +1055,19 @@ namespace DVLD_DataAccess
                     return true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 return false;
             }
             finally
@@ -836,8 +1095,19 @@ namespace DVLD_DataAccess
                     return value;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 return false;
             }
             finally
@@ -866,8 +1136,19 @@ namespace DVLD_DataAccess
                     return true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 return false;
             }
             finally
@@ -902,8 +1183,19 @@ namespace DVLD_DataAccess
                     isUpdated = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 isUpdated = false;
             }
             finally { connection.Close(); }
@@ -929,7 +1221,19 @@ namespace DVLD_DataAccess
                     return LicenseClassID;
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+            }
             finally { connection.Close(); }
             return -1;
         }
@@ -946,8 +1250,19 @@ namespace DVLD_DataAccess
                 conn.Open();
                 RowsEffected = cmd.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+
                 return false;
             }
             finally { conn.Close(); }
@@ -989,7 +1304,16 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
 
             }
 
@@ -1034,7 +1358,16 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
             }
             finally
             {
@@ -1078,7 +1411,16 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
 
             }
 
@@ -1107,7 +1449,19 @@ namespace DVLD_DataAccess
                 if (result != null && int.TryParse(result.ToString(), out int returnedID))
                     return returnedID;
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+            }
             finally { conn.Close(); }
             return -1;
         }
@@ -1128,7 +1482,19 @@ namespace DVLD_DataAccess
                 if (result != null && int.TryParse(result.ToString(), out int returnedID))
                     return returnedID;
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
+            }
             finally { conn.Close(); }
             return -1;
         }
@@ -1168,7 +1534,16 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
 
             }
 

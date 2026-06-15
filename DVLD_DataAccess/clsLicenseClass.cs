@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +55,16 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
                 isFound = false;
             }
             finally
@@ -108,7 +118,16 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
                 isFound = false;
             }
             finally
@@ -150,7 +169,16 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                // Console.WriteLine("Error: " + ex.Message);
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
             }
             finally
             {
@@ -204,7 +232,16 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
 
             }
 
@@ -252,7 +289,16 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                string sourceName = "DVLD";
+                // find if already exists
+                if (!EventLog.SourceExists(sourceName))
+                {
+                    // create the log event
+                    EventLog.CreateEventSource(sourceName, "Application");
+                }
+
+                // logging
+                EventLog.WriteEntry(sourceName, ex.Message, EventLogEntryType.Error);
                 return false;
             }
 
