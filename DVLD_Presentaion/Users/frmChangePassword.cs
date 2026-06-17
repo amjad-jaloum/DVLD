@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _19___Project___DVLD.Global_Classes;
 using DVLD_Business;
 
 namespace _19___Project___DVLD.Users
@@ -15,13 +16,13 @@ namespace _19___Project___DVLD.Users
     {
         clsUser _User;
         private int _UserID;
-       
+
         public frmChangePassword(int UserID)
         {
             InitializeComponent();
             _UserID = UserID;
         }
-       
+
         private void _ResetDefualtValues()
         {
             tbCurrentPassword.Text = "";
@@ -55,7 +56,7 @@ namespace _19___Project___DVLD.Users
                 }
             }
         }
-        
+
         private void frmChangePassword_Load(object sender, EventArgs e)
         {
             _ResetDefualtValues();
@@ -86,7 +87,7 @@ namespace _19___Project___DVLD.Users
                 errorProvider1.SetError(tbCurrentPassword, null);
             }
 
-            if (_User.Password != tbCurrentPassword.Text.Trim())
+            if (_User.Password != clsUser.ComputeHashed(tbCurrentPassword.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(tbCurrentPassword, "Current password is wrong!");

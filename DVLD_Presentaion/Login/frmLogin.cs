@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _19___Project___DVLD.Global_Classes;
 using DVLD_Business;
 
 namespace _19___Project___DVLD
@@ -50,17 +51,7 @@ namespace _19___Project___DVLD
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
-            System.Windows.Forms.Application.Exit();
-        }
-
-        private void tbUsername_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbPassword_Leave(object sender, EventArgs e)
-        {
-            clsCommonMethods.MakeTextBoxFieldRequired(tbPassword, errorProvider1);
+            Application.Exit();
         }
 
         private void frmLogin_Load(object sender, EventArgs e)

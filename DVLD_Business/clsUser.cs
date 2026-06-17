@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using DVLD_DataAccess;
@@ -36,15 +37,11 @@ namespace DVLD_Business
             IsActive = isActive;
             Mode = enMode.Update;
         }
-        public static bool SaveUsernameAndPasswordToFile(string username, string password)
-        {
-            return clsUserData.SaveUsernameAndPasswordToFile(username, password);
-        }
         public static clsUser FindByUsernameAndPassword(string username, string password)
         {
             int UserID = -1, personID = -1;
             bool isActive = false;
-            bool isFound = clsUserData.GetUserInfoByUsernameAndPassword(username, password, ref UserID, ref personID, ref isActive);
+            bool isFound = clsUserData.GetUserInfoByUsernameAndPassword(username, ComputeHashed(password), ref UserID, ref personID, ref isActive);
             if (isFound)
             {
                 return new clsUser(UserID, personID, username, password, isActive);
@@ -120,42 +117,31 @@ namespace DVLD_Business
         {
             return clsUserData.IsUserExistForPersonID(PersonID);
         }
-        public static bool LoadSavedLoginData(ref string username, ref string password)
-        {
-            clsUserData.GetSavedLoginData(ref username, ref password);
-            return username != string.Empty && password != string.Empty;
-        }
-        public static void ResetUsernameAndPasswrodFile()
-        {
-            clsUserData.ResetUsernameAndPasswrodFile();
-        }
         public static DataTable GetAllUsers()
         {
             return clsUserData.GetAllUsers();
         }
-        public static List<string> GetUserColumnNames()
-        {
-            return clsUserData.GetUsersColumnNames();
-        }
-        public static DataTable GetDataTableWithQuery(string colName, string value)
-        {
-            return clsUserData.GetDataTableWithQuery(colName, value);
-        }
         public bool AddNewUser()
         {
-            return clsUserData.AddNewUser(PersonID, UserName, Password, IsActive) != -1;
+            return clsUserData.AddNewUser(PersonID, UserName, ComputeHashed(Password), IsActive) != -1;
         }
         public bool UpdateUser()
         {
-            return clsUserData.UpdateUser(UserID, UserName, Password, IsActive);
-        }
-        public static bool UpdateUserPassword(int UserID, string newPassword)
-        {
-            return clsUserData.ChangePassword(UserID, newPassword);
+            return clsUserData.UpdateUser(UserID, UserName, ComputeHashed(Password), IsActive);
         }
         public static bool DeleteUser(int UserID)
         {
             return clsUserData.DeleteUser(UserID);
+        }
+        public static string ComputeHashed(string input)
+        {
+            // we use the sha algo
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+            }
         }
 
 

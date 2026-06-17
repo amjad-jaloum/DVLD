@@ -239,9 +239,9 @@ namespace _19___Project___DVLD.Users
             this.label3.Location = new System.Drawing.Point(57, 94);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 21);
+            this.label3.Size = new System.Drawing.Size(112, 21);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Password";
+            this.label3.Text = "New Password";
             // 
             // label2
             // 

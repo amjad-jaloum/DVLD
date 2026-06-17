@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _19___Project___DVLD.Global_Classes;
 using _19___Project___DVLD.People;
 using DVLD_Business;
 
@@ -60,7 +61,7 @@ namespace _19___Project___DVLD.Users
             _User = clsUser.FindByUserID(_UserID);
             ctrlPersonCardWithFilter1.FilterEnabled = false;
 
-            if(_User == null)
+            if (_User == null)
             {
                 MessageBox.Show("No User with ID = " + _User, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
@@ -70,17 +71,17 @@ namespace _19___Project___DVLD.Users
 
             lblUserID.Text = _User.ToString();
             tbUsername.Text = _User.UserName;
-            tbPassword.Text = _User.Password;
-            tbConfirmPassword.Text = _User.Password;
+            tbPassword.Text = string.Empty;           
+            tbConfirmPassword.Text = tbPassword.Text;    
             chxIsActive.Checked = _User.IsActive;
             ctrlPersonCardWithFilter1.LoadPersonInfo(_User.PersonID);
         }
         private void btnNextTab_Click(object sender, EventArgs e)
         {
-            if(Mode == enMode.Update)
+            if (Mode == enMode.Update)
             {
                 btnSave.Enabled = true;
-                gbUserDetails.Enabled =true;
+                gbUserDetails.Enabled = true;
                 tabControl1.SelectedTab = tabControl1.TabPages[1];
                 return;
             }
@@ -96,7 +97,7 @@ namespace _19___Project___DVLD.Users
                 else
                 {
                     btnSave.Enabled = true;
-                    gbUserDetails.Enabled =true;
+                    gbUserDetails.Enabled = true;
                     tabControl1.SelectedTab = tabControl1.TabPages[1];
                 }
             }
@@ -115,7 +116,7 @@ namespace _19___Project___DVLD.Users
         private void frmAddAndUpdateUser_Load(object sender, EventArgs e)
         {
             _ResetDefulatValues();
-            if(Mode == enMode.Update)
+            if (Mode == enMode.Update)
             {
                 _LoadData();
             }
@@ -150,7 +151,10 @@ namespace _19___Project___DVLD.Users
             }
             _User.PersonID = ctrlPersonCardWithFilter1.PersonID;
             _User.UserName = tbUsername.Text.Trim();
-            _User.Password = tbPassword.Text.Trim();
+
+            if (clsUser.ComputeHashed(tbPassword.Text) != _User.Password) // if true = new password
+                _User.Password = tbPassword.Text.Trim(); 
+
             _User.IsActive = chxIsActive.Checked;
 
             if (_User.Save())
